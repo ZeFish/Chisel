@@ -1,0 +1,17 @@
+/* ============================================= */
+/* Optimize Image experience */
+/* ============================================= */
+.img-blend.theme-dark .markdown-preview-view:not(.img-blend-off) img {
+	filter: brightness(75%);
+	image-rendering: auto;
+}
+
+.img-blend.theme-light .markdown-preview-view:not(.img-blend-off) img {
+	mix-blend-mode: multiply;
+	image-rendering: auto;
+}
+.img-blend .markdown-preview-view:not(.img-blend-off) img:hover {
+	mix-blend-mode: normal;
+	filter: brightness(100%);
+	image-rendering: auto;
+}

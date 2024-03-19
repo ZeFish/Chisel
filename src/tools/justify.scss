@@ -1,0 +1,12 @@
+/* ============================================= */
+/* Justify Part */
+/* ============================================= */
+.justify .markdown-preview-view:not(.justify-off) .el-p {
+	text-align: justify;
+	text-align-last: left;
+	text-wrap: pretty;
+	hyphens: auto;
+}
+.justify .markdown-preview-view:not(.justify-off) .el-br {
+	display:none;
+}

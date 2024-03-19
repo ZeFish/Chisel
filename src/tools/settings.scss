@@ -1,0 +1,291 @@
+/* @settings
+
+name: Chisel
+id: chisel
+settings:
+	- 
+        id: block-small
+        title: 0.75 smaller block other than text
+        description:
+        type: class-toggle
+		default: false
+    - 
+		id: base-color
+		title: Base Color
+		collapsed: true
+		type: heading
+		level: 1
+	- 
+        id: chisel-refactor-color
+        title: Color refactor
+        description: Give the ability to chisel to change the color
+        type: class-toggle
+		default: false
+	- 
+        id: funky-color
+        title: Funky color
+        description: Create a whole color palette based only on the accent color
+        type: class-toggle
+		default: false
+	- 
+        id: my-info-text
+        title: Information
+        description: "This is *informational* text"
+        type: info-text
+        markdown: true
+    - 
+        id: chisel-color-base-100
+        title: Foreground Color
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#4a341c'
+		default-dark: '#e6cfb3'
+    - 
+        id: chisel-color-base-00
+        title: Background Color
+        description: wdw
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#f7f3ee'
+		default-dark: '#2c2621'
+    - 
+        id: extended-color
+        title: Extented Color
+        type: heading
+		collapsed: true
+        level: 2
+	- 
+        id: chisel-color-red
+        title: Red
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#df453a'
+		default-dark: '#db6057'
+	- 
+        id: chisel-color-orange
+        title: Orange
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#ea702e'
+		default-dark: '#f6762c'
+	- 
+        id: chisel-color-yellow
+        title: Yellow
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#e4ae25'
+		default-dark: '#ebc400'
+	- 
+        id: chisel-color-green
+        title: Red color
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#42b885'
+		default-dark: '#38b27d'
+	- 
+        id: chisel-color-cyan
+        title: Cyan
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#2882c3'
+		default-dark: '#4dadd5'
+	- 
+        id: chisel-color-blue
+        title: Blue
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#2882c3'
+		default-dark: '#4dadd5'
+	- 
+        id: chisel-color-purple
+        title: Purple
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#8d6fb3'
+		default-dark: '#9f78dd'
+	- 
+        id: chisel-color-pink
+        title: Pink
+        description: 
+		type: variable-themed-color
+		format: hex
+		opacity: false
+		default-light: '#8d6fb3'
+		default-dark: '#9f78dd'
+    - 
+        id: img-rlt
+        title: Images related
+        type: heading
+		collapsed: true
+        level: 1
+    - 
+        id: img-grid
+        title: Image grid
+        description: 
+        type: class-toggle
+		default: false
+    - 
+        id: img-zoom
+        title: Zoom
+        description: 
+        type: class-toggle
+		default: false
+    - 
+        id: img-min
+        title: Minimize images in editor view
+        description: Gives your more place to focus on text.
+        type: class-toggle
+		default: false
+    - 
+        id: img-blend
+        title: Blend image in the background and mouse not hover
+        description:
+        type: class-toggle
+		default: false
+    - 
+        id: typ-rlt
+        title: Typography
+        type: heading
+		collapsed: true
+        level: 1
+	-
+		id: typo-geometric
+		title: Geometric Precision Font Rendering
+		description: 
+		type: class-toggle
+		default: false
+	- 
+        id: typo-link-no-decoration
+        title: Remove link underline
+        description:
+        type: class-toggle
+		default: false
+	-
+		id: typo-ligature
+		title: Enable ligature
+		description: 
+		type: class-toggle
+		default: false
+	-
+		id: typo-line-height
+		title: Line height
+		description: (Recommended 1.6)
+		type: variable-number
+		default: 1.5
+		format: em
+	- 
+        id: typo-ratio
+        title: Font ratio
+        description: Header size ratio based on the text size (Recommended 1.425)
+        type: variable-number
+		default: 1.125
+	- 
+        id: typo-letter-spacing
+        title: Letter spacing
+        description: (Recommended 0.002)
+        type: variable-number
+		default: 0
+		format: em
+    - 
+        id: justify
+        title: Justify
+        description: Justify and add hyphenation to text in preview mode
+        type: class-toggle
+		default: false
+	- 
+        id: indent
+        title: indent
+        description: indent paragraph (goes well with justify)
+        type: class-toggle
+		default: false
+    - 
+        id: vertical-rhythm
+        title: Vertical Rhythm
+        description: Vertical Flow
+        type: class-toggle
+		default: false
+    - 
+        id: zoom-large-screen
+        title: Zoom the text with window wider than 1000px
+        description: 
+        type: class-toggle
+		default: false
+
+	- 
+        id: type-heading
+        title: More typogarphy options
+        type: heading
+        level: 2
+        collapsed: true
+	-
+		id: typo-header-font
+		title: Header font
+		description: 
+		type: variable-text
+		default: ""
+		quotes: true
+	-
+		id: typo-header-swash
+		title: Enable Swash on title
+		description: 
+		type: class-toggle
+		default: false
+	- 
+        id: utopia-heading
+        title: Utopia Fluid scale
+        type: heading
+        level: 2
+        collapsed: true
+    - 
+        id: my-info-text
+        title: 
+        description: "Fluid font size scale based on [Utopia fluid type scale calculator](https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,4,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12)<br>
+		Do know that it **overwrite** the Font ratio above.<br><br>
+		By editing the snippet, you can change the ratio by copy pasting the code from the [Utopia Website](https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,4,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12)"
+        type: info-text
+        markdown: true
+    - 
+        id: utopia-fluid
+        title: Utopia Fluid scale
+        description: 
+        type: class-toggle
+		default: false
+	- 
+        id: funky-rlt
+        title: Funky options
+        type: heading
+        level: 1
+        collapsed: true
+    - 
+        id: chisel-funky
+        title: Funky title
+        description: 
+        type: class-toggle
+		default: false
+    - 
+        id: chisel-texture
+        title: Add Texture
+        description: 
+        type: class-toggle
+		default: false
+
+		
+
+*/

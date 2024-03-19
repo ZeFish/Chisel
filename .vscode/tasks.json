@@ -5,14 +5,33 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Sass Compile",
+			"label": "Chisel",
 			"type": "shell",
-			"command": "sass styles.scss styles.css",
+			"command": "sass src/chisel.scss chisel.css",
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
 			"problemMatcher": []
+		},
+		{
+			"label": "Chisel Theme",
+			"type": "shell",
+			"command": "sass src/chisel-theme.scss chisel-theme.css",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Project Build",
+			"dependsOn": [
+				"Chisel",
+				"Chisel Theme"
+			],
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		}
 	]
   }

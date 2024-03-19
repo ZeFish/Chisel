@@ -1,0 +1,121 @@
+/* ============================================= */
+/* Vertical Flow */
+/* ============================================= */
+.vertical-rhythm .inline-title, 
+.vertical-rhythm .markdown-reading-view h1, .vertical-rhythm .cm-header-1 {
+	line-height: 1;
+	margin-block-start: 1lh;
+	margin-block-end: 1.5lh;
+	padding:0;
+	letter-spacing: -0.065em;
+	line-height: 0.80em;
+}
+.vertical-rhythm .markdown-reading-view h2, .vertical-rhythm .cm-header-2 {
+	line-height: 1;
+	margin-block-start: 1.5lh;
+	margin-block-end: 0.5lh;
+	padding:0;
+	letter-spacing: -0.065em;
+	line-height: 0.75em;
+}
+
+.vertical-rhythm .markdown-reading-view h3, .vertical-rhythm .cm-header-3 {
+	line-height: 1;
+	margin-block-start: 1.5lh;
+	margin-block-end: 1lh;
+	padding:0;
+	letter-spacing: -0.04em;
+	line-height: 1em;
+}
+
+.vertical-rhythm .markdown-reading-view h4, .vertical-rhythm .cm-header-4 {
+	line-height: 1;
+	margin-block-start: 1lh;
+	margin-block-end: 1lh;
+	padding:0;
+	letter-spacing: -0.04em;
+	line-height: 1em;
+}
+
+.vertical-rhythm .markdown-reading-view h5, .vertical-rhythm .cm-header-5 {
+	line-height: 1;
+	margin-block-start: 1lh;
+	margin-block-end: 1lh;
+	padding:0;
+	letter-spacing: -0.04em;
+	line-height: 1em;
+}
+
+.vertical-rhythm .markdown-reading-view h6, .vertical-rhythm .cm-header-6 {
+	line-height: 1;
+	margin-block-start: 1lh;
+	margin-block-end: 2lh;
+	padding:0;
+	letter-spacing: -0.0em;
+	line-height: 1em;
+}
+
+.vertical-rhythm .markdown-reading-view h1 code { font-size: var(--h1-size); }
+.vertical-rhythm .markdown-reading-view h2 code { font-size: var(--h2-size); }
+.vertical-rhythm .markdown-reading-view h3 code { font-size: var(--h3-size); }
+.vertical-rhythm .markdown-reading-view h4 code { font-size: var(--h4-size); }
+.vertical-rhythm .markdown-reading-view h5 code { font-size: var(--h5-size); }
+.vertical-rhythm .markdown-reading-view h6 code { font-size: var(--h6-size); }
+
+.vertical-rhythm .markdown-reading-view .el-h1 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) p
+.vertical-rhythm .markdown-reading-view .el-h2 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) p,
+.vertical-rhythm .markdown-reading-view .el-h3 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) p,
+.vertical-rhythm .markdown-reading-view .el-h4 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) p,
+.vertical-rhythm .markdown-reading-view .el-h5 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) p,
+.vertical-rhythm .markdown-reading-view .el-h6 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) p {
+	margin-block-start: calc(1lh * -1);
+}
+
+
+
+.vertical-rhythm .el-p p {
+	line-height: var(--line-height-normal);
+	margin-block-start:1lh;
+	margin-block-end:1lh;
+	padding:0;
+}
+
+.vertical-rhythm .el-embed-page p,
+.vertical-rhythm .el-embed-audio p,
+.vertical-rhythm .el-blockquote blockquote,
+.vertical-rhythm .el-div pre,
+.vertical-rhythm .el-div .callout,
+.vertical-rhythm .el-blockquote blockquote {
+	margin:2lh;
+}
+
+.vertical-rhythm .el-embed-image p { margin:2lh 0 2lh 0; }
+.vertical-rhythm .el-p:not(.el-embed-image) + .el-embed-image,
+.vertical-rhythm .el-embed-image + .el-p:not(.el-embed-image) {
+	margin-top:2lh;
+}
+
+.vertical-rhythm .el-div .callout,
+.vertical-rhythm .el-blockquote blockquote { 
+	padding:1lh; 
+	font-size:var(--font-small);
+	line-height: var(--line-height-tight);
+}
+.vertical-rhythm .callout-content p { margin:1lh 0 0 0; }
+.vertical-rhythm .popover .markdown-embed-content, .markdown-embed-content, .popover .markdown-embed-title, .markdown-embed-title {
+	padding:calc(var(--line-height-normal) * 1) !important;
+}
+.vertical-rhythm .markdown-embed {
+	padding:0 !important;
+	margin:calc(var(--line-height-normal) * 2);
+}
+.vertical-rhythm .el-ul {
+	padding:0 !important;
+	margin:calc(var(--line-height-normal) * 1);
+}
+.vertical-rhythm .el-ul ul {
+	padding:0lh 2lh;
+}
+.vertical-rhythm {
+	--nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1) var(--size-4-6);
+}

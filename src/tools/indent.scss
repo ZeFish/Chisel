@@ -1,0 +1,9 @@
+/* ============================================= */
+/* Indent */
+/* ============================================= */
+.indent .markdown-preview-view:not(.indent-off) .el-p p br + br + br { display:none; }
+
+.indent .markdown-preview-view:not(.indent-off) .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) {
+	text-indent: 1lh;
+	margin-block-start: calc(1lh * -1);
+}

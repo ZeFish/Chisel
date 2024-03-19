@@ -1,0 +1,10 @@
+/* @link https://utopia.fyi/type/calculator?c=1000,16,1.125,2000,24,1.414,0,0,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+@media only screen and (min-width: 1000px) {
+	.zoom-large-screen {
+		--file-line-width: max(40em, 60vw) !important;
+		--font-text-size: clamp(1rem, 0.5rem + 0.8vi, 1.5rem) !important;
+		--line-width: max(40em, 60vw) !important;
+		--max-width:  60vw !important;			
+		--line-height-normal: clamp(1.5rem, 1rem + 0.8vi, 2rem) !important;
+	}
+}
