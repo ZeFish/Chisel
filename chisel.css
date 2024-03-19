@@ -326,58 +326,20 @@ code[class*=language-], pre[class*=language-] {
   --settings-home-background: var(--background-primary);
 }
 
-body {
-  font-optical-sizing: auto;
-  /* Line heights */
-  --typo-line-height: 1.5;
-  --code-white-space: pre !important;
-  --normal-weight: 400;
-  --bold-weight: 500;
-  --line-height-normal: var(--typo-line-height) !important;
-  --line-height: var(--typo-line-height) !important;
-  --typo-ratio: 1.125;
-  --typo-letter-spacing: 0em;
-  --base-line: calc(var(--font-text-size) * var(--line-height-normal));
-  --img-grid-gap: calc(var(--line-height-normal) * 0.5);
-  --heading-spacing: var(--line-height-normal);
-  --p-spacing: var(--base-line);
-  --h1-weight: 900;
-  --h1-font: var(--gisele_typography_header_font);
-  --h2-font: var(--gisele_typography_header_font);
-  --h3-font: var(--gisele_typography_header_font);
-  --h4-font: var(--gisele_typography_header_font);
-  --h5-font: var(--gisele_typography_header_font);
-  --h6-font: var(--gisele_typography_header_font);
-  --h1-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 5));
-  --h2-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 4));
-  --h3-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 3));
-  --h4-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 2));
-  --h5-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 1));
-  --h6-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 0));
-  --font-smallest: calc(var(--font-text-size) * pow(var(--typo-ratio), -1.5));
-  --font-smaller: calc(var(--font-text-size) * pow(var(--typo-ratio), -1));
-  --font-small: calc(var(--font-text-size) * pow(var(--typo-ratio), -0.5));
-}
-
-@media only screen and (max-width: 600px) {
-  body {
-    --typo-ratio: 1.225 !important;
-  }
-}
 /* ============================================= */
 /* Add block small classe */
 /* ============================================= */
-body.block-small {
+body.block-small .markdown-preview-view:not(.block-small-off) {
   --line-width-bs: 100%;
 }
 
-body.block-small.is-readable-line-width {
+body.block-small.is-readable-line-width .markdown-preview-view:not(.block-small-off) {
   --line-width-bs: var(--file-line-width);
 }
 
-.block-small .el-embed-image p,
-.block-small .el-div .callout,
-.block-small .el-blockquote blockquote {
+.block-small .markdown-preview-view:not(.block-small-off) .el-embed-image p,
+.block-small .markdown-preview-view:not(.block-small-off) .el-div .callout,
+.block-small .markdown-preview-view:not(.block-small-off) .el-blockquote blockquote {
   --line-width-small: calc(var(--line-width-bs) * 0.75);
   max-width: var(--line-width-small);
   min-width: 300px;
@@ -544,6 +506,44 @@ body.block-small.is-readable-line-width {
   image-rendering: auto;
 }
 
+body {
+  font-optical-sizing: auto;
+  /* Line heights */
+  --typo-line-height: 1.5;
+  --code-white-space: pre !important;
+  --normal-weight: 400;
+  --bold-weight: 500;
+  --line-height-normal: var(--typo-line-height) !important;
+  --line-height: var(--typo-line-height) !important;
+  --typo-ratio: 1.125;
+  --typo-letter-spacing: 0em;
+  --base-line: calc(var(--font-text-size) * var(--line-height-normal));
+  --img-grid-gap: calc(var(--line-height-normal) * 0.5);
+  --heading-spacing: var(--line-height-normal);
+  --p-spacing: var(--base-line);
+  --h1-weight: 900;
+  --h1-font: var(--gisele_typography_header_font);
+  --h2-font: var(--gisele_typography_header_font);
+  --h3-font: var(--gisele_typography_header_font);
+  --h4-font: var(--gisele_typography_header_font);
+  --h5-font: var(--gisele_typography_header_font);
+  --h6-font: var(--gisele_typography_header_font);
+  --h1-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 5));
+  --h2-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 4));
+  --h3-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 3));
+  --h4-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 2));
+  --h5-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 1));
+  --h6-size: calc(var(--font-text-size) * pow(var(--typo-ratio), 0));
+  --font-smallest: calc(var(--font-text-size) * pow(var(--typo-ratio), -1.5));
+  --font-smaller: calc(var(--font-text-size) * pow(var(--typo-ratio), -1));
+  --font-small: calc(var(--font-text-size) * pow(var(--typo-ratio), -0.5));
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    --typo-ratio: 1.225 !important;
+  }
+}
 /* ============================================= */
 /* Geometric Precision Text Rendering */
 /* ============================================= */
@@ -556,62 +556,20 @@ body.block-small.is-readable-line-width {
 /* ============================================= */
 /* Remove link underline decoration */
 /* ============================================= */
-.typo-link-no-decoration .markdown-reading-view a {
+.link-decoration-off .markdown-reading-view a {
   text-decoration: none !important;
 }
 
-.typo-link-no-decoration .markdown-reading-view a:hover {
+.link-decoration-off .markdown-reading-view a:hover {
   text-decoration: none !important;
 }
 
 /* ============================================= */
-/* Ligature setting */
+/* Remove link underline decoration */
 /* ============================================= */
-/*
-case — Case-Sensitive Forms Could be "Standard typographic presentation" if applied heuristically
-c2sc — Small Capitals From Capitals
-calt — Contextual Alternates
-salt — Stylistic Alternates
-swsh — Swash
-onum — Oldstyle Figures
-smcp — Small Capitals
-titl - Titling
-*/
-.typo-ligature {
-  font-feature-settings: "liga", "dlig", "clig", "kern", "fina", "onum";
-  font-variant-ligatures: normal;
-}
-
-/* ============================================= */
-/* Ligature setting */
-/* ============================================= */
-/*
-case — Case-Sensitive Forms Could be "Standard typographic presentation" if applied heuristically
-c2sc — Small Capitals From Capitals
-calt — Contextual Alternates
-salt — Stylistic Alternates
-swsh — Swash
-onum — Oldstyle Figures
-smcp — Small Capitals
-titl - Titling
-*/
-.typo-ligature {
-  font-feature-settings: "liga", "dlig", "clig", "kern", "fina", "onum";
-  font-variant-ligatures: normal;
-}
-
-/* ============================================= */
-/* Ligature setting */
-/* ============================================= */
-.typo-header-swash .HyperMD-header::first-letter,
-.typo-header-swash h1,
-.typo-header-swash h2::first-letter,
-.typo-header-swash h3::first-letter,
-.typo-header-swash h4::first-letter,
-.typo-header-swash h5::first-letter,
-.typo-header-swash h6::first-letter,
-.typo-header-swash .inline-title {
-  font-feature-settings: "swsh", "dlig", "clig", "kern", "onum";
+.link-icon-off .external-link {
+  background: none;
+  padding-right: 0;
 }
 
 /* ============================================= */
@@ -648,6 +606,38 @@ titl - Titling
 }
 
 /* ============================================= */
+/* Ligature setting */
+/* ============================================= */
+/*
+case — Case-Sensitive Forms Could be "Standard typographic presentation" if applied heuristically
+c2sc — Small Capitals From Capitals
+calt — Contextual Alternates
+salt — Stylistic Alternates
+swsh — Swash
+onum — Oldstyle Figures
+smcp — Small Capitals
+titl - Titling
+*/
+.typo-ligature {
+  font-feature-settings: "liga", "dlig", "clig", "kern", "fina", "onum";
+  font-variant-ligatures: normal;
+}
+
+/* ============================================= */
+/* Ligature setting */
+/* ============================================= */
+.typo-header-swash .HyperMD-header::first-letter,
+.typo-header-swash h1,
+.typo-header-swash h2::first-letter,
+.typo-header-swash h3::first-letter,
+.typo-header-swash h4::first-letter,
+.typo-header-swash h5::first-letter,
+.typo-header-swash h6::first-letter,
+.typo-header-swash .inline-title {
+  font-feature-settings: "swsh", "dlig", "clig", "kern", "onum";
+}
+
+/* ============================================= */
 /* Vertical Flow */
 /* ============================================= */
 .vertical-rhythm .inline-title,
@@ -672,7 +662,7 @@ titl - Titling
 .vertical-rhythm .markdown-reading-view h3, .vertical-rhythm .cm-header-3 {
   line-height: 1;
   margin-block-start: 1.5lh;
-  margin-block-end: 1lh;
+  margin-block-end: 1.25lh;
   padding: 0;
   letter-spacing: -0.04em;
   line-height: 1em;
@@ -680,8 +670,8 @@ titl - Titling
 
 .vertical-rhythm .markdown-reading-view h4, .vertical-rhythm .cm-header-4 {
   line-height: 1;
-  margin-block-start: 1lh;
-  margin-block-end: 1lh;
+  margin-block-start: 1.5lh;
+  margin-block-end: 1.25lh;
   padding: 0;
   letter-spacing: -0.04em;
   line-height: 1em;
@@ -689,8 +679,8 @@ titl - Titling
 
 .vertical-rhythm .markdown-reading-view h5, .vertical-rhythm .cm-header-5 {
   line-height: 1;
-  margin-block-start: 1lh;
-  margin-block-end: 1lh;
+  margin-block-start: 1.5lh;
+  margin-block-end: 1.25lh;
   padding: 0;
   letter-spacing: -0.04em;
   line-height: 1em;
@@ -698,8 +688,8 @@ titl - Titling
 
 .vertical-rhythm .markdown-reading-view h6, .vertical-rhythm .cm-header-6 {
   line-height: 1;
-  margin-block-start: 1lh;
-  margin-block-end: 2lh;
+  margin-block-start: 1.5lh;
+  margin-block-end: 1.25lh;
   padding: 0;
   letter-spacing: 0em;
   line-height: 1em;
@@ -744,12 +734,12 @@ titl - Titling
   padding: 0;
 }
 
-.vertical-rhythm .el-embed-page p,
-.vertical-rhythm .el-embed-audio p,
-.vertical-rhythm .el-blockquote blockquote,
-.vertical-rhythm .el-div pre,
-.vertical-rhythm .el-div .callout,
-.vertical-rhythm .el-blockquote blockquote {
+.vertical-rhythm:not(:has(callout-content)) .el-embed-page p,
+.vertical-rhythm:not(:has(callout-content)) .el-embed-audio p,
+.vertical-rhythm:not(:has(callout-content)) .el-blockquote blockquote,
+.vertical-rhythm:not(:has(callout-content)) .el-div pre,
+.vertical-rhythm:not(:has(callout-content)) .el-div .callout,
+.vertical-rhythm:not(:has(callout-content)) .el-blockquote blockquote {
   margin: 2lh;
 }
 
@@ -760,6 +750,16 @@ titl - Titling
 .vertical-rhythm .el-p:not(.el-embed-image) + .el-embed-image,
 .vertical-rhythm .el-embed-image + .el-p:not(.el-embed-image) {
   margin-top: 2lh;
+}
+
+.vertical-rhythm .el-div .callout-content p,
+.vertical-rhythm .callout-content .el-embed-page p,
+.vertical-rhythm .callout-content .el-embed-audio p,
+.vertical-rhythm .callout-content .el-blockquote blockquote,
+.vertical-rhythm .el-div .callout-content pre,
+.vertical-rhythm .callout-content .el-div .callout,
+.vertical-rhythm .callout-content .el-blockquote blockquote {
+  margin: 1lh 0lh;
 }
 
 .vertical-rhythm .el-div .callout,
@@ -805,6 +805,35 @@ titl - Titling
     --line-height-normal: clamp(1.5rem, 1rem + 0.8vi, 2rem) !important;
   }
 }
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .el-embed-page p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.transclusion-inv.theme-dark .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed,
+.transclusion-inv.theme-light .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-content {
+  padding: 0 !important;
+}
+
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-link {
+  display: none;
+}
+
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .embed-title {
+  display: none;
+}
+
+.transclusion-no-header .markdown-preview-view:not(.transclusion-no-header-off) .embed-title {
+  display: none;
+}
+
 .chisel-funky .inline-title {
   text-shadow: var(--color-red) 0px 1px, var(--color-red) 0px 2px, var(--color-red) 1px 3px, var(--color-red) 2px 4px, var(--color-red) 3px 5px;
 }
@@ -839,325 +868,6 @@ titl - Titling
   background-size: 100px;
   background-repeat: repeat;
   mix-blend-mode: multiply;
-}
-
-:root {
-  /* Light */
-  --chisel-color-base-100-light:	#4a341c;
-  --chisel-color-base-00-light:	#f7f3ee;
-  --chisel-color-red-light:	#df453a;
-  --chisel-color-orange-light:	#ea702e;
-  --chisel-color-yellow-light:	#e4ae25;
-  --chisel-color-green-light:	#42b885;
-  --chisel-color-cyan-light:	#2882c3;
-  --chisel-color-blue-light:	#2882c3;
-  --chisel-color-purple-light:	#8d6fb3;
-  --chisel-color-pink-light:	#8d6fb3;
-  /* Dark */
-  --chisel-color-base-100-dark:	#e6cfb3;
-  --chisel-color-base-00-dark:	#2c2621;
-  --chisel-color-red-dark:	#db6057;
-  --chisel-color-orange-dark:	#f6762c;
-  --chisel-color-yellow-dark:	#ebc400;
-  --chisel-color-green-dark:	#38b27d;
-  --chisel-color-cyan-dark:	#4dadd5;
-  --chisel-color-blue-dark:	#4dadd5;
-  --chisel-color-purple-dark:	#9f78dd;
-  --chisel-color-pink-dark:	#9f78dd;
-}
-
-.chisel-refactor-color.theme-light {
-  --chisel-color-base-100:	var(--chisel-color-base-100-light);
-  --chisel-color-base-00:	var(--chisel-color-base-00-light);
-  --chisel-color-red:	var(--chisel-color-red-light);
-  --chisel-color-orange:	var(--chisel-color-orange-light);
-  --chisel-color-yellow:	var(--chisel-color-yellow-light);
-  --chisel-color-green:	var(--chisel-color-green-light);
-  --chisel-color-cyan:	var(--chisel-color-cyan-light);
-  --chisel-color-blue:	var(--chisel-color-blue-light);
-  --chisel-color-purple:	var(--chisel-color-purple-light);
-  --chisel-color-pink:	var(--chisel-color-pink-light);
-}
-
-.chisel-refactor-color.theme-dark {
-  --chisel-color-base-100:	var(--chisel-color-base-100-dark);
-  --chisel-color-base-00:	var(--chisel-color-base-00-dark);
-  --chisel-color-red:	var(--chisel-color-red-dark);
-  --chisel-color-orange:	var(--chisel-color-orange-dark);
-  --chisel-color-yellow:	var(--chisel-color-yellow-dark);
-  --chisel-color-green:	var(--chisel-color-green-dark);
-  --chisel-color-cyan:	var(--chisel-color-cyan-dark);
-  --chisel-color-blue:	var(--chisel-color-blue-dark);
-  --chisel-color-purple:	var(--chisel-color-purple-dark);
-  --chisel-color-pink:	var(--chisel-color-pink-dark);
-}
-
-.chisel-refactor-color.theme-dark, .chisel-refactor-color.theme-light {
-  --color-base-00:	var(--chisel-color-base-00);
-  --color-base-05:	color-mix(in oklab, var(--color-base-100) 5%, var(--color-base-00));
-  --color-base-10:	color-mix(in oklab, var(--color-base-100) 10%, var(--color-base-00));
-  --color-base-20:	color-mix(in oklab, var(--color-base-100) 20%, var(--color-base-00));
-  --color-base-25:	color-mix(in oklab, var(--color-base-100) 25%, var(--color-base-00));
-  --color-base-30:	color-mix(in oklab, var(--color-base-100) 30%, var(--color-base-00));
-  --color-base-35:	color-mix(in oklab, var(--color-base-100) 35%, var(--color-base-00));
-  --color-base-40:	color-mix(in oklab, var(--color-base-100) 40%, var(--color-base-00));
-  --color-base-50:	color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00));
-  --color-base-60:	color-mix(in oklab, var(--color-base-100) 60%, var(--color-base-00));
-  --color-base-70:	color-mix(in oklab, var(--color-base-100) 70%, var(--color-base-00));
-  --color-base-100:	var(--chisel-color-base-100);
-  --background-primary:	var(--color-base-00);
-  --background-primary-alt:	var(--color-base-05);
-  --background-secondary:	var(--color-base-05);
-  --background-secondary-alt:	var(--color-base-00);
-  --accent-color:	hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h1-color:	var(--text-normal);
-  --h2-color:	var(--text-normal);
-  --h3-color:	var(--text-normal);
-  --h4-color:	var(--text-normal);
-  --h5-color:	var(--text-normal);
-  --h6-color:	var(--text-normal);
-  --background-modifier-hover:	var(--color-base-25);
-  --background-modifier-active-hover:	var(--color-base-25);
-  --background-modifier-border:	var(--color-base-10);
-  --background-modifier-border-hover:	var(--color-base-20);
-  --background-modifier-border-focus:	var(--color-base-70);
-  --background-modifier-error:	var(--color-base-05);
-  --background-modifier-error-hover:	var(--color-base-05);
-  --background-modifier-success:	var(--color-base-05);
-  --background-modifier-message:	var(--color-base-05);
-  --background-modifier-form-field:	var(--color-base-05);
-  --divider-color:	var(--color-base-05);
-  --divider-width:	1px;
-  --interactive-normal:	var(--color-base-05);
-  --interactive-hover:	var(--color-base-20);
-  --interactive-accent:	var(--accent-color);
-  --interactive-accent-hsl:	0, 0, 50;
-  --interactive-accent-hover:	color-mix(in oklab, var(--accent-color) 50%, var(--color-base-100));
-  --text-normal:	var(--color-base-100);
-  --text-muted:	var(--color-base-70);
-  --text-faint:	var(--color-base-50);
-  --text-on-accent:	var(--color-base-00);
-  --text-on-accent-inverted:	var(--color-base-100);
-  --text-success:	var(--color-base-100);
-  --text-warning:	var(--color-red);
-  --text-error:	var(--color-red);
-  --text-accent:	var(--color-base-100);
-  --text-accent-hover:	var(--color-base-100);
-  --link-external-color:	var(--accent-color);
-  --link-external-color-hover:	color-mix(in oklab, var(--accent-color) 25%, var(--color-base-100));
-  --link-color:	var(--accent-color);
-  --link-color-hover:	color-mix(in oklab, var(--accent-color) 25%, var(--color-base-100));
-  --code-normal:	var(--color-red);
-  --bold-color:	var(--color-red);
-  --italic-color:	var(--color-blue);
-  --color-red:	var(--chisel-color-red);
-  --color-orange:	var(--chisel-color-orange);
-  --color-yellow:	var(--chisel-color-yellow);
-  --color-green:	var(--chisel-color-green);
-  --color-cyan:	var(--chisel-color-cyan);
-  --color-blue:	var(--chisel-color-blue);
-  --color-purple:	var(--chisel-color-purple);
-  --color-pink:	var(--chisel-color-pink);
-  --color-red-rgb:	var(--chisel-color-red);
-  --color-orange-rgb:	var(--chisel-color-orange);
-  --color-yellow-rgb:	var(--chisel-color-yellow);
-  --color-green-rgb:	var(--chisel-color-green);
-  --color-cyan-rgb:	var(--chisel-color-cyan);
-  --color-blue-rgb:	var(--chisel-color-blue);
-  --color-purple-rgb:	var(--chisel-color-purple);
-  --color-pink-rgb:	var(--chisel-color-pink);
-  --icon-color-active:	var(--text-normal);
-  --icon-color-focused:	var(--text-normal);
-  --icon-color-hover:	var(--text-faint);
-  --icon-color:	var(--text-faint);
-  --icon-hex:	var(--mono0);
-  --nav-item-color:	var(--text-faint);
-  --nav-item-color-active:	var(--text-normal);
-  --nav-item-color-hover:	var(--text-normal);
-  --nav-collapse-icon-color:	color-mix(in srgb, var(--text-normal) 25%, transparent);
-  --nav-collapse-icon-color-collapsed:	color-mix(in srgb, var(--text-normal) 25%, transparent);
-  --nav-indentation-guide-color:	color-mix(in srgb, var(--text-normal) 10%, transparent);
-  --ribbon-background:	var(--background-secondary);
-  --bg1:	var(--background-secondary) !important;
-  --bg2:	var(--background-secondary) !important;
-  --bg3:	var(--background-secondary) !important;
-  --titlebar-background:	var(--background-secondary) !important;
-  --titlebar-background-focused:	var(--background-secondary) !important;
-  --titlebar-text-color-focused:	var(--text-normal) !important;
-  --tab-container-background:	var(--color-red) !important;
-  --indentation-guide-color:	color-mix(in srgb,var(--mono-100) 12%, transparent);
-  --indentation-guide-color-active:	color-mix(in srgb,var(--mono-100) 3%, transparent);
-  --scrollbar-active-thumb-bg:	color-mix(in srgb,var(--mono-100) 20%, transparent);
-  --scrollbar-bg:	color-mix(in srgb,var(--mono-100) 5%, transparent);
-  --scrollbar-thumb-bg:	color-mix(in srgb,var(--mono-100) 1%, transparent);
-  --swatch-shadow:	inset 0 0 0 1px color-mix(in srgb,var(--mono-100) 1%, transparent);
-  --workspace-background-translucent:	color-mix(in srgb,var(--mono-100) 40%, transparent);
-  --background-modifier-hover:	color-mix(in srgb,var(--mono-100) 1%, transparent);
-  --background-modifier-hover:	color-mix(in srgb,var(--mono-100) 1%, transparent);
-  --text-highlight-bg:	color-mix(in srgb,var(--mono-100) 60%, transparent);
-}
-
-.funky-color.theme-dark, .funky-color.theme-light {
-  --color-base-00:	hsl(var(--accent-h), 5%, 98%);
-  --color-base-100:	hsl(var(--accent-h), 5%, 2%);
-  --color-red:	var(--color-accent);
-  --color-orange:	color-mix(in hsl shorter hue,	var(--color-accent),	hsl(45,	var(--accent-s),	var(--accent-l)));
-  --color-yellow:	color-mix(in hsl shorter hue,	var(--color-accent),	hsl(90,	var(--accent-s),	var(--accent-l)));
-  --color-green:	color-mix(in hsl longer hue,	var(--color-accent),	hsl(270,	var(--accent-s),	var(--accent-l)));
-  --color-cyan:	color-mix(in hsl longer hue,	var(--color-accent),	hsl(0,	var(--accent-s),	var(--accent-l)));
-  --color-blue:	color-mix(in hsl longer hue,	var(--color-accent),	hsl(45,	var(--accent-s),	var(--accent-l)));
-  --color-purple:	color-mix(in hsl shorter hue,	var(--color-accent),	hsl(270,	var(--accent-s),	var(--accent-l)));
-  --color-pink:	color-mix(in hsl shorter hue,	var(--color-accent),	hsl(320,	var(--accent-s),	var(--accent-l)));
-}
-
-.funky-color.theme-dark {
-  --color-base-00:	hsl(var(--accent-h), 5%, 10%);
-  --color-base-100:	hsl(var(--accent-h), 15%, 90%);
-}
-
-.chisel-refactor-color .is-translucent:not(.is-fullscreen) {
-  --nav-collapse-icon-color: color-mix(in srgb,var(--mono-100) 30%, transparent);
-  --nav-collapse-icon-color-collapsed: color-mix(in srgb,var(--mono-100) 30%, transparent);
-}
-
-.chisel-refactor-color .diff-line.mod-left {
-  background-color: color-mix(in srgb, var(--background-modifier-error) 20%, transparent);
-}
-
-.chisel-refactor-color .diff-line.mod-left .diff-changed {
-  background-color: color-mix(in srgb, var(--background-modifier-error) 40%, transparent);
-}
-
-.chisel-refactor-color .diff-line.mod-right {
-  background-color: color-mix(in srgb, var(--background-modifier-success) 20%, transparent);
-}
-
-.chisel-refactor-color .diff-line.mod-right .diff-changed {
-  background-color: color-mix(in srgb, var(--background-modifier-success) 40%, transparent);
-}
-
-.chisel-refactor-color input.document-search-input.mod-no-match,
-.chisel-refactor-color input.document-replace-input.mod-no-match {
-  background-color: color-mix(in srgb, var(--background-modifier-error) 20%, transparent);
-}
-
-@media (hover: hover) {
-  .chisel-refactor-color input.document-search-input.mod-no-match:hover,
-  .chisel-refactor-color input.document-replace-input.mod-no-match:hover {
-    background-color: color-mix(in srgb, var(--background-modifier-error) 20%, transparent);
-  }
-}
-@media (hover: hover) {
-  .chisel-refactor-color input[type=color]::-webkit-color-swatch:hover {
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mono-100) 20%, transparent), 0 0 0 3px var(--background-modifier-border-hover);
-  }
-}
-.chisel-refactor-color .pdf-findbar .mod-not-found {
-  --background-modifier-form-field: color-mix(in srgb,var(--background-modifier-error) 10%, transparent);
-  --background-modifier-border-focus: color-mix(in srgb,var(--background-modifier-error) 60%, transparent) ;
-}
-
-.annotationLayer .mod-focused {
-  background-color: color-mix(in srgb, var(--text-highlight-bg) 10%, transparent);
-  border: var(--size-4-1) solid color-mix(in srgb, var(--text-highlight-bg) 80%, transparent);
-}
-
-.chisel-refactor-color .callout {
-  border-color: rgba(var(--callout-color), var(--callout-border-opacity));
-  background-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
-}
-
-@media (hover: hover) {
-  .chisel-refactor-color .metadata-property-warning-icon:hover {
-    background-color: color-mix(in srgb, var(--color-orange) 15%, transparent);
-  }
-}
-.chisel-refactor-color .file-tree .mod-new.is-selected {
-  background-color: color-mix(in srgb, var(--background-modifier-success) 20%, transparent);
-}
-
-.chisel-refactor-color .file-tree .mod-deleted.is-selected,
-.chisel-refactor-color .file-tree .mod-to-delete.is-selected {
-  background-color: color-mix(in srgb, var(--background-modifier-error) 20%, transparent);
-}
-
-.chisel-refactor-color .publish-upload-item:before {
-  background-color: color-mix(in srgb, var(--background-modifier-success) 20%, transparent);
-}
-
-.chisel-refactor-color .publish-upload-item.mod-failed:before {
-  background-color: color-mix(in srgb, var(--background-modifier-error) 20%, transparent);
-}
-
-.chisel-refactor-color .sync-history-list-item-header .sync-history-list-item-avatar {
-  border: 1px solid color-mix(in srgb, var(--mono-100) 20%, transparent);
-}
-
-.chisel-refactor-color .canvas-node-placeholder::after {
-  background-color: color-mix(in srgb, var(--canvas-color) 10%, transparent);
-}
-
-.chisel-refactor-color .canvas-node.is-themed .canvas-node-container {
-  border-color: color-mix(in srgb, var(--canvas-color) 70%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--canvas-color) 70%, transparent), var(--shadow-stationary);
-}
-
-.chisel-refactor-color .canvas-node-group .canvas-node-content {
-  background-color: color-mix(in srgb, var(--canvas-color) 7%, transparent);
-}
-
-.chisel-refactor-color .canvas-group-label {
-  background-color: color-mix(in srgb, var(--canvas-color) 1%, transparent);
-}
-
-.chisel-refactor-color .canvas-node.is-themed .canvas-node-content {
-  background-color: color-mix(in srgb, var(--canvas-color) 70%, transparent);
-}
-
-.chisel-refactor-color .canvas-edges g.is-focused path.canvas-interaction-path,
-.canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
-  stroke: color-mix(in srgb, var(--canvas-color) 10%, transparent);
-}
-
-.chisel-refactor-color .is-mobile.theme-dark {
-  --color-base-00: #000;
-  --color-base-10: #111;
-  --color-base-20: #1e1e1e;
-  --tag-background: color-mix(in srgb,var(--interactive-accent) 70%, transparent);
-  --search-result-background: var(--background-secondary);
-  --background-modifier-form-field: var(--background-modifier-border);
-  --background-modifier-cover: rgba(0, 0, 0, 0.5);
-  --background-modifier-hover: color-mix(in srgb,var(--mono-100) 25%, transparent);
-  --settings-home-background: var(--background-primary);
-}
-
-.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .el-embed-page p {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.transclusion-inv.theme-dark .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed,
-.transclusion-inv.theme-light .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed {
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-content {
-  padding: 0 !important;
-}
-
-.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-link {
-  display: none;
-}
-
-.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .embed-title {
-  display: none;
-}
-
-.transclusion-no-header .markdown-preview-view:not(.transclusion-no-header-off) .embed-title {
-  display: none;
 }
 
 /* @settings
@@ -1346,10 +1056,16 @@ settings:
 		type: class-toggle
 		default: false
 	- 
-        id: typo-link-no-decoration
+        id: link-decoration-off
         title: Remove link underline
         description:
         type: class-toggle
+		default: false
+	-
+		id: link-icon-off
+		title: Remove external link icon
+		description: 
+		type: class-toggle
 		default: false
 	-
 		id: typo-ligature

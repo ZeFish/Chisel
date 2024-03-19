@@ -4,9 +4,9 @@
 /* ============================================= */
 /* Remove link underline decoration */
 /* ============================================= */
-.typo-link-no-decoration .markdown-reading-view a {
+.link-decoration-off .markdown-reading-view a {
 	text-decoration:none !important;
 }
-.typo-link-no-decoration .markdown-reading-view a:hover {
+.link-decoration-off .markdown-reading-view a:hover {
 	text-decoration:none !important;
 }

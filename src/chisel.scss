@@ -8,28 +8,41 @@ code[class*="language-"], pre[class*="language-"] {
 }
 
 @import 'tools/utopia';
+
 @import 'tools/color';
-@import 'tools/typography';
+
 @import 'tools/block-small';
+
 @import 'tools/img-grid';
 @import 'tools/img-zoom';
 @import 'tools/img-minimize';
 @import 'tools/img-blend';
+
+
+
+@import 'tools/typography';
+
 @import 'tools/typo-geometric';
-@import 'tools/link-no-decoration';
-@import 'tools/ligature';
-@import 'tools/ligature';
-@import 'tools/header-swash';
+@import 'tools/link-decoration-off';
+@import 'tools/link-icon-off';
+
 @import 'tools/letter-spacing';
 @import 'tools/justify';
 @import 'tools/indent';
+
+@import 'tools/ligature';
+@import 'tools/header-swash';
+
 @import 'tools/vertical-rhythm';
 @import 'tools/large-screen-zoom';
-@import 'tools/funky-title';
-@import 'tools/textures';
-@import 'tools/color';
+
 @import 'tools/transclusion-inv';
 @import 'tools/transclusion-no-header';
+
+
+@import 'tools/funky-title';
+@import 'tools/textures';
+
 @import 'tools/settings';
 
 

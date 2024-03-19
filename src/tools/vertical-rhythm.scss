@@ -22,7 +22,7 @@
 .vertical-rhythm .markdown-reading-view h3, .vertical-rhythm .cm-header-3 {
 	line-height: 1;
 	margin-block-start: 1.5lh;
-	margin-block-end: 1lh;
+	margin-block-end: 1.25lh;
 	padding:0;
 	letter-spacing: -0.04em;
 	line-height: 1em;
@@ -30,8 +30,8 @@
 
 .vertical-rhythm .markdown-reading-view h4, .vertical-rhythm .cm-header-4 {
 	line-height: 1;
-	margin-block-start: 1lh;
-	margin-block-end: 1lh;
+	margin-block-start: 1.5lh;
+	margin-block-end: 1.25lh;
 	padding:0;
 	letter-spacing: -0.04em;
 	line-height: 1em;
@@ -39,8 +39,8 @@
 
 .vertical-rhythm .markdown-reading-view h5, .vertical-rhythm .cm-header-5 {
 	line-height: 1;
-	margin-block-start: 1lh;
-	margin-block-end: 1lh;
+	margin-block-start: 1.5lh;
+	margin-block-end: 1.25lh;
 	padding:0;
 	letter-spacing: -0.04em;
 	line-height: 1em;
@@ -48,8 +48,8 @@
 
 .vertical-rhythm .markdown-reading-view h6, .vertical-rhythm .cm-header-6 {
 	line-height: 1;
-	margin-block-start: 1lh;
-	margin-block-end: 2lh;
+	margin-block-start: 1.5lh;
+	margin-block-end: 1.25lh;
 	padding:0;
 	letter-spacing: -0.0em;
 	line-height: 1em;
@@ -80,12 +80,12 @@
 	padding:0;
 }
 
-.vertical-rhythm .el-embed-page p,
-.vertical-rhythm .el-embed-audio p,
-.vertical-rhythm .el-blockquote blockquote,
-.vertical-rhythm .el-div pre,
-.vertical-rhythm .el-div .callout,
-.vertical-rhythm .el-blockquote blockquote {
+.vertical-rhythm:not(:has(callout-content)) .el-embed-page p,
+.vertical-rhythm:not(:has(callout-content))  .el-embed-audio p,
+.vertical-rhythm:not(:has(callout-content))  .el-blockquote blockquote,
+.vertical-rhythm:not(:has(callout-content))  .el-div pre,
+.vertical-rhythm:not(:has(callout-content))  .el-div .callout,
+.vertical-rhythm:not(:has(callout-content))  .el-blockquote blockquote {
 	margin:2lh;
 }
 
@@ -93,6 +93,16 @@
 .vertical-rhythm .el-p:not(.el-embed-image) + .el-embed-image,
 .vertical-rhythm .el-embed-image + .el-p:not(.el-embed-image) {
 	margin-top:2lh;
+}
+
+.vertical-rhythm  .el-div .callout-content p,
+.vertical-rhythm .callout-content .el-embed-page p,
+.vertical-rhythm .callout-content .el-embed-audio p,
+.vertical-rhythm .callout-content .el-blockquote blockquote,
+.vertical-rhythm  .el-div .callout-content pre,
+.vertical-rhythm .callout-content .el-div .callout,
+.vertical-rhythm .callout-content .el-blockquote blockquote {
+	margin:1lh 0lh;
 }
 
 .vertical-rhythm .el-div .callout,

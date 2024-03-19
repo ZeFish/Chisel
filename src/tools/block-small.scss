@@ -1,16 +1,16 @@
 /* ============================================= */
 /* Add block small classe */
 /* ============================================= */
-body.block-small {
+body.block-small  .markdown-preview-view:not(.block-small-off)  {
 	--line-width-bs: 100%;
 }
-body.block-small.is-readable-line-width {
+body.block-small.is-readable-line-width  .markdown-preview-view:not(.block-small-off) {
 	--line-width-bs:  var(--file-line-width);
 }
 
-.block-small .el-embed-image p,
-.block-small .el-div .callout,
-.block-small .el-blockquote blockquote {
+.block-small .markdown-preview-view:not(.block-small-off) .el-embed-image p,
+.block-small .markdown-preview-view:not(.block-small-off) .el-div .callout,
+.block-small .markdown-preview-view:not(.block-small-off) .el-blockquote blockquote {
 	--line-width-small:  calc(var(--line-width-bs) * 0.75);
 
 	max-width: var(--line-width-small);

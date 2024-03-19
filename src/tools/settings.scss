@@ -184,10 +184,16 @@ settings:
 		type: class-toggle
 		default: false
 	- 
-        id: typo-link-no-decoration
+        id: link-decoration-off
         title: Remove link underline
         description:
         type: class-toggle
+		default: false
+	-
+		id: link-icon-off
+		title: Remove external link icon
+		description: 
+		type: class-toggle
 		default: false
 	-
 		id: typo-ligature

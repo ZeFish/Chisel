@@ -3067,7 +3067,7 @@ body:has(.primary) .theme-dark .notice {
 }
 body:has(.primary) .view-content hr {
   font-size: calc(var(--h1-size) * 2);
-  line-height: var(--line-height-normal);
+  line-height: 0.75em;
   padding: 0;
   border: 0;
 }
