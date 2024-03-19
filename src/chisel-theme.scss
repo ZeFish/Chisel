@@ -1,3 +1,26 @@
-@import 'themes/base';
+
 @import 'themes/primary';
 @import 'themes/swiss';
+
+/* @settings
+
+name: Chisel Theme
+id: chisel-theme
+settings:
+    - 
+        id: primary
+        title: Primary Theme
+        description: 
+        type: class-toggle
+		default: false
+    - 
+        id: swiss
+        title: Swiss Theme
+        description: 
+        type: class-toggle
+		default: false
+
+
+		
+
+*/

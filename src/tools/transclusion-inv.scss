@@ -1,0 +1,14 @@
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .el-embed-page p {
+	margin-left:0;
+	margin-right:0;
+}
+.transclusion-inv.theme-dark .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed,
+.transclusion-inv.theme-light .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed {
+	background:none;
+	border:0;
+	margin:0;
+	padding:0;
+}
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-content {padding:0 !important;}
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-link {display:none;}
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .embed-title {display:none;}

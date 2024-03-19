@@ -1131,6 +1131,35 @@ titl - Titling
   --settings-home-background: var(--background-primary);
 }
 
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .el-embed-page p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.transclusion-inv.theme-dark .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed,
+.transclusion-inv.theme-light .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-content {
+  padding: 0 !important;
+}
+
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .markdown-embed-link {
+  display: none;
+}
+
+.transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .embed-title {
+  display: none;
+}
+
+.transclusion-no-header .markdown-preview-view:not(.transclusion-no-header-off) .embed-title {
+  display: none;
+}
+
 /* @settings
 
 name: Chisel
@@ -1143,6 +1172,18 @@ settings:
         type: class-toggle
 		default: false
     - 
+        id: transclusion-inv
+        title: Invisible transclusion
+        description: 
+        type: class-toggle
+		default: false
+    - 
+        id: transclusion-no-header
+        title: Transclusion without header
+        description: 
+        type: class-toggle
+		default: false
+	-
 		id: base-color
 		title: Base Color
 		collapsed: true
@@ -1266,7 +1307,7 @@ settings:
         id: img-rlt
         title: Images related
         type: heading
-		collapsed: true
+		collapsed: false
         level: 1
     - 
         id: img-grid
@@ -1296,7 +1337,7 @@ settings:
         id: typ-rlt
         title: Typography
         type: heading
-		collapsed: true
+		collapsed: false
         level: 1
 	-
 		id: typo-geometric
@@ -1360,13 +1401,6 @@ settings:
         description: 
         type: class-toggle
 		default: false
-
-	- 
-        id: type-heading
-        title: More typogarphy options
-        type: heading
-        level: 2
-        collapsed: true
 	-
 		id: typo-header-font
 		title: Header font
@@ -1405,7 +1439,8 @@ settings:
         title: Funky options
         type: heading
         level: 1
-        collapsed: true
+        collapsed: false
+
     - 
         id: chisel-funky
         title: Funky title
