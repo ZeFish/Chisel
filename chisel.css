@@ -36,6 +36,10 @@ code[class*=language-], pre[class*=language-] {
   --h6-size: var(--step-0);
 }
 
+.code-copy-button-off .markdown-preview-view:not(.code-copy-button-on) .copy-code-button {
+  display: none;
+}
+
 :root {
   /* Light */
   --chisel-color-base-100-light:	#4a341c;
@@ -329,27 +333,25 @@ code[class*=language-], pre[class*=language-] {
 /* ============================================= */
 /* Add block small classe */
 /* ============================================= */
-body.block-small .markdown-preview-view:not(.block-small-off) {
-  --line-width-bs: 100%;
+@media only screen and (min-width: 600px) {
+  body.block-small .markdown-preview-view:not(.block-small-off) {
+    --line-width-bs: 100%;
+  }
+  body.block-small.is-readable-line-width .markdown-preview-view:not(.block-small-off) {
+    --line-width-bs: var(--file-line-width);
+  }
+  .block-small .markdown-preview-view:not(.block-small-off) .el-embed-image p,
+  .block-small .markdown-preview-view:not(.block-small-off) .el-div .callout,
+  .block-small .markdown-preview-view:not(.block-small-off) .el-blockquote blockquote {
+    --line-width-small: calc(var(--line-width-bs) * 0.75);
+    max-width: var(--line-width-small);
+    margin-inline: auto !important;
+    --container-img-max-width: var(--line-width-small);
+    --container-img-width: var(--line-width-small);
+    --img-line-width: var(--line-width-small);
+    --img-margin-start: calc(50% - var(--line-width-small)/2);
+  }
 }
-
-body.block-small.is-readable-line-width .markdown-preview-view:not(.block-small-off) {
-  --line-width-bs: var(--file-line-width);
-}
-
-.block-small .markdown-preview-view:not(.block-small-off) .el-embed-image p,
-.block-small .markdown-preview-view:not(.block-small-off) .el-div .callout,
-.block-small .markdown-preview-view:not(.block-small-off) .el-blockquote blockquote {
-  --line-width-small: calc(var(--line-width-bs) * 0.75);
-  max-width: var(--line-width-small);
-  min-width: 300px;
-  margin-inline: auto !important;
-  --container-img-max-width: var(--line-width-small);
-  --container-img-width: var(--line-width-small);
-  --img-line-width: var(--line-width-small);
-  --img-margin-start: calc(50% - var(--line-width-small)/2);
-}
-
 /* ============================================= */
 /* Image Grid */
 /* Based on https://github.com/kepano/obsidian-minimal/blob/master/src/scss/features/image-grid.scss */
@@ -491,7 +493,7 @@ body.block-small.is-readable-line-width .markdown-preview-view:not(.block-small-
 /* Optimize Image experience */
 /* ============================================= */
 .img-blend.theme-dark .markdown-preview-view:not(.img-blend-off) img {
-  filter: brightness(75%);
+  filter: brightness(85%);
   image-rendering: auto;
 }
 
@@ -544,6 +546,29 @@ body {
     --typo-ratio: 1.225 !important;
   }
 }
+.small-text {
+  --font-text-size: var(--font-small) !important;
+}
+
+.typo-syntax-color .markdown-preview-view:not(.typo-syntax-color-off), .typo-syntax-color .markdown-source-view:not(.block-small-off) {
+  --color-accent:	var(--color-yellow);
+  --bold-color:	var(--color-red);
+  --code-normal:	var(--color-red);
+  --italic-color:	var(--color-blue);
+  --link-color:	var(--color-yellow);
+  --link-color-hover:	color-mix(in srgb, var(--color-accent) 75%, var(--text-normal));
+  --link-external-color:	color-mix(in srgb, var(--color-accent) 50%, var(--text-normal));
+  --link-external-color-hover:	color-mix(in srgb, var(--color-accent) 75%, var(--text-normal));
+}
+
+.typo-syntax-color .markdown-source-view:not(.typo-syntax-color-off) span.cm-quote.cm-em {
+  color: var(--italic-color);
+}
+
+.typo-syntax-color .markdown-source-view:not(.typo-syntax-color-off) span.cm-quote.cm-strong {
+  color: var(--bold-color);
+}
+
 /* ============================================= */
 /* Geometric Precision Text Rendering */
 /* ============================================= */
@@ -795,13 +820,30 @@ titl - Titling
   --nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1) var(--size-4-6);
 }
 
-/* @link https://utopia.fyi/type/calculator?c=1000,16,1.125,2000,24,1.414,0,0,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-@media only screen and (min-width: 1000px) {
+@media only screen and (max-width: 600px) {
+  .vertical-rhythm:not(:has(callout-content)) .el-embed-page p,
+  .vertical-rhythm:not(:has(callout-content)) .el-embed-audio p,
+  .vertical-rhythm:not(:has(callout-content)) .el-blockquote blockquote,
+  .vertical-rhythm:not(:has(callout-content)) .el-div pre,
+  .vertical-rhythm:not(:has(callout-content)) .el-div .callout,
+  .vertical-rhythm:not(:has(callout-content)) .el-blockquote blockquote {
+    margin: 2lh 0lh;
+  }
+  .vertical-rhythm .el-embed-image p {
+    margin: 2lh 0 2lh 0;
+  }
+  .vertical-rhythm .el-p:not(.el-embed-image) + .el-embed-image,
+  .vertical-rhythm .el-embed-image + .el-p:not(.el-embed-image) {
+    margin-top: 2lh 0lh;
+  }
+}
+/* @link https://utopia.fyi/type/calculator?c=1500,16,1.125,2500,24,1.414,0,0,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+@media only screen and (min-width: 1500px) {
   .zoom-large-screen {
-    --file-line-width: max(40em, 60vw) !important;
-    --font-text-size: clamp(1rem, 0.5rem + 0.8vi, 1.5rem) !important;
-    --line-width: max(40em, 60vw) !important;
-    --max-width: 60vw !important;
+    --file-line-width: max(40em, 50vw) !important;
+    --font-text-size: clamp(1rem, 0.25rem + 0.8vi, 1.5rem) !important;
+    --line-width: max(40em, 50vw) !important;
+    --max-width: 50vw !important;
     --line-height-normal: clamp(1.5rem, 1rem + 0.8vi, 2rem) !important;
   }
 }
@@ -890,6 +932,12 @@ settings:
     - 
         id: transclusion-no-header
         title: Transclusion without header
+        description: 
+        type: class-toggle
+		default: false
+    - 
+        id: code-copy-button-off
+        title: Remove the copy button on code block
         description: 
         type: class-toggle
 		default: false
@@ -1052,6 +1100,12 @@ settings:
 	-
 		id: typo-geometric
 		title: Geometric Precision Font Rendering
+		description: 
+		type: class-toggle
+		default: false
+	-
+		id: typo-syntax-color
+		title: Add color to stilized text
 		description: 
 		type: class-toggle
 		default: false

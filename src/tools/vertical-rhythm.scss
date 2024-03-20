@@ -129,3 +129,20 @@
 .vertical-rhythm {
 	--nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1) var(--size-4-6);
 }
+
+@media only screen and (max-width: $screen-small-width) {
+	.vertical-rhythm:not(:has(callout-content)) .el-embed-page p,
+	.vertical-rhythm:not(:has(callout-content)) .el-embed-audio p,
+	.vertical-rhythm:not(:has(callout-content)) .el-blockquote blockquote,
+	.vertical-rhythm:not(:has(callout-content)) .el-div pre,
+	.vertical-rhythm:not(:has(callout-content)) .el-div .callout,
+	.vertical-rhythm:not(:has(callout-content)) .el-blockquote blockquote {
+		margin:2lh 0lh;
+	}
+
+	.vertical-rhythm .el-embed-image p { margin:2lh 0 2lh 0; }
+	.vertical-rhythm .el-p:not(.el-embed-image) + .el-embed-image,
+	.vertical-rhythm .el-embed-image + .el-p:not(.el-embed-image) {
+		margin-top:2lh 0lh;
+	}
+}

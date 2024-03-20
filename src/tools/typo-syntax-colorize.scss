@@ -1,0 +1,15 @@
+.typo-syntax-color .markdown-preview-view:not(.typo-syntax-color-off), .typo-syntax-color .markdown-source-view:not(.block-small-off) {
+	--color-accent:							var(--color-yellow);	
+	--bold-color: 							var(--color-red);
+	--code-normal:                       	var(--color-red);
+	--italic-color: 						var(--color-blue);
+
+	--link-color:      						var(--color-yellow);
+	--link-color-hover: 					color-mix(in srgb, var(--color-accent) 75%, var(--text-normal));
+
+	--link-external-color:      			color-mix(in srgb, var(--color-accent) 50%, var(--text-normal));
+	--link-external-color-hover:      		color-mix(in srgb, var(--color-accent) 75%, var(--text-normal));
+	
+}
+.typo-syntax-color .markdown-source-view:not(.typo-syntax-color-off) span.cm-quote.cm-em {color:var(--italic-color);}
+.typo-syntax-color .markdown-source-view:not(.typo-syntax-color-off) span.cm-quote.cm-strong {color:var(--bold-color);}

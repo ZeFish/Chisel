@@ -37,8 +37,9 @@ body {
 	--font-smaller: calc(var(--font-text-size) * pow(var(--typo-ratio), -1));
 	--font-small: calc(var(--font-text-size) * pow(var(--typo-ratio), -0.5));
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: $screen-small-width) {
 	body {
 		--typo-ratio: 1.225 !important; 
 	}
 }
+.small-text { --font-text-size: var(--font-small) !important; }

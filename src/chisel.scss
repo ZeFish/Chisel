@@ -1,3 +1,6 @@
+$screen-small-width: 600px;
+$screen-large-width: 1500px;
+
 code[class*="language-"], pre[class*="language-"] {
 	white-space: pre;
 }
@@ -8,6 +11,8 @@ code[class*="language-"], pre[class*="language-"] {
 }
 
 @import 'tools/utopia';
+
+@import 'tools/code-copy-button';
 
 @import 'tools/color';
 
@@ -21,6 +26,8 @@ code[class*="language-"], pre[class*="language-"] {
 
 
 @import 'tools/typography';
+
+@import 'tools/typo-syntax-colorize';
 
 @import 'tools/typo-geometric';
 @import 'tools/link-decoration-off';

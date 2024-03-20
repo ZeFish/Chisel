@@ -15,9 +15,23 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "Chisel Theme",
+			"label": "Chisel Swiss",
 			"type": "shell",
-			"command": "sass src/chisel-theme.scss chisel-theme.css",
+			"command": "sass src/chisel-swiss.scss chisel-swiss.css",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Chisel Blueprint",
+			"type": "shell",
+			"command": "sass src/chisel-blueprint.scss chisel-blueprint.css",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Chisel Root",
+			"type": "shell",
+			"command": "sass src/chisel-root.scss chisel-root.css",
 			"group": "build",
 			"problemMatcher": []
 		},
@@ -25,7 +39,9 @@
 			"label": "Project Build",
 			"dependsOn": [
 				"Chisel",
-				"Chisel Theme"
+				"Chisel Swiss",
+				"Chisel Blueprint",
+				"Chisel Root"
 			],
 			"problemMatcher": [],
 			"group": {

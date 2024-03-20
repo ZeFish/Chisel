@@ -1,0 +1,166 @@
+.theme-light {
+	--color-base-100:			var(--light-color-foreground);
+	--color-base-00:			var(--light-color-background);
+
+	--color-red:				var(--light-color-red);
+	--color-orange:				var(--light-color-orange);
+	--color-yellow:				var(--light-color-yellow);
+	--color-green:				var(--light-color-green);
+	--color-cyan:				var(--light-color-cyan);
+	--color-blue:				var(--light-color-blue);
+	--color-purple:				var(--light-color-purple);
+	--color-pink:				var(--light-color-pink);
+}
+
+.theme-dark {
+	--color-base-100:			var(--dark-color-foreground);
+	--color-base-00:			var(--dark-color-background);
+
+	--color-red:				var(--dark-color-red);
+	--color-orange:				var(--dark-color-orange);
+	--color-yellow:				var(--dark-color-yellow);
+	--color-green:				var(--dark-color-green);
+	--color-cyan:				var(--dark-color-cyan);
+	--color-blue:				var(--dark-color-blue);
+	--color-purple:				var(--dark-color-purple);
+	--color-pink:				var(--dark-color-pink);
+}
+
+
+body, .theme-dark, .theme-light {	
+    --font-text: 							var(--text-font);
+    --font-print: 							var(--text-font);
+	--font-interface: 						var(--ui-font);
+    --font-monospace: 						var(--mono-font);
+
+	--h1-font: 								var(--header-font);
+	--h2-font: 								var(--header-font);
+	--h3-font: 								var(--header-font);
+	--h4-font: 								var(--header-font);
+	--h5-font: 								var(--header-font);
+	--h6-font: 								var(--header-font);
+	--h1-weight: 							var(--header-weight);
+	--h2-weight: 							var(--header-weight);
+	--h3-weight: 							var(--header-weight);
+	--h4-weight: 							var(--header-weight);
+	--h5-weight: 							var(--header-weight);
+	--h6-weight: 							var(--header-weight);
+
+	--color-base-05:						color-mix(in srgb, var(--color-base-100) 5%,  var(--color-base-00));
+	--color-base-10:						color-mix(in srgb, var(--color-base-100) 10%, var(--color-base-00));
+	--color-base-20:						color-mix(in srgb, var(--color-base-100) 20%, var(--color-base-00));
+	--color-base-25:						color-mix(in srgb, var(--color-base-100) 25%, var(--color-base-00));
+	--color-base-30:						color-mix(in srgb, var(--color-base-100) 30%, var(--color-base-00));
+	--color-base-35:						color-mix(in srgb, var(--color-base-100) 35%, var(--color-base-00));
+	--color-base-40:						color-mix(in srgb, var(--color-base-100) 40%, var(--color-base-00));
+	--color-base-50:						color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00));
+	--color-base-60:						color-mix(in srgb, var(--color-base-100) 60%, var(--color-base-00));
+	--color-base-70:						color-mix(in srgb, var(--color-base-100) 70%, var(--color-base-00));
+
+	--background-primary:                	var(--color-base-00);
+	--background-primary-alt:            	var(--color-base-05);
+
+	--background-secondary:              	var(--color-base-05);
+	--background-secondary-alt:          	color-mix(in srgb, var(--color-base-100) 3%, var(--color-base-00));
+
+	--ribbon-background:					var(--background-secondary);
+	--bg1:									var(--background-secondary) !important;
+	--bg2:									var(--background-secondary) !important;
+	--bg3:									var(--color-base-10) !important;
+
+	--divider-color:						var(--color-base-10);
+	--tab-outline-color:					var(--color-base-10);
+	--background-modifier-border:			var(--color-base-10);
+	
+	--text-normal: 							var(--color-base-100);
+	--text-muted: 							var(--color-base-60);
+	--text-faint: 							var(--color-base-40);
+	--text-on-accent: 						var(--color-base-00);
+	--text-on-accent-inverted: 				var(--color-base-100);
+	--text-success: 						var(--color-base-100);
+	--text-warning: 						var(--color-base-100);
+	--text-error: 							var(--color-red);
+	--text-accent: 							color-mix(in srgb, var(--color-base-100) 85%, var(--color-base-00));
+	--text-accent-hover: 					var(--color-base-100);
+
+	--nav-item-background-active:        	var(--background-primary);
+	--nav-item-background-hover:         	var(--background-primary);
+	--nav-item-color:                    	var(--text-muted);
+	--nav-item-color-active:             	var(--text-normal);
+	--nav-item-color-hover:              	var(--text-normal);
+	--nav-collapse-icon-color:           	var(--text-faint);
+	--nav-collapse-icon-color-collapsed: 	var(--text-faint);
+	--nav-indentation-guide-color:       	color-mix(in srgb, var(--text-faint) 50%, var(--background-secondary));
+
+	--icon-xs: 16px;
+    --icon-s: 16px;
+    --icon-m: 18px;
+    --icon-l: 18px;
+    --icon-xl: 32px;
+
+	--icon-xs-stroke-width: 2px;
+    --icon-s-stroke-width: 2px;
+    --icon-m-stroke-width: 1px;
+    --icon-l-stroke-width: 1px;
+    --icon-xl-stroke-width: 1px;
+
+	--code-size:							var(--font-small);
+	--code-radius:							var(--radius-s);
+    --code-background: 						var(--background-primary-alt);
+    --code-normal:							var(--text-muted);
+    --code-comment:							var(--text-faint);
+    --code-function:						var(--color-yellow);
+    --code-important:						var(--color-orange);
+    --code-keyword:							var(--color-purple);
+    --code-operator:						var(--color-blue);
+    --code-property:						var(--color-yellow);
+    --code-punctuation:						var(--text-faint);
+    --code-string:							var(--color-red);
+    --code-tag:								var(--color-red);
+    --code-value:							var(--color-green);
+
+	--interactive-normal: 					var(--color-base-10);
+	--interactive-hover: 					color-mix(in oklab, var(--color-base-10) 75%, var(--background-primary));
+	--interactive-accent:					var(--color-accent);
+	--interactive-accent-hsl: 				0, 0, 50;
+	--interactive-accent-hover: 			color-mix(in oklab, var(--color-accent) 75%, var(--background-primary));
+
+	--color-accent:							var(--color-yellow);	
+	--bold-color: 							var(--color-red);
+	--italic-color: 						var(--color-blue);
+	--link-external-color:      			var(--color-accent);
+	--link-external-color-hover:      		color-mix(in oklab, var(--color-accent) 75%, var(--background-primary));
+	--link-color:      						var(--color-accent);
+
+	--link-color-hover:      				color-mix(in oklab, var(--color-accent) 75%, var(--background-primary));
+	--link-unresolved-color:				var(--text-normal);
+	--link-unresolved-color-hover:			var(--text-normal);
+
+	--text-highlight-bg: 					color-mix(in srgb, var(--color-accent) 25%, var(--background-primary));
+	
+	/*
+	--tab-outline-color:					var(--color-base-10);
+	--icon-color-focused:					var(--text-muted);
+	*/
+  	--icon-color:							var(--text-faint);
+	
+
+
+}
+
+.theme-dark {
+	--background-primary:                	var(--color-base-05);
+	--background-primary-alt:            	var(--color-base-00);
+
+	--background-secondary:              	color-mix(in srgb, var(--color-base-100) 3%, var(--color-base-00));
+	--background-secondary-alt:          	var(--color-base-05);
+
+	--text-on-accent-inverted: 				var(--color-base-00);
+}
+
+.folder-note-underline .has-folder-note .nav-folder-title-content {
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in srgb, var(--text-faint) 75%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}

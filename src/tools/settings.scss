@@ -21,6 +21,12 @@ settings:
         description: 
         type: class-toggle
 		default: false
+    - 
+        id: code-copy-button-off
+        title: Remove the copy button on code block
+        description: 
+        type: class-toggle
+		default: false
 	-
 		id: base-color
 		title: Base Color
@@ -180,6 +186,12 @@ settings:
 	-
 		id: typo-geometric
 		title: Geometric Precision Font Rendering
+		description: 
+		type: class-toggle
+		default: false
+	-
+		id: typo-syntax-color
+		title: Add color to stilized text
 		description: 
 		type: class-toggle
 		default: false

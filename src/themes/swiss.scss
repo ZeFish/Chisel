@@ -1,223 +1,43 @@
-
 :root {
-	--garden-color-base-100-light:		#222;
-	--garden-color-base-00-light:		#FFF;
-
-	--garden-color-red-light:			#df453a;
-	--garden-color-orange-light:		#ea702e;
-	--garden-color-yellow-light:		#e4ae25;
-	--garden-color-green-light:			#42b885;
-	--garden-color-cyan-light:			#2882c3;
-	--garden-color-blue-light:			#2882c3;
-	--garden-color-purple-light:		#8d6fb3;
-	--garden-color-pink-light:			#8d6fb3;
-
+	--light-color-foreground:	#222;
+	--light-color-background:	#FFF;
+	--light-color-red:			#df453a;
+	--light-color-orange:		#ea702e;
+	--light-color-yellow:		#e4ae25;
+	--light-color-green:		#42b885;
+	--light-color-cyan:			#2882c3;
+	--light-color-blue:			#2882c3;
+	--light-color-purple:		#8d6fb3;
+	--light-color-pink:			#8d6fb3;
 	/* Dark */
+	--dark-color-foreground:	hsl(34, 50%, 94%);
+	--dark-color-background:	hsl(30, 13%, 3%);
+	--dark-color-red:			#bf3f36;
+	--dark-color-orange:		#ce6325;
+	--dark-color-yellow:		#d69a00;
+	--dark-color-green:			#2e9066;
+	--dark-color-cyan:			#4dadd5;
+	--dark-color-blue:			#2882c3;
+	--dark-color-purple:		#8e6ac7;
+	--dark-color-pink:			#9f78dd;
 
-	--garden-color-base-100-dark:		hsl(34, 50%, 94%);
-	--garden-color-base-00-dark:		hsl(30, 13%, 3%);
-
-	--garden-color-red-dark:			#bf3f36;
-	--garden-color-orange-dark:			#ce6325;
-	--garden-color-yellow-dark:			#d69a00;
-	--garden-color-green-dark:			#2e9066;
-	--garden-color-cyan-dark:			#4dadd5;
-	--garden-color-blue-dark:			#2882c3;
-	--garden-color-purple-dark:			#8e6ac7;
-	--garden-color-pink-dark:			#9f78dd;
+	--text-font: 				"InterVariable";
+	--ui-font: 					"InterVariable";
+	--mono-font: 				"Jetbrains Mono";
+	--header-font: 				"InterVariable";
+	--header-weight:			900;
 }
 
+	body.theme-dark {
+		--text-normal: 			var(--color-base-70);
+		--modal-border-color: black !important;
+		--divider-color: black !important;
+		--toggle-thumb-color: color-mix(in srgb, var(--color-base-100) 60%, transparent);
+		--background-modifier-border:        var(--color-base-00) !important;
 
+		.vertical-tab-nav-item { color:color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)); }
+	}
 
-body.theme-light:has(.swiss) {
-	--garden-color-base-100:			var(--garden-color-base-100-light);
-	--garden-color-base-00:				var(--garden-color-base-00-light);
-
-	--garden-color-red:					var(--garden-color-red-light);
-	--garden-color-orange:				var(--garden-color-orange-light);
-	--garden-color-yellow:				var(--garden-color-yellow-light);
-	--garden-color-green:				var(--garden-color-green-light);
-	--garden-color-cyan:				var(--garden-color-cyan-light);
-	--garden-color-blue:				var(--garden-color-blue-light);
-	--garden-color-purple:				var(--garden-color-purple-light);
-	--garden-color-pink:				var(--garden-color-pink-light);
-}
-
-body.theme-dark:has(.swiss) {
-	--garden-color-base-100:			var(--garden-color-base-100-dark);
-	--garden-color-base-00:				var(--garden-color-base-00-dark);
-
-	--garden-color-red:					var(--garden-color-red-dark);
-	--garden-color-orange:				var(--garden-color-orange-dark);
-	--garden-color-yellow:				var(--garden-color-yellow-dark);
-	--garden-color-green:				var(--garden-color-green-dark);
-	--garden-color-cyan:				var(--garden-color-cyan-dark);
-	--garden-color-blue:				var(--garden-color-blue-dark);
-	--garden-color-purple:				var(--garden-color-purple-dark);
-	--garden-color-pink:				var(--garden-color-pink-dark);
-
-}
-
-
-body:has(.swiss), body.theme-dark:has(.swiss), body.theme-light:has(.swiss) {
-	font-feature-settings: "liga", "dlig", "clig", "kern", "pnum", "calt", "ss01", "ss02", "ss03" ;
-	font-variant-ligatures: normal;
-/* clamp(100, -41.1765px + 47.0588vi, 900) */
-	--h1-weight: 900;
-	--h2-weight: 850;
-	--h3-weight: 850;
-	--h4-weight: 650;
-	--h5-weight: 650;
-	--h6-weight: 650;
-	--font-text: "InterVariable";
-	--h1-font: "InterVariable";
-	--h2-font: "InterVariable";
-	--h3-font: "InterVariable";
-	--h4-font: "InterVariable";
-	--h5-font: "InterVariable";
-	--h6-font: "InterVariable";
-	--font-monospace: "JetBrains Mono";
-
-	--icon-xs: 16px;
-    --icon-s: 16px;
-    --icon-m: 18px;
-    --icon-l: 18px;
-    --icon-xl: 32px;
-
-	--icon-xs-stroke-width: 2px;
-    --icon-s-stroke-width: 2px;
-    --icon-m-stroke-width: 1px;
-    --icon-l-stroke-width: 1px;
-    --icon-xl-stroke-width: 1px;
-
-	--line-height-normal: 1.2em;
-
-
-	--color-base-00:						var(--garden-color-base-00);
-	--color-base-05:						color-mix(in srgb, var(--garden-color-base-100) 5%,  var(--garden-color-base-00));
-	--color-base-10:						color-mix(in srgb, var(--garden-color-base-100) 10%, var(--garden-color-base-00));
-	--color-base-20:						color-mix(in srgb, var(--garden-color-base-100) 20%, var(--garden-color-base-00));
-	--color-base-25:						color-mix(in srgb, var(--garden-color-base-100) 25%, var(--garden-color-base-00));
-	--color-base-30:						color-mix(in srgb, var(--garden-color-base-100) 30%, var(--garden-color-base-00));
-	--color-base-35:						color-mix(in srgb, var(--garden-color-base-100) 35%, var(--garden-color-base-00));
-	--color-base-40:						color-mix(in srgb, var(--garden-color-base-100) 40%, var(--garden-color-base-00));
-	--color-base-50:						color-mix(in srgb, var(--garden-color-base-100) 50%, var(--garden-color-base-00));
-	--color-base-60:						color-mix(in srgb, var(--garden-color-base-100) 60%, var(--garden-color-base-00));
-	--color-base-70:						color-mix(in srgb, var(--garden-color-base-100) 70%, var(--garden-color-base-00));
-	--color-base-100: 						var(--garden-color-base-100);
-
-	--background-primary:                	var(--color-base-05);
-	--background-primary-alt:            	var(--color-base-00);
-
-	--background-secondary:              	color-mix(in srgb, var(--garden-color-base-100) 3%, var(--garden-color-base-00));
-	--background-secondary-alt:          	var(--color-base-05);
-
-	--ribbon-background:					var(--background-secondary);
-	--bg1: var(--background-secondary) !important;
-	--bg2: var(--background-secondary) !important;
-	--bg3: var(--background-secondary) !important;
-
-	--divider-color:						var(--color-base-10);
-	--tab-outline-color:				var(--color-base-10);
-	--background-modifier-border:		var(--color-base-10);
-	
-	--text-normal: 							var(--color-base-100);
-	--text-muted: 							var(--color-base-40);
-	--text-faint: 							var(--color-base-25);
-	--text-on-accent: 						var(--color-base-00);
-	--text-on-accent-inverted: 				var(--color-base-100);
-	--text-success: 						var(--color-base-100);
-	--text-warning: 						var(--color-base-100);
-	--text-error: 							var(--color-base-70);
-	--text-accent: 							color-mix(in srgb, var(--garden-color-base-100) 85%, var(--garden-color-base-00));
-	--text-accent-hover: 					var(--color-base-100);
-
-	--nav-item-background-active:        	var(--background-primary-alt);
-	--nav-item-background-hover:         	var(--background-primary-alt);
-	--nav-item-color:                    	color-mix(in srgb, var(--text-normal) 50%, var(--garden-color-base-00));
-	--nav-item-color-active:             	var(--text-normal);
-	--nav-item-color-hover:              	var(--text-normal);
-	--nav-collapse-icon-color:           	var(--text-faint);
-	--nav-collapse-icon-color-collapsed: 	var(--text-faint);
-	--nav-indentation-guide-color:       	color-mix(in srgb, var(--text-normal) 25%, var(--garden-color-base-00));
-
-	--color-red: 							var(--garden-color-red);
-	--color-orange: 						var(--garden-color-orange);
-	--color-yellow: 						var(--garden-color-yellow);
-	--color-green: 							var(--garden-color-green);
-	--color-cyan: 							var(--garden-color-cyan);
-	--color-blue: 							var(--garden-color-blue);
-	--color-purple: 						var(--garden-color-purple);
-	--color-pink: 							var(--garden-color-pink);
-	--color-red-rgb: 						223, 69, 58;
-	--color-orange-rgb: 					246, 118, 44;
-	--color-yellow-rgb:						228, 174, 37;
-	--color-green-rgb: 						66, 184, 133;
-	--color-cyan-rgb: 						40, 130, 195;
-	--color-blue-rgb: 						40, 130, 195;
-	--color-purple-rgb: 					141, 111, 179;
-	--color-pink-rgb: 						141, 111, 179;
-
-
-
-
-
-	--code-radius: var(--radius-s);
-    --code-size: var(--font-smaller);
-    --code-background: var(--background-primary-alt);
-    --code-normal: var(--text-muted);
-    --code-comment: var(--text-faint);
-    --code-function: var(--color-yellow);
-    --code-important: var(--color-orange);
-    --code-keyword: var(--color-purple);
-    --code-operator: var(--color-blue);
-    --code-property: var(--color-yellow);
-    --code-punctuation: var(--text-faint);
-    --code-string: var(--color-red);
-    --code-tag: var(--color-red);
-    --code-value: var(--color-green);
-
-	--interactive-normal: 					var(--color-base-10);
-	--interactive-hover: 					var(--color-base-15);
-	--interactive-accent: var(--color-base-30);
-	--interactive-accent-hsl: 				0, 0, 50;
-	--interactive-accent-hover: 			color-mix(in srgb, var(--color-accent) 75%, var(--text-normal));
-
-	--color-accent:							var(--color-yellow);	
-	--bold-color: 							var(--color-red);
-	--italic-color: 						var(--color-blue);
-	--link-external-color:      			var(--color-accent);
-	--link-external-color-hover:      		color-mix(in srgb, var(--color-accent) 75%, var(--background-primary));
-	--link-color:      						var(--color-accent);
-
-	--link-color-hover:      				color-mix(in srgb, var(--color-accent) 75%, var(--background-primary));
-	--link-unresolved-color:				var(--text-normal);
-	--link-unresolved-color-hover:			var(--text-normal);
-
-	--text-highlight-bg: 					color-mix(in srgb, var(--color-accent) 25%, var(--background-primary));
-	
-	--tab-outline-color:var(--color-base-10);
-	--icon-color-focused:var(--text-muted);
-  --icon-color:var(--text-muted);
-}
-
-
-body.theme-dark:has(.swiss) {
-	--text-normal: 							var(--color-base-70);
-	--modal-border-color: black !important;
-	--divider-color: black !important;
-
-  
-
-
-  
-	--toggle-thumb-color: color-mix(in srgb, var(--garden-color-base-100) 60%, transparent);
-	--background-modifier-border:        var(--color-base-00) !important;
-
-	.vertical-tab-nav-item { color:color-mix(in srgb, var(--garden-color-base-100) 50%, var(--garden-color-base-00)); }
-}
-
-body:has(.swiss) {
 	/*──────────Blockquotes──────────*/
 	.markdown-preview-view blockquote {
 		font-style: italic;
@@ -285,22 +105,21 @@ body:has(.swiss) {
 		font-family: var(--font-monospace);
 		font-feature-settings: "dlig", "salt", "case", "kern", "tnum" !important;
 	}
-}
 
-	body.swiss.theme-light.ptm-highlight-current-line .ptm-current-line-highlight.ptm-current-line-highlight-box {
-		background:var(--background-primary);
-		border:1px solid var(--background-secondary-alt);
-		border-left:0;
-		border-right:0;
-	}
-	body.swiss.theme-dark.ptm-highlight-current-line .ptm-current-line-highlight.ptm-current-line-highlight-box {
-		background:var(--background-secondary);
-		mix-blend-mode: overlay;
-		border:1px solid var(--text-normal);
-		border-left:0;
-		border-right:0;
-		opacity:0.5;
-	}
+body.theme-light.ptm-highlight-current-line .ptm-current-line-highlight.ptm-current-line-highlight-box {
+	background:var(--background-primary);
+	border:1px solid var(--background-secondary-alt);
+	border-left:0;
+	border-right:0;
+}
+body.theme-dark.ptm-highlight-current-line .ptm-current-line-highlight.ptm-current-line-highlight-box {
+	background:var(--background-secondary);
+	mix-blend-mode: overlay;
+	border:1px solid var(--text-normal);
+	border-left:0;
+	border-right:0;
+	opacity:0.5;
+}
 
 
 @font-face {
