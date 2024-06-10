@@ -10,12 +10,6 @@ settings:
         type: info-text
         markdown: true
 	-
-		id: chisel-interface
-		title: Interface
-		collapsed: true
-		type: heading
-		level: 1
-    - 
         id: vertical-rhythm
         title: Create a vertical harmony between text, images and so on.
         description: vertical-rhythm
@@ -75,138 +69,13 @@ settings:
         description: table-align-right
         type: class-toggle
 		default: false
-	-
-		id: chisel-color
-		title: Color
-		collapsed: true
-		type: heading
-		level: 1
     - 
-        id: chisel-info-text
-        title: Color
-        description: "This is *informational* text"
-        type: info-text
-        markdown: true
-	-
-		id: color-syntax
-		title: Bold get red, Italic get blue, code get red
-		description: color-syntax
-		type: class-toggle
-		default: false		
-	-
-		id: color-syntax-off
-		title: Force monocrhome syntax
-		description: color-syntax-off
-		type: class-toggle
-		default: false		
-	- 
-        id: chisel-refactor-color
-        title: Color refactor
-        description: Grant chisel the ability to change the colors
+        id: chisel-texture
+        title: Add Texture
+        description: Add noise textures on top of everything. It’s subtle but it’s there.
         type: class-toggle
 		default: false
-	- 
-        id: funky-color
-        title: Funky color
-        description: Create a whole color palette based on the accent color
-        type: class-toggle
-		default: false
-    - 
-        id: chisel-color-base-100
-        title: Foreground Color
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#FFF'
-		default-dark: '#222'
-    - 
-        id: chisel-color-base-00
-        title: Background Color
-        description:
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#f7f1e8'
-		default-dark: '#090807'
-    - 
-        id: extended-color
-        title: Extented Color
-        type: heading
-		collapsed: true
-        level: 2
-	- 
-        id: chisel-color-red
-        title: Red
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#df453a'
-		default-dark: '#bf3f36'
-	- 
-        id: chisel-color-orange
-        title: Orange
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#ea702e'
-		default-dark: '#ce6325'
-	- 
-        id: chisel-color-yellow
-        title: Yellow
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#e4ae25'
-		default-dark: '#d69a00'
-	- 
-        id: chisel-color-green
-        title: Red color
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#42b885'
-		default-dark: '#2e9066'
-	- 
-        id: chisel-color-cyan
-        title: Cyan
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#23a5a7'
-		default-dark: '#4dadd5'
-	- 
-        id: chisel-color-blue
-        title: Blue
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#2882c3'
-		default-dark: '#2882c3'
-	- 
-        id: chisel-color-purple
-        title: Purple
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#8d6fb3'
-		default-dark: '#8e6ac7'
-	- 
-        id: chisel-color-pink
-        title: Pink
-        description: 
-		type: variable-themed-color
-		format: hex
-		opacity: false
-		default-light: '#da58b5'
-		default-dark: '#dd78db'
+
     - 
         id: chisel-image
         title: Images
@@ -360,24 +229,7 @@ settings:
         description: 
         type: class-toggle
 		default: false
-	- 
-        id: chisel-funky
-        title: Funky options
-        type: heading
-        level: 1
-        collapsed: true
-    - 
-        id: chisel-funky
-        title: Funky title
-        description: It add some soul to note title.
-        type: class-toggle
-		default: false
-    - 
-        id: chisel-texture
-        title: Add Texture
-        description: Add noise textures on top of everything. It’s subtle but it’s there.
-        type: class-toggle
-		default: false
+
 
 
 
