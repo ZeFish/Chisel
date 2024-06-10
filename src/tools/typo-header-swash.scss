@@ -2,13 +2,13 @@
 /* ============================================= */
 /* Ligature setting */
 /* ============================================= */
-.typo-header-swash .HyperMD-header::first-letter,
-.typo-header-swash h1,
-.typo-header-swash h2::first-letter,
-.typo-header-swash h3::first-letter,
-.typo-header-swash h4::first-letter,
-.typo-header-swash h5::first-letter,
-.typo-header-swash h6::first-letter,
-.typo-header-swash .inline-title {
-	font-feature-settings: 'swsh', "dlig", "clig", "kern", "onum";
+.header-swash .HyperMD-header::first-letter,
+.header-swash h1,
+.header-swash h2::first-letter,
+.header-swash h3::first-letter,
+.header-swash h4::first-letter,
+.header-swash h5::first-letter,
+.header-swash h6::first-letter,
+.header-swash .inline-title {
+  font-feature-settings: "swsh" on;
 }

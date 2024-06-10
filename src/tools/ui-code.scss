@@ -22,3 +22,8 @@
 	font-feature-settings: "dlig", "salt", "case", "kern", "tnum" !important;
   }
   
+
+
+  .code-copy-button-off .markdown-preview-view:not(.code-copy-button-on) button.copy-code-button {
+	display: none;
+  }

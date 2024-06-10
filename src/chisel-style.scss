@@ -29,7 +29,7 @@
 	--chisel-color-purple-dark:			#9f78dd;
 	--chisel-color-pink-dark:			#9f78dd;
 }
-.chisel-refactor-color.theme-light {
+.theme-light {
 	--chisel-color-base-100:				var(--chisel-color-base-100-light);
 	--chisel-color-base-00:					var(--chisel-color-base-00-light);
 
@@ -43,7 +43,7 @@
 	--chisel-color-pink:					var(--chisel-color-pink-light);
 }	
 
-.chisel-refactor-color.theme-dark {	
+.theme-dark {	
 	--chisel-color-base-100:				var(--chisel-color-base-100-dark);
 	--chisel-color-base-00:					var(--chisel-color-base-00-dark);
 
@@ -57,7 +57,7 @@
 	--chisel-color-pink:					var(--chisel-color-pink-dark);
 }
 
-.chisel-refactor-color.theme-dark, .chisel-refactor-color.theme-light {
+.theme-dark, .theme-light {
 
 	--color-base-00:						var(--chisel-color-base-00);
 	--color-base-05:						color-mix(in oklab, var(--color-base-100) 5%,  var(--color-base-00));
@@ -180,88 +180,88 @@
 }
 
 
-.chisel-refactor-color .is-translucent:not(.is-fullscreen) {
+ .is-translucent:not(.is-fullscreen) {
 	--nav-collapse-icon-color: color-mix(in srgb,var(--mono-100) 30%, transparent);
 	--nav-collapse-icon-color-collapsed: color-mix(in srgb,var(--mono-100) 30%, transparent);
   }
-  .chisel-refactor-color .diff-line.mod-left {
+   .diff-line.mod-left {
 	background-color: color-mix(in srgb,var(--background-modifier-error) 20%, transparent);
   }
-  .chisel-refactor-color .diff-line.mod-left .diff-changed {
+   .diff-line.mod-left .diff-changed {
 	background-color: color-mix(in srgb,var(--background-modifier-error) 40%, transparent);
   }
-  .chisel-refactor-color .diff-line.mod-right {
+   .diff-line.mod-right {
 	background-color: color-mix(in srgb,var(--background-modifier-success) 20%, transparent);
   }
-  .chisel-refactor-color .diff-line.mod-right .diff-changed {
+   .diff-line.mod-right .diff-changed {
 	background-color: color-mix(in srgb,var(--background-modifier-success) 40%, transparent);
   }
-  .chisel-refactor-color input.document-search-input.mod-no-match,
-  .chisel-refactor-color input.document-replace-input.mod-no-match {
+   input.document-search-input.mod-no-match,
+   input.document-replace-input.mod-no-match {
 	background-color: color-mix(in srgb,var(--background-modifier-error) 20%, transparent);
   }
   @media (hover: hover) {
-	  .chisel-refactor-color input.document-search-input.mod-no-match:hover,
-	  .chisel-refactor-color input.document-replace-input.mod-no-match:hover {
+	   input.document-search-input.mod-no-match:hover,
+	   input.document-replace-input.mod-no-match:hover {
 	  background-color: color-mix(in srgb,var(--background-modifier-error) 20%, transparent);
 	}
   }
   @media (hover: hover) {
-	  .chisel-refactor-color input[type="color"]::-webkit-color-swatch:hover {
+	   input[type="color"]::-webkit-color-swatch:hover {
 	  box-shadow: inset 0 0 0 1px color-mix(in srgb,var(--mono-100) 20%, transparent), 0 0 0 3px var(--background-modifier-border-hover);
 	}
   }
-  .chisel-refactor-color .pdf-findbar .mod-not-found {
+   .pdf-findbar .mod-not-found {
 	--background-modifier-form-field: color-mix(in srgb,var(--background-modifier-error) 10%, transparent);
 	--background-modifier-border-focus: color-mix(in srgb,var(--background-modifier-error) 60%, transparent)
   }
 
-  .chisel-refactor-color .callout {
+   .callout {
 	border-color: rgba(var(--callout-color), var(--callout-border-opacity));
 	background-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
   }
   @media (hover: hover) {
-	  .chisel-refactor-color .metadata-property-warning-icon:hover {
+	   .metadata-property-warning-icon:hover {
 	  background-color: color-mix(in srgb, var(--color-orange) 15%, transparent);
 	}
   }
-  .chisel-refactor-color .file-tree .mod-new.is-selected {
+   .file-tree .mod-new.is-selected {
 	background-color: color-mix(in srgb,var(--background-modifier-success) 20%, transparent);
   }
-  .chisel-refactor-color .file-tree .mod-deleted.is-selected,
-  .chisel-refactor-color .file-tree .mod-to-delete.is-selected {
+   .file-tree .mod-deleted.is-selected,
+   .file-tree .mod-to-delete.is-selected {
 	background-color: color-mix(in srgb,var(--background-modifier-error) 20%, transparent);
   }
-  .chisel-refactor-color .publish-upload-item:before {
+   .publish-upload-item:before {
 	background-color: color-mix(in srgb,var(--background-modifier-success) 20%, transparent);
   }
-  .chisel-refactor-color .publish-upload-item.mod-failed:before {
+   .publish-upload-item.mod-failed:before {
 	background-color: color-mix(in srgb,var(--background-modifier-error) 20%, transparent);
   }
-  .chisel-refactor-color .sync-history-list-item-header .sync-history-list-item-avatar {
+   .sync-history-list-item-header .sync-history-list-item-avatar {
 	border: 1px solid color-mix(in srgb,var(--mono-100) 20%, transparent);
   }
-  .chisel-refactor-color .canvas-node-placeholder::after {
+   .canvas-node-placeholder::after {
 	background-color: color-mix(in srgb,var(--canvas-color) 10%, transparent);
   }
-  .chisel-refactor-color .canvas-node.is-themed .canvas-node-container {
+   .canvas-node.is-themed .canvas-node-container {
 	border-color: color-mix(in srgb,var(--canvas-color) 70%, transparent);
 	box-shadow: inset 0 0 0 1px color-mix(in srgb,var(--canvas-color) 70%, transparent), var(--shadow-stationary);
   }
-  .chisel-refactor-color .canvas-node-group .canvas-node-content {
+   .canvas-node-group .canvas-node-content {
 	background-color: color-mix(in srgb,var(--canvas-color) 7%, transparent);
   }
-  .chisel-refactor-color .canvas-group-label {
+   .canvas-group-label {
 	background-color: color-mix(in srgb,var(--canvas-color) 1%, transparent);
   }
-  .chisel-refactor-color .canvas-node.is-themed .canvas-node-content {
+   .canvas-node.is-themed .canvas-node-content {
 	background-color: color-mix(in srgb,var(--canvas-color) 70%, transparent);
   }
-  .chisel-refactor-color .canvas-edges g.is-focused path.canvas-interaction-path,
+   .canvas-edges g.is-focused path.canvas-interaction-path,
   .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
 	stroke: color-mix(in srgb,var(--canvas-color) 10%, transparent);
   }
-  .chisel-refactor-color .is-mobile.theme-dark {
+   .is-mobile.theme-dark {
 	--color-base-00: #000;
 	--color-base-10: #111;
 	--color-base-20: #1e1e1e;
@@ -273,7 +273,7 @@
 	--settings-home-background: var(--background-primary);
   }
 
-  .is-mobile.chisel-refactor-color.theme-dark, .is-mobile.chisel-refactor-color.theme-light {
+  .is-mobile.theme-dark, .is-mobile.theme-light {
 	--nav-item-background-active:	var(--background-secondary);
 	--nav-item-background-hover:	var(--background-secondary);
   }

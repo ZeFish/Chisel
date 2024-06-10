@@ -1,9 +1,14 @@
 /* ============================================= */
 /* Indent */
 /* ============================================= */
-.indent .markdown-preview-view:not(.indent-off) .el-p p br + br + br { display:none; }
-
-.indent .markdown-preview-view:not(.indent-off) .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) {
-	text-indent: 1lh;
-	margin-block-start: calc(1lh * -1);
-}
+:has(.indent) .markdown-preview-view:not(.indent-off) div:not(:has(.media-embed, blockquote, .callout, pre, h1, h2, h3, h4, h5, h6, table, hr, ul, ol), .callout-content, :empty) + div:not(:has(.media-embed, blockquote, callout, pre), .callout-content) > p {
+	text-indent: 1rlh;
+  }
+  
+  :has(.remove-paragraph-margin) .markdown-preview-view:not(.remove-paragraph-margin-off) p br + br + br {
+	display: none;
+  }
+  
+  :has(.remove-paragraph-margin) .markdown-preview-view:not(.remove-paragraph-margin-off) div:not(:has(.media-embed, blockquote, .callout, pre, h1, h2, h3, h4, h5, h6, table), .callout-content, :empty) + div:not(:has(.media-embed, blockquote, callout, pre), .callout-content) > p {
+	margin-block-start: -1rlh;
+  }
