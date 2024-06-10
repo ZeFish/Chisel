@@ -1,0 +1,8 @@
+.focus .cm-lineWrapping > .cm-line.cm-active:not(:has(.mk-note-footer, .mk-floweditor-container)) {
+	opacity: 1;
+  }
+  
+  .focus .cm-lineWrapping > .cm-line {
+	opacity: 0.5;
+  }
+  

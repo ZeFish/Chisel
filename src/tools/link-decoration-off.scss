@@ -1,12 +1,10 @@
-
-
-
 /* ============================================= */
 /* Remove link underline decoration */
 /* ============================================= */
 .link-decoration-off .markdown-reading-view a {
-	text-decoration:none !important;
-}
-.link-decoration-off .markdown-reading-view a:hover {
-	text-decoration:none !important;
-}
+	text-decoration: none !important;
+  }
+  
+  .link-decoration-off .markdown-reading-view a:hover {
+	text-decoration: none !important;
+  }

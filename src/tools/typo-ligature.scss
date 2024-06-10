@@ -11,7 +11,19 @@ onum — Oldstyle Figures
 smcp — Small Capitals
 titl - Titling
 */
-.typo-ligature {
-	font-feature-settings: "liga", "dlig", "clig", "kern", "fina", "onum" ;
+.ligature {
+	font-feature-settings: "liga", "clig", "kern", "fina", "onum";
 	font-variant-ligatures: normal;
-}
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+	font-feature-settings: "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv09", "cv10", "cv11", "cv12", "cv13" !important;
+	word-break: keep-all;
+	overflow-wrap: normal;
+	margin: 0 0 var(--space) 0;
+  }

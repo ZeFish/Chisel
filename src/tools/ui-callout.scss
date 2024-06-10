@@ -1,0 +1,71 @@
+/*──────────Blockquotes──────────*/
+.callout,
+.markdown-preview-view pre,
+.markdown-preview-view blockquote {
+  background: var(--background-secondary);
+  padding: 1rlh;
+  border-radius: calc(var(--radius) * 2);
+  border: 1px solid var(--background-modifier-border);
+  font-size: var(--font-small);
+}
+
+.markdown-preview-view blockquote, .markdown-source-view .HyperMD-quote {
+  font-style: italic;
+}
+
+.callout {
+  mix-blend-mode: normal;
+  transition: var(--duration-superfast) var(--motion-smooth);
+  padding: 0.25rlh;
+  margin: 1rlh 0;
+}
+
+.callout-icon {
+  display: none;
+}
+
+.callout-title {
+  padding: 0.5rlh 1rlh 0.5rlh 1rlh;
+}
+
+.callout-content {
+  padding: 1rlh;
+  background-color: var(--background-secondary-alt);
+  box-shadow: inset 0px 0px 0px 1px var(--background-modifier-border);
+  border-radius: calc(var(--radius) * 2);
+  font-size: var(--font-small);
+  margin-left: 0;
+}
+
+.callout .callout-content p:first-child {
+  margin-top: 0;
+}
+
+.callout[data-callout=ai] > .callout-title, .callout[data-callout=ai] > .callout-content {
+  margin: 0;
+}
+
+.callout[data-callout=caption] {
+  padding: 0;
+  background: none;
+  background-color: transparent;
+  border: none;
+  margin: -2rlh 1rlh 2rlh 1rlh !important;
+  box-shadow: none;
+}
+
+.callout[data-callout=caption] .callout-title {
+  display: none;
+}
+
+.callout[data-callout=caption] .callout-content {
+  padding: 0.5rlh 1rlh;
+  background: none;
+  border: none;
+  box-shadow: none;
+  line-height: 1;
+}
+
+.callout[data-callout=caption] .callout-content p:first-child {
+  margin-top: 0;
+}

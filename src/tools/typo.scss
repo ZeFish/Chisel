@@ -1,0 +1,109 @@
+
+
+.chisel-typography {
+	font-optical-sizing: auto;
+	--normal-weight: 400;
+	--bold-weight: 500;
+	--line-height: var(--line-height-normal);
+	--font-ratio: 1.6;
+	--heading-spacing: var(--line-height-normal);
+	--h1-font: var(--font-header);
+	--h2-font: var(--font-header);
+	--h3-font: var(--font-header);
+	--h4-font: var(--font-header);
+	--h5-font: var(--font-header);
+	--h6-font: var(--font-header);
+	--h1-size: calc(var(--font-text-size) * pow(var(--font-ratio), 4));
+	--h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
+	--h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
+	--h4-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1));
+	--h5-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
+	--h6-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
+	--font-smallest: calc(var(--font-text-size) * pow(var(--font-ratio), -1.5));
+	--font-smaller: calc(var(--font-text-size) * pow(var(--font-ratio), -1));
+	--font-small: calc(var(--font-text-size) * pow(var(--font-ratio), -0.5));
+	--code-size: var(--font-small);
+	--font-feature:	"liga", "dlig", "clig", "kern", "pnum", "calt", "ss01", "ss02", "ss03" ;
+	--font-variation:	"";
+	--font-header-feature:	"dlig", "case", "kern", "cv01","cv02","cv03","cv04","cv05","cv06","cv09","cv10","cv11","cv12","cv13" ;
+	--font-header-variation:	"";
+	--font-mono-feature:	"" ;
+	--font-mono-variation:	"";
+	--font-text:	"Helvetica Now Var";
+	--font-feature:	"";
+	--font-variation:	"wght" 400;
+	--font-interface:	"InterVariable";
+	--font-header:	"InterVariable";
+	--font-header-feature:	"dlig", "case", "kern", "cv01","cv02","cv03","cv04","cv05","cv06","cv09","cv10","cv11","cv12","cv13" ;
+	--font-header-variation:	"wght" 900, "ital" 100;
+	--font-header-letter-spacing:	-0.065em;
+	--font-monospace:	"Sohne Mono";
+	--font-mono-feature:	"";
+	--font-mono-variation:	"";
+	font-feature-settings: var(--font-feature);
+	font-variant-ligatures: normal;
+	font-variation-settings: var(--font-variation);
+	--font-header-letter-spacing:-0.065em;
+	--font-header-weight:	900;
+	--h1-weight:	var(--font-header-weight);
+	--h2-weight:	max(var(--bold-weight), calc(var(--font-header-weight) * 0.95));
+	--h3-weight:	max(var(--bold-weight), calc(var(--font-header-weight) * 0.90));
+	--h4-weight:	max(var(--bold-weight), calc(var(--font-header-weight) * 0.85));
+	--h5-weight:	max(var(--bold-weight), calc(var(--font-header-weight) * 0.80));
+	--h6-weight:	max(var(--bold-weight), calc(var(--font-header-weight) * 0.75));
+  }
+  
+  .chisel-typography .HyperMD-codeblock {
+	line-height: var(--line-height-tight);
+  }
+  
+  .chisel-typography sup {
+	line-height: 0;
+	font-feature-settings: "sups" on;
+  }
+  
+  @media only screen and (max-width: 600px) {
+	.chisel-typography {
+	  --font-ratio: 1.3 !important;
+	}
+  }
+
+
+h1, h2, h3, h4, h5, h6,
+.markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3, .markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6,
+.HyperMD-header-1,
+.HyperMD-header-2,
+.HyperMD-header-3,
+.HyperMD-header-4,
+.HyperMD-header-5,
+.HyperMD-header-6,
+.inline-title {
+  font-feature-settings: var(--font-header-feature);
+  font-variation-settings: var(--font-header-variation);
+  overflow-wrap: normal;
+  letter-spacing: var(--font-header-letter-spacing, normal);
+  line-height: var(--font-header-line-height, 1em); /*0.50em;*/
+  text-wrap: balance;
+  font-style: var(--font-header-style, normal);
+}
+
+.chisel-typography b, .chisel-typography strong, .chisel-typography .cm-strong {
+  font-weight: var(--bold-weight);
+  font-variation-settings: "wght" var(--bold-weight);
+  color: var(--bold-color);
+}
+
+.markdown-rendered h5, .HyperMD-header-5 {
+  text-transform: uppercase;
+  letter-spacing: 0.005em !important;
+}
+
+.markdown-rendered h6, .HyperMD-header-6 {
+  text-transform: uppercase;
+  letter-spacing: 0.005em !important;
+}
+
+code, pre {
+  font-feature-settings: var(--font-mono-feature);
+  font-variation-settings: var(--font-mono-variation);
+}

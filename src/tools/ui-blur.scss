@@ -1,0 +1,9 @@
+
+:has(.blur) .markdown-preview-view:not(.blur-off) p {
+	--shadow-color:color-mix(in srgb, currentcolor 20%, transparent);
+	--shadow-distance:0px;
+	--shadow-depth:0.5px;
+	color: color-mix(in srgb, currentcolor 95%, transparent);
+	text-shadow: var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color), calc(var(--shadow-depth) * -1) 0px var(--shadow-depth) var(--shadow-color), 0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
+  }
+  

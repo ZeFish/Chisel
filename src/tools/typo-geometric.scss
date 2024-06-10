@@ -1,14 +1,9 @@
-
-
-
-
-
-
 /* ============================================= */
 /* Geometric Precision Text Rendering */
 /* ============================================= */
-.typo-geometric {
-	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-	text-rendering: geometricPrecision;
+body.font-geometric :not(:has(.font-geometric-off)),
+body.font-geometric :not(:has(.font-geometric-off)) {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }

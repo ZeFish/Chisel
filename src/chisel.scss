@@ -1,24 +1,106 @@
 $screen-small-width: 600px;
 $screen-large-width: 1500px;
 
-code[class*="language-"], pre[class*="language-"] {
-	white-space: pre;
+
+
+
+
+
+.code-wrap-off code[class*=language-], .code-no-wrap pre[class*=language-] {
+  white-space: pre;
 }
 
-.inline-title {
-	word-break: keep-all;
-	overflow-wrap:normal;
+body.minimalist:not(.is-mobile) .workspace-leaf-content[data-mode=preview] .view-header {
+  opacity: 0.5;
+  height: var(--header-height);
+  /*margin-bottom:calc(var(--header-height) * -1);*/
+  display: none;
 }
 
-@import 'styles/avantgarde';
-@import 'styles/averia';
-@import 'styles/charter';
-@import 'styles/forrest';
-@import 'styles/futura';
-@import 'styles/mariage';
-@import 'styles/metah';
-@import 'styles/mono';
-@import 'styles/oktah';
-@import 'styles/vogue';
-@import 'styles/wb';
-@import 'styles/yb';
+.minimalist .inline-title {
+  margin-top: 8rlh;
+}
+
+.minimalist .workspace-leaf-content[data-mode=preview] .view-header .clickable-icon {
+  display: none;
+}
+
+.minimalist .workspace-leaf-content[data-mode=preview] .view-header .clickable-icon:has(.lucide-edit-3) {
+  display: flex;
+}
+
+.focus .cm-lineWrapping > .cm-line.cm-active:not(:has(.mk-note-footer, .mk-floweditor-container)) {
+  opacity: 1;
+}
+
+.focus .cm-lineWrapping > .cm-line {
+  opacity: 0.5;
+}
+
+/* code elements */
+.folder-note-underline .has-folder-note .nav-folder-title-content {
+  text-decoration-line: underline;
+  text-decoration-color: var(--text-faint);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.markdown-source-view, .markdown-reading-view {
+  letter-spacing: var(--font-letter-spacing);
+}
+
+.cm-gutterElement {
+  font-family: var(--font-monospace);
+  font-feature-settings: "dlig", "salt", "case", "kern", "tnum" !important;
+}
+
+/*──────────FrontMatter Elements──────────*/
+.cm-line:has(.cm-hmd-frontmatter) {
+  background: var(--background-secondary);
+  font-size: var(--font-smaller);
+}
+
+.cm-hmd-frontmatter {
+  color: var(--text-normal);
+  font-size: var(--font-small);
+  line-height: var(--line-height-tight);
+}
+
+
+
+
+
+
+
+
+/* ============================================= */
+/* Add block small classe */
+/* ============================================= */
+.img-small .markdown-preview-section > div:has(.image-embed) > p,
+.img-small .markdown-preview-section p:has(> .image-embed ~ .image-embed) {
+  margin-left: 2lh;
+  margin-right: 2lh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+:has(.blur) .markdown-preview-view:not(.blur-off) p {
+  --shadow-color:color-mix(in srgb, currentcolor 20%, transparent);
+  --shadow-distance:0px;
+  --shadow-depth:0.5px;
+  color: color-mix(in srgb, currentcolor 95%, transparent);
+  text-shadow: var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color), calc(var(--shadow-depth) * -1) 0px var(--shadow-depth) var(--shadow-color), 0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
+}
+
+
+
+

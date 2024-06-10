@@ -1,4 +1,3 @@
-
 /* ============================================= */
 /* Image Zoom */
 /* Baed on https://github.com/kepano/obsidian-minimal/blob/master/src/scss/features/image-zoom.scss */
@@ -7,13 +6,16 @@
 	max-width: 100%;
 	cursor: zoom-in;
   }
+  
   .img-zoom .view-content .markdown-preview-view:not(.img-zoom-off) img:active {
 	cursor: zoom-out;
   }
+  
   .img-zoom .view-content .markdown-preview-view:not(.img-zoom-off) .markdown-preview-view img[referrerpolicy=no-referrer]:active {
 	background-color: var(--background-primary);
 	padding: 10px;
   }
+  
   .img-zoom .view-content .markdown-preview-view:not(.img-zoom-off) .markdown-preview-view img[referrerpolicy=no-referrer]:active,
   .img-zoom .view-content .markdown-preview-view:not(.img-zoom-off) .image-embed:not(.canvas-node-content):active {
 	--container-img-width: 100%;
@@ -35,6 +37,7 @@
 	right: 0;
 	bottom: 0;
   }
+  
   .img-zoom .view-content .markdown-preview-view:not(.img-zoom-off) .image-embed:not(.canvas-node-content):active:after {
 	background-color: var(--background-primary);
 	opacity: 0.9;
@@ -46,6 +49,7 @@
 	right: 1px;
 	z-index: 0;
   }
+  
   .img-zoom .view-content .markdown-preview-view:not(.img-zoom-off) .image-embed:not(.canvas-node-content):active img {
 	aspect-ratio: unset;
 	top: 50%;
@@ -62,6 +66,7 @@
 	position: absolute;
 	opacity: 1;
   }
+  
   .img-zoom .view-content .markdown-preview-view:not(.img-zoom-off) .markdown-source-view.mod-cm6 .cm-content > [contenteditable=false]:has(.image-embed:not(.canvas-node-content):active) {
 	contain: unset !important;
   }

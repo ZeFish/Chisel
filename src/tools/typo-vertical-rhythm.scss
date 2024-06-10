@@ -1,0 +1,126 @@
+/* ============================================= */
+/* Vertical Flow */
+/* ============================================= */
+.vertical-rhythm .markdown-source-view > div > p {
+	line-height: var(--line-height-normal);
+	margin-block-start: 1rlh;
+	margin-block-end: 1rlh;
+	padding: 0;
+  }
+  
+  .vertical-rhythm:not(:has(callout-content)) .callout,
+  .vertical-rhythm:not(:has(callout-content)) blockquote,
+  .vertical-rhythm:not(:has(callout-content)) pre {
+	margin: 2rlh;
+  }
+  
+  .vertical-rhythm:not(:has(callout-content)) .markdown-source-view > div:has(.image-embed) > p,
+  .vertical-rhythm:not(:has(callout-content)) .markdown-source-view p:has(> .image-embed ~ .image-embed) {
+	margin-top: 2rlh;
+	margin-bottom: 2rlh;
+  }
+  
+  .vertical-rhythm:not(:has(callout-content)) .markdown-source-view > div:has(.image-embed) + div:has(.image-embed) > p {
+	margin-top: calc(-2rlh + var(--img-grid-gap));
+  }
+  
+  .vertical-rhythm .callout-content,
+  .vertical-rhythm blockquote {
+	font-size: var(--font-small);
+	line-height: var(--line-height-tight);
+  }
+  
+  .vertical-rhythm .callout-content > p {
+	margin: 0rlh 0 0 0;
+  }
+  
+  .vertical-rhythm .markdown-source-view hr {
+	--hr-thickness: 1px;
+	margin: 4rlh 2rlh;
+  }
+  
+  .vertical-rhythm .popover .markdown-embed-content, .markdown-embed-content, .popover .markdown-embed-title, .markdown-embed-title {
+	padding: 1rlh !important;
+  }
+  
+  /*
+  .vertical-rhythm .markdown-reading-view, .vertical-rhythm .markdown-source-view {
+	  padding:0 !important;
+	  margin:2rlh;
+  }
+  */
+  .vertical-rhythm ul, .vertical-rhythm ol {
+	padding: 0rlh 2rlh;
+	margin: 1rlh 0rlh;
+  }
+  
+  .xxxvertical-rhythm div:has(h1, h2, h3, h4, h5, h6, p) + div:has(ul, ol) {
+	margin: -0.5rlh 0rlh;
+  }
+  
+  .vertical-rhythm .markdown-preview-view ol > li,
+  .vertical-rhythm .markdown-preview-view ul > li,
+  .vertical-rhythm .markdown-source-view ol > li,
+  .vertical-rhythm .markdown-source-view ul > li,
+  .vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line {
+	margin: 0rlh 0rlh 0rlh 0rlh;
+  }
+  
+  .vertical-rhythm {
+	--nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1) var(--size-4-6);
+  }
+  
+  .vertical-rhythm .inline-title {
+	  margin-block-end: 4rlh !important;
+	  padding: 0;
+	  line-height: 0.8em;
+	}
+  .vertical-rhythm .markdown-reading-view h1, .xxvertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-1) {
+	margin-block-start: 5rlh !important;
+	margin-block-end: 0rlh !important;
+	padding: 0;
+	line-height: 0.8em;
+  }
+  
+  .vertical-rhythm .markdown-reading-view h2, .xxvertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-2) {
+	margin-block-start: 5rlh !important;
+	margin-block-end: 0.5rlh !important;
+	padding: 0;
+	line-height: 0.75em;
+  }
+  
+  .vertical-rhythm .markdown-reading-view h3, .xxvertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-3) {
+	margin-block-start: 3rlh !important;
+	margin-block-end: 0.5rlh !important;
+	padding: 0;
+	line-height: 1em;
+  }
+  
+  .vertical-rhythm .markdown-reading-view h4, .xxvertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-4) {
+	margin-block-start: 2rlh !important;
+	margin-block-end: 0.5rlh !important;
+	padding: 0;
+	line-height: 1em;
+  }
+  
+  .vertical-rhythm .markdown-reading-view h5, .xxvertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-5) {
+	margin-block-start: 1.5rlh !important;
+	margin-block-end: 0rlh !important;
+	padding: 0;
+	line-height: 1em;
+  }
+  
+  .vertical-rhythm .markdown-reading-view h6, .vertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-6) {
+	margin-block-start: 1.5rlh !important;
+	margin-block-end: 0rlh !important;
+	padding: 0;
+	line-height: 1em;
+  }
+  
+  @media only screen and (max-width: 600px) {
+	.vertical-rhythm:not(:has(callout-content)) .callout,
+	.vertical-rhythm:not(:has(callout-content)) blockquote,
+	.vertical-rhythm:not(:has(callout-content)) pre {
+	  margin: 2rlh 0rlh;
+	}
+  }
