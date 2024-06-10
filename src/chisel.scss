@@ -10,46 +10,15 @@ code[class*="language-"], pre[class*="language-"] {
 	overflow-wrap:normal;
 }
 
-@import 'tools/utopia';
-
-@import 'tools/code-copy-button';
-
-@import 'tools/color';
-
-@import 'tools/block-small';
-
-@import 'tools/img-grid';
-@import 'tools/img-zoom';
-@import 'tools/img-minimize';
-@import 'tools/img-blend';
-
-
-
-@import 'tools/typography';
-
-@import 'tools/typo-syntax-colorize';
-
-@import 'tools/typo-geometric';
-@import 'tools/link-decoration-off';
-@import 'tools/link-icon-off';
-
-@import 'tools/letter-spacing';
-@import 'tools/justify';
-@import 'tools/indent';
-
-@import 'tools/ligature';
-@import 'tools/header-swash';
-
-@import 'tools/vertical-rhythm';
-@import 'tools/large-screen-zoom';
-
-@import 'tools/transclusion-inv';
-@import 'tools/transclusion-no-header';
-
-
-@import 'tools/funky-title';
-@import 'tools/textures';
-
-@import 'tools/settings';
-
-
+@import 'styles/avantgarde';
+@import 'styles/averia';
+@import 'styles/charter';
+@import 'styles/forrest';
+@import 'styles/futura';
+@import 'styles/mariage';
+@import 'styles/metah';
+@import 'styles/mono';
+@import 'styles/oktah';
+@import 'styles/vogue';
+@import 'styles/wb';
+@import 'styles/yb';

@@ -7,31 +7,14 @@
 		{
 			"label": "Chisel",
 			"type": "shell",
-			"command": "sass src/chisel.scss chisel.css",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": []
-		},
-		{
-			"label": "Chisel Swiss",
-			"type": "shell",
-			"command": "sass src/chisel-swiss.scss chisel-swiss.css",
+			"command": "sass src/chisel.scss /Users/francisfontaine/documents/thefirst/.obsidian/snippets/chisel.css",
 			"group": "build",
 			"problemMatcher": []
 		},
 		{
-			"label": "Chisel Blueprint",
+			"label": "Chisel Style",
 			"type": "shell",
-			"command": "sass src/chisel-blueprint.scss chisel-blueprint.css",
-			"group": "build",
-			"problemMatcher": []
-		},
-		{
-			"label": "Chisel Root",
-			"type": "shell",
-			"command": "sass src/chisel-root.scss chisel-root.css",
+			"command": "sass src/chisel-style.scss /Users/francisfontaine/documents/thefirst/.obsidian/snippets/chisel-style.css",
 			"group": "build",
 			"problemMatcher": []
 		},
@@ -39,9 +22,7 @@
 			"label": "Project Build",
 			"dependsOn": [
 				"Chisel",
-				"Chisel Swiss",
-				"Chisel Blueprint",
-				"Chisel Root"
+				"Chisel Style"
 			],
 			"problemMatcher": [],
 			"group": {
