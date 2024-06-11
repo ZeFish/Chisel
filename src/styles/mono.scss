@@ -1,41 +1,50 @@
 body:has(.mono) {
 	--light-color-base-100:	#262320;
 	--light-color-base-00:	#fffbe9;
-	--light-color-red:	#b44e41;
+	--light-color-red:		#b44e41;
 	--light-color-orange:	#e28400;
 	--light-color-yellow:	#dbb539;
 	--light-color-green:	#5f9c53;
-	--light-color-cyan:	#1faba6;
-	--light-color-blue:	#308bb8;
+	--light-color-cyan:		#1faba6;
+	--light-color-blue:		#308bb8;
 	--light-color-purple:	#BB90C1;
-	--light-color-pink:	#DF9CBF;
+	--light-color-pink:		#DF9CBF;
+
 	--dark-color-base-100:	#9e7f5b;
-	--dark-color-base-00:	#1d2027;
-	--dark-color-red:	#9c392e;
+	--dark-color-background:#1d2027;
+	--dark-color-red:		#9c392e;
 	--dark-color-orange:	#934b22;
 	--dark-color-yellow:	#8c7528;
-	--dark-color-green:	#446b32;
-	--dark-color-cyan:	#1c7571;
-	--dark-color-blue:	#1b6599;
+	--dark-color-green:		#446b32;
+	--dark-color-cyan:		#1c7571;
+	--dark-color-blue:		#1b6599;
 	--dark-color-purple:	#63409a;
-	--dark-color-pink:	#8b376a;
+	--dark-color-pink:		#8b376a;
   }
   
   body:has(.mono), body.theme-dark:has(.mono), body.theme-light:has(.mono) {
-	--line-height-normal:	1.2em;
-	--font-text:	"Courier Prime";
-	--font-feature:	"";
-	--font-variation:	"wght" 300;
-	--font-interface:	var(--font-text);
-	--font-header:	"Futura Now Var";
-	--font-header-feature:	"";
-	--font-header-style:	normal;
-	--font-header-variation:	"wght" 700, "wdth" 100;
+	--line-height-normal:			1.2em;
+	--font-text:					"Courier Prime";
+	--font-feature:					"";
+	--font-variation:				"wght" 300;
+	--font-interface:				var(--font-text);
+	--font-header:					"Futura Now Var";
+	--font-header-feature:			"";
+	--font-header-style:			normal;
+	--font-header-variation:		"wght" 700, "wdth" 100;
 	--font-header-letter-spacing:	-0.06em;
-	--font-monospace:	"Courier Prime";
-	--font-mono-feature:	"";
-	--font-mono-variation:	"";
-	--color-accent: var(--light-color-yellow) !important;
+	--font-monospace:				"Courier Prime";
+	--font-mono-feature:			"";
+	--font-mono-variation:			"";
+	--color-accent: 				var(--light-color-yellow) !important;
+  }
+
+  body.theme-dark:has(.mono) {
+	--font-text:					"JetBrains Mono";
+	--font-header:					"InterVariable";
+	--font-monospace:				"JetBrains Mono";
+	--font-interface:				"JetBrains Mono";
+	--font-header-letter-spacing:	-0.065em;
   }
   
   body.theme-light:has(.mono) .markdown-reading-view a {
@@ -44,14 +53,6 @@ body:has(.mono) {
 	--shadow-distance:0px;
 	--shadow-depth:0.5px;
 	text-shadow: var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color), calc(var(--shadow-depth) * -1) 0px var(--shadow-depth) var(--shadow-color), 0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
-  }
-  
-  body.theme-dark:has(.mono) {
-	--font-text:	"JetBrains Mono";
-	--font-header:	"InterVariable";
-	--font-monospace:	"JetBrains Mono";
-	--font-interface:	"JetBrains Mono";
-	--font-header-letter-spacing:-0.065em;
   }
   
   @font-face {

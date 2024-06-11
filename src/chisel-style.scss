@@ -1,65 +1,36 @@
 @charset "UTF-8";
-:root {
 
-	/* Light */
 
-	--chisel-color-base-100-light:		#4a341c;
-	--chisel-color-base-00-light:		#f7f3ee;
 
-	--chisel-color-red-light:			#df453a;
-	--chisel-color-orange-light:		#ea702e;
-	--chisel-color-yellow-light:		#e4ae25;
-	--chisel-color-green-light:			#42b885;
-	--chisel-color-cyan-light:			#2882c3;
-	--chisel-color-blue-light:			#2882c3;
-	--chisel-color-purple-light:		#8d6fb3;
-	--chisel-color-pink-light:			#8d6fb3;
+body.theme-light {
+	--color-base-100:	var(--light-color-foreground,	var(--light-color-base-100,	#170e21));
+	--color-base-00:	var(--light-color-background,	var(--light-color-base-00,	#FFF)); /* f7f6f4 */ /* e9e4dd */
+	--color-red:		var(--light-color-red,			#df453a);
+	--color-orange:		var(--light-color-orange,		#ea702e);
+	--color-yellow:		var(--light-color-yellow,		#e4ae25);
+	--color-green:		var(--light-color-green,		#1e9316);
+	--color-cyan:		var(--light-color-cyan,			#23a5a7);
+	--color-blue:		var(--light-color-blue,			#2882c3);
+	--color-purple:		var(--light-color-purple,		#8d6fb3);
+	--color-pink:		var(--light-color-pink,			#da58b5);
+  }
+  
+  body.theme-dark, .is-mobile.theme-dark {
+	--color-base-100:	var(--dark-color-foreground,	var(--dark-color-base-100,	#dfd5ce));
+	--color-base-00:	var(--dark-color-background,	var(--dark-color-base-00,	#151515));
+	--color-red:		var(--dark-color-red,			#bf3f36);
+	--color-orange:		var(--dark-color-orange,		#ce6325);
+	--color-yellow:		var(--dark-color-yellow,		#d69a00);
+	--color-green:		var(--dark-color-green,			#2e9066);
+	--color-cyan:		var(--dark-color-cyan,			#4dadd5);
+	--color-blue:		var(--dark-color-blue,			#2882c3);
+	--color-purple:		var(--dark-color-purple,		#8e6ac7);
+	--color-pink:		var(--dark-color-pink,			#dd78db);
+  }
 
-	/* Dark */
+  body.theme-dark, body.theme-light {
 
-	--chisel-color-base-100-dark:		#e6cfb3;
-	--chisel-color-base-00-dark:		#2c2621;
-
-	--chisel-color-red-dark:			#db6057;
-	--chisel-color-orange-dark:			#f6762c;
-	--chisel-color-yellow-dark:			#ebc400;
-	--chisel-color-green-dark:			#38b27d;
-	--chisel-color-cyan-dark:			#4dadd5;
-	--chisel-color-blue-dark:			#4dadd5;
-	--chisel-color-purple-dark:			#9f78dd;
-	--chisel-color-pink-dark:			#9f78dd;
-}
-.theme-light {
-	--chisel-color-base-100:				var(--chisel-color-base-100-light);
-	--chisel-color-base-00:					var(--chisel-color-base-00-light);
-
-	--chisel-color-red:						var(--chisel-color-red-light);
-	--chisel-color-orange:					var(--chisel-color-orange-light);
-	--chisel-color-yellow:					var(--chisel-color-yellow-light);
-	--chisel-color-green:					var(--chisel-color-green-light);
-	--chisel-color-cyan:					var(--chisel-color-cyan-light);
-	--chisel-color-blue:					var(--chisel-color-blue-light);
-	--chisel-color-purple:					var(--chisel-color-purple-light);
-	--chisel-color-pink:					var(--chisel-color-pink-light);
-}	
-
-.theme-dark {	
-	--chisel-color-base-100:				var(--chisel-color-base-100-dark);
-	--chisel-color-base-00:					var(--chisel-color-base-00-dark);
-
-	--chisel-color-red:						var(--chisel-color-red-dark);
-	--chisel-color-orange:					var(--chisel-color-orange-dark);
-	--chisel-color-yellow:					var(--chisel-color-yellow-dark);
-	--chisel-color-green:					var(--chisel-color-green-dark);
-	--chisel-color-cyan:					var(--chisel-color-cyan-dark);
-	--chisel-color-blue:					var(--chisel-color-blue-dark);
-	--chisel-color-purple:					var(--chisel-color-purple-dark);
-	--chisel-color-pink:					var(--chisel-color-pink-dark);
-}
-
-.theme-dark, .theme-light {
-
-	--color-base-00:						var(--chisel-color-base-00);
+	--color-base-00:						var(--color-base-00);
 	--color-base-05:						color-mix(in oklab, var(--color-base-100) 5%,  var(--color-base-00));
 	--color-base-10:						color-mix(in oklab, var(--color-base-100) 10%, var(--color-base-00));
 	--color-base-20:						color-mix(in oklab, var(--color-base-100) 20%, var(--color-base-00));
@@ -70,7 +41,7 @@
 	--color-base-50:						color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00));
 	--color-base-60:						color-mix(in oklab, var(--color-base-100) 60%, var(--color-base-00));
 	--color-base-70:						color-mix(in oklab, var(--color-base-100) 70%, var(--color-base-00));
-	--color-base-100: 						var(--chisel-color-base-100);
+	--color-base-100: 						var(--color-base-100);
 
 	--background-primary:                	var(--color-base-00);
 	--background-primary-alt:            	var(--color-base-05);
