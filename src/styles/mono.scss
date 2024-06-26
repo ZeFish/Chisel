@@ -1,6 +1,6 @@
 body:has(.mono) {
-	--light-color-base-100:	#262320;
-	--light-color-base-00:	#fffbe9;
+	--light-color-foreground:#262320;
+	--light-color-background:#fffbe9;
 	--light-color-red:		#b44e41;
 	--light-color-orange:	#e28400;
 	--light-color-yellow:	#dbb539;
@@ -10,7 +10,7 @@ body:has(.mono) {
 	--light-color-purple:	#BB90C1;
 	--light-color-pink:		#DF9CBF;
 
-	--dark-color-base-100:	#9e7f5b;
+	--dark-color-foreground:#9e7f5b;
 	--dark-color-background:#1d2027;
 	--dark-color-red:		#9c392e;
 	--dark-color-orange:	#934b22;

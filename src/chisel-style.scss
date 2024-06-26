@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 body.theme-light {
 	--color-base-100:	var(--light-color-foreground,	var(--light-color-base-100,	#170e21));
 	--color-base-00:	var(--light-color-background,	var(--light-color-base-00,	#FFF)); /* f7f6f4 */ /* e9e4dd */
@@ -28,9 +26,11 @@ body.theme-light {
 	--color-pink:		var(--dark-color-pink,			#dd78db);
   }
 
-  body.theme-dark, body.theme-light {
 
-	--color-base-00:						var(--color-base-00);
+
+  body, body.theme-dark, body.theme-light {
+
+	/* --color-base-00:						var(--color-base-00); */
 	--color-base-05:						color-mix(in oklab, var(--color-base-100) 5%,  var(--color-base-00));
 	--color-base-10:						color-mix(in oklab, var(--color-base-100) 10%, var(--color-base-00));
 	--color-base-20:						color-mix(in oklab, var(--color-base-100) 20%, var(--color-base-00));
@@ -41,7 +41,7 @@ body.theme-light {
 	--color-base-50:						color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00));
 	--color-base-60:						color-mix(in oklab, var(--color-base-100) 60%, var(--color-base-00));
 	--color-base-70:						color-mix(in oklab, var(--color-base-100) 70%, var(--color-base-00));
-	--color-base-100: 						var(--color-base-100);
+	/* --color-base-100: 						var(--color-base-100); */
 
 	--background-primary:                	var(--color-base-00);
 	--background-primary-alt:            	var(--color-base-05);
@@ -49,7 +49,7 @@ body.theme-light {
 	--background-secondary:              	var(--color-base-05);
 	--background-secondary-alt:          	var(--color-base-00);
 
-	--accent-color:							hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--accent-color:							var(--color-yellow); /* hsl(var(--accent-h), var(--accent-s), var(--accent-l)); */
 	--h1-color:								var(--text-normal);
 	--h2-color:								var(--text-normal);
 	--h3-color:								var(--text-normal);
@@ -57,8 +57,8 @@ body.theme-light {
 	--h5-color:								var(--text-normal);
 	--h6-color:								var(--text-normal);
 
-	--background-modifier-hover: 			var(--color-base-25);
-	--background-modifier-active-hover: 	var(--color-base-25);
+	--background-modifier-hover: 			var(--color-base-35);
+	--background-modifier-active-hover: 	var(--color-base-35);
 	--background-modifier-border: 			var(--color-base-10);
 	--background-modifier-border-hover: 	var(--color-base-20);
 	--background-modifier-border-focus: 	var(--color-base-70);
@@ -87,33 +87,16 @@ body.theme-light {
 	--text-error: 							var(--color-red);
 	--text-accent: 							var(--color-base-100);
 	--text-accent-hover: 					var(--color-base-100);
+	--text-selection: 						color-mix(in oklab, var(--color-yellow) 25%, var(--color-base-00));
 
-	--link-external-color:      			var(--accent-color);
-	--link-external-color-hover:      		color-mix(in oklab, var(--accent-color) 25%, var(--color-base-100));
-	--link-color:      						var(--accent-color);
-	--link-color-hover:      				color-mix(in oklab, var(--accent-color) 25%, var(--color-base-100));
+	--link-external-color:      			var(--color-green);
+	--link-external-color-hover:      		color-mix(in oklab, var(--link-external-color) 25%, var(--color-base-100));
+	--link-color:      						var(--color-yellow);
+	--link-color-hover:      				color-mix(in oklab, var(--link-color) 25%, var(--color-base-100));
 
 	--code-normal:							var(--color-red);		
 	--bold-color: 							var(--color-red);
 	--italic-color: 						var(--color-blue);
-
-	--color-red: 							var(--chisel-color-red);
-	--color-orange: 						var(--chisel-color-orange);
-	--color-yellow: 						var(--chisel-color-yellow);
-	--color-green: 							var(--chisel-color-green);
-	--color-cyan: 							var(--chisel-color-cyan);
-	--color-blue: 							var(--chisel-color-blue);
-	--color-purple: 						var(--chisel-color-purple);
-	--color-pink: 							var(--chisel-color-pink);
-	--color-red-rgb: 						var(--chisel-color-red);
-	--color-orange-rgb: 					var(--chisel-color-orange);
-	--color-yellow-rgb: 					var(--chisel-color-yellow);
-	--color-green-rgb: 						var(--chisel-color-green);
-	--color-cyan-rgb: 						var(--chisel-color-cyan);
-	--color-blue-rgb: 						var(--chisel-color-blue);
-	--color-purple-rgb: 					var(--chisel-color-purple);
-	--color-pink-rgb: 						var(--chisel-color-pink);
-
 
 	--icon-color-active:              		var(--text-normal);
 	--icon-color-focused:           		var(--text-normal);
@@ -127,28 +110,43 @@ body.theme-light {
 	--nav-collapse-icon-color:           	color-mix(in srgb, var(--text-normal) 25%, transparent);
 	--nav-collapse-icon-color-collapsed: 	color-mix(in srgb, var(--text-normal) 25%, transparent);
 	--nav-indentation-guide-color:       	color-mix(in srgb, var(--text-normal) 10%, transparent);
+	--nav-item-background-active:			color-mix(in srgb, white 25%, var(--background-secondary));
 
 	--ribbon-background:					var(--background-secondary);
-	--bg1: 									var(--background-secondary) !important;
-	--bg2: 									var(--background-secondary) !important;
-	--bg3: 									var(--background-secondary) !important;
+
 
 	--titlebar-background:               	var(--background-secondary) !important;
 	--titlebar-background-focused:       	var(--background-secondary) !important;
 	--titlebar-text-color-focused:       	var(--text-normal) !important;
 	--tab-container-background:				var(--color-red) !important;
 
-	--indentation-guide-color: 				color-mix(in srgb,var(--mono-100) 12%, transparent);
-	--indentation-guide-color-active: 		color-mix(in srgb,var(--mono-100) 3%, transparent);
-	--scrollbar-active-thumb-bg: 			color-mix(in srgb,var(--mono-100) 20%, transparent);
-	--scrollbar-bg: 						color-mix(in srgb,var(--mono-100) 5%, transparent);
-	--scrollbar-thumb-bg: 					color-mix(in srgb,var(--mono-100) 1%, transparent);
-	--swatch-shadow: 						inset 0 0 0 1px color-mix(in srgb,var(--mono-100) 1%, transparent);;
-	--workspace-background-translucent: 	color-mix(in srgb,var(--mono-100) 40%, transparent);
-	--background-modifier-hover: 			color-mix(in srgb,var(--mono-100) 1%, transparent);
-	--background-modifier-hover: 			color-mix(in srgb,var(--mono-100) 1%, transparent);
-	--text-highlight-bg:					color-mix(in srgb,var(--mono-100) 60%, transparent);
+	--indentation-guide-color: 				color-mix(in srgb,var(--color-base-100) 12%, transparent);
+	--indentation-guide-color-active: 		color-mix(in srgb,var(--color-base-100) 3%, transparent);
+	--scrollbar-active-thumb-bg: 			color-mix(in srgb,var(---color-base-100) 20%, transparent);
+	--scrollbar-bg: 						color-mix(in srgb,var(--color-base-100) 5%, transparent);
+	--scrollbar-thumb-bg: 					color-mix(in srgb,var(--color-base-100) 1%, transparent);
+	--swatch-shadow: 						inset 0 0 0 1px color-mix(in srgb,var(--color-base-1000) 1%, transparent);;
+	--workspace-background-translucent: 	color-mix(in srgb,var(--color-base-100) 40%, transparent);
+	--text-highlight-bg:					color-mix(in srgb,var(--color-base-100) 60%, transparent);
+
+	/*
+	Theme specific
+	*/
+	--bg1: 									var(--background-secondary) !important;
+	--bg2: 									var(--background-secondary) !important;
+	--bg3: 									var(--background-primary) !important;
+	--alternating-color-1: var(--color-yellow);
+	--alternating-color-2: var(--color-red);
+	--alternating-color-3: var(--color-blue);
+	--inline-title-color: var(--text-normal);
+	
+	
 }
+.notice, .tooltip {
+	color: color-mix(in srgb,var(--text-normal) 50%, transparent);
+}
+
+
 
 
  .is-translucent:not(.is-fullscreen) {
@@ -249,6 +247,14 @@ body.theme-light {
 	--nav-item-background-hover:	var(--background-secondary);
   }
 
+
+
+
+
+
+
+
+  
   @import 'styles/avantgarde';
   @import 'styles/averia';
   @import 'styles/charter';

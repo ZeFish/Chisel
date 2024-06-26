@@ -1,6 +1,11 @@
 /* ============================================= */
 /* Remove link underline decoration */
 /* ============================================= */
+.link-decoration-off {
+	--link-decoration: none;
+	--link-external-decoration: none;
+}
+
 .link-decoration-off .markdown-reading-view a {
 	text-decoration: none !important;
   }

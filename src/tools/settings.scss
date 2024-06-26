@@ -4,13 +4,13 @@ name: Chisel
 id: chisel
 settings:
     - 
-        id: chisel-info-text
-        title: Information
-        description: "This is *informational* text"
-        type: info-text
-        markdown: true
+        id: tin
+        title: Interface
+		
+        type: heading
+		collapsed: false
+        level: 1
 	-
-	
         id: vertical-rhythm
         title: Create a vertical harmony between text, images and so on.
         description: vertical-rhythm
@@ -81,14 +81,8 @@ settings:
         id: chisel-image
         title: Images
         type: heading
-		collapsed: true
+		collapsed: false
         level: 1
-	- 
-        id: chisel-image-grid-info
-        title: Information
-        description: "This is *informational* text"
-        type: info-text
-        markdown: true
     - 
         id: img-grid
         title: Image grid
@@ -123,7 +117,7 @@ settings:
         id: typ-rlt
         title: Typography
         type: heading
-		collapsed: true
+		collapsed: false
         level: 1
 	-
 		id: font-geometric
@@ -168,24 +162,6 @@ settings:
         type: class-toggle
 		default: false
 	-
-		id: ligature
-		title: Enable ligature
-		description: typo-ligature ("liga", "dlig", "clig", "kern", "fina", "onum")
-		type: class-toggle
-		default: false
-	-
-		id: header-swash
-		title: Enable Swash on title
-		description: typo-header-swash
-		type: class-toggle
-		default: false
-	-
-		id: header-wrap-off
-		title: Keep the word toghether on title
-		description: header-wrap-off
-		type: class-toggle
-		default: false
-	-
 		id: chisel-typography
 		title: Grant permission to chisel to change typography settings and apply change in the settings above.
 		description: 
@@ -210,26 +186,7 @@ settings:
 		type: variable-text
 		default: ""
 		quotes: true
-	- 
-        id: utopia-heading
-        title: Utopia Fluid scale
-        type: heading
-        level: 2
-        collapsed: true
-    - 
-        id: my-info-text
-        title: 
-        description: "Fluid font size scale based on [Utopia fluid type scale calculator](https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,4,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12)<br>
-		Do know that it **overwrite** the Font ratio above.<br><br>
-		By editing the snippet, you can change the ratio by copy pasting the code from the [Utopia Website](https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,4,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12)"
-        type: info-text
-        markdown: true
-    - 
-        id: utopia-fluid
-        title: Utopia Fluid scale
-        description: 
-        type: class-toggle
-		default: false
+
 
 
 
