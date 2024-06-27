@@ -68,7 +68,7 @@ body.theme-light {
 	--background-modifier-message: 			var(--color-base-05);
 	--background-modifier-form-field: 		var(--color-base-05);
  
-	--divider-color:						var(--color-base-05);
+	--divider-color:						var(--background-secondary);
 	--divider-width:						1px;
 
 	--interactive-normal: 					var(--color-base-05);
@@ -132,6 +132,8 @@ body.theme-light {
 	/*
 	Theme specific
 	*/
+	--tx1: 									var(--text-faint);
+	--ui1: var(--color-base-05);
 	--bg1: 									var(--background-secondary) !important;
 	--bg2: 									var(--background-secondary) !important;
 	--bg3: 									var(--background-primary) !important;
@@ -142,6 +144,8 @@ body.theme-light {
 	
 	
 }
+.workspace-split.mod-root, .mod-root .workspace-tabs .workspace-leaf { background: var(--background-secondary); }
+.view-content {border-radius: var(--radius-m); }
 .notice, .tooltip {
 	color: color-mix(in srgb,var(--text-normal) 50%, transparent);
 }
