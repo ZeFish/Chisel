@@ -95,7 +95,7 @@ body.theme-light {
 	--link-color-hover:      				color-mix(in oklab, var(--link-color) 25%, var(--color-base-100));
 
 	--code-normal:							var(--color-red);		
-	--bold-color: 							var(--color-red);
+	--bold-color: 							var(--color-yellow);
 	--italic-color: 						var(--color-blue);
 
 	--icon-color-active:              		var(--text-normal);
@@ -234,6 +234,8 @@ body.theme-light {
   .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
 	stroke: color-mix(in srgb,var(--canvas-color) 10%, transparent);
   }
+
+  /*
    .is-mobile.theme-dark {
 	--color-base-00: #000;
 	--color-base-10: #111;
@@ -244,7 +246,7 @@ body.theme-light {
 	--background-modifier-cover: rgba(0, 0, 0, 0.5);
 	--background-modifier-hover: color-mix(in srgb,var(--mono-100) 25%, transparent);
 	--settings-home-background: var(--background-primary);
-  }
+  } */
 
   .is-mobile.theme-dark, .is-mobile.theme-light {
 	--nav-item-background-active:	var(--background-secondary);
