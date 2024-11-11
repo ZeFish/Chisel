@@ -25,6 +25,7 @@ body:has(.avantgarde), body.theme-dark:has(.avantgarde), body.theme-light:has(.a
   
   body:has(.avantgarde) .markdown-reading-view a {
 	text-decoration: none !important;
+	font-weight: 500;
   }
   
   body:has(.avantgarde) .markdown-reading-view a:hover {
@@ -139,26 +140,4 @@ body:has(.avantgarde), body.theme-dark:has(.avantgarde), body.theme-light:has(.a
 	font-weight: bold;
 	font-style: italic;
 	font-display: swap;
-  }
-  body:has(.oktah) {
-	--light-color-foreground:	#170e21;
-	--light-color-red:	#d64335;
-	--light-color-orange:	#b2863b;
-	--light-color-yellow:	#d69a00;
-	--light-color-green:	#628d69;
-	--light-color-cyan:	#338c90;
-	--light-color-blue:	#83b1d5;
-	--light-color-purple:	#d2a8ee;
-	--light-color-pink:	#cececd;
-	/* Dark */
-	--dark-color-foreground:	#dfd5ce;
-	--dark-color-background:	#151515;
-	--dark-color-red:	#d64335;
-	--dark-color-orange:	#b2863b;
-	--dark-color-yellow:	#d69a00;
-	--dark-color-green:	#2e9066;
-	--dark-color-cyan:	#338c90;
-	--dark-color-blue:	#465dc4;
-	--dark-color-purple:	#8e6ac7;
-	--dark-color-pink:	#dd78db;
   }

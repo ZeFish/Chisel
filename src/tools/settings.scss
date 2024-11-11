@@ -3,10 +3,10 @@
 name: Chisel
 id: chisel
 settings:
-    - 
+    -
         id: tin
         title: Interface
-		
+
         type: heading
 		collapsed: false
         level: 1
@@ -16,104 +16,110 @@ settings:
         description: vertical-rhythm
         type: class-toggle
 		default: false
-	- 
+	-
         id: block-small
         title: Blocks other than text will be 75% smaller
         description: block-small | block-small-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: transclusion-inv
         title: Render transclusion as integral part of the note
         description: transclusion-inv | transclusion-inv-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: transclusion-no-header
         title: Render transclusion without header
         description: transclusion-no-header | transclusion-no-header-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: code-copy-button-off
         title: Remove the copy button on code block
         description: code-copy-button-off | code-copy-button-on
         type: class-toggle
 		default: false
-    - 
+    -
         id: code-wrap-off
         title: Code don't wrap
         description: code-wrap-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: minimalist
         title: Hide elements in viewing mode
         description: minimalist
         type: class-toggle
 		default: false
-    - 
+    -
         id: focus
         title: Dim non active paragraph while editing
         description: focus | focus-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: ui-alt
         title: Alternative Blockquote
         description: ui-alt
         type: class-toggle
 		default: false
-    - 
+    -
         id: table-align-right
         title: Align second column in table to the right
         description: table-align-right
         type: class-toggle
 		default: false
-    - 
+	-
+        id: typo-tag
+        title: Style tag in notes
+        description: table-align-right
+        type: class-toggle
+        default: false
+    -
         id: chisel-texture
         title: Add Texture
         description: Add noise textures on top of everything. It’s subtle but it’s there.
         type: class-toggle
 		default: false
 
-    - 
+    -
         id: chisel-image
         title: Images
         type: heading
 		collapsed: false
         level: 1
-    - 
+    -
         id: img-grid
         title: Image grid
         description: img-grid
         type: class-toggle
 		default: false
-    - 
+    -
         id: img-zoom
         title: Zoom
         description: img-zoom | img-zoom-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: img-min
         title: Minimize images in editor view
         description: img-min | img-min-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: img-blend
         title: Blend image in the background when the mouse is not hover
         description: img-blend | img-blend-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: img-center
         title: Center image with width specified
         description: img-center  | img-center-off
         type: class-toggle
 		default: false
-    - 
+    -
         id: typ-rlt
         title: Typography
         type: heading
@@ -125,13 +131,13 @@ settings:
 		description: font-geometric | font-geometric-off
 		type: class-toggle
 		default: false
-    - 
+    -
         id: zoom-large-screen
         title: Fluid large screen
         description: Increase the text size with window wider than 1500px
         type: class-toggle
 		default: false
-	- 
+	-
         id: link-decoration-off
         title: Remove link underline
         description: link-decoration-off
@@ -143,19 +149,19 @@ settings:
 		description: link-icon-off
 		type: class-toggle
 		default: false
-    - 
+    -
         id: justify
         title: Justify
         description: Justify and add hyphenation to text in preview mode
         type: class-toggle
 		default: false
-	- 
+	-
         id: indent
         title: indent
         description: indent paragraph (goes well with justify)
         type: class-toggle
 		default: false
-	- 
+	-
         id: remove-paragraph-margin
         title: Remove margin between pargraph of text
         description: remove-paragraph-margin | remove-paragraph-margin-off
@@ -164,7 +170,7 @@ settings:
 	-
 		id: chisel-typography
 		title: Grant permission to chisel to change typography settings and apply change in the settings above.
-		description: 
+		description:
 		type: class-toggle
 		default: false
 	-
@@ -173,22 +179,11 @@ settings:
 		description: It is used as a measure in the vertical rhythm section
 		type: variable-number
 		default: 1.5em
-	- 
+	-
         id: font-ratio
         title: Font ratio
         description: Ratio on wich to base the header sizes
         type: variable-number
 		default: 1.333
-	-
-		id: font-header
-		title: Header font
-		description: 
-		type: variable-text
-		default: ""
-		quotes: true
-
-
-
-
 
 */

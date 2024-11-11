@@ -1,0 +1,29 @@
+body:has(.serif),
+body.theme-dark:has(.serif),
+body.theme-light:has(.serif) {
+    --light-color-base-100: black;
+    --light-color-base-00: white;
+    --dark-color-base-100: #e2dbd1;
+    --dark-color-base-00: #201e1c;
+    --font-ratio: 1.333;
+    --font-text: "EB Garamond Regular Regular";
+    --font-feature: "";
+    --font-variation: "wght" 400;
+    --font-interface: "Futura Now Var";
+    --font-header: "EB Garamond Regular Regular";
+    --font-header-feature: "";
+    --font-header-variation: "wght" 300, "wdth" 100;
+    --font-header-letter-spacing: normal;
+    --font-monospace: "MonoLisa";
+    --font-mono-feature: "";
+    --font-mono-variation: "";
+}
+
+body:has(.serif) .inline-title {
+    text-align: center;
+    margin-bottom: 4rlh;
+}
+
+body:has(.serif) p {
+    font-size: 1.2rem;
+}

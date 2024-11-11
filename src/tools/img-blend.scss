@@ -2,16 +2,20 @@
 /* Optimize Image experience */
 /* ============================================= */
 .img-blend.theme-dark .markdown-preview-view:not(.img-blend-off) img {
-	filter: brightness(85%);
-	image-rendering: auto;
+    /* filter: brightness(85%); */
+    image-rendering: auto;
+    opacity: 0.7;
+    transition: opacity 0.5s ease-out;
 }
 
 .img-blend.theme-light .markdown-preview-view:not(.img-blend-off) img {
-	mix-blend-mode: multiply;
-	image-rendering: auto;
+    mix-blend-mode: multiply;
+    image-rendering: auto;
+    transition: opacity 0.5s ease-out;
 }
 .img-blend .markdown-preview-view:not(.img-blend-off) img:hover {
-	mix-blend-mode: normal;
-	filter: brightness(100%);
-	image-rendering: auto;
+    mix-blend-mode: normal;
+    /* filter: brightness(100%); */
+    opacity: 1;
+    image-rendering: auto;
 }
