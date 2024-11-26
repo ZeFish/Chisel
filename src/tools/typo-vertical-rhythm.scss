@@ -66,6 +66,7 @@
 	  margin:2rlh;
   }
   */
+
 .vertical-rhythm ul,
 .vertical-rhythm ol {
     padding: 0rlh 2rlh;
@@ -100,54 +101,47 @@
     line-height: 0.8em;
 }
 
-.vertical-rhythm .markdown-reading-view h1,
-.vertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-1) {
+.vertical-rhythm .markdown-reading-view h1 {
     margin-top: 5rlh !important;
     margin-bottom: 0rlh !important;
     padding: 0;
     line-height: 0.8em;
 }
 
-.vertical-rhythm .markdown-reading-view h2,
-.vertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-2) {
+.vertical-rhythm .markdown-reading-view h2 {
     margin-top: 5rlh !important;
     margin-bottom: 0.5rlh !important;
     padding: 0;
     line-height: 0.75em;
 }
 
-.vertical-rhythm .markdown-reading-view h3,
-.vertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-3) {
+.vertical-rhythm .markdown-reading-view h3 {
     margin-top: 3rlh !important;
     margin-bottom: 0.5rlh !important;
     padding: 0;
     line-height: 1em;
 }
 
-.vertical-rhythm .markdown-reading-view h4,
-.vertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-4) {
+.vertical-rhythm .markdown-reading-view h4 {
     margin-top: 2rlh !important;
     margin-bottom: 0.5rlh !important;
     padding: 0;
     line-height: 1em;
 }
 
-.vertical-rhythm .markdown-reading-view h5,
-.vertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-5) {
+.vertical-rhythm .markdown-reading-view h5 {
     margin-top: 1.5rlh !important;
     margin-bottom: 0rlh !important;
     padding: 0;
     line-height: 1em;
 }
 
-.vertical-rhythm .markdown-reading-view h6,
-.vertical-rhythm .cm-s-obsidian .cm-line.HyperMD-header:has(.cm-header-6) {
+.vertical-rhythm .markdown-reading-view h6 {
     margin-top: 1.5rlh !important;
     margin-bottom: 0rlh !important;
     padding: 0;
     line-height: 1em;
 }
-
 @media only screen and (max-width: 550px) {
     .vertical-rhythm:not(:has(callout-content)) .callout,
     .vertical-rhythm:not(:has(callout-content)) blockquote,
@@ -159,6 +153,7 @@
         margin-top: 0rlh;
     }
 }
+
 @media only screen and (min-width: 550px) {
     .vertical-rhythm {
         --file-margins: 2.5rlh;

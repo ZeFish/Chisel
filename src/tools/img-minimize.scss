@@ -1,40 +1,11 @@
 /* ============================================= */
 /* Minimize Images in source view */
 /* ============================================= */
-.img-min .markdown-source-view:not(.img-min-off) .image-embed {
-    background: var(--background-secondary);
-    border-radius: var(--size-4-2);
-    border: 1px solid var(--background-modifier-border);
-    text-align: center;
-    padding: var(--size-4-2) !important;
-    width: calc(50px + var(--size-4-2) * 2) !important;
-    display: block !important;
-    margin: auto !important;
-}
 
 .img-min .markdown-source-view:not(.img-min-off) .image-embed img {
-    height: 50px;
-    max-width: 50px !important;
-    object-fit: cover;
-    mix-blend-mode: multiply;
-    opacity: 0.8;
+    height: 4rlh;
 }
 
-.img-min.theme-dark .markdown-source-view:not(.img-min-off) .image-embed img {
-    mix-blend-mode: screen;
-    filter: brightness(85%);
-}
-
-.img-min .markdown-source-view:not(.img-min-off) .image-embed:has(img:hover) {
-    width: inherit !important;
-    padding: 0 !important;
-}
-
-.img-min .markdown-source-view:not(.img-min-off) .image-embed img:hover {
-    mix-blend-mode: normal;
-    opacity: 1;
-    height: fit-content;
-    height: 50px;
-    max-width: 100% !important;
-    filter: brightness(100%);
+.img-min .markdown-source-view:not(.img-min-off) .image-embed img:active {
+    height: inherit;
 }

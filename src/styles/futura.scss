@@ -1,28 +1,26 @@
+body:has(.futura) {
+    --light-color-base-100: #222;
+    --light-color-base-00: #ebeaea;
+    --dark-color-base-100: #e2dbd1;
+    --dark-color-base-00: #201e1c;
+}
 
 body:has(.futura) {
-	--light-color-base-100:	#222;
-	--light-color-base-00:	#ebeaea;
-	--dark-color-base-100:	#e2dbd1;
-	--dark-color-base-00:	#201e1c;
-  }
-  
-  body:has(.futura) {
-	--font-ratio:	1.614;
-	--font-text:	"Futura Now Var";
-	--font-feature:	"";
-	--font-variation:	"wght" 400;
-	--font-interface:	var(--font-text);
-	--font-header:	"Futura Now Var";
-	--font-header-feature:	"";
-	--font-header-variation:	"wght" 800, "wdth" 100.0;
-	--font-header-letter-spacing:	-0.065em;
-	--font-header-style: none;
-	--font-monospace:	"MonoLisa";
-	--font-mono-feature:	"onum" off;
-	--font-mono-variation:	"";
-	--color-accent:	var(--color-yellow);
-	--code-normal:	var(--text-muted);
-	--bold-color:	var(--color-red);
-	--italic-color:	var(--color-blue);
-  }
-  
+    --font-ratio: 1.614;
+    --font-text: "Futura Now Var";
+    --font-feature: "";
+    --font-variation: "wght" 400;
+    --font-interface: var(--font-text);
+    --font-header: "Futura Now Var";
+    --font-header-feature: "swsh" on, "onum" on;
+    --font-header-variation: "wght" 300, "wdth" 100;
+    --font-header-letter-spacing: 0rem;
+    --font-header-style: none;
+    --font-monospace: "Voyager Mono";
+    --font-mono-feature: "onum" off;
+    --font-mono-variation: "";
+    --color-accent: var(--color-yellow);
+    --code-normal: var(--text-muted);
+    --bold-color: var(--color-red);
+    --italic-color: var(--color-blue);
+}

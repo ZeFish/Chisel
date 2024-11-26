@@ -1,54 +1,5 @@
 @charset "UTF-8";
 
-body.theme-light {
-    --color-base-100: var(
-        --light-color-foreground,
-        var(--light-color-base-100, #222)
-    );
-    --color-base-00: var(
-        --light-color-background,
-        var(--light-color-base-00, #fff)
-    ); /* f7f6f4 */ /* e9e4dd */
-
-    --color-white: var(--color-base-00);
-    --color-black: var(--color-base-100);
-
-    --color-white: var(--color-base-00);
-    --color-black: var(--color-base-100);
-    --color-red: var(--light-color-red, #df453a) !important;
-    --color-orange: var(--light-color-orange, #ea702e) !important;
-    --color-yellow: var(--light-color-yellow, #e4ae25) !important;
-    --color-green: var(--light-color-green, #1e9316) !important;
-    --color-cyan: var(--light-color-cyan, #23a5a7) !important;
-    --color-blue: var(--light-color-blue, #2882c3) !important;
-    --color-purple: var(--light-color-purple, #8d6fb3) !important;
-    --color-pink: var(--light-color-pink, #da58b5) !important;
-}
-
-body.theme-dark,
-.is-mobile.theme-dark {
-    --color-base-100: var(
-        --dark-color-foreground,
-        var(--dark-color-base-100, #a0a0a0)
-    );
-    --color-base-00: var(
-        --dark-color-background,
-        var(--dark-color-base-00, #242424)
-    );
-
-    --color-white: var(--color-base-100);
-    --color-black: var(--color-base-00);
-
-    --color-red: var(--dark-color-red, #bf3f36) !important;
-    --color-orange: var(--dark-color-orange, #ce6325) !important;
-    --color-yellow: var(--dark-color-yellow, #d69a00) !important;
-    --color-green: var(--dark-color-green, #2e9066) !important;
-    --color-cyan: var(--dark-color-cyan, #4dadd5) !important;
-    --color-blue: var(--dark-color-blue, #256ea2) !important;
-    --color-purple: var(--dark-color-purple, #8e6ac7) !important;
-    --color-pink: var(--dark-color-pink, #dd78db) !important;
-}
-
 body,
 body.theme-dark,
 body.theme-light {
@@ -245,8 +196,8 @@ body.theme-light {
     );
     --text-highlight-bg: color-mix(
         in srgb,
-        var(--color-base-100) 60%,
-        transparent
+        var(--color-yellow) 15%,
+        var(--color-base-00)
     );
 
     --callout-default: var(--color-blue);
@@ -281,6 +232,61 @@ body.theme-light {
     --alternating-color-2: var(--color-red);
     --alternating-color-3: var(--color-blue);
     --inline-title-color: var(--text-normal);
+}
+
+body.theme-light {
+    --color-base-100: var(
+        --light-color-foreground,
+        var(--light-color-base-100, #222)
+    );
+    --color-base-00: var(
+        --light-color-background,
+        var(--light-color-base-00, #fff)
+    ); /* f7f6f4 */ /* e9e4dd */
+
+    --color-white: var(--color-base-00);
+    --color-black: var(--color-base-100);
+
+    --color-white: var(--color-base-00);
+    --color-black: var(--color-base-100);
+    --color-red: var(--light-color-red, #df453a) !important;
+    --color-orange: var(--light-color-orange, #ea702e) !important;
+    --color-yellow: var(--light-color-yellow, #e4ae25) !important;
+    --color-green: var(--light-color-green, #1e9316) !important;
+    --color-cyan: var(--light-color-cyan, #23a5a7) !important;
+    --color-blue: var(--light-color-blue, #2882c3) !important;
+    --color-purple: var(--light-color-purple, #8d6fb3) !important;
+    --color-pink: var(--light-color-pink, #da58b5) !important;
+}
+
+body.theme-dark,
+.is-mobile.theme-dark {
+    --color-base-100: var(
+        --dark-color-foreground,
+        var(--dark-color-base-100, #a0a0a0)
+    );
+    --color-base-00: var(
+        --dark-color-background,
+        var(--dark-color-base-00, #242424)
+    );
+
+    --color-white: var(--color-base-100);
+    --color-black: var(--color-base-00);
+
+    --color-red: var(--dark-color-red, #bf3f36) !important;
+    --color-orange: var(--dark-color-orange, #ce6325) !important;
+    --color-yellow: var(--dark-color-yellow, #d69a00) !important;
+    --color-green: var(--dark-color-green, #2e9066) !important;
+    --color-cyan: var(--dark-color-cyan, #4dadd5) !important;
+    --color-blue: var(--dark-color-blue, #256ea2) !important;
+    --color-purple: var(--dark-color-purple, #8e6ac7) !important;
+    --color-pink: var(--dark-color-pink, #dd78db) !important;
+
+    --background-primary: var(--color-base-05);
+    --background-primary-alt: var(--color-base-00);
+
+    --background-secondary: var(--color-base-00);
+    --background-secondary-alt: var(--color-base-05);
 }
 
 .mod-macos.is-hidden-frameless:not(.is-popout-window)

@@ -41,9 +41,9 @@
     /* --font-monospace:	"Sohne Mono"; */
     --font-mono-feature: "";
     --font-mono-variation: "";
-    font-feature-settings: var(--font-feature);
-    font-variant-ligatures: normal;
-    font-variation-settings: var(--font-variation);
+    --font-feature-settings: var(--font-feature);
+    --font-variant-ligatures: normal;
+    --font-variation-settings: var(--font-variation);
     --font-header-weight: 600;
     --h1-weight: var(--font-header-weight);
     --h2-weight: max(
@@ -127,7 +127,6 @@ h6,
 
 .markdown-rendered h6,
 .HyperMD-header-6 {
-    text-transform: uppercase;
     letter-spacing: 0.005em !important;
 }
 
