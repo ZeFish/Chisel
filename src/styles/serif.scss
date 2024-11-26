@@ -15,12 +15,12 @@ body.theme-light:has(.serif) {
     --light-color-purple: #5b3b3d;
     --light-color-pink: #6d3f28;
 
-    --dark-color-red: #a12314;
+    --dark-color-red: #9e4a40;
     --dark-color-orange: #ce7a5e;
     --dark-color-yellow: #e6bd8d;
     --dark-color-green: #1e694b;
     --dark-color-cyan: #398a8a;
-    --dark-color-blue: #26568d;
+    --dark-color-blue: #506781;
     --dark-color-purple: #5b3b3d;
     --dark-color-pink: #6d3f28;
 
@@ -37,6 +37,10 @@ body.theme-light:has(.serif) {
     --font-mono-feature: "";
     --font-mono-variation: "";
     --font-text-size: 24px !important;
+
+	--code-normal: var(--color-red);
+    --bold-color: var(--color-red);
+    --italic-color: var(--color-blue);
 }
 
 body:has(.serif) .inline-title {
