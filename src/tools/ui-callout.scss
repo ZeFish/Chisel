@@ -4,7 +4,7 @@
 .markdown-preview-view blockquote {
     background: var(--background-secondary);
     padding: 1rlh;
-    border-radius: var(--radius-s);
+    border-radius: var(--radius-m);
     border: 1px solid var(--background-modifier-border);
     font-size: var(--font-small);
     /*
@@ -48,7 +48,7 @@
 
 .callout-content {
     padding: 1rlh;
-    border-radius: var(--radius-s);
+    border-radius: var(--radius-m);
     background-color: color-mix(
         in srgb,
         var(--background-secondary-alt) 90%,
@@ -60,6 +60,11 @@
     margin-left: 0;
 }
 
+.callout-content ol,
+.callout-content ul {
+    padding: 0rlh 0rlh 0rlh 1.5rlh;
+    margin: 0.5rlh 0rlh;
+}
 .callout .callout-content p:first-child {
     margin-top: 0;
 }

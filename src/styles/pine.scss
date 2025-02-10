@@ -25,19 +25,22 @@ body:has(.pine) {
 
 body:has(.pine) {
     --font-ratio: 1.8;
-    --font-text: "Futura Now Var";
+    --font-text: "Fraunces";
     --font-feature: "";
-    --font-variation: "wght" 400;
+    --font-variation: "wght" 400, "SOFT" 100, "WONK" 1;
     --font-interface: var(--font-text);
+
     --font-header: "Travel Poster Sans";
     --font-header-feature: "";
     --font-header-variation: "";
     --font-header-letter-spacing: 0em;
     --font-header-style: none;
     --font-header-weight: 400;
+
     --font-monospace: "MonoLisa";
     --font-mono-feature: "onum" off;
     --font-mono-variation: "";
+
     --color-accent: var(--color-yellow);
     --code-normal: var(--text-muted);
     --bold-color: var(--color-red);

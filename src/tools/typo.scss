@@ -24,15 +24,14 @@
     --font-feature: "liga", "dlig", "clig", "kern", "pnum", "calt", "ss01",
         "ss02", "ss03";
     --font-variation: "";
+
     --font-header-feature: "dlig", "case", "kern", "cv01", "cv02", "cv03",
         "cv04", "cv05", "cv06", "cv09", "cv10", "cv11", "cv12", "cv13";
     --font-header-variation: "";
+
     --font-mono-feature: "";
     --font-mono-variation: "";
-    /* --font-text:	"Helvetica Now Var"; */
-    --font-feature: "";
-    --font-variation: "wght" 450;
-    /* --font-interface:	"InterVariable"; */
+
     --font-header: "InterVariable";
     --font-header-feature: "dlig", "case", "kern", "cv01", "cv02", "cv03",
         "cv04", "cv05", "cv06", "cv09", "cv10", "cv11", "cv12", "cv13";
@@ -60,6 +59,9 @@
         var(--bold-weight),
         calc(var(--font-header-weight) * 0.75)
     );
+
+    font-feature-settings: var(--font-feature);
+    font-variation-settings: var(--font-variation);
 }
 
 .chisel-typography .cm-hmd-frontmatter,
