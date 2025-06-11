@@ -53,6 +53,11 @@
     margin: 4rlh 2rlh;
 }
 
+.vertical-rhythm .markdown-reading-view hr {
+    --hr-thickness: 1px;
+    margin: 4rlh 2rlh;
+}
+
 .vertical-rhythm .popover .markdown-embed-content,
 .markdown-embed-content,
 .popover .markdown-embed-title,
@@ -71,6 +76,9 @@
 .vertical-rhythm ol {
     padding: 0rlh 2rlh;
     margin: 1rlh 0rlh;
+}
+.vertical-rhythm ol > li:not(:first-child) {
+    padding-top: 0.5rlh;
 }
 
 .xxxvertical-rhythm div:has(h1, h2, h3, h4, h5, h6, p) + div:has(ul, ol) {
@@ -102,21 +110,21 @@
 }
 
 .vertical-rhythm .markdown-reading-view h1 {
-    margin-top: 5rlh !important;
+    margin-top: 7rlh !important;
     margin-bottom: 0rlh !important;
     padding: 0;
     line-height: 0.8em;
 }
 
 .vertical-rhythm .markdown-reading-view h2 {
-    margin-top: 5rlh !important;
+    margin-top: 6rlh !important;
     margin-bottom: 0.5rlh !important;
     padding: 0;
     line-height: 0.75em;
 }
 
 .vertical-rhythm .markdown-reading-view h3 {
-    margin-top: 3rlh !important;
+    margin-top: 5rlh !important;
     margin-bottom: 0.5rlh !important;
     padding: 0;
     line-height: 1em;
@@ -151,6 +159,12 @@
     .vertical-rhythm .inline-title {
         margin-bottom: 2rlh !important;
         margin-top: 0rlh;
+    }
+    .vertical-rhythm ul,
+    .vertical-rhythm ol,
+    .vertical-rhythm .callout-content ul,
+    .vertical-rhythm .callout-content ol {
+        padding: 0rlh 0rlh 0rlh 0.5rlh;
     }
 }
 

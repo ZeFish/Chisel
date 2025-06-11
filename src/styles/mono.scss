@@ -31,11 +31,11 @@ body.theme-light:has(.mono) {
     --font-feature: "";
     --font-variation: "wght" 300;
     --font-interface: var(--font-text);
-    --font-header: "Futura Now Var";
+    --font-header: "Gorton Perfected", "Futura Now Var";
     --font-header-feature: "";
     --font-header-style: normal;
-    --font-header-variation: "wght" 700, "wdth" 100;
-    --font-header-letter-spacing: -0.06em;
+    --font-header-variation: "wght" 400, "wdth" 100;
+    --font-header-letter-spacing: -0em;
     --font-monospace: "Courier Prime";
     --font-mono-feature: "";
     --font-mono-variation: "";
@@ -44,10 +44,8 @@ body.theme-light:has(.mono) {
 
 body.theme-dark:has(.mono) {
     --font-text: "JetBrains Mono";
-    --font-header: "Futura Now Var";
     --font-monospace: "Voyager Mono";
     --font-interface: "Futura Now Var";
-    --font-header-letter-spacing: -0.06em;
 }
 
 body.theme-light:has(.mono) .markdown-reading-view a {
@@ -92,7 +90,7 @@ body:has(.mono) h6 {
         var(--background-primary)
     );
     --shadow-distance: 0px;
-    --shadow-depth: 0.75px;
+    --shadow-depth: 0.5px;
     text-shadow:
         var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
         calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)

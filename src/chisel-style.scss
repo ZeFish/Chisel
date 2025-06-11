@@ -118,7 +118,7 @@ body.theme-light {
         var(--link-external-color) 25%,
         var(--color-base-100)
     );
-    --link-color: var(--color-yellow);
+    --link-color: var(--accent-color);
     --link-color-hover: color-mix(
         in oklab,
         var(--link-color) 25%,
@@ -247,6 +247,8 @@ body.theme-light {
     --color-white: var(--color-base-00);
     --color-black: var(--color-base-100);
 
+    --accent-color: var(--color-blue);
+
     --color-white: var(--color-base-00);
     --color-black: var(--color-base-100);
     --color-red: var(--light-color-red, #df453a) !important;
@@ -272,6 +274,8 @@ body.theme-dark,
 
     --color-white: var(--color-base-100);
     --color-black: var(--color-base-00);
+
+    --accent-color: var(--color-yellow);
 
     --color-red: var(--dark-color-red, #bf3f36) !important;
     --color-orange: var(--dark-color-orange, #ce6325) !important;
