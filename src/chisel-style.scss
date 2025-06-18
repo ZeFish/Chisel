@@ -83,7 +83,7 @@ body.theme-light {
     --background-modifier-message: var(--color-base-05);
     --background-modifier-form-field: var(--color-base-05);
 
-    --divider-color: var(--background-secondary);
+    --divider-color: transparent;
     --divider-width: 1px;
 
     --interactive-normal: var(--color-base-05);
@@ -301,7 +301,7 @@ body.theme-dark,
 .mod-root .workspace-tabs .workspace-leaf {
     background: var(--background-secondary);
 }
-.view-content {
+.workspace-leaf-content {
     border-radius: var(--radius-m);
 }
 .notice,
