@@ -1,0 +1,39 @@
+body:has(.philosophical) {
+    --light-background-color: #fdfcf3;
+    --light-background-color: #fefdf9; /* Ivory - Very subtle warmth, almost white — keeps it clean. */
+    --light-background-color: #f9f6ef; /* Seashell - Soft warmth, still feels like sunlight on paper. */
+    --light-background-color: #fdfdfc; /* Snow Drift - Near-white with the tiniest touch of warmth. */
+    --light-color-background: #fdf5e6; /* Old Lace - A classic — slightly more yellow but elegant. */
+
+    --dark-color-background: #231e16;
+    --dark-color-foreground: hsl(34, 50%, 80%);
+
+    --font-text: "Forrest";
+    --font-header: "Fern";
+    --font-header-weight: 400;
+
+    /* Light Mode Accent Colors */
+    --light-color-red: #b5483c; /* like aged brick or red clay */
+    --light-color-orange: #c86a3d; /* terra cotta */
+    --light-color-yellow: #c2a84a; /* mustard parchment */
+    --light-color-green: #5e9d80; /* sage green */
+    --light-color-cyan: #6ba4b6; /* antique blue-grey */
+    --light-color-blue: #4f81a4; /* faded denim */
+    --light-color-purple: #7a6c91; /* dusk lavender */
+    --light-color-pink: #b97aa0; /* soft mauve rose */
+
+    /* Dark Mode Accent Colors */
+    --dark-color-red: #e57368; /* warm ember glow */
+    --dark-color-orange: #e88e5a; /* baked clay at dusk */
+    --dark-color-yellow: #e0c168; /* candlelight gold */
+    --dark-color-green: #7eb79c; /* moonlit sage */
+    --dark-color-cyan: #84c3d6; /* cool teal mist */
+    --dark-color-blue: #6da2c7; /* twilight lake */
+    --dark-color-purple: #a58fc0; /* smoky lilac */
+    --dark-color-pink: #e6a3d1; /* fading rose light */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 6rem;
+}

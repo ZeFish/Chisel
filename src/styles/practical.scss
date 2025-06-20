@@ -1,0 +1,58 @@
+body:has(.practical) {
+    --light-color-background: #f4f5f3;
+    --light-color-foreground: #1d3557;
+
+    /* Neutrals */
+    --light-color-gray: #6b7280; /* text gray */
+    --light-color-muted: #a0a0a0; /* UI border / secondary */
+    --light-color-soft: #e2e2df; /* UI backgrounds, blockquotes */
+
+    /* Accent system */
+    --light-color-red: #c92a2a; /* warning, highlight */
+    --light-color-orange: #e08e1f; /* attention blocks */
+    --light-color-yellow: #d4af37; /* vintage punchcard yellow */
+    --light-color-green: #4ca06b; /* success, approval */
+    --light-color-cyan: #2aa198; /* teal-y terminal feel */
+    --light-color-blue: #3b82f6; /* link, info */
+    --light-color-purple: #7e5bef; /* utility, label tags */
+    --light-color-pink: #d16d92; /* softer technical touch */
+
+    --dark-foreground-color: #f4f5f3;
+    --dark-background-color: #1d3557;
+    /* Core colors */
+    --dark-color-background: #1d1e21; /* dark terminal feel */
+    --dark-color-foreground: #f4f5f3; /* same warm white as light bg */
+
+    /* Neutrals */
+    --dark-color-gray: #c9c9c9; /* text gray */
+    --dark-color-muted: #999; /* borders, UI frame */
+    --dark-color-soft: #2d2f33; /* dark gray blocks */
+
+    /* Accent system */
+    --dark-color-red: #ff6b6b;
+    --dark-color-orange: #f0a03d;
+    --dark-color-yellow: #f7d774;
+    --dark-color-green: #6dd3a4;
+    --dark-color-cyan: #63d2c6;
+    --dark-color-blue: #5fa8ff;
+    --dark-color-purple: #a593f8;
+    --dark-color-pink: #ec9abc;
+
+    /* Code and UI extras */
+    --accent-color: var(--color-blue);
+    --code-normal: var(--foreground-color);
+    --bold-color: var(--foreground-color);
+    --italic-color: var(--color-gray);
+
+    --font-text: "Sohne Mono";
+    --font-header: InterVariable;
+    --font-mono: "MonoLisa";
+    --font-mono-feature: "zero" on, "onum" on, "calt" on;
+    --font-interface: "Sohne Mono";
+
+    --line-height-normal: 1.5em;
+    --font-header-line-height: 1em;
+    --font-header-weight: 800;
+    --font-header-letter-spacing: -0.05em;
+    --font-ratio: 1.5;
+}
