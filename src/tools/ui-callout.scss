@@ -33,7 +33,7 @@
     margin: 1rlh 0;
 
     /* border-color: rgba(var(--callout-color), var(--callout-border-opacity)); */
-    border-color: transparent;
+    border-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
     background-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
 }
 
@@ -54,7 +54,8 @@
         var(--background-secondary-alt) 90%,
         transparent
     );
-    box-shadow: inset 0px 0px 0px 1px var(--background-modifier-border);
+    box-shadow: inset 0px 0px 0px 1px
+        color-mix(in srgb, var(--callout-color) 20%, transparent);
     /* border-radius: calc(var(--radius) * 2); */
     font-size: var(--font-small);
     margin-left: 0;
