@@ -74,7 +74,7 @@ body.theme-light {
 
     --background-modifier-hover: var(--color-base-35);
     --background-modifier-active-hover: var(--color-base-35);
-    --background-modifier-border: var(--color-base-05);
+    --background-modifier-border: var(--color-base-20);
     --background-modifier-border-hover: var(--color-base-20);
     --background-modifier-border-focus: var(--color-base-70);
     --background-modifier-error: var(--color-base-05);
@@ -135,7 +135,7 @@ body.theme-light {
     --icon-color: var(--text-faint);
     --icon-hex: var(--mono0);
 
-    --nav-item-color: var(--text-faint);
+    --nav-item-color: var(--text-muted);
     --nav-item-color-active: var(--text-normal);
     --nav-item-color-hover: var(--text-normal);
     --nav-collapse-icon-color: color-mix(
