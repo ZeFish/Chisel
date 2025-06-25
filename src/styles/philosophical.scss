@@ -12,6 +12,9 @@ body:has(.philosophical) {
     --font-header: "Fern";
     --font-header-weight: 400;
 
+    --bold-color: var(--text-normal);
+    --bold-weight: 500;
+
     /* Light Mode Accent Colors */
     --light-color-red: #b5483c; /* like aged brick or red clay */
     --light-color-orange: #c86a3d; /* terra cotta */
