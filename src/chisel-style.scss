@@ -126,7 +126,7 @@ body.theme-light {
     );
 
     --code-normal: var(--color-red);
-    --bold-color: var(--color-yellow);
+    --bold-color: var(--color-green);
     --italic-color: var(--color-blue);
 
     --icon-color-active: var(--text-normal);
@@ -164,7 +164,7 @@ body.theme-light {
     --titlebar-background: var(--background-secondary) !important;
     --titlebar-background-focused: var(--background-secondary) !important;
     --titlebar-text-color-focused: var(--text-normal) !important;
-    --tab-container-background: var(--color-red) !important;
+    --tab-container-background: var(--background-secondary) !important;
 
     --indentation-guide-color: color-mix(
         in srgb,
