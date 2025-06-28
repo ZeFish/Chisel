@@ -1,15 +1,15 @@
 // Sass configuration
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=733558
-	// for the documentation about the tasks.json format
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Chisel",
-			"type": "shell",
-			"command": "sass src/chisel.scss:/Users/francisfontaine/documents/thefirst/.obsidian/snippets/chisel.css src/chisel-style.scss:/Users/francisfontaine/documents/thefirst/.obsidian/snippets/chisel-style.css",
-			"group": "build",
-			"problemMatcher": []
-		}
-	]
-  }
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Chisel",
+      "type": "shell",
+      "command": "sass src/chisel.scss:/Users/francisfontaine/documents/Atelier/.obsidian/snippets/chisel.css src/chisel-style.scss:/Users/francisfontaine/documents/Atelier/.obsidian/snippets/chisel-style.css",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
