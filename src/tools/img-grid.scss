@@ -41,7 +41,16 @@
                 var(--background-primary) 90%,
                 var(--color-black)
             ),
-        0.5px 0.9px 1.5px -0.2px color-mix(in srgb, var(--background-primary)
-                    80%, var(--color-black)),
-        1px 2px 3.2px -0.4px color-mix(in srgb, var(--background-primary) 80%, var(--color-black));
+        0.5px 0.9px 1.5px -0.2px
+            color-mix(
+                in srgb,
+                var(--background-primary) 80%,
+                var(--color-black)
+            ),
+        1px 2px 3.2px -0.4px
+            color-mix(
+                in srgb,
+                var(--background-primary) 80%,
+                var(--color-black)
+            );
 }

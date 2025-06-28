@@ -66,6 +66,10 @@
     font-variation-settings: var(--font-variation);
 }
 
+.nav-file-tag {
+    line-height: inherit;
+}
+
 .chisel-typography .cm-hmd-frontmatter,
 .chisel-typography .cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def {
     color: var(--text-faint);

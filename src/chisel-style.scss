@@ -197,7 +197,7 @@ body.theme-light {
     --text-highlight-bg: color-mix(
         in srgb,
         var(--color-yellow) 15%,
-        var(--color-base-00)
+        transparent
     );
 
     --callout-default: var(--color-blue);
@@ -247,7 +247,9 @@ body.theme-light {
     --color-white: var(--color-base-00);
     --color-black: var(--color-base-100);
 
-    --accent-color: var(--color-blue);
+    --accent-color: var(--light-accent-color, var(--color-blue));
+    --bold-color: var(--light-bold-color, var(--color-green));
+    --italic-color: var(--light-italic-color, var(--color-blue));
 
     --color-white: var(--color-base-00);
     --color-black: var(--color-base-100);
@@ -275,7 +277,9 @@ body.theme-dark,
     --color-white: var(--color-base-100);
     --color-black: var(--color-base-00);
 
-    --accent-color: var(--color-yellow);
+    --accent-color: var(--dark-accent-color, var(--color-yellow));
+    --bold-color: var(--dark-bold-color, var(--color-green));
+    --italic-color: var(--dark-italic-color, var(--color-blue));
 
     --color-red: var(--dark-color-red, #bf3f36) !important;
     --color-orange: var(--dark-color-orange, #ce6325) !important;
@@ -291,6 +295,12 @@ body.theme-dark,
 
     --background-secondary: var(--color-base-00);
     --background-secondary-alt: var(--color-base-05);
+
+    --text-highlight-bg: color-mix(
+        in srgb,
+        var(--color-yellow) 20%,
+        transparent
+    );
 }
 
 .mod-macos.is-hidden-frameless:not(.is-popout-window)
