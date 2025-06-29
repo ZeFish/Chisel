@@ -40,8 +40,8 @@ body:has(.philosophical) {
     --dark-color-pink: #e6a3d1; /* fading rose light */
 }
 
-h1,
-.inline-title {
+body:has(.philosophical) h1,
+body:has(.philosophical) .inline-title {
     text-align: center;
     margin-bottom: 6rem;
     letter-spacing: 0.15em;
