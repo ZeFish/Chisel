@@ -29,7 +29,8 @@ body:has(.manifeste) {
     --dark-soft-color: #2a2824;
 }
 
-body:has(.manifeste) article h1 {
+body:has(.manifeste) article h1,
+body:has(.manifeste) .inline-title {
     text-align: center;
     padding: 3rlh 0;
     color: var(--color-foreground);
