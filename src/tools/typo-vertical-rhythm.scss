@@ -90,7 +90,15 @@
 .vertical-rhythm .markdown-source-view ol > li,
 .vertical-rhythm .markdown-source-view ul > li,
 .vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line {
-    margin: 0rlh 0rlh 0rlh 0rlh;
+    margin: 0rlh;
+}
+
+.vertical-rhythm .markdown-preview-view ol > li:not(:first-child),
+.vertical-rhythm .markdown-preview-view ul > li:not(:first-child),
+.vertical-rhythm .markdown-source-view ol > li:not(:first-child),
+.vertical-rhythm .markdown-source-view ul > li:not(:first-child),
+.vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line:not(:first-child) {
+    margin-top: 0.25rlh;
 }
 
 .vertical-rhythm {
@@ -124,10 +132,17 @@
 }
 
 .vertical-rhythm .markdown-reading-view h3 {
-    margin-top: 5rlh !important;
+    margin-top: 4rlh !important;
     margin-bottom: 0.5rlh !important;
     padding: 0;
     line-height: 1em;
+}
+
+.vertical-rhythm .markdown-reading-view div:has(h1) + div:has(h2) h2 {
+    margin-top: 3rlh !important;
+}
+.vertical-rhythm .markdown-reading-view div:has(h1, h2) + div:has(h3) h3 {
+    margin-top: 3rlh !important;
 }
 
 .vertical-rhythm .markdown-reading-view h4 {

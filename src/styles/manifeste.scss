@@ -36,6 +36,13 @@ body:has(.manifeste) .inline-title {
     color: var(--color-foreground);
 }
 
+body:has(.manifeste) .vertical-rhythm .markdown-preview-view ol > li,
+body:has(.manifeste) .vertical-rhythm .markdown-preview-view ul > li,
+body:has(.manifeste) .vertical-rhythm .markdown-source-view ol > li,
+body:has(.manifeste) .vertical-rhythm .markdown-source-view ul > li,
+body:has(.manifeste) .vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line {
+    margin: 0rlh 0rlh 0rlh 0rlh;
+}
 @font-face {
     font-family: "Tiempos Headline";
     /* Add other properties here, as needed. For example: */
