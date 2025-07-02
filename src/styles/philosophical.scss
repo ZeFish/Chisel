@@ -9,15 +9,21 @@ body:has(.philosophical) {
     --dark-color-background: #231e16;
     --dark-color-foreground: hsl(34, 50%, 80%);
 
+    --accent-color: var(--color-red);
+
     --font-text: "Fern Variable";
     --font-header: "Fern Variable";
+    --font-interface: "Fern Variable";
     --font-header-weight: 300;
 
     --font-feature: "liga", "onum", "kern";
     --font-header-feature: "liga", "onum", "kern";
 
-    --bold-color: var(--text-normal);
-    --bold-weight: 500;
+    --bold-color: var(--color-red);
+    --bold-weight: 600;
+
+    --border: 0;
+    --callout-default: var(--color-base-30);
 
     /* Light Mode Accent Colors */
     --light-color-red: #b5483c; /* like aged brick or red clay */
@@ -47,4 +53,9 @@ body:has(.philosophical) .inline-title {
     letter-spacing: 0.15em;
     /* /*text-transform: uppercase;* */
     font-feature-settings: "liga", "onum", "kern", "smcp";
+}
+
+body:has(.philosophical).theme-dark,
+body:has(.philosophical).is-mobile.theme-dark {
+    --bold-color: var(--color-orange);
 }

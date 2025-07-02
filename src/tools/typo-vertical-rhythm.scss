@@ -1,8 +1,8 @@
 /* ============================================= */
 /* Vertical Flow */
 /* ============================================= */
-.vertical-rhythm .markdown-rendered p,
-.vertical-rhythm .markdown-source-view .cm-line {
+.vertical-rhythm p,
+.vertical-rhythm .cm-line {
     line-height: var(--line-height-normal);
     margin-top: 0rlh;
     margin-bottom: 1rlh;
@@ -49,14 +49,10 @@
     padding: 0 0 0 1rlh;
 }
 
-.vertical-rhythm .markdown-source-view hr {
-    --hr-thickness: 1px;
-    margin: 2rlh 2rlh;
-}
-
+.vertical-rhythm .markdown-source-view hr,
 .vertical-rhythm .markdown-reading-view hr {
     --hr-thickness: 1px;
-    margin: 2rlh 2rlh;
+    margin: 2rlh 8rlh;
 }
 
 .vertical-rhythm .popover .markdown-embed-content,
