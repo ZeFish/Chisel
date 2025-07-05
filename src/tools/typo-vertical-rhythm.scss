@@ -129,15 +129,15 @@
     padding: 0;
     line-height: 0.75em;
 }
-
-.vertical-rhythm .markdown-reading-view h3,
-.vertical-rhythm .HyperMD-header-3.cm-line {
+/* .vertical-rhythm .HyperMD-header-3.cm-line
+is commented because is bugged the ability to select text
+*/
+.vertical-rhythm .markdown-reading-view h3 {
     margin-top: 4rlh !important;
     margin-bottom: 1rlh !important;
     padding: 0;
     line-height: 1em;
 }
-
 .vertical-rhythm .markdown-reading-view div:has(h1) + div:has(h2) h2,
 .vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line {
     margin-top: 1rlh !important;
