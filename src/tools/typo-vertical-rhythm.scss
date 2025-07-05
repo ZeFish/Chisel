@@ -114,16 +114,16 @@
     line-height: 0.8em;
 }
 
-.vertical-rhythm .markdown-reading-view h1,
-.vertical-rhythm .HyperMD-header-1.cm-line {
+/* .vertical-rhythm .HyperMD-header-1.cm-line */
+.vertical-rhythm .markdown-reading-view h1 {
     margin-top: 8rlh !important;
     margin-bottom: 2rlh !important;
     padding: 0;
     line-height: 0.8em;
 }
 
-.vertical-rhythm .markdown-reading-view h2,
-.vertical-rhythm .HyperMD-header-2.cm-line {
+/* .vertical-rhythm .HyperMD-header-2.cm-line  */
+.vertical-rhythm .markdown-reading-view h2 {
     margin-top: 6rlh !important;
     margin-bottom: 2rlh !important;
     padding: 0;
@@ -138,33 +138,33 @@ is commented because is bugged the ability to select text
     padding: 0;
     line-height: 1em;
 }
-.vertical-rhythm .markdown-reading-view div:has(h1) + div:has(h2) h2,
-.vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line {
+/* .vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line */
+.vertical-rhythm .markdown-reading-view div:has(h1) + div:has(h2) h2 {
     margin-top: 1rlh !important;
 }
-.vertical-rhythm .markdown-reading-view div:has(h2) + div:has(h3) h3,
-.vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line {
+/* .vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+.vertical-rhythm .markdown-reading-view div:has(h2) + div:has(h3) h3 {
     margin-top: 1rlh !important;
 }
 
-.vertical-rhythm .markdown-reading-view h4,
-.vertical-rhythm .HyperMD-header-4.cm-line {
+/* .vertical-rhythm .HyperMD-header-4.cm-line */
+.vertical-rhythm .markdown-reading-view h4 {
     margin-top: 2rlh !important;
     margin-bottom: 0rlh !important;
     padding: 0;
     line-height: 1em;
 }
 
-.vertical-rhythm .markdown-reading-view h5,
-.vertical-rhythm .HyperMD-header-5.cm-line {
+/* .vertical-rhythm .HyperMD-header-5.cm-line */
+.vertical-rhythm .markdown-reading-view h5 {
     margin-top: 1rlh !important;
     margin-bottom: 0rlh !important;
     padding: 0;
     line-height: 1em;
 }
 
-.vertical-rhythm .markdown-reading-view h6,
-.vertical-rhythm .HyperMD-header-6.cm-line {
+/* .vertical-rhythm .HyperMD-header-6.cm-line  */
+.vertical-rhythm .markdown-reading-view h6 {
     margin-top: 1rlh !important;
     margin-bottom: 0rlh !important;
     padding: 0;
