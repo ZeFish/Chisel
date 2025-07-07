@@ -10,6 +10,10 @@
     margin-block-start: 0;
 }
 
+.img-grid .markdown-preview-section > div:has(.image-embed) {
+    margin: 2rlh 0;
+}
+
 .vertical-rhythm:not(:has(callout-content)) .callout,
 .vertical-rhythm:not(:has(callout-content)) blockquote,
 .vertical-rhythm:not(:has(callout-content)) pre {
