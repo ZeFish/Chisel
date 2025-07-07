@@ -17,6 +17,12 @@ settings:
         type: class-toggle
 		default: false
 	-
+        id: sidenote
+        title: Create a sidenote callout
+        description: sidenote
+        type: class-toggle
+		default: false
+	-
         id: block-small
         title: Blocks other than text will be 75% smaller
         description: block-small | block-small-off

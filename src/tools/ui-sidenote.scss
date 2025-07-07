@@ -1,0 +1,69 @@
+/*
+
+	Sidenotes
+
+*/
+
+.sidenote .markdown-preview-view .el-div .callout[data-callout~="sidenote"] {
+    position: absolute;
+
+    min-width: 10rlh;
+    max-width: 20rlh;
+
+    padding: 0;
+    border: 0;
+    background: transparent;
+    opacity: 0.6;
+
+    text-align: left;
+    margin: unset;
+    margin-left: calc(var(--file-line-width) + 2rlh);
+}
+
+/*
+
+	Left side sidenote
+
+*/
+
+.sidenote
+    .markdown-preview-view
+    .el-div
+    .callout[data-callout~="sidenote"]:is([data-callout-metadata~="left"]) {
+    text-align: right;
+    margin: unset;
+    /* Width + gap (and make the result negative) */
+    transform: translateX(-100%);
+    min-width: 0rlh;
+    width: 20%;
+}
+.sidenote
+    .markdown-preview-view
+    .el-div
+    .callout[data-callout~="sidenote"]:is([data-callout-metadata~="left"])
+    .callout-content {
+    text-align: right;
+}
+
+.sidenote .callout[data-callout~="sidenote"] p {
+    margin: 0;
+}
+
+.sidenote .callout[data-callout~="sidenote"] .callout-title {
+    display: none;
+}
+
+.sidenote .callout[data-callout~="sidenote"] .callout-content {
+    padding: 0;
+    font-size: 0.75rem;
+    box-shadow: none;
+    background: transparent;
+    padding-right: 2rlh;
+}
+.sidenote .callout[data-callout~="sidenote"] .callout-content p {
+    line-height: 1.3em;
+}
+
+.sidenote .callout[data-callout~="sidenote"] .callout-title .callout-icon {
+    display: none;
+}
