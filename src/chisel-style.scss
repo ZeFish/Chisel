@@ -247,8 +247,8 @@ body.theme-light {
     --color-white: var(--color-base-00);
     --color-black: var(--color-base-100);
 
-    --accent-color: var(--light-accent-color, var(--color-blue));
-    --bold-color: var(--light-bold-color, var(--color-green));
+    --accent-color: var(--light-accent-color, var(--color-yellow));
+    --bold-color: var(--light-bold-color, var(--color-orange));
     --italic-color: var(--light-italic-color, var(--color-blue));
 
     --color-white: var(--color-base-00);
@@ -278,7 +278,7 @@ body.theme-dark,
     --color-black: var(--color-base-00);
 
     --accent-color: var(--dark-accent-color, var(--color-yellow));
-    --bold-color: var(--dark-bold-color, var(--color-green));
+    --bold-color: var(--dark-bold-color, var(--color-orange));
     --italic-color: var(--dark-italic-color, var(--color-blue));
 
     --color-red: var(--dark-color-red, #bf3f36) !important;
