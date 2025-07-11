@@ -18,6 +18,7 @@ body:has(.philosophical) {
 
     --font-feature: "liga", "onum", "kern";
     --font-header-feature: "liga", "onum", "kern";
+    --font-header-variation: "";
 
     --bold-color: var(--color-red);
     --bold-weight: 600;

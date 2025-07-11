@@ -3,7 +3,7 @@
     --normal-weight: 400;
     --bold-weight: 600;
     --line-height: var(--line-height-normal);
-    --font-ratio: 1.3;
+    --font-ratio: 1.414;
     --heading-spacing: var(--line-height-normal);
     --h1-font: var(--font-header);
     --h2-font: var(--font-header);
@@ -33,12 +33,14 @@
     --font-mono-feature: "";
     --font-mono-variation: "";
 
-    --font-header: "Futura Now Var", "Gorton Perfected", "InterVariable";
+    --font-header: "InterVariable", "Futura Now Var", "Gorton Perfected";
     --font-header-feature:
         "dlig", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06",
         "cv09", "cv10", "cv11", "cv12", "cv13";
-    --font-header-variation: "wght" 400, "ital" 100;
+    --font-header-variation: "wght" 900, "ital" 100;
     --font-header-letter-spacing: -0.01em;
+    --font-header-letter-spacing: -0.065em;
+    --font-header-line-height: 0.75em;
     /* --font-monospace:	"Sohne Mono"; */
     --font-mono-feature: "";
     --font-mono-variation: "";
@@ -88,6 +90,10 @@
     .chisel-typography {
         --font-ratio: 1.3 !important;
     }
+}
+
+.inline-title:not([data-level]) {
+    letter-spacing: var(--font-header-letter-spacing, normal);
 }
 
 h1,

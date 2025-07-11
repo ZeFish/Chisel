@@ -22,7 +22,6 @@ body:has(.forrest) {
     --dark-color-purple: #8e6ac7;
     --dark-color-pink: #dd78db;
 
-    --font-ratio: 1.8;
     --font-text: "Forrest";
     --font-feature: "";
     --font-variation: "wght" 400;
@@ -33,9 +32,10 @@ body:has(.forrest) {
     --font-header-letter-spacing: 0em;
     --font-header-style: none;
     --font-header-weight: 800;
-    --font-monospace: "MonoLisa";
+    --font-monospace: "Monaspace Xenon Var";
     --font-mono-feature: "onum" off;
     --font-mono-variation: "";
+    --font-interface: "Gorton Perfected";
     --color-accent: var(--color-yellow);
     --code-normal: var(--text-muted);
     --bold-color: var(--color-green);

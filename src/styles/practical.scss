@@ -21,7 +21,7 @@ body:has(.practical) {
     --dark-background-color: #1d3557;
     /* Core colors */
     --dark-color-background: #1d1e21; /* dark terminal feel */
-    --dark-color-foreground: #f4f5f3; /* same warm white as light bg */
+    --dark-color-foreground: #c9c9c9; /* same warm white as light bg */
 
     /* Neutrals */
     --dark-color-gray: #c9c9c9; /* text gray */
@@ -44,7 +44,7 @@ body:has(.practical) {
     --bold-color: var(--foreground-color);
     --italic-color: var(--color-gray);
 
-    --font-text: "Sohne Mono";
+    --font-text: "iA Writer Quattro Var";
     --font-header: InterVariable;
     --font-mono: "MonoLisa";
     --font-mono-feature: "zero" on, "onum" on, "calt" on;
@@ -54,5 +54,17 @@ body:has(.practical) {
     --font-header-line-height: 1em;
     --font-header-weight: 800;
     --font-header-letter-spacing: -0.05em;
-    --font-ratio: 1.5;
+}
+.theme-dark:has(.practical) .inline-title,
+.theme-dark:has(.practical) h1,
+.theme-dark:has(.practical) h2,
+.theme-dark:has(.practical) h3,
+.theme-dark:has(.practical) h4,
+.theme-dark:has(.practical) h5,
+.theme-dark:has(.practical) h6 {
+    color: color-mix(
+        in srgb,
+        var(--text-normal) 80%,
+        var(--background-primary)
+    );
 }

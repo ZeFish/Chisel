@@ -191,6 +191,10 @@ is commented because is bugged the ability to select text
     .vertical-rhythm .callout-content ol {
         padding: 0rlh 0rlh 0rlh 0.5rlh;
     }
+    .vertical-rhythm .markdown-source-view hr,
+    .vertical-rhythm .markdown-reading-view hr {
+        margin: 2rlh 4rlh;
+    }
 }
 
 @media only screen and (min-width: 550px) {
