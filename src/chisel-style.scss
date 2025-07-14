@@ -303,6 +303,10 @@ body.theme-dark,
     );
 }
 
+a.footnote-link {
+    color: var(--text-faint);
+}
+
 .mod-macos.is-hidden-frameless:not(.is-popout-window)
     .sidebar-toggle-button.mod-right {
     background: none;
