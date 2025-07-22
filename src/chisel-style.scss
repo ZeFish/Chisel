@@ -79,7 +79,11 @@ body.theme-light {
 
     --background-modifier-hover: var(--color-base-35);
     --background-modifier-active-hover: var(--color-base-35);
-    --background-modifier-border: var(--color-base-20);
+    --background-modifier-border: color-mix(
+        in lch,
+        var(--color-base-100) 10%,
+        var(--background-primary)
+    );
     --background-modifier-border-hover: var(--color-base-20);
     --background-modifier-border-focus: var(--color-base-70);
     --background-modifier-error: var(--color-base-05);

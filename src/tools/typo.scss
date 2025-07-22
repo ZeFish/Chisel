@@ -74,7 +74,10 @@
 .chisel-typography {
     font-weight: var(--normal-weight);
 }
-
+.chisel-typography code,
+.HyperMD-codeblock {
+    font-weight: 400;
+}
 .chisel-typography .cm-comment.cm-strong {
     color: color-mix(in srgb, inherit 50%, transparent);
 }

@@ -19,6 +19,9 @@
 .vertical-rhythm:not(:has(callout-content)) pre {
     margin: 2rlh;
 }
+.markdown-source-view.mod-cm6 .callout {
+    margin: 2rlh;
+}
 
 .vertical-rhythm:not(:has(callout-content))
     .markdown-source-view
@@ -116,6 +119,10 @@
     margin-bottom: 4rlh;
     padding: 0;
     line-height: 0.8em;
+}
+
+.vertical-rhythm table {
+    margin-inline: auto;
 }
 
 /* .vertical-rhythm .HyperMD-header-1.cm-line */
