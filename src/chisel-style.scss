@@ -60,6 +60,11 @@ body.theme-light {
     --background-primary-alt: var(--color-base-05);
 
     --background-secondary: var(--color-base-05);
+    --background-secondary: color-mix(
+        in oklab,
+        var(--color-base-100) 2%,
+        var(--background-primary)
+    );
     --background-secondary-alt: var(--color-base-00);
 
     --accent-color: var(
@@ -237,11 +242,11 @@ body.theme-light {
 body.theme-light {
     --color-base-100: var(
         --light-color-foreground,
-        var(--light-color-base-100, #222)
+        var(--light-color-base-100, #1c1b1a)
     );
     --color-base-00: var(
         --light-color-background,
-        var(--light-color-base-00, #fff)
+        var(--light-color-base-00, #fffcf0)
     ); /* f7f6f4 */ /* e9e4dd */
 
     --color-white: var(--color-base-00);
@@ -261,17 +266,26 @@ body.theme-light {
     --color-blue: var(--light-color-blue, #2882c3) !important;
     --color-purple: var(--light-color-purple, #8d6fb3) !important;
     --color-pink: var(--light-color-pink, #da58b5) !important;
+
+    --color-red: var(--light-color-red, #af3029) !important;
+    --color-orange: var(--light-color-orange, #bc5215) !important;
+    --color-yellow: var(--light-color-yellow, #d0a215) !important;
+    --color-green: var(--light-color-green, #66800b) !important;
+    --color-cyan: var(--light-color-cyan, #24837b) !important;
+    --color-blue: var(--light-color-blue, #205ea6) !important;
+    --color-purple: var(--light-color-purple, #5e409d) !important;
+    --color-pink: var(--light-color-pink, #a02f6f) !important;
 }
 
 body.theme-dark,
 .is-mobile.theme-dark {
     --color-base-100: var(
         --dark-color-foreground,
-        var(--dark-color-base-100, #a0a0a0)
+        var(--dark-color-base-100, #dad8ce)
     );
     --color-base-00: var(
         --dark-color-background,
-        var(--dark-color-base-00, #242424)
+        var(--dark-color-base-00, #1c1b1a)
     );
 
     --color-white: var(--color-base-100);
@@ -290,7 +304,21 @@ body.theme-dark,
     --color-purple: var(--dark-color-purple, #8e6ac7) !important;
     --color-pink: var(--dark-color-pink, #dd78db) !important;
 
+    --color-red: var(--dark-color-red, #d14d41) !important;
+    --color-orange: var(--dark-color-orange, #da702c) !important;
+    --color-yellow: var(--dark-color-yellow, #d0a215) !important;
+    --color-green: var(--dark-color-green, #879a39) !important;
+    --color-cyan: var(--dark-color-cyan, #3aa99f) !important;
+    --color-blue: var(--dark-color-blue, #4385be) !important;
+    --color-purple: var(--dark-color-purple, #8b7ec8) !important;
+    --color-pink: var(--dark-color-pink, #ce5d97) !important;
+
     --background-primary: var(--color-base-05);
+    --background-primary: color-mix(
+        in oklab,
+        var(--color-base-100) 2%,
+        var(--color-base-00)
+    );
     --background-primary-alt: var(--color-base-00);
 
     --background-secondary: var(--color-base-00);
@@ -301,6 +329,12 @@ body.theme-dark,
         var(--color-yellow) 20%,
         transparent
     );
+}
+
+.markdown-rendered mark,
+.cm-s-obsidian span.cm-highlight {
+    background-color: var(--text-highlight-bg);
+    color: currentColor;
 }
 
 a.footnote-link {
@@ -489,9 +523,9 @@ input.document-replace-input.mod-no-match {
 @import "styles/futura";
 @import "styles/mariage";
 @import "styles/mono";
+@import "styles/mono-retro";
+@import "styles/mono-yellow";
 @import "styles/serif";
-@import "styles/wb";
-@import "styles/yb";
 @import "styles/apex";
 @import "styles/pine";
 @import "styles/bluey";

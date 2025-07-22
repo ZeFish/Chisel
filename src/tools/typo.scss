@@ -68,6 +68,10 @@
     font-variation-settings: var(--font-variation);
 }
 
+.chisel-typography .cm-comment.cm-strong {
+    color: color-mix(in srgb, inherit 50%, transparent);
+}
+
 .nav-file-tag {
     line-height: inherit;
 }
