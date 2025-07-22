@@ -3,10 +3,16 @@
 .markdown-preview-view pre,
 .markdown-preview-view blockquote {
     background: var(--background-secondary);
-    padding: 1rlh;
+    background-color: color-mix(
+        in lch,
+        var(--color-base-100) 2.5%,
+        transparent
+    );
+    padding: 1rlh 1rlh;
     border-radius: var(--radius-m);
     border: 1px solid var(--background-modifier-border);
     font-size: var(--font-small);
+    line-height: var(--line-height-tight);
     /*
     box-shadow:
         0.3px 0.5px 0.8px
@@ -20,7 +26,9 @@
         1px 2px 3.2px -0.4px color-mix(in srgb, var(--background-primary) 90%, var(--color-black));
 */
 }
-
+.markdown-rendered code {
+    background-color: color-mix(in lch, var(--color-base-05) 100%, transparent);
+}
 .markdown-preview-view blockquote,
 .markdown-source-view .HyperMD-quote {
     font-style: italic;
@@ -51,8 +59,8 @@
     border-radius: var(--radius-m);
     background-color: color-mix(
         in srgb,
-        var(--background-secondary-alt) 90%,
-        transparent
+        var(--callout-color) 2.5%,
+        var(--background-primary)
     );
     box-shadow: inset 0px 0px 0px 1px
         color-mix(in srgb, var(--callout-color) 20%, transparent);
@@ -68,6 +76,14 @@
 }
 .callout .callout-content p:first-child {
     margin-top: 0;
+}
+
+.callout-content:has(.callout) {
+    padding: 0;
+}
+.callout-content .callout {
+    margin: 0.5rlh !important;
+    max-width: unset !important;
 }
 
 .callout[data-callout="ai"] > .callout-title,

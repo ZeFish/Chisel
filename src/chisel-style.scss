@@ -5,52 +5,52 @@ body.theme-dark,
 body.theme-light {
     /* --color-base-00:						var(--color-base-00); */
     --color-base-05: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 5%,
         var(--color-base-00)
     );
     --color-base-10: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 10%,
         var(--color-base-00)
     );
     --color-base-20: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 20%,
         var(--color-base-00)
     );
     --color-base-25: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 25%,
         var(--color-base-00)
     );
     --color-base-30: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 30%,
         var(--color-base-00)
     );
     --color-base-35: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 35%,
         var(--color-base-00)
     );
     --color-base-40: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 40%,
         var(--color-base-00)
     );
     --color-base-50: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 50%,
         var(--color-base-00)
     );
     --color-base-60: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 60%,
         var(--color-base-00)
     );
     --color-base-70: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 70%,
         var(--color-base-00)
     );
@@ -61,8 +61,8 @@ body.theme-light {
 
     --background-secondary: var(--color-base-05);
     --background-secondary: color-mix(
-        in oklab,
-        var(--color-base-100) 2%,
+        in lch,
+        var(--color-base-100) 2.5%,
         var(--background-primary)
     );
     --background-secondary-alt: var(--color-base-00);
@@ -70,12 +70,12 @@ body.theme-light {
     --accent-color: var(
         --color-yellow
     ); /* hsl(var(--accent-h), var(--accent-s), var(--accent-l)); */
-    --h1-color: var(--text-normal);
-    --h2-color: var(--text-normal);
-    --h3-color: var(--text-normal);
-    --h4-color: var(--text-normal);
-    --h5-color: var(--text-normal);
-    --h6-color: var(--text-normal);
+    --h1-color: var(--color-base-100);
+    --h2-color: var(--color-base-100);
+    --h3-color: var(--color-base-100);
+    --h4-color: var(--color-base-100);
+    --h5-color: var(--color-base-100);
+    --h6-color: var(--color-base-100);
 
     --background-modifier-hover: var(--color-base-35);
     --background-modifier-active-hover: var(--color-base-35);
@@ -96,7 +96,7 @@ body.theme-light {
     --interactive-accent: var(--color-base-50);
     --interactive-accent-hsl: 0, 0, 50;
     --interactive-accent-hover: color-mix(
-        in oklab,
+        in lch,
         var(--accent-color) 50%,
         var(--color-base-100)
     );
@@ -112,25 +112,25 @@ body.theme-light {
     --text-accent: var(--color-base-100);
     --text-accent-hover: var(--color-base-100);
     --text-selection: color-mix(
-        in oklab,
+        in lch,
         var(--color-yellow) 25%,
         var(--color-base-00)
     );
 
-    --link-external-color: var(--color-green);
+    --link-external-color: var(--color-purple);
     --link-external-color-hover: color-mix(
-        in oklab,
+        in lch,
         var(--link-external-color) 25%,
         var(--color-base-100)
     );
     --link-color: var(--accent-color);
     --link-color-hover: color-mix(
-        in oklab,
+        in lch,
         var(--link-color) 25%,
         var(--color-base-100)
     );
 
-    --code-normal: var(--color-red);
+    --font-monospace: var(--text-muted);
     --bold-color: var(--color-orange);
     --italic-color: var(--color-blue);
 
@@ -144,22 +144,22 @@ body.theme-light {
     --nav-item-color-active: var(--text-normal);
     --nav-item-color-hover: var(--text-normal);
     --nav-collapse-icon-color: color-mix(
-        in srgb,
+        in lch,
         var(--text-normal) 25%,
         transparent
     );
     --nav-collapse-icon-color-collapsed: color-mix(
-        in srgb,
+        in lch,
         var(--text-normal) 25%,
         transparent
     );
     --nav-indentation-guide-color: color-mix(
-        in srgb,
+        in lch,
         var(--text-normal) 10%,
         transparent
     );
     --nav-item-background-active: color-mix(
-        in srgb,
+        in lch,
         var(--background-primary) 50%,
         var(--background-secondary)
     );
@@ -172,35 +172,35 @@ body.theme-light {
     --tab-container-background: var(--background-secondary) !important;
 
     --indentation-guide-color: color-mix(
-        in srgb,
+        in lch,
         var(--color-base-100) 12%,
         transparent
     );
     --indentation-guide-color-active: color-mix(
-        in srgb,
+        in lch,
         var(--color-base-100) 3%,
         transparent
     );
     --scrollbar-active-thumb-bg: color-mix(
-        in srgb,
+        in lch,
         var(---color-base-100) 20%,
         transparent
     );
-    --scrollbar-bg: color-mix(in srgb, var(--color-base-100) 5%, transparent);
+    --scrollbar-bg: color-mix(in lch, var(--color-base-100) 5%, transparent);
     --scrollbar-thumb-bg: color-mix(
-        in srgb,
+        in lch,
         var(--color-base-100) 1%,
         transparent
     );
     --swatch-shadow: inset 0 0 0 1px
-        color-mix(in srgb, var(--color-base-1000) 1%, transparent);
+        color-mix(in lch, var(--color-base-1000) 1%, transparent);
     --workspace-background-translucent: color-mix(
-        in srgb,
+        in lch,
         var(--color-base-100) 40%,
         transparent
     );
     --text-highlight-bg: color-mix(
-        in srgb,
+        in lch,
         var(--color-yellow) 15%,
         transparent
     );
@@ -269,7 +269,7 @@ body.theme-light {
 
     --color-red: var(--light-color-red, #af3029) !important;
     --color-orange: var(--light-color-orange, #bc5215) !important;
-    --color-yellow: var(--light-color-yellow, #d0a215) !important;
+    --color-yellow: var(--light-color-yellow, #ad8301) !important;
     --color-green: var(--light-color-green, #66800b) !important;
     --color-cyan: var(--light-color-cyan, #24837b) !important;
     --color-blue: var(--light-color-blue, #205ea6) !important;
@@ -281,7 +281,7 @@ body.theme-dark,
 .is-mobile.theme-dark {
     --color-base-100: var(
         --dark-color-foreground,
-        var(--dark-color-base-100, #dad8ce)
+        var(--dark-color-base-100, #878580)
     );
     --color-base-00: var(
         --dark-color-background,
@@ -292,7 +292,7 @@ body.theme-dark,
     --color-black: var(--color-base-00);
 
     --accent-color: var(--dark-accent-color, var(--color-yellow));
-    --bold-color: var(--dark-bold-color, var(--color-orange));
+    --bold-color: var(--dark-bold-color, #24837b);
     --italic-color: var(--dark-italic-color, var(--color-blue));
 
     --color-red: var(--dark-color-red, #bf3f36) !important;
@@ -306,16 +306,35 @@ body.theme-dark,
 
     --color-red: var(--dark-color-red, #d14d41) !important;
     --color-orange: var(--dark-color-orange, #da702c) !important;
-    --color-yellow: var(--dark-color-yellow, #d0a215) !important;
+    --color-yellow: var(--dark-color-yellow, #ad8301) !important;
     --color-green: var(--dark-color-green, #879a39) !important;
     --color-cyan: var(--dark-color-cyan, #3aa99f) !important;
     --color-blue: var(--dark-color-blue, #4385be) !important;
     --color-purple: var(--dark-color-purple, #8b7ec8) !important;
     --color-pink: var(--dark-color-pink, #ce5d97) !important;
 
+    --h1-color: color-mix(
+        in lch,
+        var(--color-base-100) 85%,
+        var(--color-base-00)
+    );
+    --h2-color: color-mix(
+        in lch,
+        var(--color-base-100) 90%,
+        var(--color-base-00)
+    );
+    --h3-color: color-mix(
+        in lch,
+        var(--color-base-100) 95%,
+        var(--color-base-00)
+    );
+    --h4-color: var(--color-base-100);
+    --h5-color: var(--color-base-100);
+    --h6-color: var(--color-base-100);
+
     --background-primary: var(--color-base-05);
     --background-primary: color-mix(
-        in oklab,
+        in lch,
         var(--color-base-100) 2%,
         var(--color-base-00)
     );
@@ -325,12 +344,15 @@ body.theme-dark,
     --background-secondary-alt: var(--color-base-05);
 
     --text-highlight-bg: color-mix(
-        in srgb,
+        in lch,
         var(--color-yellow) 20%,
         transparent
     );
 }
 
+pre {
+    color: var(--color-base-70);
+}
 .markdown-rendered mark,
 .cm-s-obsidian span.cm-highlight {
     background-color: var(--text-highlight-bg);
@@ -354,45 +376,45 @@ a.footnote-link {
 }
 .notice,
 .tooltip {
-    color: color-mix(in srgb, var(--text-normal) 50%, transparent);
+    color: color-mix(in lch, var(--text-normal) 50%, transparent);
 }
 
 .is-translucent:not(.is-fullscreen) {
     --nav-collapse-icon-color: color-mix(
-        in srgb,
+        in lch,
         var(--mono-100) 30%,
         transparent
     );
     --nav-collapse-icon-color-collapsed: color-mix(
-        in srgb,
+        in lch,
         var(--mono-100) 30%,
         transparent
     );
 }
 .diff-line.mod-left {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-error) 20%,
         transparent
     );
 }
 .diff-line.mod-left .diff-changed {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-error) 40%,
         transparent
     );
 }
 .diff-line.mod-right {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-success) 20%,
         transparent
     );
 }
 .diff-line.mod-right .diff-changed {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-success) 40%,
         transparent
     );
@@ -400,7 +422,7 @@ a.footnote-link {
 input.document-search-input.mod-no-match,
 input.document-replace-input.mod-no-match {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-error) 20%,
         transparent
     );
@@ -409,7 +431,7 @@ input.document-replace-input.mod-no-match {
     input.document-search-input.mod-no-match:hover,
     input.document-replace-input.mod-no-match:hover {
         background-color: color-mix(
-            in srgb,
+            in lch,
             var(--background-modifier-error) 20%,
             transparent
         );
@@ -418,18 +440,18 @@ input.document-replace-input.mod-no-match {
 @media (hover: hover) {
     input[type="color"]::-webkit-color-swatch:hover {
         box-shadow:
-            inset 0 0 0 1px color-mix(in srgb, var(--mono-100) 20%, transparent),
+            inset 0 0 0 1px color-mix(in lch, var(--mono-100) 20%, transparent),
             0 0 0 3px var(--background-modifier-border-hover);
     }
 }
 .pdf-findbar .mod-not-found {
     --background-modifier-form-field: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-error) 10%,
         transparent
     );
     --background-modifier-border-focus: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-error) 60%,
         transparent
     );
@@ -438,7 +460,7 @@ input.document-replace-input.mod-no-match {
 @media (hover: hover) {
     .metadata-property-warning-icon:hover {
         background-color: color-mix(
-            in srgb,
+            in lch,
             var(--color-orange) 15%,
             transparent
         );
@@ -446,7 +468,7 @@ input.document-replace-input.mod-no-match {
 }
 .file-tree .mod-new.is-selected {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-success) 20%,
         transparent
     );
@@ -454,49 +476,49 @@ input.document-replace-input.mod-no-match {
 .file-tree .mod-deleted.is-selected,
 .file-tree .mod-to-delete.is-selected {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-error) 20%,
         transparent
     );
 }
 .publish-upload-item:before {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-success) 20%,
         transparent
     );
 }
 .publish-upload-item.mod-failed:before {
     background-color: color-mix(
-        in srgb,
+        in lch,
         var(--background-modifier-error) 20%,
         transparent
     );
 }
 .sync-history-list-item-header .sync-history-list-item-avatar {
-    border: 1px solid color-mix(in srgb, var(--mono-100) 20%, transparent);
+    border: 1px solid color-mix(in lch, var(--mono-100) 20%, transparent);
 }
 .canvas-node-placeholder::after {
-    background-color: color-mix(in srgb, var(--canvas-color) 10%, transparent);
+    background-color: color-mix(in lch, var(--canvas-color) 10%, transparent);
 }
 .canvas-node.is-themed .canvas-node-container {
-    border-color: color-mix(in srgb, var(--canvas-color) 70%, transparent);
+    border-color: color-mix(in lch, var(--canvas-color) 70%, transparent);
     box-shadow:
-        inset 0 0 0 1px color-mix(in srgb, var(--canvas-color) 70%, transparent),
+        inset 0 0 0 1px color-mix(in lch, var(--canvas-color) 70%, transparent),
         var(--shadow-stationary);
 }
 .canvas-node-group .canvas-node-content {
-    background-color: color-mix(in srgb, var(--canvas-color) 7%, transparent);
+    background-color: color-mix(in lch, var(--canvas-color) 7%, transparent);
 }
 .canvas-group-label {
-    background-color: color-mix(in srgb, var(--canvas-color) 1%, transparent);
+    background-color: color-mix(in lch, var(--canvas-color) 1%, transparent);
 }
 .canvas-node.is-themed .canvas-node-content {
-    background-color: color-mix(in srgb, var(--canvas-color) 70%, transparent);
+    background-color: color-mix(in lch, var(--canvas-color) 70%, transparent);
 }
 .canvas-edges g.is-focused path.canvas-interaction-path,
 .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
-    stroke: color-mix(in srgb, var(--canvas-color) 10%, transparent);
+    stroke: color-mix(in lch, var(--canvas-color) 10%, transparent);
 }
 
 /*
@@ -504,11 +526,11 @@ input.document-replace-input.mod-no-match {
 	--color-base-00: #000;
 	--color-base-10: #111;
 	--color-base-20: #1e1e1e;
-	--tag-background: color-mix(in srgb,var(--interactive-accent) 70%, transparent);
+	--tag-background: color-mix(in lch,var(--interactive-accent) 70%, transparent);
 	--search-result-background: var(--background-secondary);
 	--background-modifier-form-field: var(--background-modifier-border);
 	--background-modifier-cover: rgba(0, 0, 0, 0.5);
-	--background-modifier-hover: color-mix(in srgb,var(--mono-100) 25%, transparent);
+	--background-modifier-hover: color-mix(in lch,var(--mono-100) 25%, transparent);
 	--settings-home-background: var(--background-primary);
   }
 
@@ -520,14 +542,11 @@ input.document-replace-input.mod-no-match {
 
 @import "styles/avantgarde";
 @import "styles/forrest";
-@import "styles/futura";
 @import "styles/mariage";
 @import "styles/mono";
 @import "styles/mono-retro";
 @import "styles/mono-yellow";
-@import "styles/serif";
 @import "styles/apex";
-@import "styles/pine";
 @import "styles/bluey";
 
 @import "styles/adventurous";

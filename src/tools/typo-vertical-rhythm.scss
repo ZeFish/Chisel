@@ -113,7 +113,7 @@
 }
 
 .vertical-rhythm .inline-title {
-    margin-bottom: 2rlh;
+    margin-bottom: 4rlh;
     padding: 0;
     line-height: 0.8em;
 }
@@ -121,7 +121,7 @@
 /* .vertical-rhythm .HyperMD-header-1.cm-line */
 body.vertical-rhythm .markdown-reading-view div div h1 {
     margin-top: 8rlh;
-    margin-bottom: 2rlh;
+    margin-bottom: 3rlh;
     padding: 0;
     line-height: 0.8em;
 }
@@ -182,8 +182,11 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
         margin: 2rlh 0rlh;
     }
     .vertical-rhythm .inline-title {
-        margin-bottom: 2rlh !important;
-        margin-top: 0rlh;
+        margin-bottom: 3rlh;
+        margin-top: 1rlh;
+    }
+    .vertical-rhythm .markdown-source-view .inline-title {
+        margin-bottom: 1rlh;
     }
     .vertical-rhythm ul,
     .vertical-rhythm ol,

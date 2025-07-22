@@ -1,7 +1,7 @@
 .chisel-typography {
     font-optical-sizing: auto;
-    --normal-weight: 400;
-    --bold-weight: 600;
+    --normal-weight: 300;
+    --bold-weight: 500;
     --line-height: var(--line-height-normal);
     --font-ratio: 1.414;
     --heading-spacing: var(--line-height-normal);
@@ -12,8 +12,8 @@
     --h5-font: var(--font-header);
     --h6-font: var(--font-header);
     --h1-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
-    --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
-    --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
+    --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
+    --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1.5));
     --h4-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1));
     --h5-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
     --h6-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
@@ -35,9 +35,10 @@
     --font-header:
         "Oktah", "InterVariable", "Futura Now Var", "Gorton Perfected";
     --font-header-feature:
-        "dlig", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06",
-        "cv09", "cv10", "cv11", "cv12", "cv13";
-    --font-header-variation: "wght" 900, "ital" 0;
+        "liga", "calt", "case", "kern", "ss02", "ss03", "ss04";
+    /* , "ss02", "ss03", "ss04" */
+    --font-header-weight: 40;
+    --font-header-variation: "ital" 0;
     --font-header-letter-spacing: -0.01em;
     --font-header-letter-spacing: -0.065em;
     --font-header-line-height: 0.75em;
@@ -47,7 +48,7 @@
     --font-feature-settings: var(--font-feature);
     --font-variant-ligatures: normal;
     --font-variation-settings: var(--font-variation);
-    --font-header-weight: 600;
+
     --h1-weight: var(--font-header-weight);
     --h2-weight: max(
         var(--bold-weight),
@@ -64,8 +65,14 @@
         calc(var(--font-header-weight) * 0.75)
     );
 
+    --nav-item-weight: 400;
+
     font-feature-settings: var(--font-feature);
     font-variation-settings: var(--font-variation);
+}
+
+.chisel-typography {
+    font-weight: var(--normal-weight);
 }
 
 .chisel-typography .cm-comment.cm-strong {
@@ -99,9 +106,7 @@
 .inline-title:not([data-level]) {
     letter-spacing: var(--font-header-letter-spacing, normal);
 }
-p,
-li {
-}
+
 h1,
 h2,
 h3,
@@ -143,10 +148,12 @@ h6,
 .HyperMD-header-5 {
     text-transform: uppercase;
     letter-spacing: 0.005em !important;
+    font-weight: var(--bold-weight);
 }
 
 .markdown-rendered h6,
 .HyperMD-header-6 {
+    text-transform: uppercase;
     letter-spacing: 0.005em !important;
 }
 

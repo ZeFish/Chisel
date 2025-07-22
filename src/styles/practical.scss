@@ -57,7 +57,7 @@ body:has(.practical) {
     /* Accent system */
     --dark-color-red: #d14d41;
     --dark-color-orange: #da702c;
-    --dark-color-yellow: #d0a215;
+    --dark-color-yellow: #ad8301;
     --dark-color-green: #879a39;
     --dark-color-cyan: #24837b;
     --dark-color-blue: #4385be;
@@ -66,20 +66,24 @@ body:has(.practical) {
 
     /* Code and UI extras */
     --accent-color: var(--color-blue);
-    --code-normal: var(--foreground-color);
+    --font-monospace: var(--foreground-color);
     --bold-color: var(--color-red);
     --italic-color: var(--color-green);
 
-    --font-text: "iA Writer Quattro Var";
+    /* --font-text: "iA Writer Quattro Var"; */
+    --font-feature: "tnum", "liga", "clig", "kern", "calt", "zero", "ss05";
     --font-header: InterVariable;
+    --font-header-feature:
+        "liga", "calt", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv06",
+        "cv09", "cv10", "cv11", "cv12", "cv13";
     --font-mono: "MonoLisa";
     --font-mono-feature: "zero" on, "onum" on, "calt" on;
     --font-interface: "Sohne Mono";
 
     --line-height-normal: 1.5em;
     --font-header-line-height: 1em;
-    --font-header-weight: 800;
-    --font-header-letter-spacing: -0.05em;
+    --font-header-weight: 900;
+    --font-header-letter-spacing: -0.07em;
 }
 
 .theme-dark:has(.practical) {

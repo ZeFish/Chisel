@@ -7,7 +7,7 @@ body:has(.mariage) {
   
   body:has(.mariage), body.theme-dark:has(.mariage), body.theme-light:has(.mariage) {
 	--color-accent:	var(--text-normal);
-	--code-normal:	var(--text-normal);
+	--font-monospace:	var(--text-normal);
 	--bold-color:	var(--text-normal);
 	--italic-color:	var(--text-normal);
 	--font-text:	"Montserrat";

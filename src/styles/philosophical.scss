@@ -11,17 +11,23 @@ body:has(.philosophical) {
 
     --accent-color: var(--color-red);
 
-    --font-text: "Fern Variable";
+    --font-text: "Fern Variable", "Graveur Variable", Bookerly;
     --font-header: "Fern Variable";
     --font-interface: "Fern Variable";
+    --normal-weight: 450;
     --font-header-weight: 300;
 
+    --font-monospace: "Monaspace Xenon Var";
+    --font-mono-feature: "onum" off;
+    --font-mono-variation: "";
+
     --font-feature: "liga", "onum", "kern";
+    --font-variation: "opsz" 8;
     --font-header-feature: "liga", "onum", "kern";
-    --font-header-variation: "";
+    --font-header-variation: "opsz" 12;
 
     --bold-color: var(--color-red);
-    --bold-weight: 600;
+    --bold-weight: 550;
 
     --border: 0;
     --callout-default: var(--color-base-30);
@@ -58,5 +64,5 @@ body:has(.philosophical) .inline-title {
 
 body:has(.philosophical).theme-dark,
 body:has(.philosophical).is-mobile.theme-dark {
-    --bold-color: var(--color-orange);
+    --bold-color: var(--color-yellow);
 }

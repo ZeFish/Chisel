@@ -25,11 +25,12 @@ body:has(.forrest) {
     --font-text: "Forrest";
     --font-feature: "";
     --font-variation: "wght" 400;
+    --normal-weight: 400;
     --font-interface: var(--font-text);
-    --font-header: "Forrest";
+    --font-header: "Gorton Perfected";
     --font-header-feature: "";
-    --font-header-variation: "";
-    --font-header-letter-spacing: 0em;
+    --font-header-variation: "wght" 500;
+    --font-header-letter-spacing: -0.05em;
     --font-header-style: none;
     --font-header-weight: 800;
     --font-monospace: "Monaspace Xenon Var";
@@ -37,10 +38,12 @@ body:has(.forrest) {
     --font-mono-variation: "";
     --font-interface: "Gorton Perfected";
     --color-accent: var(--color-yellow);
-    --code-normal: var(--text-muted);
+    --font-monospace: var(--text-muted);
     --bold-color: var(--color-green);
     --bold-weight: 500;
     --italic-color: var(--color-blue);
+    --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
+    --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1.5));
 }
 
 .theme-dark:has(.forrest) {
@@ -86,17 +89,13 @@ body:has(.forrest) {
 }
 
 :has(.forrest) .inline-title {
+    font-family: "Forrest";
     text-shadow:
-        color-mix(in srgb, var(--color-red) 75%, var(--background-primary)) 0px
-            1px,
-        color-mix(in srgb, var(--color-red) 75%, var(--background-primary)) 0px
-            2px,
-        color-mix(in srgb, var(--color-red) 75%, var(--background-primary)) 1px
-            3px,
-        color-mix(in srgb, var(--color-red) 75%, var(--background-primary)) 2px
-            4px,
-        color-mix(in srgb, var(--color-red) 75%, var(--background-primary)) 3px
-            5px;
+        color-mix(in srgb, var(--color-red) 40%, transparent) 0px 1px,
+        color-mix(in srgb, var(--color-red) 40%, transparent) 0px 2px,
+        color-mix(in srgb, var(--color-red) 40%, transparent) 1px 3px,
+        color-mix(in srgb, var(--color-red) 40%, transparent) 2px 4px,
+        color-mix(in srgb, var(--color-red) 40%, transparent) 3px 5px;
 }
 
 :has(.forrest) .callout-title-inner {

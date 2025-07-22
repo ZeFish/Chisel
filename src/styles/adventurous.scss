@@ -34,13 +34,26 @@ body:has(.adventurous) {
     --bold-weight: 500;
 
     --accent-color: var(--text-normal);
-    --code-normal: var(--text-normal);
+    --font-monospace: var(--text-normal);
     --bold-color: var(--color-yellow);
     --italic-color: var(--color-blue);
 
     --font-text: "Forrest";
+    --font-feature: "";
+    --font-variation: "wght" 400;
+    --normal-weight: 400;
+
     --font-header: "Forrest";
-    --font-mono: "Monaspace Xenon Var";
+    --font-header-feature: "";
+    --font-header-variation: "wght" 800;
+    --font-header-letter-spacing: -0.05em;
+    --font-header-style: none;
+    --font-header-weight: 800;
+
+    --font-monospace: "Monaspace Xenon Var";
+    --font-mono-feature: "onum" off;
+    --font-mono-variation: "";
+
     --font-interface: "Gorton Perfected";
 
     --line-height-normal: 1.5em;
@@ -48,4 +61,15 @@ body:has(.adventurous) {
     --font-header-line-height: 1em;
     --font-header-weight: 500;
     --font-ratio: 1.5;
+
+    --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
+    --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1.5));
+}
+
+:has(.adventurous) .inline-title,
+:has(.adventurous) h1 {
+    font-family: "Gorton Perfected";
+    text-align: center;
+    letter-spacing: -0.05em;
+    font-variation-settings: "wght" 500;
 }

@@ -254,7 +254,7 @@ body:has(.forrest) {
     --titlebar-background-focused: var(--background-secondary);
     --titlebar-text-color: var(--text-faint);
     --titlebar-text-color-focused: var(--text-faint);
-    --code-normal: var(--color-red);
+    --font-monospace: var(--color-red);
     --bold-color: var(--color-red);
     --italic-color: var(--color-blue);
     --header-color: color-mix(in srgb, var(--text-normal) 100%, transparent);
