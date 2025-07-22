@@ -77,7 +77,8 @@ body:has(.practical) {
         "liga", "calt", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv06",
         "cv09", "cv10", "cv11", "cv12", "cv13";
     --font-monospace: "MonoLisa";
-    --font-mono-feature: "zero" on, "onum" on, "calt" on;
+    --font-mono-feature:
+        "liga", "zero", "calt", "ss03", "ss07", "ss10", "ss15", "ss16";
     --font-interface: "Sohne Mono";
 
     --line-height-normal: 1.5em;

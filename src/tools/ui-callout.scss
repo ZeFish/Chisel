@@ -30,8 +30,10 @@
     background-color: color-mix(in lch, var(--color-base-05) 100%, transparent);
 }
 
+.markdown-preview-view pre,
 pre code[class*="language-"] {
-    line-height: var(--line-height-tight);
+    line-height: var(--line-height-normal);
+    font-size: var(--font-smaller);
 }
 .markdown-preview-view blockquote,
 .markdown-source-view .HyperMD-quote {
@@ -89,6 +91,9 @@ pre code[class*="language-"] {
     margin: 0.5rlh !important;
     max-width: unset !important;
 }
+.callout-content pre {
+    margin: 1rlh 0rlh !important;
+}
 
 .callout[data-callout="ai"] > .callout-title,
 .callout[data-callout="ai"] > .callout-content {
@@ -120,5 +125,3 @@ pre code[class*="language-"] {
 .callout[data-callout="caption"] .callout-content p:first-child {
     margin-top: 0;
 }
-
-
