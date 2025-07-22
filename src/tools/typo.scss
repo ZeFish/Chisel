@@ -21,8 +21,7 @@
     --font-smaller: calc(var(--font-text-size) * pow(var(--font-ratio), -1));
     --font-small: calc(var(--font-text-size) * pow(var(--font-ratio), -0.5));
     --code-size: var(--font-small);
-    --font-feature:
-        "liga", "dlig", "clig", "kern", "pnum", "calt", "ss01", "ss02", "ss03";
+    --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
     --font-variation: "";
 
     --font-header-feature:
@@ -33,11 +32,12 @@
     --font-mono-feature: "";
     --font-mono-variation: "";
 
-    --font-header: "InterVariable", "Futura Now Var", "Gorton Perfected";
+    --font-header:
+        "Oktah", "InterVariable", "Futura Now Var", "Gorton Perfected";
     --font-header-feature:
         "dlig", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06",
         "cv09", "cv10", "cv11", "cv12", "cv13";
-    --font-header-variation: "wght" 900, "ital" 100;
+    --font-header-variation: "wght" 900, "ital" 0;
     --font-header-letter-spacing: -0.01em;
     --font-header-letter-spacing: -0.065em;
     --font-header-line-height: 0.75em;
@@ -99,7 +99,9 @@
 .inline-title:not([data-level]) {
     letter-spacing: var(--font-header-letter-spacing, normal);
 }
-
+p,
+li {
+}
 h1,
 h2,
 h3,
