@@ -1,3 +1,7 @@
+.chisel-typography .bases-view {
+    font-size: 1.1em !important;
+}
+
 .chisel-typography {
     font-optical-sizing: auto;
     --normal-weight: 300;
@@ -23,6 +27,13 @@
     --code-size: var(--font-small);
     --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
     --font-variation: "";
+
+    --bases-table-text-size: calc(
+        var(--font-text-size) * pow(var(--font-ratio), 0)
+    );
+    --metadata-input-font-size: calc(
+        var(--font-text-size) * pow(var(--font-ratio), 0)
+    );
 
     --font-header-feature:
         "dlig", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06",
@@ -71,7 +82,8 @@
     font-variation-settings: var(--font-variation);
 }
 
-.chisel-typography .markdown-rendered {
+.chisel-typography .markdown-rendered,
+.chisel-typography .markdown-source-view {
     font-weight: var(--normal-weight);
 }
 .chisel-typography code,
