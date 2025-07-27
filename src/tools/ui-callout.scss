@@ -105,8 +105,13 @@ pre code[class*="language-"] {
     background: none;
     background-color: transparent;
     border: none;
-    margin: 0rlh 1rlh 2rlh 1rlh !important;
+    margin: 0 1rlh 0rlh 1rlh !important;
     box-shadow: none;
+}
+
+.markdown-reading-view .callout[data-callout="caption"] {
+    position: relative;
+    top: -1.5rlh;
 }
 
 .callout[data-callout="caption"] .callout-title {

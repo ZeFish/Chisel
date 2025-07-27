@@ -69,21 +69,26 @@ body:has(.practical) {
     --bold-color: var(--color-red);
     --italic-color: var(--color-green);
 
-    /* --font-text: "iA Writer Quattro Var"; */
-    --font-feature: "tnum", "liga", "clig", "kern", "calt", "zero", "ss05";
+    --font-text: "Oktah";
+    --normal-weight: 90;
+    --bold-weight: 120;
+    --link-weight: 120;
+    --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
     --font-header: InterVariable;
     --font-header-feature:
         "liga", "calt", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv06",
         "cv09", "cv10", "cv11", "cv12", "cv13";
     --font-monospace: "MonoLisa";
     --font-mono-feature:
-        "liga", "zero", "calt", "ss03", "ss07", "ss10", "ss15", "ss16";
+        "liga", "zero", "calt", "ss02", "ss03", "ss07", "ss10", "ss15", "ss16";
     --font-interface: "Sohne Mono";
 
     --line-height-normal: 1.5em;
     --font-header-line-height: 1em;
     --font-header-weight: 900;
     --font-header-letter-spacing: -0.07em;
+
+    --code-function: var(--color-pink);
 }
 
 .theme-dark:has(.practical) {
@@ -107,4 +112,8 @@ body:has(.practical) {
 .theme-dark:has(.practical) h5,
 .theme-dark:has(.practical) h6 {
     color: #b7b5ac;
+}
+body:has(.practical) .token.comment {
+    color: color-mix(in lch, var(--color-base-100) 40%, var(--color-base-00));
+    font-style: italic;
 }
