@@ -10,6 +10,7 @@
     display: grid;
     margin-top: 0.25rlh;
     margin-bottom: 0.25rlh;
+    padding: 0 2rlh;
     grid-column-gap: 0.25rlh;
     grid-row-gap: 0;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));

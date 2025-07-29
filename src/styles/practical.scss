@@ -69,8 +69,8 @@ body:has(.practical) {
     --bold-color: var(--color-red);
     --italic-color: var(--color-green);
 
-    --font-text: "Oktah";
-    --normal-weight: 90;
+    --font-text: "Sohne Mono", "Oktah Round Variable";
+    --normal-weight: 300;
     --bold-weight: 120;
     --link-weight: 120;
     --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
@@ -113,7 +113,13 @@ body:has(.practical) {
 .theme-dark:has(.practical) h6 {
     color: #b7b5ac;
 }
+
 body:has(.practical) .token.comment {
     color: color-mix(in lch, var(--color-base-100) 40%, var(--color-base-00));
     font-style: italic;
+}
+
+body:has(.practical) .markdown-source-view p,
+body:has(.practical) .markdown-reading-view p {
+    /*font-weight: 90;*/
 }

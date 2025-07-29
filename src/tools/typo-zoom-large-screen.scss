@@ -2,10 +2,10 @@
 
 @media only screen and (min-width: $screen-large-width) {
     .zoom-large-screen {
-        --file-line-width: max(40em, 50vw) !important;
-        --font-text-size: clamp(1rem, -0.5rem + 1.6vw, 2rem) !important;
-        --line-width: max(40em, 50vw) !important;
-        --max-width: 50vw !important;
-        --line-height-normal: clamp(1.5rem, 1rem + 0.8vi, 2rem) !important;
+        --file-line-width: max(40em, 35vw) !important;
+        --font-text-size: clamp(1rem, -0.5rem + 1.6vw, 1.3rem) !important;
+        --line-width: max(40em, 35vw) !important;
+        --max-width: 35vw !important;
+        --line-height-normal: clamp(1.5rem, 1rem + 0.8vi, 1.3rem) !important;
     }
 }

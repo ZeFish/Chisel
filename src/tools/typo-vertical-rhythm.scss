@@ -13,6 +13,12 @@
 .img-grid .markdown-preview-section > div:has(.image-embed) {
     margin: 2rlh 0;
 }
+.img-grid
+    .markdown-preview-section
+    > div:has(.image-embed)
+    + div:has(.image-embed) {
+    margin-top: -1.75rlh;
+}
 
 .vertical-rhythm:not(:has(callout-content)) .callout,
 .vertical-rhythm:not(:has(callout-content)) blockquote,
