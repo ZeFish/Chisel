@@ -87,6 +87,20 @@
     padding: 0rlh 2rlh;
     margin: 1rlh 0rlh;
 }
+.vertical-rhythm .el-h1 + .el-ul ul,
+.vertical-rhythm .el-h2 + .el-ul ul,
+.vertical-rhythm .el-h3 + .el-ul ul,
+.vertical-rhythm .el-h4 + .el-ul ul,
+.vertical-rhythm .el-h5 + .el-ul ul,
+.vertical-rhythm .el-h6 + .el-ul ul,
+.vertical-rhythm .el-h1 + .el-ol ol,
+.vertical-rhythm .el-h2 + .el-ol ol,
+.vertical-rhythm .el-h3 + .el-ol ol,
+.vertical-rhythm .el-h4 + .el-ol ol,
+.vertical-rhythm .el-h5 + .el-ol ol,
+.vertical-rhythm .el-h6 + .el-ol ol {
+    margin-top: 0.25rlh;
+}
 .vertical-rhythm ol > li:not(:first-child) {
     padding-top: 0.5rlh;
 }
@@ -174,7 +188,7 @@ body.vertical-rhythm .markdown-reading-view div div h4 {
 
 /* .vertical-rhythm .HyperMD-header-5.cm-line */
 body.vertical-rhythm .markdown-reading-view div div h5 {
-    margin-top: 1rlh;
+    margin-top: 2rlh;
     margin-bottom: 0rlh;
     padding: 0;
     line-height: 1em;
