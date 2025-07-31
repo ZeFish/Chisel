@@ -52,16 +52,16 @@ pre code[class*="language-"] {
 }
 
 .callout-icon {
-    /*display: none;*/
+    margin: -0.25rlh 0rlh 0rlh 0rlh;
 }
 
 .callout-title {
-    padding: 0.5rlh 0 0.5rlh 0.75rlh;
+    margin: 0.5rlh 0 0.5rlh 0.75rlh;
     color: var(--callout-color);
 }
 
 .callout-content {
-    padding: 1rlh;
+    padding: 0.5rlh 1rlh;
     border-radius: var(--radius-m);
     background-color: color-mix(
         in srgb,
@@ -92,7 +92,8 @@ pre code[class*="language-"] {
     max-width: unset !important;
 }
 .callout-content pre {
-    margin: 1rlh 0rlh !important;
+    margin: 0.5rlh -0.5rlh !important;
+    padding: 0.5rlh;
 }
 
 .callout[data-callout="ai"] > .callout-title,
@@ -129,4 +130,9 @@ pre code[class*="language-"] {
 
 .callout[data-callout="caption"] .callout-content p:first-child {
     margin-top: 0;
+}
+
+.callout[data-callout="comment"] {
+    --callout-color: var(--color-green);
+    --callout-icon: lucide-tree-pine;
 }

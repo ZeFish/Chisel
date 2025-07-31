@@ -1,6 +1,13 @@
 /* ============================================= */
 /* Vertical Flow */
 /* ============================================= */
+.vertical-rhythm {
+    --table-margin: auto;
+    table {
+        margin-left: var(--table-margin);
+        margin-right: var(--table-margin);
+    }
+}
 .vertical-rhythm p,
 .vertical-rhythm .cm-line {
     line-height: var(--line-height-normal);
@@ -101,9 +108,6 @@
 .vertical-rhythm .el-h6 + .el-ol ol {
     margin-top: 0.25rlh;
 }
-.vertical-rhythm ol > li:not(:first-child) {
-    padding-top: 0.5rlh;
-}
 
 .xxxvertical-rhythm div:has(h1, h2, h3, h4, h5, h6, p) + div:has(ul, ol) {
     margin: -0.5rlh 0rlh;
@@ -122,7 +126,7 @@
 .vertical-rhythm .markdown-source-view ol > li:not(:first-child),
 .vertical-rhythm .markdown-source-view ul > li:not(:first-child),
 .vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line:not(:first-child) {
-    margin-top: 0.25rlh;
+    margin-top: 0rlh;
 }
 
 .vertical-rhythm {
@@ -139,10 +143,6 @@
     margin-bottom: 4rlh;
     padding: 0;
     line-height: 0.8em;
-}
-
-.vertical-rhythm table {
-    margin-inline: auto;
 }
 
 /* .vertical-rhythm .HyperMD-header-1.cm-line */
@@ -202,7 +202,7 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
     line-height: 1em;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 600px) {
     .vertical-rhythm:not(:has(callout-content)) .callout,
     .vertical-rhythm:not(:has(callout-content)) blockquote,
     .vertical-rhythm:not(:has(callout-content)) pre {
@@ -227,7 +227,7 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
     }
 }
 
-@media only screen and (min-width: 550px) {
+@media only screen and (min-width: 600px) {
     .vertical-rhythm {
         --file-margins: 2.5rlh;
     }

@@ -95,6 +95,17 @@ body.theme-light {
     --divider-color: transparent;
     --divider-width: 1px;
 
+    --border-color: var(
+        --light-border-color,
+        color-mix(in lch, var(--color-base-00) 12%, var(--color-base-100))
+    );
+
+    --border-color: var(
+        --dark-border-color,
+        color-mix(in lch, black 15%, var(--background-primary))
+    );
+    --table-border-color: var(--border-color);
+
     --interactive-normal: var(--color-base-05);
     --interactive-hover: var(--color-base-20);
     --interactive-accent: var(--color-base-50);
@@ -124,8 +135,8 @@ body.theme-light {
     --link-external-color: var(--color-purple);
     --link-external-color-hover: color-mix(
         in lch,
-        var(--link-external-color) 25%,
-        var(--color-base-100)
+        var(--color-base-100) 25%,
+        var(--color-base-00)
     );
     --link-color: var(--accent-color);
     --link-color-hover: color-mix(
@@ -345,6 +356,11 @@ body.theme-dark,
 
     --background-secondary: var(--color-base-00);
     --background-secondary-alt: var(--color-base-05);
+
+    --border-color: var(
+        --dark-border-color,
+        color-mix(in lch, black 65%, var(--color-base-100))
+    );
 
     --text-highlight-bg: color-mix(
         in lch,
