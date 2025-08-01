@@ -1,0 +1,68 @@
+body:has(.reflexion) {
+    --light-color-background: #fefdf9; /* Ivory - Very subtle warmth, almost white — keeps it clean. */
+    --light-color-background: #f9f6ef; /* Seashell - Soft warmth, still feels like sunlight on paper. */
+    --light-color-background: #fdfdfc; /* Snow Drift - Near-white with the tiniest touch of warmth. */
+    --light-color-background: #fdf5e6; /* Old Lace - A classic — slightly more yellow but elegant. */
+    --light-color-background: #fffcf0;
+    --light-color-foreground: #282726;
+
+    --dark-color-background: #231e16;
+    --dark-color-foreground: hsl(34, 50%, 80%);
+
+    --accent-color: var(--color-red);
+
+    --font-text: "Fern Variable", "Graveur Variable", Bookerly;
+    --font-header: "Fern Variable";
+    --font-interface: "Fern Variable";
+    --normal-weight: 450;
+    --font-header-weight: 300;
+
+    --font-monospace: "Monaspace Xenon Var";
+    --font-mono-feature: "onum" off;
+    --font-mono-variation: "";
+
+    --font-feature: "liga", "onum", "kern";
+    --font-variation: "opsz" 8;
+    --font-header-feature: "liga", "onum", "kern";
+    --font-header-variation: "opsz" 12;
+
+    --bold-color: var(--color-red);
+    --bold-weight: 550;
+
+    --border: 0;
+    --callout-default: var(--color-base-30);
+
+    /* Light Mode Accent Colors */
+    --light-color-red: #b5483c; /* like aged brick or red clay */
+    --light-color-orange: #c86a3d; /* terra cotta */
+    --light-color-yellow: #c2a84a; /* mustard parchment */
+    --light-color-green: #5e9d80; /* sage green */
+    --light-color-cyan: #6ba4b6; /* antique blue-grey */
+    --light-color-blue: #4f81a4; /* faded denim */
+    --light-color-purple: #7a6c91; /* dusk lavender */
+    --light-color-pink: #b97aa0; /* soft mauve rose */
+
+    /* Dark Mode Accent Colors */
+    --dark-color-red: #e57368; /* warm ember glow */
+    --dark-color-orange: #e88e5a; /* baked clay at dusk */
+    --dark-color-yellow: #e0c168; /* candlelight gold */
+    --dark-color-green: #7eb79c; /* moonlit sage */
+    --dark-color-cyan: #84c3d6; /* cool teal mist */
+    --dark-color-blue: #6da2c7; /* twilight lake */
+    --dark-color-purple: #a58fc0; /* smoky lilac */
+    --dark-color-pink: #e6a3d1; /* fading rose light */
+}
+
+body:has(.reflexion) h1,
+body:has(.reflexion) .inline-title {
+    text-align: center;
+    margin-bottom: 6rem;
+    letter-spacing: 0.15em;
+    /* /*text-transform: uppercase;* */
+    font-feature-settings: "liga", "onum", "kern", "smcp";
+}
+
+body:has(.reflexion).theme-dark,
+body:has(.reflexion).is-mobile.theme-dark {
+    --bold-color: var(--color-orange);
+}

@@ -7,7 +7,7 @@
     {
       "label": "Chisel",
       "type": "shell",
-      "command": "sass src/chisel.scss:/Users/francisfontaine/documents/Atelier/.obsidian/snippets/chisel.css src/chisel-style.scss:/Users/francisfontaine/documents/Atelier/.obsidian/snippets/chisel-style.css",
+      "command": "sass src/chisel.scss:./chisel.css && sass src/chisel-style.scss:./chisel-style.css && sass src/chisel.scss:/Users/francisfontaine/documents/Atelier/.obsidian/snippets/chisel.css && sass src/chisel-style.scss:/Users/francisfontaine/documents/Atelier/.obsidian/snippets/chisel-style.css",
       "group": "build",
       "problemMatcher": []
     }
