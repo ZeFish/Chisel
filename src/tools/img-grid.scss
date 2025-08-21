@@ -6,7 +6,7 @@
     line-height: 0;
 }
 
-.img-grid .markdown-preview-section > div:has(.image-embed) > p {
+.img-grid .markdown-preview-section > div p:has(> .image-embed) {
     display: grid;
     margin-top: 0.25rlh;
     margin-bottom: 0.25rlh;
@@ -31,6 +31,10 @@
     align-self: center;
     height: 100%;
     width: 100%;
+}
+
+.img-grid .markdown-preview-section img,
+.img-grid .markdown-source-view img {
     border-radius: var(--radius-m);
     border: 1px solid
         color-mix(in srgb, var(--background-primary) 75%, var(--color-black));

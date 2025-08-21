@@ -32,7 +32,7 @@
   line-height: 0;
 }
 
-.img-grid .markdown-preview-section > div:has(.image-embed) > p {
+.img-grid .markdown-preview-section > div p:has(> .image-embed) {
   display: grid;
   margin-top: 0.25rlh;
   margin-bottom: 0.25rlh;
@@ -52,6 +52,10 @@
   align-self: center;
   height: 100%;
   width: 100%;
+}
+
+.img-grid .markdown-preview-section img,
+.img-grid .markdown-source-view img {
   border-radius: var(--radius-m);
   border: 1px solid color-mix(in srgb, var(--background-primary) 75%, var(--color-black));
   box-shadow: 0.3px 0.5px 0.8px color-mix(in srgb, var(--background-primary) 90%, var(--color-black)), 0.5px 0.9px 1.5px -0.2px color-mix(in srgb, var(--background-primary) 80%, var(--color-black)), 1px 2px 3.2px -0.4px color-mix(in srgb, var(--background-primary) 80%, var(--color-black));
@@ -362,25 +366,22 @@ body.vertical-rhythm .markdown-reading-view div div h1 {
   margin-top: 8rlh;
   margin-bottom: 3rlh;
   padding: 0;
-  line-height: 0.8em;
 }
 
 /* .vertical-rhythm .HyperMD-header-2.cm-line  */
 body.vertical-rhythm .markdown-reading-view div div h2 {
-  margin-top: 6rlh;
+  margin-top: 8rlh;
   margin-bottom: 2rlh;
   padding: 0;
-  line-height: 0.75em;
 }
 
 /* .vertical-rhythm .HyperMD-header-3.cm-line
 is commented because is bugged the ability to select text
 */
 body.vertical-rhythm .markdown-reading-view div div h3 {
-  margin-top: 4rlh;
-  margin-bottom: 1rlh;
+  margin-top: 6rlh;
+  margin-bottom: 2rlh;
   padding: 0;
-  line-height: 1em;
 }
 
 /* .vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line */
@@ -390,31 +391,28 @@ body.vertical-rhythm .markdown-reading-view div:has(h1) + div:has(h2) h2 {
 
 /* .vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
 body.vertical-rhythm .markdown-reading-view div:has(h2) + div:has(h3) h3 {
-  margin-top: 1rlh;
+  margin-top: 4rlh;
 }
 
 /* .vertical-rhythm .HyperMD-header-4.cm-line */
 body.vertical-rhythm .markdown-reading-view div div h4 {
-  margin-top: 2rlh;
-  margin-bottom: 0rlh;
+  margin-top: 4rlh;
+  margin-bottom: 1rlh;
   padding: 0;
-  line-height: 1em;
 }
 
 /* .vertical-rhythm .HyperMD-header-5.cm-line */
 body.vertical-rhythm .markdown-reading-view div div h5 {
   margin-top: 2rlh;
-  margin-bottom: 0rlh;
+  margin-bottom: 1rlh;
   padding: 0;
-  line-height: 1em;
 }
 
 /* .vertical-rhythm .HyperMD-header-6.cm-line  */
 body.vertical-rhythm .markdown-reading-view div div h6 {
-  margin-top: 1rlh;
+  margin-top: 2rlh;
   margin-bottom: 0rlh;
   padding: 0;
-  line-height: 1em;
 }
 
 @media only screen and (max-width: 600px) {
@@ -556,36 +554,35 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
   --file-margins: 64px;
 }
 
-.chisel-typography .bases-view {
-  font-size: 1.1em !important;
-}
-
-.chisel-typography {
+body.chisel-typography {
   font-optical-sizing: auto;
+  --line-height-normal: var(--font-density, 1.8);
   --line-height: var(--line-height-normal);
   --font-ratio: 1.414;
   --heading-spacing: var(--line-height-normal);
+  --inline-title-font: var(--font-header);
   --h1-font: var(--font-header);
   --h2-font: var(--font-header);
   --h3-font: var(--font-header);
   --h4-font: var(--font-header);
   --h5-font: var(--font-header);
   --h6-font: var(--font-header);
+  --inline-title-size: calc(
+      var(--font-text-size) * pow(var(--font-ratio), 4)
+  );
   --h1-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
-  --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
-  --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1.5));
+  --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
+  --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
   --h4-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1));
-  --h5-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
-  --h6-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
+  --h5-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0.5));
+  --h6-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0.5));
   --font-smallest: calc(var(--font-text-size) * pow(var(--font-ratio), -1.5));
   --font-smaller: calc(var(--font-text-size) * pow(var(--font-ratio), -1));
   --font-small: calc(var(--font-text-size) * pow(var(--font-ratio), -0.5));
+  --tag-size: var(--font-smaller);
   --code-size: var(--font-small);
   --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
   --font-variation: "";
-  --bases-table-text-size: calc(
-      var(--font-text-size) * pow(var(--font-ratio), 0)
-  );
   --metadata-input-font-size: calc(
       var(--font-text-size) * pow(var(--font-ratio), 0)
   );
@@ -595,9 +592,6 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
   --font-header-variation: "";
   --font-mono-feature: "";
   --font-mono-variation: "";
-  --font-header:
-      "Wonder", "Futura Now Var", "Oktah Round Variable", "InterVariable",
-      "Gorton Perfected";
   --font-header-feature:
       "liga", "calt", "case", "kern", "ss02", "ss03", "ss04";
   /* , "ss02", "ss03", "ss04" */
@@ -607,13 +601,15 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
   --font-header-variation: "ital" 0;
   --font-header-letter-spacing: -0.01em;
   --font-header-letter-spacing: -0.065em;
-  --font-header-line-height: 0.75em;
+  --font-header-letter-spacing: -0.025em;
+  --font-header-line-height: 1em;
   /* --font-monospace:	"Sohne Mono"; */
   --font-mono-feature: "";
   --font-mono-variation: "";
   --font-feature-settings: var(--font-feature);
   --font-variant-ligatures: normal;
   --font-variation-settings: var(--font-variation);
+  --inline-title-weight: var(--font-header-weight);
   --h1-weight: var(--font-header-weight);
   --h2-weight: calc(var(--font-header-weight) * 1);
   --h3-weight: calc(var(--font-header-weight) * 1);
@@ -621,13 +617,14 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
   --h5-weight: calc(var(--font-header-weight) * 1);
   --h6-weight: calc(var(--font-header-weight) * 1);
   --nav-item-weight: 400;
-  font-feature-settings: var(--font-feature);
-  font-variation-settings: var(--font-variation);
+  --file-line-width: 63ch;
 }
 
 .chisel-typography .markdown-rendered,
 .chisel-typography .markdown-source-view {
   font-weight: var(--normal-weight);
+  font-feature-settings: var(--font-feature);
+  font-variation-settings: var(--font-variation);
 }
 
 .chisel-typography code,
@@ -684,7 +681,8 @@ h6,
 .HyperMD-header-4,
 .HyperMD-header-5,
 .HyperMD-header-6,
-.inline-title {
+.inline-title,
+.inline-title:not([data-level]) {
   font-feature-settings: var(--font-header-feature);
   font-variation-settings: var(--font-header-variation);
   overflow-wrap: normal;
@@ -693,6 +691,7 @@ h6,
   text-wrap: balance;
   font-style: var(--font-header-style, normal);
   font-weight: var(--font-header-weight);
+  font-family: var(--font-header);
 }
 
 .chisel-typography b,
@@ -1065,6 +1064,11 @@ body.minimalist:not(.is-mobile)
   mix-blend-mode: multiply;
 }
 
+.transclusion-inv {
+  --embed-padding: 0;
+  --embed-max-height: unset;
+}
+
 .transclusion-inv .markdown-preview-view:not(.transclusion-inv-off) .el-embed-page p {
   margin-left: 0;
   margin-right: 0;
@@ -1094,7 +1098,53 @@ body.minimalist:not(.is-mobile)
   display: none;
 }
 
-.transclusion-no-header .markdown-preview-view:not(.transclusion-no-header-off) .embed-title {
+.bases-embed {
+  --bases-embed-border-width: 10px !important;
+}
+
+.bases-tbody,
+.bases-rendered-value {
+  --bases-table-text-size: calc(
+      var(--font-text-size) * pow(var(--font-ratio), -0.5)
+  );
+  --bases-table-text-size: var(--nav-item-size);
+  --input-padding: 0.5rlh 0.5rlh !important;
+  box-shadow: none;
+  --table-border-color: var(--border-color);
+  --bases-table-header-background: var(--background-secondary);
+}
+
+.bases-header,
+.bases-thead,
+.bases-tr,
+.bases-td {
+  box-shadow: none;
+  border: 0;
+  --bases-header-border-width: 0;
+}
+
+.bases-embed .bases-view {
+  --bases-embed-border-width: 0px;
+  --bases-embed-border-color: var(--color-border);
+  --bases-embed-border-radius: var(--radius);
+}
+
+.mod-sidedock .bases-header,
+.bases-header {
+  opacity: 0.2;
+}
+
+.mod-sidedock .bases-header:hover,
+.bases-header:hover,
+.bases-thead:hover {
+  opacity: 1;
+}
+
+.bases-thead {
+  opacity: 0.2;
+}
+
+.mod-sidedock .bases-thead {
   display: none;
 }
 

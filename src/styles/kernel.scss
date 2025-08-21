@@ -89,11 +89,16 @@ body:has(.kernel) {
     --font-header-letter-spacing: -0.07em;
 
     --code-function: var(--color-pink);
+
+    --file-line-width: 75ch;
 }
 
 .theme-dark:has(.kernel) {
     --accent-color: var(--color-purple);
     --bold-color: var(--color-pink);
+}
+:has(.kernel) .inline-title {
+    text-align: left;
 }
 .theme-light:has(.kernel) .inline-title,
 .theme-light:has(.kernel) h1,

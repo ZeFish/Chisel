@@ -1,35 +1,34 @@
-.chisel-typography .bases-view {
-    font-size: 1.1em !important;
-}
-
-.chisel-typography {
+body.chisel-typography {
     font-optical-sizing: auto;
-
+    --line-height-normal: var(--font-density, 1.8);
     --line-height: var(--line-height-normal);
     --font-ratio: 1.414;
     --heading-spacing: var(--line-height-normal);
+    --inline-title-font: var(--font-header);
     --h1-font: var(--font-header);
     --h2-font: var(--font-header);
     --h3-font: var(--font-header);
     --h4-font: var(--font-header);
     --h5-font: var(--font-header);
     --h6-font: var(--font-header);
+    --inline-title-size: calc(
+        var(--font-text-size) * pow(var(--font-ratio), 4)
+    );
+
     --h1-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
-    --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
-    --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1.5));
+    --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
+    --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
     --h4-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1));
-    --h5-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
-    --h6-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0));
+    --h5-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0.5));
+    --h6-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0.5));
     --font-smallest: calc(var(--font-text-size) * pow(var(--font-ratio), -1.5));
     --font-smaller: calc(var(--font-text-size) * pow(var(--font-ratio), -1));
     --font-small: calc(var(--font-text-size) * pow(var(--font-ratio), -0.5));
+    --tag-size: var(--font-smaller);
     --code-size: var(--font-small);
     --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
     --font-variation: "";
 
-    --bases-table-text-size: calc(
-        var(--font-text-size) * pow(var(--font-ratio), 0)
-    );
     --metadata-input-font-size: calc(
         var(--font-text-size) * pow(var(--font-ratio), 0)
     );
@@ -42,9 +41,6 @@
     --font-mono-feature: "";
     --font-mono-variation: "";
 
-    --font-header:
-        "Wonder", "Futura Now Var", "Oktah Round Variable", "InterVariable",
-        "Gorton Perfected";
     --font-header-feature:
         "liga", "calt", "case", "kern", "ss02", "ss03", "ss04";
     /* , "ss02", "ss03", "ss04" */
@@ -54,7 +50,8 @@
     --font-header-variation: "ital" 0;
     --font-header-letter-spacing: -0.01em;
     --font-header-letter-spacing: -0.065em;
-    --font-header-line-height: 0.75em;
+    --font-header-letter-spacing: -0.025em;
+    --font-header-line-height: 1em;
     /* --font-monospace:	"Sohne Mono"; */
     --font-mono-feature: "";
     --font-mono-variation: "";
@@ -62,6 +59,7 @@
     --font-variant-ligatures: normal;
     --font-variation-settings: var(--font-variation);
 
+    --inline-title-weight: var(--font-header-weight);
     --h1-weight: var(--font-header-weight);
     --h2-weight: calc(var(--font-header-weight) * 1);
     --h3-weight: calc(var(--font-header-weight) * 1);
@@ -71,13 +69,14 @@
 
     --nav-item-weight: 400;
 
-    font-feature-settings: var(--font-feature);
-    font-variation-settings: var(--font-variation);
+    --file-line-width: 63ch;
 }
 
 .chisel-typography .markdown-rendered,
 .chisel-typography .markdown-source-view {
     font-weight: var(--normal-weight);
+    font-feature-settings: var(--font-feature);
+    font-variation-settings: var(--font-variation);
 }
 .chisel-typography code,
 .HyperMD-codeblock {
@@ -133,7 +132,8 @@ h6,
 .HyperMD-header-4,
 .HyperMD-header-5,
 .HyperMD-header-6,
-.inline-title {
+.inline-title,
+.inline-title:not([data-level]) {
     font-feature-settings: var(--font-header-feature);
     font-variation-settings: var(--font-header-variation);
     overflow-wrap: normal;
@@ -142,6 +142,7 @@ h6,
     text-wrap: balance;
     font-style: var(--font-header-style, normal);
     font-weight: var(--font-header-weight);
+    font-family: var(--font-header);
 }
 
 .chisel-typography b,

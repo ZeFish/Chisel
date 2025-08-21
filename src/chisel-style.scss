@@ -3,6 +3,10 @@
 body,
 body.theme-dark,
 body.theme-light {
+    letter-spacing: 0.01rem;
+    --font-header:
+        "Wonder", "Futura Now Var", "Oktah Round Variable", "InterVariable",
+        "Gorton Perfected";
     /* --color-base-00:						var(--color-base-00); */
     --color-base-05: color-mix(
         in lch,
@@ -105,6 +109,7 @@ body.theme-light {
         color-mix(in lch, black 15%, var(--background-primary))
     );
     --table-border-color: var(--border-color);
+    /*--background-modifier-border: var(--border-color);*/
 
     --interactive-normal: var(--color-base-05);
     --interactive-hover: var(--color-base-20);
@@ -147,6 +152,14 @@ body.theme-light {
 
     --bold-color: var(--color-orange);
     --italic-color: var(--color-blue);
+
+    --tag-background: var(--background-secondary);
+    --tag-border: var(--border-color);
+    --tag-border-width: 1px;
+    --tag-radius: 0.25rlh;
+    --tag-color: var(--text-faint);
+    --tag-padding-x: 0.5rlh;
+    --tag-padding-y: 0.1rlh;
 
     --icon-color-active: var(--text-normal);
     --icon-color-focused: var(--text-normal);
@@ -369,6 +382,19 @@ body.theme-dark,
     );
 }
 
+.inline-title:not([data-level]) {
+    text-align: left;
+}
+
+body:has(div[data-mode="preview"]) .view-header-title-parent,
+body:has(div[data-mode="preview"]) .view-header-title,
+body:has(div[data-mode="preview"]) .cmdr-page-header,
+body:has(.is-live-preview) .view-header-title-parent,
+body:has(.is-live-preview) .view-header-title,
+body:has(.is-live-preview) .cmdr-page-header {
+    display: none;
+}
+
 pre {
     color: var(--color-base-70);
 }
@@ -571,3 +597,6 @@ input.document-replace-input.mod-no-match {
 @import "styles/kernel";
 @import "styles/reflexion";
 @import "styles/manifeste";
+
+@import "styles/gaspesie";
+@import "styles/cracker";
