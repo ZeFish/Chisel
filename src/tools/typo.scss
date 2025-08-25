@@ -1,8 +1,8 @@
 body.chisel-typography {
     font-optical-sizing: auto;
-    --line-height-normal: var(--font-density, 1.8);
+    --line-height-normal: var(--font-density, 1.5);
     --line-height: var(--line-height-normal);
-    --font-ratio: 1.414;
+    --font-ratio: 1.333;
     --heading-spacing: var(--line-height-normal);
     --inline-title-font: var(--font-header);
     --h1-font: var(--font-header);
