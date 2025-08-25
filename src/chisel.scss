@@ -129,7 +129,7 @@ body.theme-light {
     --background-modifier-message: var(--color-base-05);
     --background-modifier-form-field: var(--color-base-05);
 
-    --divider-color: transparent;
+    --divider-color: color-mix(in lch, black 7%, var(--background-primary));
     --divider-width: 1px;
 
     --border-color: var(
@@ -141,6 +141,8 @@ body.theme-light {
         --dark-border-color,
         color-mix(in lch, black 15%, var(--background-primary))
     );
+
+    --border-color: red;
     --table-border-color: var(--border-color);
     /*--background-modifier-border: var(--border-color);*/
 
@@ -287,9 +289,9 @@ body.theme-light {
     --tx1: var(--text-normal) !important;
     --tx2: var(--text-muted) !important;
     --tx3: var(--text-faint) !important;
-    --ui1: var(--color-base-05) !important;
-    --ui2: var(--color-base-05) !important;
-    --ui3: var(--color-base-05) !important;
+    --ui1: var(--divider-color) !important;
+    --ui2: green !important;
+    --ui3: blue !important;
     --bg1: var(--background-secondary) !important;
     --bg2: var(--background-secondary) !important;
     --bg3: var(--background-primary) !important;
