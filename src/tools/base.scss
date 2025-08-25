@@ -22,16 +22,19 @@
     border: 0;
     --bases-header-border-width: 0;
 }
+.bases-tr:not(:last-child) {
+    border-bottom: 1px solid var(--divider-color);
+}
 
 .bases-embed .bases-view {
     --bases-embed-border-width: 0px;
-    --bases-embed-border-color: var(--color-border);
+    --bases-embed-border-color: var(--border-color);
     --bases-embed-border-radius: var(--radius);
 }
 
 .mod-sidedock .bases-header,
 .bases-header {
-    opacity: 0.2;
+    opacity: 0.4;
 }
 .mod-sidedock .bases-header:hover,
 .bases-header:hover,
@@ -39,7 +42,7 @@
     opacity: 1;
 }
 .bases-thead {
-    opacity: 0.2;
+    opacity: 0.4;
 }
 .mod-sidedock .bases-thead {
     display: none;
