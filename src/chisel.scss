@@ -142,7 +142,6 @@ body.theme-light {
         color-mix(in lch, black 15%, var(--background-primary))
     );
 
-    --border-color: red;
     --table-border-color: var(--border-color);
     /*--background-modifier-border: var(--border-color);*/
 
@@ -291,7 +290,7 @@ body.theme-light {
     --tx3: var(--text-faint) !important;
     --ui1: var(--divider-color) !important;
     --ui2: green !important;
-    --ui3: blue !important;
+    --ui3: var(--divider-color) !important;
     --bg1: var(--background-secondary) !important;
     --bg2: var(--background-secondary) !important;
     --bg3: var(--background-primary) !important;
