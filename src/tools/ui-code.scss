@@ -1,5 +1,7 @@
-.code-wrap-off code[class*="language-"],
-.code-no-wrap pre[class*="language-"] {
+.code-wrap-off .markdown-preview-view code[class*="language-"],
+.code-wrap-off .markdown-source-view code[class*="language-"],
+.code-wrap-off .markdown-preview-view pre[class*="language-"],
+.code-wrap-off .markdown-source-view pre[class*="language-"] {
     white-space: pre;
 }
 

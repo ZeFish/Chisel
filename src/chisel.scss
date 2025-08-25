@@ -34,12 +34,9 @@ $screen-large-width: 1500px;
 
 @import "tools/settings";
 
-@charset "UTF-8";
-
 body,
 body.theme-dark,
 body.theme-light {
-    letter-spacing: 0.01rem;
     --font-header:
         "Wonder", "Futura Now Var", "Oktah Round Variable", "InterVariable",
         "Gorton Perfected";
