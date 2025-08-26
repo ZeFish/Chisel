@@ -26,7 +26,7 @@ body.chisel-typography {
     --font-small: calc(var(--font-text-size) * pow(var(--font-ratio), -0.5));
     --tag-size: var(--font-smaller);
     --code-size: var(--font-small);
-    --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
+    --font-feature: "liga", "clig", "kern", "calt", "zero";
     --font-variation: "";
 
     --metadata-input-font-size: calc(
