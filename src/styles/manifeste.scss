@@ -40,6 +40,29 @@ body:has(.manifeste) .inline-title {
     color: var(--color-foreground);
 }
 
+body:has(.manifeste) .callout {
+    border-color: color-mix(
+        in srgb,
+        var(--callout-color) 20%,
+        var(--background-secondary)
+    );
+    background-color: color-mix(
+        in srgb,
+        var(--callout-color) 2%,
+        var(--background-secondary)
+    );
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-left-width: 0.25rlh;
+}
+
+body:has(.manifeste) .callout-content {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
 body:has(.manifeste) .vertical-rhythm .markdown-preview-view ol > li,
 body:has(.manifeste) .vertical-rhythm .markdown-preview-view ul > li,
 body:has(.manifeste) .vertical-rhythm .markdown-source-view ol > li,

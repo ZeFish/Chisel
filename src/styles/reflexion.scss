@@ -87,3 +87,27 @@ body:has(.reflexion) .markdown-reading-view hr {
     --hr-thickness: 1px;
     margin: 4rlh 8rlh;
 }
+
+body:has(.reflexion) .callout {
+    border-color: color-mix(
+        in srgb,
+        var(--callout-color) 20%,
+        var(--background-secondary)
+    );
+    background-color: var(--background-primary);
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-left-width: 0.25rlh;
+}
+
+body:has(.reflexion) .callout-title {
+    color: var(--foreground-color);
+}
+
+body:has(.reflexion) .callout-content {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
