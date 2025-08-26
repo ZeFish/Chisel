@@ -3,6 +3,8 @@
 /* ============================================= */
 .vertical-rhythm {
     --table-margin: auto;
+    --table-cell-padding: 0.5rlh 0.5rlh;
+    --table-edge-cell-padding-first: 0.5rlh;
     table {
         margin-left: var(--table-margin);
         margin-right: var(--table-margin);
@@ -132,11 +134,6 @@
 .vertical-rhythm {
     --nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1)
         var(--size-4-6);
-}
-
-.vertical-rhythm.fn-whitespace-stop-collapsing .nav-folder-title-content {
-    padding-bottom: var(--size-2-1) !important;
-    padding-top: var(--size-2-1) !important;
 }
 
 .vertical-rhythm .inline-title {
