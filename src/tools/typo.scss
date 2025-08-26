@@ -26,30 +26,23 @@ body.chisel-typography {
     --font-small: calc(var(--font-text-size) * pow(var(--font-ratio), -0.5));
     --tag-size: var(--font-smaller);
     --code-size: var(--font-small);
-    --font-feature: "liga", "clig", "kern", "calt", "zero";
+    --font-feature: "";
     --font-variation: "";
 
     --metadata-input-font-size: calc(
         var(--font-text-size) * pow(var(--font-ratio), 0)
     );
 
-    --font-header-feature:
-        "dlig", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06",
-        "cv09", "cv10", "cv11", "cv12", "cv13";
+    --font-header-feature: "";
     --font-header-variation: "";
 
     --font-mono-feature: "";
     --font-mono-variation: "";
 
-    --font-header-feature:
-        "liga", "calt", "case", "kern", "ss02", "ss03", "ss04";
     /* , "ss02", "ss03", "ss04" */
     --normal-weight: 400;
     --bold-weight: 600;
     --font-header-weight: 400;
-    --font-header-variation: "ital" 0;
-    --font-header-letter-spacing: -0.01em;
-    --font-header-letter-spacing: -0.065em;
     --font-header-letter-spacing: -0.025em;
     --font-header-line-height: 1em;
     /* --font-monospace:	"Sohne Mono"; */

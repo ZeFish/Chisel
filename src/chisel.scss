@@ -37,9 +37,10 @@ $screen-large-width: 1500px;
 body,
 body.theme-dark,
 body.theme-light {
-    --font-header:
-        "Wonder", "Futura Now Var", "Oktah Round Variable", "InterVariable",
-        "Gorton Perfected";
+    --font-header: "Fraunces", "InterVariable";
+    --font-feature: "liga", "clig", "kern", "calt", "zero";
+    --font-header-feature: "liga";
+    --font-header-variation: "SOFT" 75, "WONK" 0;
     /* --color-base-00:						var(--color-base-00); */
     --color-base-05: color-mix(
         in lch,
