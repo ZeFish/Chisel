@@ -154,7 +154,7 @@ body.vertical-rhythm .markdown-reading-view div div h1 {
 
 /* .vertical-rhythm .HyperMD-header-2.cm-line  */
 body.vertical-rhythm .markdown-reading-view div div h2 {
-    margin-top: 8rlh;
+    margin-top: 6rlh;
     margin-bottom: 2rlh;
     padding: 0;
 }
@@ -162,7 +162,7 @@ body.vertical-rhythm .markdown-reading-view div div h2 {
 is commented because is bugged the ability to select text
 */
 body.vertical-rhythm .markdown-reading-view div div h3 {
-    margin-top: 6rlh;
+    margin-top: 4rlh;
     margin-bottom: 2rlh;
     padding: 0;
 }
@@ -175,6 +175,11 @@ body.vertical-rhythm .markdown-reading-view div:has(h2) + div:has(h3) h3 {
     margin-top: 4rlh;
 }
 
+/* .vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+body.vertical-rhythm .markdown-reading-view div:has(h3) + div:has(h4) h4 {
+    margin-top: 0rlh;
+}
+
 /* .vertical-rhythm .HyperMD-header-4.cm-line */
 body.vertical-rhythm .markdown-reading-view div div h4 {
     margin-top: 4rlh;
@@ -184,7 +189,7 @@ body.vertical-rhythm .markdown-reading-view div div h4 {
 
 /* .vertical-rhythm .HyperMD-header-5.cm-line */
 body.vertical-rhythm .markdown-reading-view div div h5 {
-    margin-top: 2rlh;
+    margin-top: 3rlh;
     margin-bottom: 1rlh;
     padding: 0;
 }

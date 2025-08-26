@@ -57,6 +57,14 @@ body:has(.manifeste) .callout {
     border-left-width: 0.25rlh;
 }
 
+body:has(.manifeste) .callout-icon {
+    color: var(--callout-color);
+}
+
+body:has(.manifeste) .callout-title {
+    color: var(--foreground-color);
+}
+
 body:has(.manifeste) .callout-content {
     border: 0;
     background: transparent;
