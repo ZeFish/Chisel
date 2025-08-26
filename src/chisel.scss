@@ -12,10 +12,8 @@ $screen-large-width: 1500px;
 @import "tools/typo-geometric";
 @import "tools/typo-indent";
 @import "tools/typo-justify";
-@import "tools/typo-letter-spacing";
 @import "tools/typo-vertical-rhythm";
 @import "tools/typo-zoom-large-screen";
-@import "tools/typo-tag";
 @import "tools/typo";
 
 @import "tools/ui-better-highlight";
@@ -38,7 +36,7 @@ body,
 body.theme-dark,
 body.theme-light {
     --font-header: "Fraunces", "InterVariable";
-    --font-feature: "liga", "clig", "kern", "calt", "zero";
+    --font-feature: "liga", "salt", "clig", "kern", "calt", "zero";
     --font-header-feature: "liga";
     --font-header-variation: "SOFT" 75, "WONK" 0;
     /* --color-base-00:						var(--color-base-00); */
@@ -115,13 +113,9 @@ body.theme-light {
     --h5-color: var(--color-base-100);
     --h6-color: var(--color-base-100);
 
-    --background-modifier-hover: var(--color-base-35);
-    --background-modifier-active-hover: var(--color-base-35);
-    --background-modifier-border: color-mix(
-        in lch,
-        var(--color-base-100) 10%,
-        var(--background-primary)
-    );
+    --background-modifier-hover: var(--background-primary);
+    --background-modifier-active-hover: var(--background-secondary);
+    --background-modifier-border: var(--background-primary);
     --background-modifier-border-hover: var(--color-base-20);
     --background-modifier-border-focus: var(--color-base-70);
     --background-modifier-error: var(--color-base-05);
@@ -290,7 +284,7 @@ body.theme-light {
     --tx2: var(--text-muted) !important;
     --tx3: var(--text-faint) !important;
     --ui1: var(--divider-color) !important;
-    --ui2: green !important;
+    --ui2: var(--divider-color) !important;
     --ui3: var(--divider-color) !important;
     --bg1: var(--background-secondary) !important;
     --bg2: var(--background-secondary) !important;

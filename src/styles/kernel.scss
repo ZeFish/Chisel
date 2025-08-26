@@ -123,8 +123,3 @@ body:has(.kernel) .token.comment {
     color: color-mix(in lch, var(--color-base-100) 40%, var(--color-base-00));
     font-style: italic;
 }
-
-body:has(.kernel) .markdown-source-view p,
-body:has(.kernel) .markdown-reading-view p {
-    /*font-weight: 90;*/
-}
