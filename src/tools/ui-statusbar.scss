@@ -1,0 +1,8 @@
+body:not(.minimal-status-off) div.status-bar {
+    background-color: color-mix(
+        in srgb,
+        var(--background-secondary) 50%,
+        transparent
+    );
+    backdrop-filter: blur(2px);
+}

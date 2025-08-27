@@ -28,6 +28,7 @@ $screen-large-width: 1500px;
 @import "tools/ui-textures";
 @import "tools/ui-transclusion-inv";
 @import "tools/ui-transclusion-no-header";
+@import "tools/ui-statusbar";
 @import "tools/base";
 
 @import "tools/settings";
@@ -412,15 +413,6 @@ body.theme-dark,
 
 .inline-title:not([data-level]) {
     text-align: left;
-}
-
-body:has(div[data-mode="preview"]) .view-header-title-parent,
-body:has(div[data-mode="preview"]) .view-header-title,
-body:has(div[data-mode="preview"]) .cmdr-page-header,
-body:has(.is-live-preview) .view-header-title-parent,
-body:has(.is-live-preview) .view-header-title,
-body:has(.is-live-preview) .cmdr-page-header {
-    display: none;
 }
 
 pre {

@@ -184,9 +184,14 @@ body.vertical-rhythm .markdown-reading-view div div h4 {
     padding: 0;
 }
 
+/* .vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+body.vertical-rhythm .markdown-reading-view div:has(h4) + div:has(h5) h5 {
+    margin-top: 0rlh;
+}
+
 /* .vertical-rhythm .HyperMD-header-5.cm-line */
 body.vertical-rhythm .markdown-reading-view div div h5 {
-    margin-top: 3rlh;
+    margin-top: 2rlh;
     margin-bottom: 1rlh;
     padding: 0;
 }
@@ -196,6 +201,10 @@ body.vertical-rhythm .markdown-reading-view div div h6 {
     margin-top: 2rlh;
     margin-bottom: 0rlh;
     padding: 0;
+}
+
+.vertical-rhythm .markdown-reading-view div:has(h6) + div blockquote {
+    margin-top: 1rlh;
 }
 
 @media only screen and (max-width: 600px) {

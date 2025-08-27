@@ -22,13 +22,21 @@ body.minimalist:not(.is-mobile)
 }
 
 .minimalist
-    .app-container:has(
-        .workspace-leaf-content[data-mode="preview"]
-    ).status-bar {
+    .app-container:has(.workspace-leaf-content[data-mode="preview"])
+    .status-bar {
+    display: none !important;
+}
+
+.minimalist:has(div[data-mode="preview"]) .view-header-title-parent,
+.minimalist:has(div[data-mode="preview"]) .view-header-title,
+.minimalist:has(div[data-mode="preview"]) .cmdr-page-header,
+.minimalist:has(.is-live-preview) .view-header-title-parent,
+.minimalist:has(.is-live-preview) .view-header-title,
+.minimalist:has(.is-live-preview) .cmdr-page-header {
     display: none;
 }
 
-
-
-
-
+.minimalist:has(div[data-mode="preview"]) .view-header {
+    margin-bottom: calc(-1 * var(--header-height));
+    background: transparent !important;
+}
