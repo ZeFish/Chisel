@@ -1,4 +1,4 @@
-body:has(.manifeste) {
+:has(.manifeste) {
     --font-header: "Tiempos Headline", serif;
     --font-text: "Ivar Text", serif;
     --font-interface: "Futura Now Var";
@@ -31,52 +31,52 @@ body:has(.manifeste) {
     );
     --dark-muted-color: #999387;
     --dark-soft-color: #2a2824;
-}
 
-body:has(.manifeste) article h1,
-body:has(.manifeste) .inline-title {
-    text-align: center;
-    padding: 3rlh 0;
-    color: var(--color-foreground);
-}
+    article h1,
+    .inline-title {
+        text-align: center;
+        padding: 3rlh 0;
+        color: var(--color-foreground);
+    }
 
-body:has(.manifeste) .callout {
-    border-color: color-mix(
-        in srgb,
-        var(--callout-color) 20%,
-        var(--background-secondary)
-    );
-    background-color: color-mix(
-        in srgb,
-        var(--callout-color) 2%,
-        var(--background-secondary)
-    );
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 0;
-    border-left-width: 0.25rlh;
-}
+    .callout {
+        border-color: color-mix(
+            in srgb,
+            var(--callout-color) 20%,
+            var(--background-secondary)
+        );
+        background-color: color-mix(
+            in srgb,
+            var(--callout-color) 2%,
+            var(--background-secondary)
+        );
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
+        border-left-width: 0.25rlh;
+    }
 
-body:has(.manifeste) .callout-icon {
-    color: var(--callout-color);
-}
+    .callout-icon {
+        color: var(--callout-color);
+    }
 
-body:has(.manifeste) .callout-title {
-    color: var(--foreground-color);
-}
+    .callout-title {
+        color: var(--foreground-color);
+    }
 
-body:has(.manifeste) .callout-content {
-    border: 0;
-    background: transparent;
-    box-shadow: none;
-}
+    .callout-content {
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+    }
 
-body:has(.manifeste) .vertical-rhythm .markdown-preview-view ol > li,
-body:has(.manifeste) .vertical-rhythm .markdown-preview-view ul > li,
-body:has(.manifeste) .vertical-rhythm .markdown-source-view ol > li,
-body:has(.manifeste) .vertical-rhythm .markdown-source-view ul > li,
-body:has(.manifeste) .vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line {
-    margin: 0rlh 0rlh 0rlh 0rlh;
+    .vertical-rhythm .markdown-preview-view ol > li,
+    .vertical-rhythm .markdown-preview-view ul > li,
+    .vertical-rhythm .markdown-source-view ol > li,
+    .vertical-rhythm .markdown-source-view ul > li,
+    .vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line {
+        margin: 0rlh 0rlh 0rlh 0rlh;
+    }
 }
 @font-face {
     font-family: "Tiempos Headline";

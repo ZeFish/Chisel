@@ -45,19 +45,19 @@ body:has(.gaspesie) {
     --border-color: var(--color-background);
 
     --line-height-normal: 1.9em;
-}
 
-body:has(.gaspesie) article h1,
-body:has(.gaspesie) .inline-title {
-    text-align: center;
-    padding: 3rlh 0;
-    color: var(--color-foreground);
-}
+    article h1,
+    .inline-title {
+        text-align: center;
+        padding: 3rlh 0;
+        color: var(--color-foreground);
+    }
 
-body:has(.gaspesie) code,
-body:has(.gaspesie) .HyperMD-codeblock {
-    font-weight: 400;
-    font-size: var(--scale-m);
+    code,
+    .HyperMD-codeblock {
+        font-weight: 400;
+        font-size: var(--scale-m);
+    }
 }
 
 @font-face {

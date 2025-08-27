@@ -4,5 +4,5 @@ body:not(.minimal-status-off) div.status-bar {
         var(--background-secondary) 50%,
         transparent
     );
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
 }

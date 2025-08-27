@@ -1,4 +1,4 @@
-body:has(.mono) {
+:has(.mono) {
     --light-color-base-100: #100f0f;
     --light-color-base-00: #fffcf0;
     --light-color-red: #af3029;
@@ -20,11 +20,7 @@ body:has(.mono) {
     --dark-color-blue: #205ea6;
     --dark-color-purple: #5e409d;
     --dark-color-pink: #a02f6f;
-}
 
-body:has(.mono),
-body.theme-dark:has(.mono),
-body.theme-light:has(.mono) {
     --color-accent: var(--text-normal);
     --font-monospace: var(--text-normal);
     --bold-color: var(--text-normal);
@@ -44,11 +40,11 @@ body.theme-light:has(.mono) {
     --font-feature:
         "zero", "calt", "cv01", "cv07", "cv10", "cv11", "cv14", "cv16", "cv17",
         "cv18", "ss01";
-}
 
-body:has(.mono) img {
-    filter: none !important;
-    mix-blend-mode: normal !important;
+    img {
+        filter: none !important;
+        mix-blend-mode: normal !important;
+    }
 }
 
 @font-face {

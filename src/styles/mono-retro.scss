@@ -1,4 +1,4 @@
-body:has(.mono-retro) {
+:has(.mono-retro) {
     --light-color-foreground: #262320;
     --light-color-foreground: #241b10;
     --light-color-background: #fffbe9;
@@ -21,11 +21,7 @@ body:has(.mono-retro) {
     --dark-color-blue: #1b6599;
     --dark-color-purple: #63409a;
     --dark-color-pink: #8b376a;
-}
 
-body:has(.mono-retro),
-body.theme-dark:has(.mono-retro),
-body.theme-light:has(.mono-retro) {
     --line-height-normal: 1.5em;
     --font-text: "Courier Prime";
     --font-feature: "";
@@ -40,64 +36,63 @@ body.theme-light:has(.mono-retro) {
     --font-mono-feature: "";
     --font-mono-variation: "";
     --color-accent: var(--light-color-yellow) !important;
+
+    &.theme-dark {
+        --font-text: "JetBrains Mono";
+        --font-monospace: "Voyager Mono";
+        --font-interface: "Futura Now Var";
+    }
+
+    &.theme-light .markdown-reading-view a {
+        text-decoration: underline !important;
+        --shadow-color: color-mix(in srgb, currentcolor 20%, transparent);
+        --shadow-distance: 0px;
+        --shadow-depth: 0.5px;
+        text-shadow:
+            var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
+            calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)
+                var(--shadow-color),
+            0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
+    }
+
+    .markdown-preview-view,
+    .markdown-source-view {
+        color: color-mix(in oklab, var(--text-normal) 90%, transparent);
+        text-shadow: 0 0 0.5px var(--text-normal);
+
+        --shadow-color: color-mix(in srgb, currentcolor 10%, transparent);
+        --shadow-distance: 0px;
+        --shadow-depth: 0.5px;
+        text-shadow:
+            var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
+            calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)
+                var(--shadow-color),
+            0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
+    }
+
+    .inline-title,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
+
+        --shadow-color: color-mix(
+            in srgb,
+            currentcolor 30%,
+            var(--background-primary)
+        );
+        --shadow-distance: 0px;
+        --shadow-depth: 0.5px;
+        text-shadow:
+            var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
+            calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)
+                var(--shadow-color),
+            0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
+    }
 }
-
-body.theme-dark:has(.mono-retro) {
-    --font-text: "JetBrains Mono";
-    --font-monospace: "Voyager Mono";
-    --font-interface: "Futura Now Var";
-}
-
-body.theme-light:has(.mono-retro) .markdown-reading-view a {
-    text-decoration: underline !important;
-    --shadow-color: color-mix(in srgb, currentcolor 20%, transparent);
-    --shadow-distance: 0px;
-    --shadow-depth: 0.5px;
-    text-shadow:
-        var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
-        calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)
-            var(--shadow-color),
-        0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
-}
-
-body:has(.mono-retro) .markdown-preview-view,
-body:has(.mono-retro) .markdown-source-view {
-    color: color-mix(in oklab, var(--text-normal) 90%, transparent);
-    text-shadow: 0 0 0.5px var(--text-normal);
-
-    --shadow-color: color-mix(in srgb, currentcolor 10%, transparent);
-    --shadow-distance: 0px;
-    --shadow-depth: 0.5px;
-    text-shadow:
-        var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
-        calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)
-            var(--shadow-color),
-        0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
-}
-
-body:has(.mono-retro) .inline-title,
-body:has(.mono-retro) h1,
-body:has(.mono-retro) h2,
-body:has(.mono-retro) h3,
-body:has(.mono-retro) h4,
-body:has(.mono-retro) h5,
-body:has(.mono-retro) h6 {
-    color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
-
-    --shadow-color: color-mix(
-        in srgb,
-        currentcolor 30%,
-        var(--background-primary)
-    );
-    --shadow-distance: 0px;
-    --shadow-depth: 0.5px;
-    text-shadow:
-        var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
-        calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)
-            var(--shadow-color),
-        0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
-}
-
 /*
 body.theme-light:has(.mono-retro) .markdown-preview-section {
     background: repeating-linear-gradient(

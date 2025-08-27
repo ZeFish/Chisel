@@ -36,7 +36,19 @@ body.minimalist:not(.is-mobile)
     display: none;
 }
 
-.minimalist:has(div[data-mode="preview"]) .view-header {
+.minimalist:not(.is-mobile):has(div[data-mode="preview"]) .view-header {
     margin-bottom: calc(-1 * var(--header-height));
     background: transparent !important;
+}
+.minimalist.is-mobile:has(div[data-mode="preview"]) .view-header {
+    margin-bottom: calc(-1 * var(--view-header-height));
+    background: transparent !important;
+}
+
+.minimalist.is-mobile:has(div[data-mode="preview"]) .mod-left-split-toggle {
+    opacity: 0;
+}
+
+.minimalist.is-mobile:has(div[data-mode="preview"]) .mobile-navbar {
+    display: none;
 }

@@ -10,6 +10,12 @@ settings:
         type: heading
 		collapsed: false
         level: 1
+    -
+        id: chisel-color
+        title: Manage Color
+        description: chisel-color
+        type: class-toggle
+		default: false
 	-
         id: vertical-rhythm
         title: Create a vertical harmony between text, images and so on.

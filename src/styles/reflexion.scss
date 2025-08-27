@@ -1,4 +1,4 @@
-body:has(.reflexion) {
+:has(.reflexion) {
     --light-color-background: #fefdf9; /* Ivory - Very subtle warmth, almost white — keeps it clean. */
     --light-color-background: #f9f6ef; /* Seashell - Soft warmth, still feels like sunlight on paper. */
     --light-color-background: #fdfdfc; /* Snow Drift - Near-white with the tiniest touch of warmth. */
@@ -58,56 +58,56 @@ body:has(.reflexion) {
     --dark-color-blue: #5a86a5; /* twilight lake */
     --dark-color-purple: #a58fc0; /* smoky lilac */
     --dark-color-pink: #e6a3d1; /* fading rose light */
-}
 
-body:has(.reflexion) h1,
-body:has(.reflexion) .inline-title {
-    text-align: center;
-    margin-bottom: 6rem;
-    letter-spacing: 0.15em;
-    /* /*text-transform: uppercase;* */
-    font-feature-settings: "liga", "onum", "kern", "smcp";
-}
+    h1,
+    .inline-title {
+        text-align: center;
+        margin-bottom: 6rem;
+        letter-spacing: 0.15em;
+        /* /*text-transform: uppercase;* */
+        font-feature-settings: "liga", "onum", "kern", "smcp";
+    }
 
-body:has(.reflexion) .markdown-reading-view a {
-    text-decoration: underline;
-    text-decoration-color: color-mix(
-        in lch,
-        var(--accent-color) 70%,
-        transparent
-    );
-    color: var(--color-foreground);
-}
-body:has(.reflexion) .markdown-reading-view a:hover {
-    color: var(--accent-color);
-}
+    .markdown-reading-view a {
+        text-decoration: underline;
+        text-decoration-color: color-mix(
+            in lch,
+            var(--accent-color) 70%,
+            transparent
+        );
+        color: var(--color-foreground);
+    }
+    .markdown-reading-view a:hover {
+        color: var(--accent-color);
+    }
 
-body:has(.reflexion) .markdown-source-view hr,
-body:has(.reflexion) .markdown-reading-view hr {
-    --hr-thickness: 1px;
-    margin: 4rlh 8rlh;
-}
+    .markdown-source-view hr,
+    .markdown-reading-view hr {
+        --hr-thickness: 1px;
+        margin: 4rlh 8rlh;
+    }
 
-body:has(.reflexion) .callout {
-    border-color: color-mix(
-        in srgb,
-        var(--callout-color) 20%,
-        var(--background-secondary)
-    );
-    background-color: var(--background-primary);
-    border-radius: 0;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 0;
-    border-left-width: 0.25rlh;
-}
+    .callout {
+        border-color: color-mix(
+            in srgb,
+            var(--callout-color) 20%,
+            var(--background-secondary)
+        );
+        background-color: var(--background-primary);
+        border-radius: 0;
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
+        border-left-width: 0.25rlh;
+    }
 
-body:has(.reflexion) .callout-title {
-    color: var(--foreground-color);
-}
+    .callout-title {
+        color: var(--foreground-color);
+    }
 
-body:has(.reflexion) .callout-content {
-    border: 0;
-    background: transparent;
-    box-shadow: none;
+    .callout-content {
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+    }
 }

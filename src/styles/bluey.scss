@@ -1,4 +1,4 @@
-body:has(.bluey) {
+:has(.bluey) {
     --light-color-base-100: #0f1321;
     --light-color-base-00: #d2ebff;
     --dark-color-base-100: #88cafc;
@@ -48,10 +48,10 @@ body:has(.bluey) {
     --h4-color: var(--header-color);
     --h5-color: var(--header-color);
     --h6-color: var(--header-color);
-}
 
-.theme-dark:has(.bluey) {
-    --header-color: #c3e8f9;
+    &.theme-dark {
+        --header-color: #c3e8f9;
+    }
 }
 
 @font-face {

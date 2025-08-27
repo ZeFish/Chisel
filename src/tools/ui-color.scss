@@ -1,0 +1,569 @@
+.chisel-color {
+    /* --color-base-00:						var(--color-base-00); */
+    --color-base-05: color-mix(
+        in lch,
+        var(--color-base-100) 5%,
+        var(--color-base-00)
+    );
+    --color-base-10: color-mix(
+        in lch,
+        var(--color-base-100) 10%,
+        var(--color-base-00)
+    );
+    --color-base-20: color-mix(
+        in lch,
+        var(--color-base-100) 20%,
+        var(--color-base-00)
+    );
+    --color-base-25: color-mix(
+        in lch,
+        var(--color-base-100) 25%,
+        var(--color-base-00)
+    );
+    --color-base-30: color-mix(
+        in lch,
+        var(--color-base-100) 30%,
+        var(--color-base-00)
+    );
+    --color-base-35: color-mix(
+        in lch,
+        var(--color-base-100) 35%,
+        var(--color-base-00)
+    );
+    --color-base-40: color-mix(
+        in lch,
+        var(--color-base-100) 40%,
+        var(--color-base-00)
+    );
+    --color-base-50: color-mix(
+        in lch,
+        var(--color-base-100) 50%,
+        var(--color-base-00)
+    );
+    --color-base-60: color-mix(
+        in lch,
+        var(--color-base-100) 60%,
+        var(--color-base-00)
+    );
+    --color-base-70: color-mix(
+        in lch,
+        var(--color-base-100) 70%,
+        var(--color-base-00)
+    );
+
+    --background-primary: var(--color-base-00);
+    --background-primary-alt: var(--color-base-05);
+
+    --background-secondary: var(--color-base-05);
+    --background-secondary: color-mix(
+        in lch,
+        var(--color-base-100) 2.5%,
+        var(--background-primary)
+    );
+    --background-secondary-alt: var(--color-base-00);
+
+    --accent-color: var(
+        --color-yellow
+    ); /* hsl(var(--accent-h), var(--accent-s), var(--accent-l)); */
+    --h1-color: var(--color-base-100);
+    --h2-color: var(--color-base-100);
+    --h3-color: var(--color-base-100);
+    --h4-color: var(--color-base-100);
+    --h5-color: var(--color-base-100);
+    --h6-color: var(--color-base-100);
+
+    --background-modifier-hover: var(--background-secondary);
+    --background-modifier-active-hover: var(--background-secondary);
+    --background-modifier-border: var(--background-secondary);
+    --background-modifier-border-hover: var(--color-base-20);
+    --background-modifier-border-focus: var(--color-base-70);
+    --background-modifier-error: var(--color-base-05);
+    --background-modifier-error-hover: var(--color-base-05);
+    --background-modifier-success: var(--color-base-05);
+    --background-modifier-message: var(--color-base-05);
+    --background-modifier-form-field: var(--color-base-05);
+
+    --divider-color: color-mix(in lch, black 7%, var(--background-primary));
+    --divider-width: 1px;
+
+    --border-color: var(
+        --light-border-color,
+        color-mix(in lch, var(--color-base-00) 12%, var(--color-base-100))
+    );
+
+    --border-color: var(
+        --dark-border-color,
+        color-mix(in lch, black 15%, var(--background-primary))
+    );
+
+    --table-border-color: var(--border-color);
+    /*--background-modifier-border: var(--border-color);*/
+
+    --interactive-normal: var(--color-base-05);
+    --interactive-hover: var(--color-base-20);
+    --interactive-accent: var(--color-base-50);
+    --interactive-accent-hsl: 0, 0, 50;
+    --interactive-accent-hover: color-mix(
+        in lch,
+        var(--accent-color) 50%,
+        var(--color-base-100)
+    );
+
+    --text-normal: var(--color-base-100);
+    --text-muted: var(--color-base-70);
+    --text-faint: var(--color-base-50);
+    --text-on-accent: var(--color-base-00);
+    --text-on-accent-inverted: var(--color-base-100);
+    --text-success: var(--color-base-100);
+    --text-warning: var(--color-red);
+    --text-error: var(--color-red);
+    --text-accent: var(--color-base-100);
+    --text-accent-hover: var(--color-base-100);
+    --text-selection: color-mix(
+        in lch,
+        var(--color-yellow) 25%,
+        var(--color-base-00)
+    );
+
+    --link-external-color: var(--color-purple);
+    --link-external-color-hover: color-mix(
+        in lch,
+        var(--color-base-100) 25%,
+        var(--color-base-00)
+    );
+    --link-color: var(--accent-color);
+    --link-color-hover: color-mix(
+        in lch,
+        var(--link-color) 25%,
+        var(--color-base-100)
+    );
+
+    --bold-color: var(--color-orange);
+    --italic-color: var(--color-blue);
+
+    --tag-background: var(--background-secondary);
+    --tag-border: var(--border-color);
+    --tag-border-width: 1px;
+    --tag-radius: 0.25rlh;
+    --tag-color: var(--text-muted);
+    --tag-padding-x: 0.5rlh;
+    --tag-padding-y: 0.1rlh;
+
+    --icon-color-active: var(--text-normal);
+    --icon-color-focused: var(--text-normal);
+    --icon-color-hover: var(--text-faint);
+    --icon-color: var(--text-faint);
+    --icon-hex: var(--mono0);
+
+    --nav-item-color: var(--text-muted);
+    --nav-item-color-active: var(--text-normal);
+    --nav-item-color-hover: var(--text-normal);
+    --nav-collapse-icon-color: color-mix(
+        in lch,
+        var(--text-normal) 25%,
+        transparent
+    );
+    --nav-collapse-icon-color-collapsed: color-mix(
+        in lch,
+        var(--text-normal) 25%,
+        transparent
+    );
+    --nav-indentation-guide-color: color-mix(
+        in lch,
+        var(--text-normal) 10%,
+        transparent
+    );
+    --nav-item-background-active: color-mix(
+        in lch,
+        var(--background-primary) 100%,
+        var(--background-secondary)
+    );
+
+    --ribbon-background: var(--background-secondary);
+
+    --titlebar-background: var(--background-secondary) !important;
+    --titlebar-background-focused: var(--background-secondary) !important;
+    --titlebar-text-color-focused: var(--text-normal) !important;
+    --tab-container-background: var(--background-secondary) !important;
+
+    --indentation-guide-color: color-mix(
+        in lch,
+        var(--color-base-100) 12%,
+        transparent
+    );
+    --indentation-guide-color-active: color-mix(
+        in lch,
+        var(--color-base-100) 3%,
+        transparent
+    );
+    --scrollbar-active-thumb-bg: color-mix(
+        in lch,
+        var(---color-base-100) 20%,
+        transparent
+    );
+    --scrollbar-bg: color-mix(in lch, var(--color-base-100) 5%, transparent);
+    --scrollbar-thumb-bg: color-mix(
+        in lch,
+        var(--color-base-100) 1%,
+        transparent
+    );
+    --swatch-shadow: inset 0 0 0 1px
+        color-mix(in lch, var(--color-base-1000) 1%, transparent);
+    --workspace-background-translucent: color-mix(
+        in lch,
+        var(--color-base-100) 40%,
+        transparent
+    );
+    --text-highlight-bg: color-mix(
+        in lch,
+        var(--color-yellow) 15%,
+        transparent
+    );
+
+    --callout-default: var(--color-blue);
+    --callout-content-padding: 0;
+    --callout-content-background: transparent;
+    --callout-bug: var(--color-red);
+    --callout-error: var(--color-red);
+    --callout-example: var(--color-purple);
+    --callout-fail: var(--color-red);
+    --callout-important: var(--color-cyan);
+    --callout-info: var(--color-blue);
+    --callout-question: var(--color-orange);
+    --callout-success: var(--color-green);
+    --callout-summary: var(--color-cyan);
+    --callout-tip: var(--color-cyan);
+    --callout-todo: var(--color-blue);
+    --callout-warning: var(--color-orange);
+    --callout-quote: var(--color-cyan);
+    /*
+	Theme specific
+	*/
+    --tx1: var(--text-normal) !important;
+    --tx2: var(--text-muted) !important;
+    --tx3: var(--text-faint) !important;
+    --ui1: var(--divider-color) !important;
+    --ui2: var(--divider-color) !important;
+    --ui3: var(--divider-color) !important;
+    --bg1: var(--background-secondary) !important;
+    --bg2: var(--background-secondary) !important;
+    --bg3: var(--background-primary) !important;
+    --alternating-color-1: var(--color-yellow);
+    --alternating-color-2: var(--color-red);
+    --alternating-color-3: var(--color-blue);
+    --inline-title-color: var(--text-normal);
+
+    &.theme-light {
+        --color-base-100: var(
+            --light-color-foreground,
+            var(--light-color-base-100, #1c1b1a)
+        );
+        --color-base-00: var(
+            --light-color-background,
+            var(--light-color-base-00, #ffffff)
+        );
+
+        --color-white: var(--color-base-00);
+        --color-black: var(--color-base-100);
+
+        --accent-color: var(--light-accent-color, var(--color-yellow));
+        --bold-color: var(--light-bold-color, var(--color-red));
+        --italic-color: var(--light-italic-color, var(--color-blue));
+
+        --color-white: var(--color-base-00);
+        --color-black: var(--color-base-100);
+        --color-red: var(--light-color-red, #df453a) !important;
+        --color-orange: var(--light-color-orange, #ea702e) !important;
+        --color-yellow: var(--light-color-yellow, #e4ae25) !important;
+        --color-green: var(--light-color-green, #1e9316) !important;
+        --color-cyan: var(--light-color-cyan, #23a5a7) !important;
+        --color-blue: var(--light-color-blue, #2882c3) !important;
+        --color-purple: var(--light-color-purple, #8d6fb3) !important;
+        --color-pink: var(--light-color-pink, #da58b5) !important;
+
+        --color-red: var(--light-color-red, #af3029) !important;
+        --color-orange: var(--light-color-orange, #bc5215) !important;
+        --color-yellow: var(--light-color-yellow, #ad8301) !important;
+        --color-green: var(--light-color-green, #66800b) !important;
+        --color-cyan: var(--light-color-cyan, #24837b) !important;
+        --color-blue: var(--light-color-blue, #205ea6) !important;
+        --color-purple: var(--light-color-purple, #5e409d) !important;
+        --color-pink: var(--light-color-pink, #a02f6f) !important;
+    }
+
+    &.theme-dark,
+    &.is-mobile.theme-dark {
+        --color-base-100: var(
+            --dark-color-foreground,
+            var(--dark-color-base-100, #b7b5ac)
+        );
+        --color-base-00: var(
+            --dark-color-background,
+            var(--dark-color-base-00, #1c1b1a)
+        );
+
+        --color-white: var(--color-base-100);
+        --color-black: var(--color-base-00);
+
+        --accent-color: var(--dark-accent-color, var(--color-yellow));
+        --bold-color: var(--dark-bold-color, var(--color-red));
+        --italic-color: var(--dark-italic-color, var(--color-blue));
+
+        --color-red: var(--dark-color-red, #bf3f36) !important;
+        --color-orange: var(--dark-color-orange, #ce6325) !important;
+        --color-yellow: var(--dark-color-yellow, #d69a00) !important;
+        --color-green: var(--dark-color-green, #2e9066) !important;
+        --color-cyan: var(--dark-color-cyan, #4dadd5) !important;
+        --color-blue: var(--dark-color-blue, #256ea2) !important;
+        --color-purple: var(--dark-color-purple, #8e6ac7) !important;
+        --color-pink: var(--dark-color-pink, #dd78db) !important;
+
+        --color-red: var(--dark-color-red, #d14d41) !important;
+        --color-orange: var(--dark-color-orange, #da702c) !important;
+        --color-yellow: var(--dark-color-yellow, #ad8301) !important;
+        --color-green: var(--dark-color-green, #879a39) !important;
+        --color-cyan: var(--dark-color-cyan, #3aa99f) !important;
+        --color-blue: var(--dark-color-blue, #4385be) !important;
+        --color-purple: var(--dark-color-purple, #8b7ec8) !important;
+        --color-pink: var(--dark-color-pink, #ce5d97) !important;
+
+        --h1-color: color-mix(
+            in lch,
+            var(--color-base-100) 85%,
+            var(--color-base-00)
+        );
+        --h2-color: color-mix(
+            in lch,
+            var(--color-base-100) 90%,
+            var(--color-base-00)
+        );
+        --h3-color: color-mix(
+            in lch,
+            var(--color-base-100) 95%,
+            var(--color-base-00)
+        );
+        --h4-color: var(--color-base-100);
+        --h5-color: var(--color-base-100);
+        --h6-color: var(--color-base-100);
+
+        --background-primary: var(--color-base-05);
+        --background-primary: color-mix(
+            in lch,
+            var(--color-base-100) 2%,
+            var(--color-base-00)
+        );
+        --background-primary-alt: var(--color-base-00);
+
+        --background-secondary: var(--color-base-00);
+        --background-secondary-alt: var(--color-base-05);
+
+        --border-color: var(
+            --dark-border-color,
+            color-mix(in lch, black 65%, var(--color-base-100))
+        );
+
+        --text-highlight-bg: color-mix(
+            in lch,
+            var(--color-yellow) 20%,
+            transparent
+        );
+    }
+
+    .inline-title:not([data-level]) {
+        text-align: left;
+    }
+
+    pre {
+        color: var(--color-base-70);
+    }
+    .markdown-rendered mark,
+    .cm-s-obsidian span.cm-highlight {
+        background-color: var(--text-highlight-bg);
+        color: currentColor;
+    }
+
+    a.footnote-link {
+        color: var(--text-faint);
+    }
+
+    .mod-macos.is-hidden-frameless:not(.is-popout-window)
+        .sidebar-toggle-button.mod-right {
+        background: none;
+    }
+
+    .workspace-drawer-inner,
+    .workspace-split.mod-root,
+    .mod-root .workspace-tabs .workspace-leaf {
+        background: var(--background-secondary);
+    }
+    .workspace-leaf-content {
+        border-radius: var(--radius-m);
+    }
+    .notice,
+    .tooltip {
+        color: color-mix(in lch, var(--text-normal) 50%, transparent);
+    }
+
+    .is-translucent:not(.is-fullscreen) {
+        --nav-collapse-icon-color: color-mix(
+            in lch,
+            var(--mono-100) 30%,
+            transparent
+        );
+        --nav-collapse-icon-color-collapsed: color-mix(
+            in lch,
+            var(--mono-100) 30%,
+            transparent
+        );
+    }
+    .diff-line.mod-left {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-error) 20%,
+            transparent
+        );
+    }
+    .diff-line.mod-left .diff-changed {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-error) 40%,
+            transparent
+        );
+    }
+    .diff-line.mod-right {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-success) 20%,
+            transparent
+        );
+    }
+    .diff-line.mod-right .diff-changed {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-success) 40%,
+            transparent
+        );
+    }
+    input.document-search-input.mod-no-match,
+    input.document-replace-input.mod-no-match {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-error) 20%,
+            transparent
+        );
+    }
+    @media (hover: hover) {
+        input.document-search-input.mod-no-match:hover,
+        input.document-replace-input.mod-no-match:hover {
+            background-color: color-mix(
+                in lch,
+                var(--background-modifier-error) 20%,
+                transparent
+            );
+        }
+    }
+    @media (hover: hover) {
+        input[type="color"]::-webkit-color-swatch:hover {
+            box-shadow:
+                inset 0 0 0 1px
+                    color-mix(in lch, var(--mono-100) 20%, transparent),
+                0 0 0 3px var(--background-modifier-border-hover);
+        }
+    }
+    .pdf-findbar .mod-not-found {
+        --background-modifier-form-field: color-mix(
+            in lch,
+            var(--background-modifier-error) 10%,
+            transparent
+        );
+        --background-modifier-border-focus: color-mix(
+            in lch,
+            var(--background-modifier-error) 60%,
+            transparent
+        );
+    }
+
+    @media (hover: hover) {
+        .metadata-property-warning-icon:hover {
+            background-color: color-mix(
+                in lch,
+                var(--color-orange) 15%,
+                transparent
+            );
+        }
+    }
+    .file-tree .mod-new.is-selected {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-success) 20%,
+            transparent
+        );
+    }
+    .file-tree .mod-deleted.is-selected,
+    .file-tree .mod-to-delete.is-selected {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-error) 20%,
+            transparent
+        );
+    }
+    .publish-upload-item:before {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-success) 20%,
+            transparent
+        );
+    }
+    .publish-upload-item.mod-failed:before {
+        background-color: color-mix(
+            in lch,
+            var(--background-modifier-error) 20%,
+            transparent
+        );
+    }
+    .sync-history-list-item-header .sync-history-list-item-avatar {
+        border: 1px solid color-mix(in lch, var(--mono-100) 20%, transparent);
+    }
+    .canvas-node-placeholder::after {
+        background-color: color-mix(
+            in lch,
+            var(--canvas-color) 10%,
+            transparent
+        );
+    }
+    .canvas-node.is-themed .canvas-node-container {
+        border-color: color-mix(in lch, var(--canvas-color) 70%, transparent);
+        box-shadow:
+            inset 0 0 0 1px
+                color-mix(in lch, var(--canvas-color) 70%, transparent),
+            var(--shadow-stationary);
+    }
+    .canvas-node-group .canvas-node-content {
+        background-color: color-mix(
+            in lch,
+            var(--canvas-color) 7%,
+            transparent
+        );
+    }
+    .canvas-group-label {
+        background-color: color-mix(
+            in lch,
+            var(--canvas-color) 1%,
+            transparent
+        );
+    }
+    .canvas-node.is-themed .canvas-node-content {
+        background-color: color-mix(
+            in lch,
+            var(--canvas-color) 70%,
+            transparent
+        );
+    }
+    .canvas-edges g.is-focused path.canvas-interaction-path,
+    .canvas:not(.is-connecting)
+        .canvas-edges
+        g:hover
+        path.canvas-interaction-path {
+        stroke: color-mix(in lch, var(--canvas-color) 10%, transparent);
+    }
+}
