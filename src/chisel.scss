@@ -59,3 +59,10 @@ body.chisel-typography {
 @import "tools/settings";
 
 @import "tools/fonts";
+
+.is-mobile #sr-modal {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 90% !important;
+}
