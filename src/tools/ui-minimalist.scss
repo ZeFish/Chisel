@@ -1,3 +1,32 @@
+:root {
+    --blur: 2px;
+}
+.minimalist.chisel-color:has(
+        .mod-root .workspace-leaf-content[data-mode="preview"]
+    ) {
+    --blur: 10px;
+    --border-width: 0;
+    --shadow-color: color-mix(
+        in srgb,
+        var(--foreground-color) 12%,
+        var(--background-secondary)
+    );
+}
+.minimalist.chisel-color.theme-dark
+    :has(.mod-root .workspace-leaf-content[data-mode="preview"]) {
+    --shadow-color: color-mix(in srgb, black 12%, var(--background-secondary));
+}
+
+.minimalist.chisel-color
+    .mod-root:has(.workspace-leaf-content[data-mode="preview"]) {
+    box-shadow: 0 0 0.5rlh var(--shadow-color);
+}
+
+.minimalist
+    .mod-root:has(.workspace-leaf-content[data-mode="preview"])
+    .workspace-tab-header-container {
+    display: none;
+}
 .minimalist
     .workspace-leaf-content[data-mode="preview"]
     .view-header
@@ -6,33 +35,62 @@
 }
 
 .minimalist
-    .app-container:has(.workspace-leaf-content[data-mode="preview"])
+    .app-container:has(
+        .workspace-leaf .workspace-leaf-content[data-mode="preview"]
+    )
     .status-bar {
     display: none !important;
 }
 
-.minimalist:has(div[data-mode="preview"]) .view-header-title-parent,
-.minimalist:has(div[data-mode="preview"]) .view-header-title,
-.minimalist:has(div[data-mode="preview"]) .cmdr-page-header {
+.minimalist div.status-bar {
+    background-color: color-mix(
+        in srgb,
+        var(--background-secondary) 50%,
+        transparent
+    );
+    backdrop-filter: blur(var(--blur));
+}
+
+.minimalist
+    .workspace-leaf-content[data-mode="preview"]
+    .view-header-title-parent,
+.minimalist .workspace-leaf-content[data-mode="preview"] .view-header-title,
+.minimalist .workspace-leaf-content[data-mode="preview"] .cmdr-page-header {
     display: none;
 }
 
 .minimalist:not(.is-mobile) .view-header {
     margin-bottom: calc(-1 * var(--header-height));
-    background: transparent !important;
+    background-color: color-mix(
+        in srgb,
+        var(--background-primary) 25%,
+        transparent
+    ) !important;
+    backdrop-filter: blur(var(--blur));
 }
 .minimalist:not(.is-mobile) .view-header:hover {
-    background: var(--background-primary) !important;
+    background-color: color-mix(
+        in srgb,
+        var(--background-primary) 85%,
+        transparent
+    ) !important;
+    backdrop-filter: blur(calc(var(--blur) * 2));
 }
-.minimalist.is-mobile:has(div[data-mode="preview"]) .view-header {
+.minimalist.is-mobile
+    .workspace-leaf-content[data-mode="preview"]
+    .view-header {
     margin-bottom: calc(-1 * var(--view-header-height));
     background: transparent !important;
 }
 
-.minimalist.is-mobile:has(div[data-mode="preview"]) .mod-left-split-toggle {
-    opacity: 0;
+.minimalist.is-mobile:has(.workspace-leaf-content[data-mode="preview"]) {
+    --safe-area-inset-top: 30px;
 }
-
-.minimalist.is-mobile:has(div[data-mode="preview"]) .mobile-navbar {
+.minimalist.is-mobile:has(.workspace-leaf-content[data-mode="preview"])
+    .mod-left-split-toggle {
+    display: none;
+}
+.minimalist.is-mobile:has(.workspace-leaf-content[data-mode="preview"])
+    .mobile-navbar {
     display: none;
 }

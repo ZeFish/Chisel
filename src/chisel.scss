@@ -9,10 +9,12 @@ $screen-large-width: 1500px;
 @import "tools/link-icon-off";
 
 @import "tools/typo-external-link-no-icon";
-@import "tools/typo-geometric";
+
 @import "tools/typo-indent";
 @import "tools/typo-justify";
+
 @import "tools/typo-vertical-rhythm";
+
 @import "tools/typo-zoom-large-screen";
 @import "tools/typo";
 
@@ -24,6 +26,41 @@ body.chisel-typography {
     --font-ratio: 1.333;
     --font-density: 1.8;
 }
+body.chisel-color {
+    /* Light */
+    --light-color-foreground: #1c1b1a;
+    --light-color-background: #ffffff;
+
+    --light-color-red: #af3029;
+    --light-color-orange: #bc5215;
+    --light-color-yellow: #ad8301;
+    --light-color-green: #66800b;
+    --light-color-cyan: #24837b;
+    --light-color-blue: #205ea6;
+    --light-color-purple: #5e409d;
+    --light-color-pink: #a02f6f;
+
+    --light-accent-color: var(--color-yellow);
+    --light-bold-color: var(--color-red);
+    --light-italic-color: var(--color-blue);
+
+    /* Dark */
+    --dark-color-foreground: #b7b5ac;
+    --dark-color-background: #1c1b1a;
+
+    --dark-color-red: #d14d41;
+    --dark-color-orange: #da702c;
+    --dark-color-yellow: #ad8301;
+    --dark-color-green: #879a39;
+    --dark-color-cyan: #3aa99f;
+    --dark-color-blue: #4385be;
+    --dark-color-purple: #8b7ec8;
+    --dark-color-pink: #ce5d97;
+
+    --dark-accent-color: var(--color-yellow);
+    --dark-bold-color: var(--color-red);
+    --dark-italic-color: var(--color-blue);
+}
 
 @import "tools/ui-better-highlight";
 @import "tools/ui-block-small";
@@ -32,33 +69,38 @@ body.chisel-typography {
 @import "tools/ui-code";
 @import "tools/ui-focus";
 @import "tools/ui-frontmatter";
+
 @import "tools/ui-minimalist";
+
 @import "tools/ui-sidenote";
 @import "tools/ui-textures";
+
 @import "tools/ui-transclusion-inv";
 @import "tools/ui-transclusion-no-header";
-@import "tools/ui-statusbar";
+
 @import "tools/ui-base";
 
 @import "tools/ui-color";
+@import "styles/forrest";
 
 @import "styles/avantgarde";
-@import "styles/forrest";
+
 @import "styles/mariage";
+
 @import "styles/mono";
 @import "styles/mono-retro";
 @import "styles/mono-yellow";
 @import "styles/apex";
 @import "styles/bluey";
+
 @import "styles/kernel";
 @import "styles/reflexion";
 @import "styles/manifeste";
 @import "styles/gaspesie";
 @import "styles/cracker";
 
-@import "tools/settings";
-
 @import "tools/fonts";
+@import "tools/settings";
 
 .is-mobile #sr-modal {
     width: 100% !important;

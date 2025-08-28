@@ -5,212 +5,210 @@
     --table-margin: auto;
     --table-cell-padding: 0.5rlh 0.5rlh;
     --table-edge-cell-padding-first: 0.5rlh;
+    --nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1)
+        var(--size-4-6);
+
+    .nav-file-title-content,
+    .nav-folder-title-content {
+        line-height: 1.5em;
+    }
     table {
         margin-left: var(--table-margin);
         margin-right: var(--table-margin);
     }
-}
-.vertical-rhythm p,
-.vertical-rhythm .cm-line {
-    line-height: var(--line-height-normal);
-    margin-top: 0rlh;
-    margin-bottom: 1rlh;
-    padding: 0;
-    margin-block-start: 0;
-}
+    p,
+    .cm-line {
+        line-height: var(--line-height-normal);
+        margin-top: 0rlh;
+        margin-bottom: 1rlh;
+        padding: 0;
+        margin-block-start: 0;
+    }
 
-.img-grid .markdown-preview-section > div:has(.image-embed) {
-    margin: 2rlh 0;
-}
-.img-grid
-    .markdown-preview-section
-    > div:has(.image-embed)
-    + div:has(.image-embed) {
-    margin-top: -1.75rlh;
-}
+    &.img-grid .markdown-preview-section > div.el-p:has(.image-embed) {
+        margin: 2rlh 0;
+    }
+    &.img-grid
+        .markdown-preview-section
+        > div.el-p:has(.image-embed)
+        + div.el-p:has(.image-embed) {
+        margin-top: -1.75rlh;
+    }
 
-.vertical-rhythm:not(:has(callout-content)) .callout,
-.vertical-rhythm:not(:has(callout-content)) blockquote,
-.vertical-rhythm:not(:has(callout-content)) pre {
-    margin: 2rlh;
-}
-.markdown-source-view.mod-cm6 .callout {
-    margin: 2rlh;
-}
+    .view-content .callout,
+    .view-content blockquote,
+    .view-content pre {
+        margin: 2rlh;
+    }
+    .markdown-source-view.mod-cm6 .callout {
+        margin: 2rlh;
+    }
+    /*
+    .view-content:not(:has(callout-content))
+        .markdown-source-view
+        > div:has(.image-embed)
+        > p,
+    .view-content:not(:has(callout-content))
+        .markdown-source-view
+        p:has(> .image-embed ~ .image-embed) {
+        margin-top: 2rlh;
+        margin-bottom: 2rlh;
+    }
 
-.vertical-rhythm:not(:has(callout-content))
-    .markdown-source-view
-    > div:has(.image-embed)
-    > p,
-.vertical-rhythm:not(:has(callout-content))
-    .markdown-source-view
-    p:has(> .image-embed ~ .image-embed) {
-    margin-top: 2rlh;
-    margin-bottom: 2rlh;
-}
+    .view-content:not(:has(callout-content))
+        .markdown-source-view
+        > div:has(.image-embed)
+        + div:has(.image-embed)
+        > p {
+        margin-top: calc(-2rlh + var(--img-grid-gap));
+    }
+*/
 
-.vertical-rhythm:not(:has(callout-content))
-    .markdown-source-view
-    > div:has(.image-embed)
-    + div:has(.image-embed)
-    > p {
-    margin-top: calc(-2rlh + var(--img-grid-gap));
-}
+    .callout-content,
+    blockquote {
+        font-size: var(--font-small);
+        line-height: var(--line-height-tight);
+    }
 
-.vertical-rhythm .callout-content,
-.vertical-rhythm blockquote {
-    font-size: var(--font-small);
-    line-height: var(--line-height-tight);
-}
+    .callout-content > p {
+        margin: 0rlh 0 0 0;
+    }
+    .callout-content > ul {
+        margin: 0rlh 0 0 0;
+        padding: 0 0 0 1rlh;
+    }
 
-.vertical-rhythm .callout-content > p {
-    margin: 0rlh 0 0 0;
-}
-.vertical-rhythm .callout-content > ul {
-    margin: 0rlh 0 0 0;
-    padding: 0 0 0 1rlh;
-}
+    .markdown-source-view hr,
+    .markdown-reading-view hr {
+        margin: 2rlh 8rlh;
+    }
 
-.vertical-rhythm .markdown-source-view hr,
-.vertical-rhythm .markdown-reading-view hr {
-    --hr-thickness: 1px;
-    margin: 2rlh 8rlh;
-}
+    .popover .markdown-embed-content,
+    .markdown-embed-content,
+    .popover .markdown-embed-title,
+    .markdown-embed-title {
+        padding: 1rlh !important;
+    }
 
-.vertical-rhythm .popover .markdown-embed-content,
-.markdown-embed-content,
-.popover .markdown-embed-title,
-.markdown-embed-title {
-    padding: 1rlh !important;
-}
-
-/*
-  .vertical-rhythm .markdown-reading-view, .vertical-rhythm .markdown-source-view {
+    /*
+   .markdown-reading-view,  .markdown-source-view {
 	  padding:0 !important;
 	  margin:2rlh;
   }
   */
 
-.vertical-rhythm ul,
-.vertical-rhythm ol {
-    padding: 0rlh 2rlh;
-    margin: 1rlh 0rlh;
-}
-.vertical-rhythm .el-h1 + .el-ul ul,
-.vertical-rhythm .el-h2 + .el-ul ul,
-.vertical-rhythm .el-h3 + .el-ul ul,
-.vertical-rhythm .el-h4 + .el-ul ul,
-.vertical-rhythm .el-h5 + .el-ul ul,
-.vertical-rhythm .el-h6 + .el-ul ul,
-.vertical-rhythm .el-h1 + .el-ol ol,
-.vertical-rhythm .el-h2 + .el-ol ol,
-.vertical-rhythm .el-h3 + .el-ol ol,
-.vertical-rhythm .el-h4 + .el-ol ol,
-.vertical-rhythm .el-h5 + .el-ol ol,
-.vertical-rhythm .el-h6 + .el-ol ol {
-    margin-top: 0.25rlh;
-}
+    ul,
+    ol {
+        padding: 0rlh 2rlh;
+        margin: 1rlh 0rlh;
+    }
+    .el-h1 + .el-ul ul,
+    .el-h2 + .el-ul ul,
+    .el-h3 + .el-ul ul,
+    .el-h4 + .el-ul ul,
+    .el-h5 + .el-ul ul,
+    .el-h6 + .el-ul ul,
+    .el-h1 + .el-ol ol,
+    .el-h2 + .el-ol ol,
+    .el-h3 + .el-ol ol,
+    .el-h4 + .el-ol ol,
+    .el-h5 + .el-ol ol,
+    .el-h6 + .el-ol ol {
+        margin-top: 0.25rlh;
+    }
 
-.xxxvertical-rhythm div:has(h1, h2, h3, h4, h5, h6, p) + div:has(ul, ol) {
-    margin: -0.5rlh 0rlh;
-}
+    .markdown-preview-view ol > li,
+    .markdown-preview-view ul > li,
+    .markdown-source-view ol > li,
+    .markdown-source-view ul > li,
+    .mod-cm6 .HyperMD-list-line.cm-line {
+        margin: 0rlh;
+    }
 
-.vertical-rhythm .markdown-preview-view ol > li,
-.vertical-rhythm .markdown-preview-view ul > li,
-.vertical-rhythm .markdown-source-view ol > li,
-.vertical-rhythm .markdown-source-view ul > li,
-.vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line {
-    margin: 0rlh;
-}
+    .markdown-preview-view ol > li:not(:first-child),
+    .markdown-preview-view ul > li:not(:first-child),
+    .markdown-source-view ol > li:not(:first-child),
+    .markdown-source-view ul > li:not(:first-child),
+    .mod-cm6 .HyperMD-list-line.cm-line:not(:first-child) {
+        margin-top: 0.5rlh;
+    }
 
-.vertical-rhythm .markdown-preview-view ol > li:not(:first-child),
-.vertical-rhythm .markdown-preview-view ul > li:not(:first-child),
-.vertical-rhythm .markdown-source-view ol > li:not(:first-child),
-.vertical-rhythm .markdown-source-view ul > li:not(:first-child),
-.vertical-rhythm .mod-cm6 .HyperMD-list-line.cm-line:not(:first-child) {
-    margin-top: 0.5rlh;
-}
+    .inline-title {
+        margin-bottom: 4rlh;
+        padding: 0;
+        line-height: 0.8em;
+    }
 
-.vertical-rhythm {
-    --nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1)
-        var(--size-4-6);
-}
+    /*  .HyperMD-header-1.cm-line */
+    .markdown-reading-view div div h1 {
+        margin-top: 8rlh;
+        margin-bottom: 3rlh;
+        padding: 0;
+    }
 
-.vertical-rhythm .inline-title {
-    margin-bottom: 4rlh;
-    padding: 0;
-    line-height: 0.8em;
-}
-
-/* .vertical-rhythm .HyperMD-header-1.cm-line */
-body.vertical-rhythm .markdown-reading-view div div h1 {
-    margin-top: 8rlh;
-    margin-bottom: 3rlh;
-    padding: 0;
-}
-
-/* .vertical-rhythm .HyperMD-header-2.cm-line  */
-body.vertical-rhythm .markdown-reading-view div div h2 {
-    margin-top: 6rlh;
-    margin-bottom: 2rlh;
-    padding: 0;
-}
-/* .vertical-rhythm .HyperMD-header-3.cm-line
+    /*  .HyperMD-header-2.cm-line  */
+    .markdown-reading-view div div h2 {
+        margin-top: 6rlh;
+        margin-bottom: 2rlh;
+        padding: 0;
+    }
+    /*  .HyperMD-header-3.cm-line
 is commented because is bugged the ability to select text
 */
-body.vertical-rhythm .markdown-reading-view div div h3 {
-    margin-top: 4rlh;
-    margin-bottom: 2rlh;
-    padding: 0;
-}
-/* .vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line */
-body.vertical-rhythm .markdown-reading-view div:has(h1) + div:has(h2) h2 {
-    margin-top: 1rlh;
-}
-/* .vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
-body.vertical-rhythm .markdown-reading-view div:has(h2) + div:has(h3) h3 {
-    margin-top: 4rlh;
-}
+    .markdown-reading-view div div h3 {
+        margin-top: 4rlh;
+        margin-bottom: 2rlh;
+        padding: 0;
+    }
+    /*  .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line */
+    .markdown-reading-view div.el-h1 + div.el-h2 h2 {
+        margin-top: 1rlh;
+    }
+    /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+    .markdown-reading-view div.el-h2 + div.el-h3 h3 {
+        margin-top: 4rlh;
+    }
 
-/* .vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
-body.vertical-rhythm .markdown-reading-view div:has(h3) + div:has(h4) h4 {
-    margin-top: 0rlh;
-}
+    /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+    .markdown-reading-view div.el-h3 + div.el-h4 h4 {
+        margin-top: 0rlh;
+    }
 
-/* .vertical-rhythm .HyperMD-header-4.cm-line */
-body.vertical-rhythm .markdown-reading-view div div h4 {
-    margin-top: 4rlh;
-    margin-bottom: 1rlh;
-    padding: 0;
-}
+    /*  .HyperMD-header-4.cm-line */
+    .markdown-reading-view div div h4 {
+        margin-top: 4rlh;
+        margin-bottom: 1rlh;
+        padding: 0;
+    }
 
-/* .vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
-body.vertical-rhythm .markdown-reading-view div:has(h4) + div:has(h5) h5 {
-    margin-top: 0rlh;
-}
+    /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+    .markdown-reading-view div.el-h4 + div.el-h5 h5 {
+        margin-top: 0rlh;
+    }
 
-/* .vertical-rhythm .HyperMD-header-5.cm-line */
-body.vertical-rhythm .markdown-reading-view div div h5 {
-    margin-top: 2rlh;
-    margin-bottom: 1rlh;
-    padding: 0;
-}
+    /*  .HyperMD-header-5.cm-line */
+    .markdown-reading-view div div h5 {
+        margin-top: 2rlh;
+        margin-bottom: 1rlh;
+        padding: 0;
+    }
 
-/* .vertical-rhythm .HyperMD-header-6.cm-line  */
-body.vertical-rhythm .markdown-reading-view div div h6 {
-    margin-top: 2rlh;
-    margin-bottom: 0rlh;
-    padding: 0;
-}
+    /*  .HyperMD-header-6.cm-line  */
+    .markdown-reading-view div div h6 {
+        margin-top: 2rlh;
+        margin-bottom: 0rlh;
+        padding: 0;
+    }
 
-.vertical-rhythm .markdown-reading-view div:has(h6) + div blockquote {
-    margin-top: 1rlh;
+    .markdown-reading-view div.el-h6 + div blockquote {
+        margin-top: 1rlh;
+    }
 }
 
 @media only screen and (max-width: 600px) {
-    .vertical-rhythm:not(:has(callout-content)) .callout,
-    .vertical-rhythm:not(:has(callout-content)) blockquote,
-    .vertical-rhythm:not(:has(callout-content)) pre {
+    .vertical-rhythm .view-content .callout,
+    .vertical-rhythm .view-content blockquote,
+    .vertical-rhythm .view-content pre {
         margin: 2rlh 0rlh;
     }
     .vertical-rhythm .inline-title {

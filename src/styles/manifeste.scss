@@ -1,4 +1,4 @@
-:has(.manifeste) {
+body.chisel-color.cssclass-manifeste {
     --font-header: "Tiempos Headline", serif;
     --font-text: "Ivar Text", serif;
     --font-interface: "Futura Now Var";
@@ -25,7 +25,7 @@
     --dark-accent-color: #9ecaa3;
     --dark-bold-color: #de7260;
     --dark-bold-color: color-mix(
-        in lch,
+        in srgb,
         #de7260 85%,
         var(--background-primary)
     );

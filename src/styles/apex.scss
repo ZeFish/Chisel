@@ -1,4 +1,4 @@
-:has(.apex) {
+body.chisel-color.cssclass-apex {
     --light-color-foreground: #3b3b3b;
     --light-color-background: #e4e0d6;
     --light-color-blue: #d14230;
@@ -34,7 +34,7 @@
 
     .markdown-preview-view,
     .markdown-source-view {
-        color: color-mix(in oklab, currentcolor 90%, transparent);
+        color: color-mix(in srgb, currentcolor 90%, transparent);
 
         --shadow-color: color-mix(in srgb, currentcolor 10%, transparent);
         --shadow-distance: 0px;
@@ -57,7 +57,7 @@
     h4,
     h5,
     h6 {
-        color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
+        color: color-mix(in srgb, currentcolor 90%, var(--background-primary));
 
         --shadow-color: color-mix(
             in srgb,
@@ -80,7 +80,7 @@
     &.theme-light h5,
     &.theme-light h6 {
         color: color-mix(
-            in oklab,
+            in srgb,
             var(--color-red) 90%,
             var(--background-primary)
         );

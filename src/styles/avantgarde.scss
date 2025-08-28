@@ -1,4 +1,4 @@
-:has(.avantgarde) {
+body.chisel-color.cssclass-avantgarde {
     --light-color-foreground: #393633;
     --light-color-background: #e7e8e7;
     --light-color-orange: #ff7535; /*ea6c33;*/
@@ -31,11 +31,11 @@
         text-decoration: none !important;
     }
 
-    &.theme-dark:has(.chisel-texture) .workspace::before {
+    &.theme-dark.chisel-texture .workspace::before {
         opacity: 1;
     }
 
-    &.theme-dark:has(.chisel-texture) .workspace::after {
+    &.theme-dark.chisel-texture .workspace::after {
         opacity: 1;
     }
 

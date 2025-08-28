@@ -1,4 +1,4 @@
-:has(.reflexion) {
+body.chisel-color.cssclass-reflexion {
     --light-color-background: #fefdf9; /* Ivory - Very subtle warmth, almost white — keeps it clean. */
     --light-color-background: #f9f6ef; /* Seashell - Soft warmth, still feels like sunlight on paper. */
     --light-color-background: #fdfdfc; /* Snow Drift - Near-white with the tiniest touch of warmth. */
@@ -71,7 +71,7 @@
     .markdown-reading-view a {
         text-decoration: underline;
         text-decoration-color: color-mix(
-            in lch,
+            in srgb,
             var(--accent-color) 70%,
             transparent
         );

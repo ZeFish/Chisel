@@ -1,4 +1,4 @@
-:has(.kernel) {
+body.chisel-color.cssclass-kernel {
     --light-color-background: #f4f5f3;
     --light-color-foreground: #1d3557;
 
@@ -120,7 +120,7 @@
 
     .token.comment {
         color: color-mix(
-            in lch,
+            in srgb,
             var(--color-base-100) 40%,
             var(--color-base-00)
         );

@@ -4,7 +4,7 @@
 .markdown-preview-view blockquote {
     background: var(--background-secondary);
     background-color: color-mix(
-        in lch,
+        in srgb,
         var(--color-base-100) 2.5%,
         transparent
     );
@@ -27,7 +27,11 @@
 */
 }
 .markdown-rendered code {
-    background-color: color-mix(in lch, var(--color-base-05) 100%, transparent);
+    background-color: color-mix(
+        in srgb,
+        var(--color-base-05) 100%,
+        transparent
+    );
 }
 
 .markdown-preview-view pre,

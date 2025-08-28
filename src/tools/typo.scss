@@ -1,4 +1,8 @@
 body.chisel-typography {
+    text-rendering: optimizeLegibility; /* kerning & ligatures */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
     font-optical-sizing: auto;
     --line-height-normal: var(--font-density, 1.5);
     --line-height: var(--line-height-normal);
@@ -11,6 +15,7 @@ body.chisel-typography {
     --h4-font: var(--font-header);
     --h5-font: var(--font-header);
     --h6-font: var(--font-header);
+    --file-line-width: 40rlh;
     --inline-title-size: calc(
         var(--font-text-size) * pow(var(--font-ratio), 4)
     );
@@ -62,8 +67,6 @@ body.chisel-typography {
 
     --nav-item-weight: 400;
 
-    --file-line-width: 63ch;
-
     .markdown-rendered,
     .markdown-source-view {
         font-weight: var(--normal-weight);
@@ -81,11 +84,6 @@ body.chisel-typography {
 
     .nav-file-tag {
         line-height: inherit;
-    }
-
-    .cm-hmd-frontmatter,
-    .cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def {
-        color: var(--text-faint);
     }
 
     .HyperMD-codeblock {
