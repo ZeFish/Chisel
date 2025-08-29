@@ -369,6 +369,12 @@
         --color-purple: var(--dark-color-purple, #8b7ec8) !important;
         --color-pink: var(--dark-color-pink, #ce5d97) !important;
 
+        --hr-color: color-mix(
+            in srgb,
+            var(--color-base-00) 85%,
+            var(--color-base-100)
+        );
+
         --h1-color: color-mix(
             in srgb,
             var(--color-base-100) 85%,

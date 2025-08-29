@@ -130,7 +130,7 @@
     .markdown-source-view ol > li,
     .markdown-source-view ul > li,
     .mod-cm6 .HyperMD-list-line.cm-line {
-        line-height: var(--line-height-tight);
+        line-height: calc(var(--line-height-normal) * 0.75);
     }
 
     .markdown-preview-view ol > li:not(:first-child),
@@ -146,6 +146,13 @@
         margin-bottom: 4rlh;
         padding: 0;
         line-height: 0.8em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3; /* number of lines to show */
     }
 
     /*  .HyperMD-header-1.cm-line */
@@ -235,7 +242,7 @@ is commented because is bugged the ability to select text
     }
     .vertical-rhythm .markdown-source-view hr,
     .vertical-rhythm .markdown-reading-view hr {
-        margin: 2rlh 4rlh;
+        margin: 2rlh 25% !important;
     }
 }
 

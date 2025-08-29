@@ -1,61 +1,73 @@
 body.chisel-typography {
-    text-rendering: optimizeLegibility; /* kerning & ligatures */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /*
+    --font-text: "Fern Variable", "Graveur Variable", Bookerly;
+    --font-interface: var(--font-text);
+    --font-monospace: "Monaspace Xenon Var";
+    --font-header: var(--font-text);
+    */
 
-    font-optical-sizing: auto;
-    --line-height-normal: var(--font-density, 1.5);
-    --line-height: var(--line-height-normal);
+    --font-density: 1.5;
     --font-ratio: 1.333;
-    --heading-spacing: var(--line-height-normal);
-    --inline-title-font: var(--font-header);
-    --h1-font: var(--font-header);
-    --h2-font: var(--font-header);
-    --h3-font: var(--font-header);
-    --h4-font: var(--font-header);
-    --h5-font: var(--font-header);
-    --h6-font: var(--font-header);
-    --file-line-width: 40rlh;
-    --inline-title-size: calc(
-        var(--font-text-size) * pow(var(--font-ratio), 4)
-    );
-
-    --h1-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
-    --h2-size: calc(var(--font-text-size) * pow(var(--font-ratio), 3));
-    --h3-size: calc(var(--font-text-size) * pow(var(--font-ratio), 2));
-    --h4-size: calc(var(--font-text-size) * pow(var(--font-ratio), 1));
-    --h5-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0.5));
-    --h6-size: calc(var(--font-text-size) * pow(var(--font-ratio), 0.5));
-    --font-smallest: calc(var(--font-text-size) * pow(var(--font-ratio), -1.5));
-    --font-smaller: calc(var(--font-text-size) * pow(var(--font-ratio), -1));
-    --font-small: calc(var(--font-text-size) * pow(var(--font-ratio), -0.5));
-    --tag-size: var(--font-smaller);
-    --code-size: var(--font-small);
+    --font-line-width: 40rlh;
+    --font-weight: 400;
     --font-feature: "";
     --font-variation: "";
+    --font-size: var(--font-text-size);
+    --bold-weight: 600;
 
-    --metadata-input-font-size: calc(
-        var(--font-text-size) * pow(var(--font-ratio), 0)
-    );
-
+    --font-header-weight: 400;
+    --font-header-letter-spacing: -0.025em;
+    --font-header-line-height: 1em;
     --font-header-feature: "";
     --font-header-variation: "";
 
     --font-mono-feature: "";
     --font-mono-variation: "";
 
-    /* , "ss02", "ss03", "ss04" */
-    --normal-weight: var(--font-weight, 400);
-    --bold-weight: 600;
-    --font-header-weight: 400;
-    --font-header-letter-spacing: -0.025em;
-    --font-header-line-height: 1em;
-    /* --font-monospace:	"Sohne Mono"; */
-    --font-mono-feature: "";
-    --font-mono-variation: "";
+    /* END VARIABLES */
+    /* END VARIABLES */
+    /* END VARIABLES */
+    /* END VARIABLES */
+    /* END VARIABLES */
+    /* END VARIABLES */
+
+    text-rendering: optimizeLegibility; /* kerning & ligatures */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+
+    --normal-weight: var(--font-weight);
     --font-feature-settings: var(--font-feature);
-    --font-variant-ligatures: normal;
     --font-variation-settings: var(--font-variation);
+    --line-height-normal: var(--font-density);
+    --heading-spacing: var(--line-height-normal);
+    --inline-title-font: var(--font-header);
+    --file-line-width: var(--font-line-width);
+    --nav-item-weight: 400;
+
+    --h1-font: var(--font-header);
+    --h2-font: var(--font-header);
+    --h3-font: var(--font-header);
+    --h4-font: var(--font-header);
+    --h5-font: var(--font-header);
+    --h6-font: var(--font-header);
+
+    --inline-title-size: calc(var(--font-size) * pow(var(--font-ratio), 4));
+    --h1-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
+    --h2-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
+    --h3-size: calc(var(--font-size) * pow(var(--font-ratio), 2));
+    --h4-size: calc(var(--font-size) * pow(var(--font-ratio), 1));
+    --h5-size: calc(var(--font-size) * pow(var(--font-ratio), 0.5));
+    --h6-size: calc(var(--font-size) * pow(var(--font-ratio), 0.5));
+    --font-smallest: calc(var(--font-size) * pow(var(--font-ratio), -1.5));
+    --font-smaller: calc(var(--font-size) * pow(var(--font-ratio), -1));
+    --font-small: calc(var(--font-size) * pow(var(--font-ratio), -0.5));
+    --tag-size: var(--font-smaller);
+    --code-size: var(--font-small);
+
+    --metadata-input-font-size: calc(
+        var(--font-size) * pow(var(--font-ratio), 0)
+    );
 
     --inline-title-weight: var(--font-header-weight);
     --h1-weight: var(--font-header-weight);
@@ -65,14 +77,14 @@ body.chisel-typography {
     --h5-weight: calc(var(--font-header-weight) * 1);
     --h6-weight: calc(var(--font-header-weight) * 1);
 
-    --nav-item-weight: 400;
-
+    .markdown-preview-view,
     .markdown-rendered,
     .markdown-source-view {
         font-weight: var(--normal-weight);
         font-feature-settings: var(--font-feature);
         font-variation-settings: var(--font-variation);
-        letter-spacing: 0.01rem;
+        --font-text-size: var(--font-size);
+        /*letter-spacing: 0.01rem;*/
     }
     code,
     .HyperMD-codeblock {
