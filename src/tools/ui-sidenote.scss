@@ -4,7 +4,7 @@
 
 */
 
-.sidenote .markdown-preview-view .el-div .callout[data-callout~="sidenote"] {
+.sidenote .markdown-preview-view .el-div .callout[data-callout~="aside"] {
     position: absolute;
 
     min-width: 10rlh;
@@ -20,50 +20,25 @@
     margin-left: calc(var(--file-line-width) + 2rlh);
 }
 
-/*
-
-	Left side sidenote
-
-*/
-
-.sidenote
-    .markdown-preview-view
-    .el-div
-    .callout[data-callout~="sidenote"]:is([data-callout-metadata~="left"]) {
-    text-align: right;
-    margin: unset;
-    /* Width + gap (and make the result negative) */
-    transform: translateX(-100%);
-    min-width: 0rlh;
-    width: 20%;
-}
-.sidenote
-    .markdown-preview-view
-    .el-div
-    .callout[data-callout~="sidenote"]:is([data-callout-metadata~="left"])
-    .callout-content {
-    text-align: right;
-}
-
-.sidenote .callout[data-callout~="sidenote"] p {
+.sidenote .callout[data-callout~="aside"] p {
     margin: 0;
 }
 
-.sidenote .callout[data-callout~="sidenote"] .callout-title {
+.sidenote .callout[data-callout~="aside"] .callout-title {
     display: none;
 }
 
-.sidenote .callout[data-callout~="sidenote"] .callout-content {
+.sidenote .callout[data-callout~="aside"] .callout-content {
     padding: 0;
     font-size: 0.75rem;
     box-shadow: none;
     background: transparent;
     padding-right: 2rlh;
 }
-.sidenote .callout[data-callout~="sidenote"] .callout-content p {
+.sidenote .callout[data-callout~="aside"] .callout-content p {
     line-height: 1.3em;
 }
 
-.sidenote .callout[data-callout~="sidenote"] .callout-title .callout-icon {
+.sidenote .callout[data-callout~="aside"] .callout-title .callout-icon {
     display: none;
 }
