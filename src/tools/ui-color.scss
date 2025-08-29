@@ -105,13 +105,21 @@
     /*--background-modifier-border: var(--border-color);*/
 
     --interactive-normal: var(--color-base-05);
-    --interactive-hover: var(--color-base-20);
-    --interactive-accent: var(--color-base-50);
+    --interactive-hover: color-mix(
+        in srgb,
+        var(--accent-color) 50%,
+        transparent
+    );
+    --interactive-accent: color-mix(
+        in srgb,
+        var(--accent-color) 25%,
+        transparent
+    );
     --interactive-accent-hsl: 0, 0, 50;
     --interactive-accent-hover: color-mix(
         in srgb,
         var(--accent-color) 50%,
-        var(--color-base-100)
+        transparent
     );
 
     --foreground-color: var(--color-base-100);
@@ -123,7 +131,7 @@
     --text-success: var(--color-base-100);
     --text-warning: var(--color-red);
     --text-error: var(--color-red);
-    --text-accent: var(--color-base-100);
+    --text-accent: var(--accent-color);
     --text-accent-hover: var(--color-base-100);
     --text-selection: color-mix(
         in srgb,
@@ -179,13 +187,31 @@
         var(--text-normal) 10%,
         transparent
     );
+    --nav-item-background-hover: color-mix(
+        in srgb,
+        var(--foreground-color) 5%,
+        transparent
+    );
     --nav-item-background-active: color-mix(
         in srgb,
-        var(--background-primary) 100%,
-        var(--background-secondary)
+        var(--accent-color) 10%,
+        transparent
     );
+    --nav-item-color-highlighted: var(--foreground-color);
+
+    .nav-folder.is-being-dragged-over {
+        background: color-mix(
+            in srgb,
+            var(--accent-color) 5%,
+            transparent
+        ) !important;
+    }
+    :not(.sidebar-color) .mod-right-split {
+        --background-secondary: unset !important;
+    }
 
     --ribbon-background: var(--background-secondary);
+    --ribbon-background-collapsed: var(--background-secondary);
 
     --titlebar-background: var(--background-secondary) !important;
     --titlebar-background-focused: var(--background-secondary) !important;

@@ -4,13 +4,17 @@
 .minimalist.chisel-color:has(
         .mod-root .workspace-leaf-content[data-mode="preview"]
     ) {
-    --blur: 10px;
     --border-width: 0;
     --shadow-color: color-mix(
         in srgb,
         var(--foreground-color) 12%,
         var(--background-secondary)
     );
+    --ribbon-width: 0px;
+
+    .workspace-ribbon {
+        display: none;
+    }
 }
 .minimalist.chisel-color.theme-dark
     :has(.mod-root .workspace-leaf-content[data-mode="preview"]) {
@@ -42,13 +46,42 @@
     display: none !important;
 }
 
+.minimalist
+    .workspace:not(.is-left-sidedock-open)
+    .workspace-leaf-content[data-mode="preview"]
+    .view-header-left {
+    margin-left: 70px;
+}
+
 .minimalist div.status-bar {
     background-color: color-mix(
         in srgb,
         var(--background-secondary) 50%,
         transparent
     );
-    backdrop-filter: blur(var(--blur));
+    backdrop-filter: blur(calc(var(--blur) * 1));
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.5)
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.5)
+    );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+}
+.minimalist div.status-bar:hover {
+    backdrop-filter: blur(calc(var(--blur) * 3));
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 .minimalist
@@ -58,7 +91,14 @@
 .minimalist .workspace-leaf-content[data-mode="preview"] .cmdr-page-header {
     display: none;
 }
-
+.minimalist:not(.is-mobile)
+    .workspace-leaf-content[data-mode="preview"]
+    .view-header-left,
+.minimalist:not(.is-mobile)
+    .workspace-leaf-content[data-mode="preview"]
+    .view-actions {
+    opacity: 0.25;
+}
 .minimalist:not(.is-mobile) .view-header {
     margin-bottom: calc(-1 * var(--header-height));
     background-color: color-mix(
@@ -66,15 +106,44 @@
         var(--background-primary) 25%,
         transparent
     ) !important;
-    backdrop-filter: blur(var(--blur));
+    backdrop-filter: blur(calc(var(--blur) * 1));
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.1)
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.1)
+    );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+}
+.minimalist:not(.is-mobile) .view-header:hover .view-header-left,
+.minimalist:not(.is-mobile) .view-header:hover .view-actions {
+    opacity: 1;
 }
 .minimalist:not(.is-mobile) .view-header:hover {
     background-color: color-mix(
         in srgb,
-        var(--background-primary) 85%,
+        var(--background-primary) 35%,
         transparent
     ) !important;
-    backdrop-filter: blur(calc(var(--blur) * 2));
+    backdrop-filter: blur(calc(var(--blur) * 3));
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-bottom: var(--border-width) solid var(--background-secondary);
 }
 .minimalist.is-mobile
     .workspace-leaf-content[data-mode="preview"]
@@ -83,9 +152,6 @@
     background: transparent !important;
 }
 
-.minimalist.is-mobile:has(.workspace-leaf-content[data-mode="preview"]) {
-    --safe-area-inset-top: 30px;
-}
 .minimalist.is-mobile:has(.workspace-leaf-content[data-mode="preview"])
     .mod-left-split-toggle {
     display: none;
