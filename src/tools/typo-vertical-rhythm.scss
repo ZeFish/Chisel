@@ -69,9 +69,8 @@
         font-size: var(--font-small);
         line-height: var(--line-height-tight);
     }
-
-    .callout-content > p {
-        margin: 0rlh 0 0 0;
+    .callout-content > p:last-of-type {
+        margin: 0;
     }
     .callout-content > ul {
         margin: 0rlh 0 0 0;
