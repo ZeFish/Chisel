@@ -125,14 +125,6 @@
         margin: 0rlh;
     }
 
-    .markdown-preview-view ol > li,
-    .markdown-preview-view ul > li,
-    .markdown-source-view ol > li,
-    .markdown-source-view ul > li,
-    .mod-cm6 .HyperMD-list-line.cm-line {
-        line-height: calc(var(--line-height-normal) * 0.75);
-    }
-
     .markdown-preview-view ol > li:not(:first-child),
     .markdown-preview-view ul > li:not(:first-child),
     .markdown-source-view ol > li:not(:first-child),

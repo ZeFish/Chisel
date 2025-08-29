@@ -6,7 +6,7 @@ body.chisel-typography {
     --font-header: var(--font-text);
     */
 
-    --font-density: 1.5;
+    --font-density: 1.7;
     --font-ratio: 1.333;
     --font-line-width: 40rlh;
     --font-weight: 400;
@@ -171,5 +171,16 @@ body.chisel-typography {
     pre {
         font-feature-settings: var(--font-mono-feature);
         font-variation-settings: var(--font-mono-variation);
+    }
+
+    .markdown-preview-view ol > li,
+    .markdown-preview-view ul > li,
+    .markdown-source-view ol > li,
+    .markdown-source-view ul > li,
+    .mod-cm6 .HyperMD-list-line.cm-line {
+        line-height: max(
+            calc(var(--line-height-normal) * 0.75),
+            var(--line-height-tight)
+        );
     }
 }

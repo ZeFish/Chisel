@@ -107,20 +107,25 @@
     --interactive-normal: var(--color-base-05);
     --interactive-hover: color-mix(
         in srgb,
-        var(--accent-color) 50%,
+        var(--accent-color) 66%,
         transparent
     );
     --interactive-accent: color-mix(
         in srgb,
-        var(--accent-color) 25%,
+        var(--accent-color) 33%,
         transparent
     );
     --interactive-accent-hsl: 0, 0, 50;
     --interactive-accent-hover: color-mix(
         in srgb,
-        var(--accent-color) 50%,
+        var(--accent-color) 66%,
         transparent
     );
+
+    &.is-mobile {
+        --interactive-accent: var(--text-muted);
+        --interactive-accent-hover: var(--text-normal);
+    }
 
     --foreground-color: var(--color-base-100);
     --text-normal: var(--color-base-100);

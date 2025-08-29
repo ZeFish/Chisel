@@ -24,19 +24,19 @@ body.chisel-typography {
     --font-header-feature: "liga";
     --font-header-variation: "SOFT" 75, "WONK" 0;
     --font-ratio: 1.333;
-    --font-density: 1.8;
+    --font-density: 1.7;
 }
 body.chisel-color {
     /* Light */
-    --light-color-foreground: #1c1b1a;
+    --light-color-foreground: #222;
     --light-color-background: #ffffff;
 
-    --light-color-red: #af3029;
+    --light-color-red: #b33a2a;
     --light-color-orange: #bc5215;
-    --light-color-yellow: #ad8301;
+    --light-color-yellow: #cc8815;
     --light-color-green: #66800b;
-    --light-color-cyan: #24837b;
-    --light-color-blue: #205ea6;
+    --light-color-cyan: #82a1b2;
+    --light-color-blue: #438199;
     --light-color-purple: #5e409d;
     --light-color-pink: #a02f6f;
 
@@ -46,20 +46,22 @@ body.chisel-color {
 
     /* Dark */
     --dark-color-foreground: #b7b5ac;
-    --dark-color-background: #1c1b1a;
+    --dark-color-background: #1d1d1d;
 
-    --dark-color-red: #d14d41;
+    --dark-color-red: #b33a2a;
     --dark-color-orange: #da702c;
-    --dark-color-yellow: #ad8301;
+    --dark-color-yellow: #cc8815;
     --dark-color-green: #879a39;
     --dark-color-cyan: #3aa99f;
     --dark-color-blue: #4385be;
-    --dark-color-purple: #8b7ec8;
-    --dark-color-pink: #ce5d97;
+    --dark-color-purple: #9a462b;
+    --dark-color-pink: #a8431b;
 
     --dark-accent-color: var(--color-yellow);
     --dark-bold-color: var(--color-red);
     --dark-italic-color: var(--color-blue);
+
+    --bold-weight: 400;
 }
 
 @import "tools/ui-better-highlight";

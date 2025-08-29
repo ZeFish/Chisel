@@ -71,24 +71,6 @@ settings:
         type: class-toggle
 		default: false
     -
-        id: ui-alt
-        title: Alternative Blockquote
-        description: ui-alt
-        type: class-toggle
-		default: false
-    -
-        id: table-align-right
-        title: Align second column in table to the right
-        description: table-align-right
-        type: class-toggle
-		default: false
-	-
-        id: typo-tag
-        title: Style tag in notes
-        description: table-align-right
-        type: class-toggle
-        default: false
-    -
         id: chisel-texture
         title: Add Texture
         description: Add noise textures on top of everything. It’s subtle but it’s there.
@@ -179,17 +161,5 @@ settings:
 		description:
 		type: class-toggle
 		default: false
-	-
-		id: line-height-normal
-		title: Line height
-		description: It is used as a measure in the vertical rhythm section
-		type: variable-number
-		default: 1.5em
-	-
-        id: font-ratio
-        title: Font ratio
-        description: Ratio on wich to base the header sizes
-        type: variable-number
-		default: 1.414
 
 */
