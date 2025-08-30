@@ -40,6 +40,7 @@
     .view-content pre {
         margin: 2rlh;
     }
+
     .markdown-source-view.mod-cm6 .callout {
         margin: 2rlh;
     }
@@ -143,7 +144,6 @@
         hyphens: auto;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3; /* number of lines to show */
     }
 
     /*  .HyperMD-header-1.cm-line */
@@ -213,10 +213,10 @@ is commented because is bugged the ability to select text
 }
 
 @media only screen and (max-width: 600px) {
-    .vertical-rhythm .view-content .callout,
-    .vertical-rhythm .view-content blockquote,
-    .vertical-rhythm .view-content pre {
-        margin: 2rlh 0rlh;
+    .vertical-rhythm .callout,
+    .vertical-rhythm blockquote,
+    .vertical-rhythm pre {
+        margin: 2rlh 0rlh !important;
     }
     .vertical-rhythm .inline-title {
         margin-bottom: 3rlh;

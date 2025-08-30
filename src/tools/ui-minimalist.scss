@@ -16,6 +16,12 @@
         display: none;
     }
 }
+.minimalist.chisel-color:not(.is-mobile)
+    .mod-root
+    .workspace-leaf-content[data-mode="preview"]
+    .workspace-ribbon {
+    display: none;
+}
 .minimalist.chisel-color.theme-dark
     :has(.mod-root .workspace-leaf-content[data-mode="preview"]) {
     --shadow-color: color-mix(in srgb, black 12%, var(--background-secondary));
