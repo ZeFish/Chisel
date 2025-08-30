@@ -88,7 +88,7 @@
 
     --divider-color: var(--border-color);
     --divider-width: var(--border-width);
-    --hr-color: var(--border-color);
+    --hr-color: var(--text-faint);
     --hr-thickness: 1px;
     --tab-outline-color: var(--border-color);
     --tab-outline-width: var(--border-width);
@@ -101,6 +101,9 @@
     --status-bar-border-width: var(--border-width);
     --status-bar-border-color: var(--border-color);
     --status-bar-border-width: 0;
+
+    --blockquote-border-thickness: 2px;
+    --blockquote-border-color: var(--border-color);
 
     /*--background-modifier-border: var(--border-color);*/
 
@@ -333,6 +336,10 @@
         --color-pink: var(--light-color-pink, #a02f6f);
     }
 
+    .markdown-source-view.mod-cm6 hr {
+        border-width: var(--hr-thickness);
+    }
+
     @media only screen and (max-width: 600px) {
         &.is-mobile .workspace-split.mod-root {
             background-color: var(--background-primary);
@@ -377,7 +384,8 @@
         --color-purple: var(--dark-color-purple, #8b7ec8);
         --color-pink: var(--dark-color-pink, #ce5d97);
 
-        --hr-color: color-mix(in srgb, var(--background-secondary) 75%, black);
+        --blockquote-border-color: var(--text-faint);
+        --hr-color: var(--text-faint);
 
         --h1-color: color-mix(
             in srgb,
