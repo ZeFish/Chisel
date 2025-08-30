@@ -1,6 +1,13 @@
 :root {
     --blur: 2px;
 }
+.workspace-leaf-content[data-mode="source"] .view-header .view-header-title,
+.is-focused
+    .workspace-leaf-content[data-mode="source"]
+    .view-header
+    .view-header-title {
+    display: none;
+}
 .minimalist.chisel-color:has(
         .mod-root .workspace-leaf-content[data-mode="preview"]
     ) {
@@ -22,6 +29,7 @@
     .workspace-ribbon {
     display: none;
 }
+
 .minimalist.chisel-color.theme-dark
     :has(.mod-root .workspace-leaf-content[data-mode="preview"]) {
     --shadow-color: color-mix(in srgb, black 12%, var(--background-secondary));
@@ -30,6 +38,7 @@
 .minimalist.chisel-color
     .mod-root:has(.workspace-leaf-content[data-mode="preview"]) {
     box-shadow: 0 0 0.5rlh var(--shadow-color);
+    z-index: 1;
 }
 
 .minimalist
@@ -42,6 +51,36 @@
     .view-header
     .clickable-icon:has(.lucide-edit-3) {
     display: flex;
+}
+
+.workspace-leaf-content[data-mode="preview"] .view-header .view-header-title,
+.workspace-leaf-content[data-mode="preview"] .view-header-left,
+.is-focused
+    .workspace-leaf-content[data-mode="preview"]
+    .view-header
+    .view-header-title,
+.is-focused .workspace-leaf-content[data-mode="preview"] .view-header-left {
+    display: none;
+}
+
+.minimalist.is-mobile:not(.floating-button-off):not(.advanced-toolbar)
+    .view-action:nth-last-of-type(2),
+.minimalist.is-mobile:not(.floating-button-off):not(.advanced-toolbar)
+    .view-action:nth-last-of-type(2) {
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+    opacity: 1;
+    top: calc(90vh - 110px);
+    display: flex;
+    padding: 5px;
+    position: fixed;
+    left: 86vw;
+    transform: translate(-40%, 5%);
+    justify-content: center;
+    align-items: center;
+    width: 53px;
+    height: 53px;
+    border-radius: 50% !important;
 }
 
 .minimalist
@@ -109,7 +148,7 @@
     margin-bottom: calc(-1 * var(--header-height));
     background-color: color-mix(
         in srgb,
-        var(--background-primary) 25%,
+        var(--background-primary) 0%,
         transparent
     ) !important;
     /*
