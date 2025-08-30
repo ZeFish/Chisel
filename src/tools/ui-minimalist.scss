@@ -53,13 +53,18 @@
     display: flex;
 }
 
-.workspace-leaf-content[data-mode="preview"] .view-header .view-header-title,
-.workspace-leaf-content[data-mode="preview"] .view-header-left,
-.is-focused
+.is-mobile
     .workspace-leaf-content[data-mode="preview"]
     .view-header
     .view-header-title,
-.is-focused .workspace-leaf-content[data-mode="preview"] .view-header-left {
+.is-mobile .workspace-leaf-content[data-mode="preview"] .view-header-left,
+.is-mobile.is-focused
+    .workspace-leaf-content[data-mode="preview"]
+    .view-header
+    .view-header-title,
+.is-mobile.is-focused
+    .workspace-leaf-content[data-mode="preview"]
+    .view-header-left {
     display: none;
 }
 
