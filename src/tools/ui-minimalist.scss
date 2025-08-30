@@ -112,8 +112,9 @@
         var(--background-primary) 25%,
         transparent
     ) !important;
+    /*
     backdrop-filter: blur(calc(var(--blur) * 1));
-
+    */
     -webkit-mask-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 1),
@@ -146,7 +147,9 @@
         var(--background-primary) 35%,
         transparent
     ) !important;
+    /*
     backdrop-filter: blur(calc(var(--blur) * 3));
+    */
     -webkit-mask-image: none;
     mask-image: none;
     border-bottom: var(--border-width) solid var(--background-secondary);

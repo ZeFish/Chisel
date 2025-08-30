@@ -89,7 +89,7 @@
     --divider-color: var(--border-color);
     --divider-width: var(--border-width);
     --hr-color: var(--border-color);
-    --hr-thickness: var(--border-width);
+    --hr-thickness: 1px;
     --tab-outline-color: var(--border-color);
     --tab-outline-width: var(--border-width);
     --tab-outline-color: var(--border-color);
@@ -284,7 +284,7 @@
     --ui3: var(--divider-color) !important;
     --bg1: var(--background-secondary) !important;
     --bg2: var(--background-secondary) !important;
-    --bg3: var(--background-primary) !important;
+    --bg3: var(--interactive-accent) !important;
     --alternating-color-1: var(--color-yellow);
     --alternating-color-2: var(--color-red);
     --alternating-color-3: var(--color-blue);
@@ -313,23 +313,24 @@
 
         --color-white: var(--color-base-00);
         --color-black: var(--color-base-100);
-        --color-red: var(--light-color-red, #df453a) !important;
-        --color-orange: var(--light-color-orange, #ea702e) !important;
+        /*
+        --color-red: var(--light-color-red, #df453a);
+        --color-orange: var(--light-color-orange, #ea702e);
         --color-yellow: var(--light-color-yellow, #e4ae25) !important;
         --color-green: var(--light-color-green, #1e9316) !important;
         --color-cyan: var(--light-color-cyan, #23a5a7) !important;
         --color-blue: var(--light-color-blue, #2882c3) !important;
         --color-purple: var(--light-color-purple, #8d6fb3) !important;
         --color-pink: var(--light-color-pink, #da58b5) !important;
-
-        --color-red: var(--light-color-red, #af3029) !important;
-        --color-orange: var(--light-color-orange, #bc5215) !important;
-        --color-yellow: var(--light-color-yellow, #ad8301) !important;
-        --color-green: var(--light-color-green, #66800b) !important;
-        --color-cyan: var(--light-color-cyan, #24837b) !important;
-        --color-blue: var(--light-color-blue, #205ea6) !important;
-        --color-purple: var(--light-color-purple, #5e409d) !important;
-        --color-pink: var(--light-color-pink, #a02f6f) !important;
+        */
+        --color-red: var(--light-color-red, #af3029);
+        --color-orange: var(--light-color-orange, #bc5215);
+        --color-yellow: var(--light-color-yellow, #ad8301);
+        --color-green: var(--light-color-green, #66800b);
+        --color-cyan: var(--light-color-cyan, #24837b);
+        --color-blue: var(--light-color-blue, #205ea6);
+        --color-purple: var(--light-color-purple, #5e409d);
+        --color-pink: var(--light-color-pink, #a02f6f);
     }
 
     @media only screen and (max-width: 600px) {
@@ -356,29 +357,27 @@
         --bold-color: var(--dark-bold-color, var(--color-red));
         --italic-color: var(--dark-italic-color, var(--color-blue));
 
-        --color-red: var(--dark-color-red, #bf3f36) !important;
-        --color-orange: var(--dark-color-orange, #ce6325) !important;
+        /*
+        --color-red: var(--dark-color-red, #bf3f36);
+        --color-orange: var(--dark-color-orange, #ce6325);
         --color-yellow: var(--dark-color-yellow, #d69a00) !important;
         --color-green: var(--dark-color-green, #2e9066) !important;
         --color-cyan: var(--dark-color-cyan, #4dadd5) !important;
         --color-blue: var(--dark-color-blue, #256ea2) !important;
         --color-purple: var(--dark-color-purple, #8e6ac7) !important;
         --color-pink: var(--dark-color-pink, #dd78db) !important;
+        */
 
-        --color-red: var(--dark-color-red, #d14d41) !important;
-        --color-orange: var(--dark-color-orange, #da702c) !important;
-        --color-yellow: var(--dark-color-yellow, #ad8301) !important;
-        --color-green: var(--dark-color-green, #879a39) !important;
-        --color-cyan: var(--dark-color-cyan, #3aa99f) !important;
-        --color-blue: var(--dark-color-blue, #4385be) !important;
-        --color-purple: var(--dark-color-purple, #8b7ec8) !important;
-        --color-pink: var(--dark-color-pink, #ce5d97) !important;
+        --color-red: var(--dark-color-red, #d14d41);
+        --color-orange: var(--dark-color-orange, #da702c);
+        --color-yellow: var(--dark-color-yellow, #ad8301);
+        --color-green: var(--dark-color-green, #879a39);
+        --color-cyan: var(--dark-color-cyan, #3aa99f);
+        --color-blue: var(--dark-color-blue, #4385be);
+        --color-purple: var(--dark-color-purple, #8b7ec8);
+        --color-pink: var(--dark-color-pink, #ce5d97);
 
-        --hr-color: color-mix(
-            in srgb,
-            var(--color-base-00) 85%,
-            var(--color-base-100)
-        );
+        --hr-color: color-mix(in srgb, var(--background-secondary) 75%, black);
 
         --h1-color: color-mix(
             in srgb,

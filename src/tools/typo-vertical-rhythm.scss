@@ -35,14 +35,15 @@
         margin-top: -1.75rlh;
     }
 
-    .view-content .callout,
-    .view-content blockquote,
-    .view-content pre {
+    .markdown-reading-view .callout,
+    .markdown-reading-view.mod-cm6 .callout,
+    .markdown-reading-view blockquote,
+    .markdown-reading-view pre {
         margin: 2rlh;
     }
 
-    .markdown-source-view.mod-cm6 .callout {
-        margin: 2rlh;
+    .markdown-source-view .cm-callout .callout {
+        margin: 0;
     }
     /*
     .view-content:not(:has(callout-content))
@@ -80,7 +81,7 @@
 
     .markdown-source-view hr,
     .markdown-reading-view hr {
-        margin: 2rlh 8rlh;
+        margin: 3rlh 8rlh 4rlh 8rlh;
     }
 
     .popover .markdown-embed-content,
@@ -233,7 +234,7 @@ is commented because is bugged the ability to select text
     }
     .vertical-rhythm .markdown-source-view hr,
     .vertical-rhythm .markdown-reading-view hr {
-        margin: 2rlh 25% !important;
+        margin: 4rlh 25% !important;
     }
 }
 
