@@ -31,6 +31,10 @@
     z-index: 1;
 }
 
+.minimalist.chisel-reading .embedded-backlinks {
+    display: none;
+}
+
 .minimalist.chisel-reading .mod-root .workspace-tab-header-container {
     display: none;
 }
@@ -184,6 +188,7 @@
 .minimalist:not(.is-mobile) .view-header:hover .view-actions {
     opacity: 1;
 }
+
 .minimalist:not(.is-mobile) .view-header:hover {
     background-color: color-mix(
         in oklab,
