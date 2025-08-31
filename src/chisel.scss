@@ -45,8 +45,8 @@ body.chisel-color {
     --light-italic-color: var(--color-blue);
 
     /* Dark */
-    --dark-color-foreground: #b7b5ac;
-    --dark-color-background: #1d1d1d;
+    --dark-color-foreground: oklch(0.7721 0.0228 96.47);
+    --dark-color-background: oklch(0.2308 0.0023 67.73);
 
     --dark-color-red: #d14d41;
     --dark-color-orange: #da702c;

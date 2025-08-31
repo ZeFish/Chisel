@@ -30,29 +30,13 @@ body.chisel-color.cssclass-kernel {
     --light-color-pink: #a02f6f; /* softer t
 
 
-    --dark-foreground-color: #f4f5f3;
-    --dark-background-color: #1d3557;
-    /* Core colors */
-    --dark-color-background: #1d1e21; /* dark terminal feel */
-    --dark-color-foreground: #c9c9c9; /* same warm white as light bg */
-
     /* Neutrals */
     --dark-color-gray: #c9c9c9; /* text gray */
     --dark-color-muted: #999; /* borders, UI frame */
     --dark-color-soft: #2d2f33; /* dark gray blocks */
 
-    /* Accent system */
-    --dark-color-red: #ff6b6b;
-    --dark-color-orange: #f0a03d;
-    --dark-color-yellow: #f7d774;
-    --dark-color-green: #6dd3a4;
-    --dark-color-cyan: #63d2c6;
-    --dark-color-blue: #5fa8ff;
-    --dark-color-purple: #a593f8;
-    --dark-color-pink: #ec9abc;
-
-    --dark-color-background: #1c1b1a; /* dark terminal feel */
-    --dark-color-foreground: #e6e4d9;
+    --dark-color-background: oklch(0.2228 0.0025 67.7); /* dark terminal feel */
+    --dark-color-foreground: oklch(0.8174 0.0149 98.3);
 
     /* Accent system */
     --dark-color-red: #d14d41;

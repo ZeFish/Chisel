@@ -360,6 +360,8 @@
         --color-white: var(--color-base-100);
         --color-black: var(--color-base-00);
 
+        --border-color: color-mix(in srgb, black 30%, var(--color-base-00));
+
         --accent-color: var(--dark-accent-color, var(--color-yellow));
         --bold-color: var(--dark-bold-color, var(--color-red));
         --italic-color: var(--dark-italic-color, var(--color-blue));

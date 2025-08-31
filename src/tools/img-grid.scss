@@ -6,7 +6,9 @@
     line-height: 0;
 }
 
-.img-grid .markdown-preview-section > div.el-p p:has(> .image-embed) {
+.img-grid
+    .markdown-preview-section
+    p:has(> .image-embed):not(.callout-content p) {
     display: grid;
     margin-top: 0.25rlh;
     margin-bottom: 0.25rlh;

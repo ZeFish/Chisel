@@ -1,11 +1,10 @@
 body.chisel-color.cssclass-gaspesie {
-    --light-color-background: #fdfbf7;
-    --light-color-background: #fff;
-    --light-color-foreground: #4b4b4b;
+    --light-color-background: oklch(1 0 84.57);
+    --light-color-foreground: oklch(0.2128 0 0);
 
     --light-color-red: oklch(54.12% 0.207 27.82);
     --light-color-orange: oklch(70.16% 0.199 43.03);
-    --light-color-yellow: oklch(88.69% 0.162 92.77);
+    --light-color-yellow: oklch(68.69% 0.162 92.77);
     --light-color-green: oklch(35.44% 0.078 144.66);
     --light-color-cyan: oklch(79.26% 0.15 222.5);
     --light-color-blue: oklch(56.01% 0.15 249.8);
@@ -41,8 +40,6 @@ body.chisel-color.cssclass-gaspesie {
     --font-monospace: "DSE Typewriter";
     --font-mono-feature: "onum" off;
     --font-mono-variation: "";
-
-    --border-color: var(--color-background);
 
     --line-height-normal: 1.9em;
 

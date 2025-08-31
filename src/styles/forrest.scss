@@ -1,23 +1,25 @@
 body.chisel-color.cssclass-forrest {
-    --light-color-base-100: #4a341c;
-    --light-color-base-00: #f7f3ee;
+    --light-color-foreground: oklch(0.392 0.0488 67.4);
+    --light-color-background: #f7f3ee;
 
-    --light-color-red: #df453b;
-    --light-color-red: #ae3929;
-    --light-color-orange: #ea702e;
-    --light-color-yellow: #e4ae25;
-    --light-color-green: #1e9316;
-    --light-color-cyan: #23a5a7;
-    --light-color-blue: #2882c3;
-    --light-color-purple: #8d6fb3;
-    --light-color-pink: #da58b5;
+    --light-color-red: oklch(0.5123 0.1555 30.78);
+    --light-color-orange: oklch(0.6803 0.1692 45.57);
+    --light-color-yellow: oklch(0.6879 0.1635 72.21);
+    --light-color-green: oklch(0.5788 0.1848 142.16);
+    --light-color-cyan: oklch(0.6578 0.105 196.53);
+    --light-color-blue: oklch(0.5859 0.1292 231);
+    --light-color-purple: oklch(0.5978 0.1058 303.66);
+    --light-color-pink: oklch(0.657 0.169 350.57);
 
     --dark-color-base-100: #b0a08d; /*#e6cfb3;*/
     --dark-color-base-00: #231e1a;
+    --dark-color-background: #2b1d10;
+    --dark-color-foreground: #dcc7b2;
 
     --dark-color-red: #ac2016;
     --dark-color-orange: #ce6325;
     --dark-color-yellow: #d69a00;
+    --dark-color-yellow: oklch(0.7879 0.1635 72.21);
     --dark-color-green: #2e9066;
     --dark-color-cyan: #4dadd5;
     --dark-color-blue: #256ea2;

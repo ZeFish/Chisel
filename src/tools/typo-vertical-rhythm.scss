@@ -8,15 +8,11 @@
     --nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1)
         var(--size-4-6);
 
-    .nav-file-title-content,
-    .nav-folder-title-content {
-        line-height: 1.5em;
-    }
-    table {
+    :is(.markdown-source-view, .markdown-reading-view) table {
         margin-left: var(--table-margin);
         margin-right: var(--table-margin);
     }
-    p,
+    :is(.markdown-source-view, .markdown-reading-view) p,
     .cm-line {
         line-height: var(--line-height-normal);
         margin-top: 0rlh;
@@ -40,6 +36,10 @@
     .markdown-reading-view blockquote,
     .markdown-reading-view pre {
         margin: 2rlh;
+    }
+
+    .markdown-reading-view blockquote p:last-of-type {
+        margin-bottom: 0;
     }
 
     .markdown-source-view .cm-callout .callout {
@@ -66,15 +66,17 @@
     }
 */
 
-    .callout-content,
-    blockquote {
+    :is(.markdown-source-view, .markdown-reading-view) .callout-content,
+    :is(.markdown-source-view, .markdown-reading-view) blockquote {
         font-size: var(--font-small);
         line-height: var(--line-height-tight);
     }
-    .callout-content > p:last-of-type {
+    :is(.markdown-source-view, .markdown-reading-view)
+        .callout-content
+        > p:last-of-type {
         margin: 0;
     }
-    .callout-content > ul {
+    :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
         margin: 0rlh 0 0 0;
         padding: 0 0 0 1rlh;
     }
@@ -82,11 +84,17 @@
     .markdown-reading-view hr {
         margin: 3rlh 8rlh 4rlh 8rlh;
     }
-
-    .popover .markdown-embed-content,
-    .markdown-embed-content,
-    .popover .markdown-embed-title,
-    .markdown-embed-title {
+    .markdown-source-view hr {
+        margin: 0 25%;
+    }
+    :is(.markdown-source-view, .markdown-reading-view)
+        .popover
+        .markdown-embed-content,
+    :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-content,
+    :is(.markdown-source-view, .markdown-reading-view)
+        .popover
+        .markdown-embed-title,
+    :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-title {
         padding: 1rlh !important;
     }
 
@@ -97,8 +105,8 @@
   }
   */
 
-    ul,
-    ol {
+    .markdown-preview-view ul,
+    .markdown-preview-view ol {
         padding: 0rlh 2rlh;
         margin: 1rlh 0rlh;
     }
@@ -120,20 +128,22 @@
     .markdown-preview-view ol > li,
     .markdown-preview-view ul > li,
     .markdown-source-view ol > li,
-    .markdown-source-view ul > li,
-    .mod-cm6 .HyperMD-list-line.cm-line {
+    .markdown-source-view ul > li {
         margin: 0rlh;
     }
 
     .markdown-preview-view ol > li:not(:first-child),
     .markdown-preview-view ul > li:not(:first-child),
     .markdown-source-view ol > li:not(:first-child),
-    .markdown-source-view ul > li:not(:first-child),
-    .mod-cm6 .HyperMD-list-line.cm-line:not(:first-child) {
+    .markdown-source-view ul > li:not(:first-child) {
         margin-top: 0.5rlh;
     }
 
-    .inline-title {
+    .mod-cm6 .HyperMD-list-line.cm-line {
+        margin-bottom: 0.5rlh !important;
+    }
+
+    .markdown-reading-view .inline-title {
         margin-top: 4rlh;
         margin-bottom: 4rlh;
         padding: 0;
