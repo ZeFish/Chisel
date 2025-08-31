@@ -1,16 +1,11 @@
 :root {
     --blur: 2px;
 }
-.workspace-leaf-content[data-mode="source"] .view-header .view-header-title,
-.is-focused
-    .workspace-leaf-content[data-mode="source"]
-    .view-header
-    .view-header-title {
+.minimalist.chisel-editing .view-header-title,
+.minimalist.chisel-editing.is-focused .view-header-title {
     display: none;
 }
-.minimalist.chisel-color:has(
-        .mod-root .workspace-leaf-content[data-mode="preview"]
-    ) {
+.minimalist.chisel-color.chisel-reading {
     --border-width: 0;
     --shadow-color: color-mix(
         in oklab,
@@ -23,40 +18,27 @@
         display: none;
     }
 }
-.minimalist.chisel-color:not(.is-mobile)
-    .mod-root
-    .workspace-leaf-content[data-mode="preview"]
-    .workspace-ribbon {
+.minimalist.chisel-reading.chisel-color:not(.is-mobile) .workspace-ribbon {
     display: none;
 }
 
-.minimalist.chisel-color.theme-dark
-    :has(.mod-root .workspace-leaf-content[data-mode="preview"]) {
+.minimalist.chisel-color.theme-dark.chisel-reading {
     --shadow-color: color-mix(in oklab, black 12%, var(--background-secondary));
 }
 
-.minimalist.chisel-color
-    .mod-root:has(.workspace-leaf-content[data-mode="preview"]) {
+.minimalist.chisel-color.chisel-reading .mod-root {
     box-shadow: 0 0 0.5rlh var(--shadow-color);
     z-index: 1;
 }
 
-.minimalist
-    .mod-root:has(.workspace-leaf-content[data-mode="preview"])
-    .workspace-tab-header-container {
+.minimalist.chisel-reading .mod-root .workspace-tab-header-container {
     display: none;
 }
-.minimalist
-    .workspace-leaf-content[data-mode="preview"]
-    .view-header
-    .clickable-icon:has(.lucide-edit-3) {
+.minimalist.chisel-reading .clickable-icon:has(.lucide-edit-3) {
     display: flex;
 }
 
-.is-mobile
-    .workspace-leaf-content[data-mode="preview"]
-    .view-header
-    .view-header-title,
+.chisel-reading.is-mobile .view-header-title,
 .is-mobile .workspace-leaf-content[data-mode="preview"] .view-header-left,
 .is-mobile.is-focused
     .workspace-leaf-content[data-mode="preview"]
@@ -121,7 +103,6 @@
     .view-header-left {
     margin-left: 70px;
 }
-
 .minimalist div.status-bar {
     background-color: color-mix(
         in oklab,
@@ -152,7 +133,6 @@
     -webkit-mask-image: none;
     mask-image: none;
 }
-
 .minimalist
     .workspace-leaf-content[data-mode="preview"]
     .view-header-title-parent,
@@ -217,18 +197,14 @@
     mask-image: none;
     border-bottom: var(--border-width) solid var(--background-secondary);
 }
-.minimalist.is-mobile
-    .workspace-leaf-content[data-mode="preview"]
-    .view-header {
+.chisel-reading.minimalist.is-mobile .view-header {
     margin-bottom: calc(-1 * var(--view-header-height));
     background: transparent !important;
 }
 
-.minimalist.is-mobile:has(.workspace-leaf-content[data-mode="preview"])
-    .mod-left-split-toggle {
+.chisel-reading.minimalist.is-mobile .mod-left-split-toggle {
     display: none;
 }
-.minimalist.is-mobile:has(.workspace-leaf-content[data-mode="preview"])
-    .mobile-navbar {
+.chisel-reading.minimalist.is-mobile .mobile-navbar {
     display: none;
 }
