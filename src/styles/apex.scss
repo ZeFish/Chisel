@@ -34,9 +34,9 @@ body.chisel-color.cssclass-apex {
 
     .markdown-preview-view,
     .markdown-source-view {
-        color: color-mix(in srgb, currentcolor 90%, transparent);
+        color: color-mix(in oklab, currentcolor 90%, transparent);
 
-        --shadow-color: color-mix(in srgb, currentcolor 10%, transparent);
+        --shadow-color: color-mix(in oklab, currentcolor 10%, transparent);
         --shadow-distance: 0px;
         --shadow-depth: 0.5px;
         text-shadow:
@@ -57,10 +57,10 @@ body.chisel-color.cssclass-apex {
     h4,
     h5,
     h6 {
-        color: color-mix(in srgb, currentcolor 90%, var(--background-primary));
+        color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
 
         --shadow-color: color-mix(
-            in srgb,
+            in oklab,
             currentcolor 100%,
             var(--background-primary)
         );
@@ -80,7 +80,7 @@ body.chisel-color.cssclass-apex {
     &.theme-light h5,
     &.theme-light h6 {
         color: color-mix(
-            in srgb,
+            in oklab,
             var(--color-red) 90%,
             var(--background-primary)
         );

@@ -39,24 +39,24 @@
 .img-grid .markdown-source-view img {
     border-radius: var(--radius-m);
     border: 1px solid
-        color-mix(in srgb, var(--background-primary) 75%, var(--color-black));
+        color-mix(in oklab, var(--background-primary) 75%, var(--color-black));
 
     box-shadow:
         0.3px 0.5px 0.8px
             color-mix(
-                in srgb,
+                in oklab,
                 var(--background-primary) 90%,
                 var(--color-black)
             ),
         0.5px 0.9px 1.5px -0.2px
             color-mix(
-                in srgb,
+                in oklab,
                 var(--background-primary) 80%,
                 var(--color-black)
             ),
         1px 2px 3.2px -0.4px
             color-mix(
-                in srgb,
+                in oklab,
                 var(--background-primary) 80%,
                 var(--color-black)
             );

@@ -1,5 +1,5 @@
 body.chisel-texture:not(.no-ink) {
-    text-shadow: 0px 0px 2px color-mix(in srgb, currentColor 12%, transparent);
+    text-shadow: 0px 0px 2px color-mix(in oklab, currentColor 12%, transparent);
     background-blend-mode: multiply;
     filter: blur(0.2px);
 }

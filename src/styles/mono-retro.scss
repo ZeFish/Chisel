@@ -45,7 +45,7 @@ body.chisel-color.cssclass-mono-retro {
 
     &.theme-light .markdown-reading-view a {
         text-decoration: underline !important;
-        --shadow-color: color-mix(in srgb, currentcolor 20%, transparent);
+        --shadow-color: color-mix(in oklab, currentcolor 20%, transparent);
         --shadow-distance: 0px;
         --shadow-depth: 0.5px;
         text-shadow:
@@ -57,10 +57,10 @@ body.chisel-color.cssclass-mono-retro {
 
     .markdown-preview-view,
     .markdown-source-view {
-        color: color-mix(in srgb, var(--text-normal) 90%, transparent);
+        color: color-mix(in oklab, var(--text-normal) 90%, transparent);
         text-shadow: 0 0 0.5px var(--text-normal);
 
-        --shadow-color: color-mix(in srgb, currentcolor 10%, transparent);
+        --shadow-color: color-mix(in oklab, currentcolor 10%, transparent);
         --shadow-distance: 0px;
         --shadow-depth: 0.5px;
         text-shadow:
@@ -77,10 +77,10 @@ body.chisel-color.cssclass-mono-retro {
     h4,
     h5,
     h6 {
-        color: color-mix(in srgb, currentcolor 90%, var(--background-primary));
+        color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
 
         --shadow-color: color-mix(
-            in srgb,
+            in oklab,
             currentcolor 30%,
             var(--background-primary)
         );
@@ -98,8 +98,8 @@ body.theme-light:has(.mono-retro) .markdown-preview-section {
     background: repeating-linear-gradient(
         transparent,
         transparent 0.9rlh,
-        color-mix(in srgb, var(--color-blue) 5%, transparent) 0.9rlh,
-        color-mix(in srgb, var(--color-blue) 5%, transparent) 1rlh
+        color-mix(in oklab, var(--color-blue) 5%, transparent) 0.9rlh,
+        color-mix(in oklab, var(--color-blue) 5%, transparent) 1rlh
     );
 }
 */

@@ -25,7 +25,7 @@ body.chisel-color.cssclass-manifeste {
     --dark-accent-color: #9ecaa3;
     --dark-bold-color: #de7260;
     --dark-bold-color: color-mix(
-        in srgb,
+        in oklab,
         #de7260 85%,
         var(--background-primary)
     );
@@ -41,12 +41,12 @@ body.chisel-color.cssclass-manifeste {
 
     .callout {
         border-color: color-mix(
-            in srgb,
+            in oklab,
             var(--callout-color) 20%,
             var(--background-secondary)
         );
         background-color: color-mix(
-            in srgb,
+            in oklab,
             var(--callout-color) 2%,
             var(--background-secondary)
         );

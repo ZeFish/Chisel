@@ -79,7 +79,7 @@ body.chisel-color.cssclass-reflexion {
     .markdown-reading-view a {
         text-decoration: underline;
         text-decoration-color: color-mix(
-            in srgb,
+            in oklab,
             var(--accent-color) 70%,
             transparent
         );
@@ -97,7 +97,7 @@ body.chisel-color.cssclass-reflexion {
 
     .callout {
         border-color: color-mix(
-            in srgb,
+            in oklab,
             var(--callout-color) 20%,
             var(--background-secondary)
         );

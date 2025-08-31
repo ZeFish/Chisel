@@ -92,7 +92,7 @@ body.chisel-typography {
         font-weight: 400;
     }
     .cm-comment.cm-strong {
-        color: color-mix(in srgb, inherit 50%, transparent);
+        color: color-mix(in oklab, inherit 50%, transparent);
     }
 
     .nav-file-tag {

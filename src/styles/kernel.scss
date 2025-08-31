@@ -104,7 +104,7 @@ body.chisel-color.cssclass-kernel {
 
     .token.comment {
         color: color-mix(
-            in srgb,
+            in oklab,
             var(--color-base-100) 40%,
             var(--color-base-00)
         );

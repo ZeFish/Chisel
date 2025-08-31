@@ -59,7 +59,7 @@ body.chisel-color.cssclass-avantgarde {
     .HyperMD-header-6,
     .inline-title {
         text-shadow: 0px 0px 0.7px
-            color-mix(in srgb, var(--color-foreground) 90%, transparent);
+            color-mix(in oklab, var(--color-foreground) 90%, transparent);
         color: transparent;
     }
 
@@ -68,7 +68,7 @@ body.chisel-color.cssclass-avantgarde {
         font-weight: 600;
         text-transform: uppercase;
         text-shadow: 0px 0px 0.01em
-            color-mix(in srgb, var(--color-orange) 90%, transparent);
+            color-mix(in oklab, var(--color-orange) 90%, transparent);
         color: transparent;
     }
 

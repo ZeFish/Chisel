@@ -4,7 +4,7 @@
 .markdown-preview-view blockquote {
     background: var(--background-secondary);
     background-color: color-mix(
-        in srgb,
+        in oklab,
         var(--color-base-100) 2.5%,
         transparent
     );
@@ -17,18 +17,18 @@
     box-shadow:
         0.3px 0.5px 0.8px
             color-mix(
-                in srgb,
+                in oklab,
                 var(--background-primary) 90%,
                 var(--color-black)
             ),
-        0.5px 0.9px 1.5px -0.2px color-mix(in srgb, var(--background-primary)
+        0.5px 0.9px 1.5px -0.2px color-mix(in oklab, var(--background-primary)
                     90%, var(--color-black)),
-        1px 2px 3.2px -0.4px color-mix(in srgb, var(--background-primary) 90%, var(--color-black));
+        1px 2px 3.2px -0.4px color-mix(in oklab, var(--background-primary) 90%, var(--color-black));
 */
 }
 .markdown-rendered code {
     background-color: color-mix(
-        in srgb,
+        in oklab,
         var(--color-base-05) 100%,
         transparent
     );
@@ -51,8 +51,12 @@ pre code[class*="language-"] {
     margin: 1rlh 0;
 
     /* border-color: rgba(var(--callout-color), var(--callout-border-opacity)); */
-    border-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
-    background-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
+    border-color: color-mix(in oklab, var(--callout-color) 10%, transparent);
+    background-color: color-mix(
+        in oklab,
+        var(--callout-color) 10%,
+        transparent
+    );
 }
 
 .callout-icon {
@@ -68,12 +72,12 @@ pre code[class*="language-"] {
     padding: 0.5rlh 1rlh;
     border-radius: var(--radius-m);
     background-color: color-mix(
-        in srgb,
+        in oklab,
         var(--callout-color) 2.5%,
         var(--background-primary)
     );
     box-shadow: inset 0px 0px 0px 1px
-        color-mix(in srgb, var(--callout-color) 20%, transparent);
+        color-mix(in oklab, var(--callout-color) 20%, transparent);
     /* border-radius: calc(var(--radius) * 2); */
     font-size: var(--font-small);
     margin-left: 0;

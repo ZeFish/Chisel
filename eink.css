@@ -174,16 +174,16 @@ body {
 .theme-dark,
 .theme-light {
     --color-base-00: white !important;
-    --color-base-05: color-mix(in srgb, var(--color-base-100) 0%, var(--color-base-00)) !important;
-    --color-base-10: color-mix(in srgb, var(--color-base-100) 0%, var(--color-base-00)) !important;
-    --color-base-20: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
-    --color-base-25: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
-    --color-base-30: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
-    --color-base-35: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
-    --color-base-40: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
-    --color-base-50: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
-    --color-base-60: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
-    --color-base-70: color-mix(in srgb, var(--color-base-100) 75%, var(--color-base-00)) !important;
+    --color-base-05: color-mix(in oklab, var(--color-base-100) 0%, var(--color-base-00)) !important;
+    --color-base-10: color-mix(in oklab, var(--color-base-100) 0%, var(--color-base-00)) !important;
+    --color-base-20: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-25: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-30: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-35: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-40: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-50: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-60: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-70: color-mix(in oklab, var(--color-base-100) 75%, var(--color-base-00)) !important;
     --color-base-100: black !important;
 
     --background-primary: var(--color-base-00) !important;
