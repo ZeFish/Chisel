@@ -62,9 +62,10 @@
     );
     --background-secondary-alt: var(--color-base-00);
 
-    --accent-color: var(
-        --color-yellow
-    ); /* hsl(var(--accent-h), var(--accent-s), var(--accent-l)); */
+    --accent-color: var(--color-yellow);
+    --bold-color: var(--color-orange);
+    --italic-color: var(--color-blue);
+
     --h1-color: var(--color-base-100);
     --h2-color: var(--color-base-100);
     --h3-color: var(--color-base-100);
@@ -128,6 +129,7 @@
     &.is-mobile {
         --interactive-accent: var(--text-muted);
         --interactive-accent-hover: var(--text-normal);
+        --interactive-normal: var(--background-primary);
     }
 
     --foreground-color: var(--color-base-100);
@@ -159,9 +161,6 @@
         var(--link-color) 25%,
         var(--color-base-100)
     );
-
-    --bold-color: var(--color-orange);
-    --italic-color: var(--color-blue);
 
     --tag-background: var(--background-secondary);
     --tag-border: var(--border-color);

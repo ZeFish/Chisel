@@ -207,7 +207,7 @@
 .minimalist:not(.is-mobile) .view-header:hover {
     background-color: color-mix(
         in oklab,
-        var(--background-primary) 35%,
+        var(--background-primary) 100%,
         transparent
     ) !important;
     /*

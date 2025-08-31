@@ -1,6 +1,6 @@
 body.chisel-color.cssclass-mono-yellow {
-    --light-color-base-100: #161311;
-    --light-color-base-00: #efd963;
+    --light-color-background: #efd963;
+    --light-color-foreground: #161311;
     --light-color-red: #af3029;
     --light-color-orange: #bc5215;
     --light-color-yellow: #ad8301;
@@ -10,33 +10,33 @@ body.chisel-color.cssclass-mono-yellow {
     --light-color-purple: #5e409d;
     --light-color-pink: #a02f6f;
     /* Dark */
-    --dark-color-base-100: #efd963;
-    --dark-color-base-00: #161311;
-    --dark-color-red: #af3029;
-    --dark-color-orange: #bc5215;
-    --dark-color-yellow: #ad8301;
-    --dark-color-green: #66800b;
-    --dark-color-cyan: #142625;
-    --dark-color-blue: #205ea6;
-    --dark-color-purple: #5e409d;
-    --dark-color-pink: #a02f6f;
+    --dark-color-background: #161311;
+    --dark-color-foreground: #efd963;
 
     --color-accent: var(--text-normal);
     --font-monospace: var(--text-normal);
     --bold-color: var(--text-normal);
     --italic-color: var(--text-normal);
+
     --font-text: "Söhne Mono";
     --font-header: "Inter Variable";
-    --font-monospace: "Sohne Mono";
-    --font-interface: "Sohne Mono";
-    --line-height-normal: 1.2em;
-    --font-letter-spacing: -0.02em;
-    /*--font-letter-spacing: 	0em;
-	--typo-ratio: 			1.425;
-	--font-text-size: 		18px;*/
-    --normal-weight: 400;
+    --font-monospace: "Söhne Mono";
+    --font-interface: "Söhne Mono";
+
+    --font-density: 1.5;
     --bold-weight: 700;
     --font-feature:
         "zero", "calt", "cv01", "cv07", "cv10", "cv11", "cv14", "cv16", "cv17",
         "cv18", "ss01";
+    --font-header-feature:
+        "liga", "calt", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv06",
+        "cv09", "cv10", "cv11", "cv12", "cv13";
+    --font-header-weight: 900;
+    --font-header-line-height: 1em;
+    --font-header-letter-spacing: -0.07em;
+
+    img {
+        filter: none !important;
+        mix-blend-mode: normal !important;
+    }
 }
