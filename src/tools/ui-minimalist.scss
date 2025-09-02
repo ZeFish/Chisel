@@ -1,8 +1,8 @@
 :root {
     --blur: 2px;
 }
-.minimalist.chisel-editing .view-header-title,
-.minimalist.chisel-editing.is-focused .view-header-title {
+.minimalistchisel-editing .view-header-title,
+.minimalistchisel-editing.is-focused .view-header-title {
     display: none;
 }
 .minimalist.chisel-color.chisel-reading {
@@ -101,11 +101,10 @@
     display: none !important;
 }
 
-.minimalist
+.minimalist.chisel-reading:not(.hider-tabs)
     .workspace:not(.is-left-sidedock-open)
-    .workspace-leaf-content[data-mode="preview"]
     .view-header-left {
-    margin-left: 70px;
+    margin-left: 60px;
 }
 .minimalist div.status-bar {
     background-color: color-mix(

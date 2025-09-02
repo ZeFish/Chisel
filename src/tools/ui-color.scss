@@ -292,6 +292,12 @@
     --alternating-color-3: var(--color-blue);
     --inline-title-color: var(--text-normal);
 
+    &.hider-tabs .workspace:not(.is-left-sidedock-open) {
+        --bg1: var(--background-primary) !important;
+        --titlebar-background: var(--background-primary) !important;
+        --titlebar-background-focused: var(--background-primary) !important;
+    }
+
     &.is-mobile {
         --mobile-sidebar-background: var(--background-secondary);
     }
