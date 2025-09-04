@@ -12,14 +12,13 @@ body.chisel-color.cssclass-avantgarde {
     --dark-color-background: #262421;
     --bold-weight: 600;
     --font-ratio: 1.6;
-    --font-text: "ITC Avant Garde Pro"; /* "Solitaire MVB Pro"; */
+    --font-text: "Söhne Mono"; /* "Solitaire MVB Pro"; */
     --font-header: "ITC Avant Garde Pro";
-    --font-monospace: "Sohne Mono";
-    --font-interface: "ITC Avant Garde Pro"; /* "Solitaire MVB Pro"; */
-    --font-header-weight: 600;
+    --font-monospace: "Söhne Mono";
+    --font-interface: "Söhne Mono"; /* "Solitaire MVB Pro"; */
+    --font-header-weight: 700;
     --font-header-letter-spacing: -0.05em;
-    --nav-item-weight: 500;
-    --nav-item-weight-active: 500;
+    --font-header-line-height: 0.75em;
     --color-accent: var(--color-orange);
 
     .markdown-reading-view a {

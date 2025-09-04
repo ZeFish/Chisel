@@ -13,13 +13,12 @@ body.chisel-color.cssclass-reflexion {
 
     --accent-color: var(--color-red);
 
-    --font-size: calc(var(--font-text-size) * 1.2);
-    --font-ratio: 1.3;
-    --font-density: 1.414;
+    --font-ratio: 1.414;
+    --font-density: 1.85;
     --font-line-width: 52ch;
 
     --font-text: "Inferi Roman", "Fern Variable", "Graveur Variable", Bookerly;
-    --font-weight: 400;
+    --font-weight: 450;
     --font-feature: "liga", "onum", "kern";
     --font-variation: "";
 
@@ -65,6 +64,30 @@ body.chisel-color.cssclass-reflexion {
         text-align-last: left;
         text-wrap: pretty;
         hyphens: auto;
+    }
+
+    .el-p + .el-p p {
+        text-indent: 1.5rlh;
+    }
+
+    h1,
+    .inline-title {
+        --color: color-mix(in oklab, var(--background-primary) 25%, white);
+        text-shadow:
+            -1px -1px 1px var(--color),
+            1px -1px 1px var(--color),
+            -1px 1px 1px var(--color),
+            1px 1px 1px var(--color) !important;
+    }
+
+    &.theme-dark h1,
+    &.theme-dark .inline-title {
+        --color: color-mix(in oklab, var(--background-primary) 50%, black);
+        text-shadow:
+            -1px -1px 1px var(--color),
+            1px -1px 1px var(--color),
+            -1px 1px 1px var(--color),
+            1px 1px 1px var(--color) !important;
     }
 
     h1,

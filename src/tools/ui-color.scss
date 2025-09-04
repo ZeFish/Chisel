@@ -89,7 +89,11 @@
 
     --divider-color: var(--border-color);
     --divider-width: var(--border-width);
-    --hr-color: var(--text-faint);
+    --hr-color: color-mix(
+        in oklab,
+        var(--text-normal) 25%,
+        var(--background-primary)
+    );
     --hr-thickness: 1px;
     --tab-outline-color: var(--border-color);
     --tab-outline-width: var(--border-width);
@@ -392,7 +396,6 @@
         --color-pink: var(--dark-color-pink, #ce5d97);
 
         --blockquote-border-color: var(--text-faint);
-        --hr-color: var(--text-faint);
 
         --h1-color: color-mix(
             in oklab,

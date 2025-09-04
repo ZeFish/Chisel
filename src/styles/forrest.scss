@@ -35,6 +35,7 @@ body.chisel-color.cssclass-forrest {
     --font-variation: "wght" 400;
 
     --font-ratio: 1.5;
+    --font-density: 1.8;
 
     --font-weight: 400;
     --bold-weight: 500;
@@ -64,6 +65,35 @@ body.chisel-color.cssclass-forrest {
         --color-base-05: #2a241d;
         --color-base-00: #231e1a;
     }
+
+    h1,
+    .inline-title {
+        --color: color-mix(
+            in oklab,
+            var(--background-primary) 25%,
+            var(--color-accent)
+        );
+        text-shadow:
+            -1px -1px 1px var(--color),
+            1px -1px 1px var(--color),
+            -1px 1px 1px var(--color),
+            1px 1px 1px var(--color) !important;
+    }
+
+    &.theme-dark h1,
+    &.theme-dark .inline-title {
+        --color: color-mix(
+            in oklab,
+            var(--background-primary) 50%,
+            var(--color-orange)
+        );
+        text-shadow:
+            -1px -1px 1px var(--color),
+            1px -1px 1px var(--color),
+            -1px 1px 1px var(--color),
+            1px 1px 1px var(--color) !important;
+    }
+
     .inline-title,
     h1,
     h2,

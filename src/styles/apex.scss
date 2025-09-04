@@ -13,24 +13,24 @@ body.chisel-color.cssclass-apex {
     --dark-color-yellow: #e4e0d6;
     --dark-color-foreground: #e4e0d6;
     --dark-color-background: #1b1b1b;
+
     --bold-weight: 600;
     --font-ratio: 1.6;
-    --font-text: "SohneBreit-Buch"; /* "Solitaire MVB Pro"; */
+    --font-text: "MonoLisa"; /* "Solitaire MVB Pro"; */
+    --font-feature: "liga", "salt", "clig", "kern", "calt", "zero";
+    --font-variation: "wght" 400;
+
     --font-header: "HerbusBold";
-    --font-monospace: "Sohne Mono";
-    --font-interface: "Futura Now Var"; /* "Solitaire MVB Pro"; */
+    --font-monospace: "MonoLisa";
+    --font-interface: "MonoLisa"; /* "Solitaire MVB Pro"; */
+
     --font-header-weight: 400;
-    --font-header-letter-spacing: 0.1em;
-    --nav-item-weight: 500;
-    --nav-item-weight-active: 500;
+    --font-header-letter-spacing: -0.006em;
+    --font-header-line-height: 0.77em;
+
     --color-accent: var(--color-red);
     --bold-color: var(--text-color);
     --italic-color: var(--text-muted);
-    --font-feature:
-        "liga", "dlig", "clig", "kern", "pnum", "calt", "ss01", "ss02", "ss03";
-    --font-variation: "wght" 400;
-    --normal-weight: 400;
-    --line-height-normal: 1.2;
 
     .markdown-preview-view,
     .markdown-source-view {
@@ -48,6 +48,32 @@ body.chisel-color.cssclass-apex {
 
     .markdown-reading-view a {
         text-decoration: underline !important;
+    }
+
+    h1,
+    .inline-title {
+        --color: color-mix(in oklab, var(--background-primary) 75%, black);
+        text-shadow:
+            -1px -1px 1px var(--color),
+            1px -1px 1px var(--color),
+            -1px 1px 1px var(--color),
+            1px 1px 1px var(--color) !important;
+    }
+
+    &.theme-dark {
+        --font-text: "Söhne Mono"; /* "Solitaire MVB Pro"; */
+        --font-monospace: "Söhne Mono";
+        --font-interface: "Söhne Mono";
+    }
+
+    &.theme-dark h1,
+    &.theme-dark .inline-title {
+        --color: color-mix(in oklab, var(--background-primary) 0%, #d14230);
+        text-shadow:
+            -1px -1px 0px var(--color),
+            1px -1px 0px var(--color),
+            -1px 1px 0px var(--color),
+            1px 1px 0px var(--color) !important;
     }
 
     .inline-title,

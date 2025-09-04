@@ -1,4 +1,4 @@
-body.chisel-color.cssclass-mono-retro {
+body.chisel-color.cssclass-paper {
     --light-color-foreground: #262320;
     --light-color-foreground: #241b10;
     --light-color-background: #fffbe9;
@@ -24,19 +24,19 @@ body.chisel-color.cssclass-mono-retro {
 
     --accent-color: var(--light-color-yellow) !important;
 
-    --line-height-normal: 1.5em;
+    --line-height-normal: 1.7em;
 
     --font-text: "Courier Prime";
     --font-feature: "";
-    --font-variation: "wght" 300;
+    --font-variation: "wght" 400;
 
     --font-interface: var(--font-text);
 
     --font-header: "MonoStein Pro Var", "Gorton Perfected", "Futura Now Var";
     --font-header-feature: "onum", "salt", "calt";
-    --font-header-variation: "wght" 500, "wdth" 100;
-    --font-header-line-height: 1em;
-    --font-header-letter-spacing: -0.1em;
+    --font-header-variation: "wght" 400, "wdth" 100;
+    --font-header-line-height: 0.9em;
+    --font-header-letter-spacing: 0em;
 
     --font-monospace: "Courier Prime";
     --font-mono-feature: "";
@@ -82,6 +82,7 @@ body.chisel-color.cssclass-mono-retro {
     h4,
     h5,
     h6 {
+        text-align: center;
         color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
 
         --shadow-color: color-mix(

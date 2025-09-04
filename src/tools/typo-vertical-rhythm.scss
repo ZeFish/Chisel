@@ -7,6 +7,7 @@
     --table-edge-cell-padding-first: 0.5rlh;
     --nav-item-padding: var(--size-2-1) var(--size-4-2) var(--size-2-1)
         var(--size-4-6);
+    --margin: 2rlh;
 
     :is(.markdown-source-view, .markdown-reading-view) table {
         margin-left: var(--table-margin);
@@ -16,7 +17,7 @@
     .cm-line {
         line-height: var(--line-height-normal);
         margin-top: 0rlh;
-        margin-bottom: 1rlh;
+        margin-bottom: var(--margin);
         padding: 0;
         margin-block-start: 0;
     }
@@ -35,7 +36,7 @@
     .markdown-reading-view.mod-cm6 .callout,
     .markdown-reading-view blockquote,
     .markdown-reading-view pre {
-        margin: 2rlh;
+        margin: calc(var(--margin) * 1.5) 2rlh;
     }
 
     .markdown-reading-view blockquote p:last-of-type {
@@ -82,7 +83,7 @@
     }
 
     .markdown-reading-view hr {
-        margin: 3rlh 8rlh 4rlh 8rlh;
+        margin: 5rlh 8rlh 6rlh 8rlh;
     }
     .markdown-source-view hr {
         margin: 0 25%;
@@ -160,7 +161,7 @@
     /*  .HyperMD-header-1.cm-line */
     .markdown-reading-view div div h1 {
         margin-top: 8rlh;
-        margin-bottom: 3rlh;
+        margin-bottom: 4rlh;
         padding: 0;
     }
 

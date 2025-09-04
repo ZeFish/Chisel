@@ -1,4 +1,15 @@
 /*──────────Blockquotes──────────*/
+
+.callout[data-callout="comment"] {
+    --callout-color: var(--color-green);
+    --callout-icon: lucide-tree-pine;
+}
+.callout[data-callout="transcript"] {
+    --callout-color: var(--color-purple);
+    --callout-icon: lucide-mic-vocal;
+    margin: 0 0 var(--margin) 0 !important;
+}
+
 .callout,
 .markdown-preview-view pre,
 .markdown-preview-view blockquote {
@@ -133,9 +144,4 @@ pre code[class*="language-"] {
 
 .callout[data-callout="caption"] .callout-content p:first-child {
     margin-top: 0;
-}
-
-.callout[data-callout="comment"] {
-    --callout-color: var(--color-green);
-    --callout-icon: lucide-tree-pine;
 }
