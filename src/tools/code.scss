@@ -1,3 +1,9 @@
+.markdown-preview-view pre,
+pre code[class*="language-"] {
+    line-height: var(--line-height-normal);
+    font-size: var(--font-smaller);
+}
+
 .code-wrap-off .markdown-preview-view code[class*="language-"],
 .code-wrap-off .markdown-source-view code[class*="language-"],
 .code-wrap-off .markdown-preview-view pre[class*="language-"],

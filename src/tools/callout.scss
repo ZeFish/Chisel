@@ -25,32 +25,8 @@
         border: 1px solid var(--background-modifier-border);
         font-size: var(--font-small);
         line-height: var(--line-height-tight);
-        /*
-    box-shadow:
-        0.3px 0.5px 0.8px
-            color-mix(
-                in oklab,
-                var(--background-primary) 90%,
-                var(--color-black)
-            ),
-        0.5px 0.9px 1.5px -0.2px color-mix(in oklab, var(--background-primary)
-                    90%, var(--color-black)),
-        1px 2px 3.2px -0.4px color-mix(in oklab, var(--background-primary) 90%, var(--color-black));
-*/
-    }
-    .markdown-rendered code {
-        background-color: color-mix(
-            in oklab,
-            var(--color-base-05) 100%,
-            transparent
-        );
     }
 
-    .markdown-preview-view pre,
-    pre code[class*="language-"] {
-        line-height: var(--line-height-normal);
-        font-size: var(--font-smaller);
-    }
     .markdown-preview-view blockquote,
     .markdown-source-view .HyperMD-quote {
         font-style: italic;
