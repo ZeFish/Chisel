@@ -1,0 +1,10 @@
+/*──────────FrontMatter Elements──────────*/
+.chisel-frontmatter {
+    .markdown-source-view .cm-line:has(.cm-hmd-frontmatter),
+    .cm-hmd-frontmatter {
+        background: var(--background-primary);
+        font-size: var(--font-small);
+        line-height: var(--line-height-tight);
+        color: var(--text-muted);
+    }
+}

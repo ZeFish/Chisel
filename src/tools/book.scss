@@ -1,0 +1,76 @@
+/* ============================================= */
+/* Indent */
+/* ============================================= */
+.chisel-book:not(.no-book) {
+    /* ============================================= */
+    /* Justify Part */
+    /* ============================================= */
+    .el-p {
+        text-align: justify;
+        text-align-last: left;
+        text-wrap: pretty;
+        hyphens: auto;
+    }
+    .el-br {
+        display: none;
+    }
+
+    .markdown-preview-view
+        div:not(
+            :has(
+                .media-embed,
+                blockquote,
+                .callout,
+                pre,
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                table,
+                hr,
+                ul,
+                ol
+            ),
+            .callout-content,
+            :empty
+        )
+        + div:not(
+            :has(.media-embed, blockquote, callout, pre),
+            .callout-content
+        )
+        > p {
+        text-indent: 1.5rlh;
+    }
+
+    .markdown-preview-view p br + br + br {
+        display: none;
+    }
+
+    .markdown-preview-view
+        div:not(
+            :has(
+                .media-embed,
+                blockquote,
+                .callout,
+                pre,
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                table
+            ),
+            .callout-content,
+            :empty
+        )
+        + div:not(
+            :has(.media-embed, blockquote, callout, pre),
+            .callout-content
+        )
+        > p {
+        margin-block-start: -1rlh;
+    }
+}

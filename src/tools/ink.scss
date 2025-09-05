@@ -1,0 +1,19 @@
+/*
+.blur .markdown-preview-view:not(.blur-off) p {
+    --shadow-color: color-mix(in oklab, currentcolor 20%, transparent);
+    --shadow-distance: 0px;
+    --shadow-depth: 0.5px;
+    color: color-mix(in oklab, currentcolor 95%, transparent);
+    text-shadow:
+        var(--shadow-depth) 0px var(--shadow-depth) var(--shadow-color),
+        calc(var(--shadow-depth) * -1) 0px var(--shadow-depth)
+            var(--shadow-color),
+        0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
+}
+*/
+
+body.chisel-ink:not(.no-ink) {
+    text-shadow: 0px 0px 2px color-mix(in oklab, currentColor 12%, transparent);
+    background-blend-mode: multiply;
+    filter: blur(0.2px);
+}

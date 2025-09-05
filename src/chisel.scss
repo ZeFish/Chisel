@@ -7,16 +7,29 @@ $screen-large-width: 1500px;
 @import "tools/img-zoom";
 @import "tools/link-decoration-off";
 @import "tools/link-icon-off";
+@import "tools/better-highlight";
+@import "tools/block-small";
+@import "tools/small";
+@import "tools/ink";
+@import "tools/callout";
+@import "tools/code";
+@import "tools/focus";
+@import "tools/frontmatter";
+@import "tools/minimalist";
+@import "tools/sidenote";
+@import "tools/textures";
+@import "tools/transclusion";
+@import "tools/base";
+@import "tools/color";
 
-@import "tools/typo-external-link-no-icon";
+@import "tools/external-link-no-icon";
+@import "tools/book";
+@import "tools/vertical-rhythm";
+@import "tools/zoom-large-screen";
+@import "tools/typography";
 
-@import "tools/typo-indent";
-@import "tools/typo-justify";
-
-@import "tools/typo-vertical-rhythm";
-
-@import "tools/typo-zoom-large-screen";
-@import "tools/typo";
+@import "fonts";
+@import "settings";
 
 body.chisel-typography {
     --font-header: "Fraunces", "Inter Variable";
@@ -64,28 +77,10 @@ body.chisel-color {
     --bold-weight: 400;
 }
 
-@import "tools/ui-better-highlight";
-@import "tools/ui-block-small";
-@import "tools/ui-blur";
-@import "tools/ui-callout";
-@import "tools/ui-code";
-@import "tools/ui-focus";
-@import "tools/ui-frontmatter";
-
-@import "tools/ui-minimalist";
-
-@import "tools/ui-sidenote";
-@import "tools/ui-textures";
-
-@import "tools/ui-transclusion-inv";
-@import "tools/ui-transclusion-no-header";
-
-@import "tools/ui-base";
-
-@import "tools/ui-color";
 @import "styles/forrest";
 
 @import "styles/avantgarde";
+@import "styles/bw";
 
 @import "styles/mariage";
 
@@ -100,9 +95,6 @@ body.chisel-color {
 @import "styles/manifeste";
 @import "styles/gaspesie";
 @import "styles/cracker";
-
-@import "tools/fonts";
-@import "tools/settings";
 
 .is-mobile #sr-modal {
     width: 100% !important;

@@ -1,0 +1,44 @@
+/*
+
+	Sidenotes
+
+*/
+
+.sidenote .markdown-preview-view .el-div .callout[data-callout~="aside"] {
+    position: absolute;
+
+    min-width: 10rlh;
+    max-width: 20rlh;
+
+    padding: 0;
+    border: 0;
+    background: transparent;
+    opacity: 0.6;
+
+    text-align: left;
+    margin: unset;
+    margin-left: calc(var(--file-line-width) + 2rlh);
+}
+
+.sidenote .callout[data-callout~="aside"] p {
+    margin: 0;
+}
+
+.sidenote .callout[data-callout~="aside"] .callout-title {
+    display: none;
+}
+
+.sidenote .callout[data-callout~="aside"] .callout-content {
+    padding: 0;
+    font-size: 0.75rem;
+    box-shadow: none;
+    background: transparent;
+    padding-right: 2rlh;
+}
+.sidenote .callout[data-callout~="aside"] .callout-content p {
+    line-height: 1.3em;
+}
+
+.sidenote .callout[data-callout~="aside"] .callout-title .callout-icon {
+    display: none;
+}
