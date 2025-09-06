@@ -79,7 +79,7 @@ body.chisel-typography {
     --h6-weight: calc(var(--font-header-weight) * 1);
 
     .markdown-preview-view,
-    .markdown-rendered,
+    .markdown-reading-view,
     .markdown-source-view {
         font-weight: var(--normal-weight);
         font-feature-settings: var(--font-feature);
@@ -87,7 +87,7 @@ body.chisel-typography {
         --font-text-size: var(--font-size);
         /*letter-spacing: 0.01rem;*/
     }
-    code,
+    .markdown-reading-view code,
     .HyperMD-codeblock {
         font-weight: 400;
     }
@@ -103,7 +103,7 @@ body.chisel-typography {
         line-height: var(--line-height-tight);
     }
 
-    sup {
+    .markdown-reading-view sup {
         line-height: 0;
         font-feature-settings: "sups" on;
     }
@@ -118,18 +118,12 @@ body.chisel-typography {
         letter-spacing: var(--font-header-letter-spacing, normal);
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .markdown-rendered h1,
-    .markdown-rendered h2,
-    .markdown-rendered h3,
-    .markdown-rendered h4,
-    .markdown-rendered h5,
-    .markdown-rendered h6,
+    .markdown-reading-view h1,
+    .markdown-reading-view h2,
+    .markdown-reading-view h3,
+    .markdown-reading-view h4,
+    .markdown-reading-view h5,
+    .markdown-reading-view h6,
     .HyperMD-header-1,
     .HyperMD-header-2,
     .HyperMD-header-3,
@@ -149,35 +143,33 @@ body.chisel-typography {
         font-family: var(--font-header);
     }
 
-    b,
-    strong,
+    .markdown-reading-view b,
+    .markdown-reading-view strong,
     .cm-strong {
         font-weight: var(--bold-weight);
         font-variation-settings: "wght" var(--bold-weight);
         color: var(--bold-color);
     }
 
-    .markdown-rendered h5,
+    .markdown-reading-view h5,
     .HyperMD-header-5 {
         letter-spacing: 0.005em !important;
         font-weight: var(--h5-weight);
     }
 
-    .markdown-rendered h6,
+    .markdown-reading-view h6,
     .HyperMD-header-6 {
         letter-spacing: 0.005em !important;
     }
 
-    code,
-    pre {
+    .markdown-reading-view code,
+    .markdown-reading-view pre {
         font-feature-settings: var(--font-mono-feature);
         font-variation-settings: var(--font-mono-variation);
     }
 
-    .markdown-preview-view ol > li,
-    .markdown-preview-view ul > li,
-    .markdown-source-view ol > li,
-    .markdown-source-view ul > li,
+    .markdown-reading-view ol > li,
+    .markdown-reading-view ul > li,
     .mod-cm6 .HyperMD-list-line.cm-line {
         line-height: max(
             calc(var(--line-height-normal) * 0.75),
