@@ -34,42 +34,44 @@ body.chisel-color.cssclass-manifeste {
     --dark-muted-color: #999387;
     --dark-soft-color: #2a2824;
 
-    article h1,
+    .markdown-reading-view h1,
     .inline-title {
         text-align: center;
         padding: 3rlh 0;
         color: var(--color-foreground);
     }
 
-    .callout {
-        border-color: color-mix(
-            in oklab,
-            var(--callout-color) 20%,
-            var(--background-secondary)
-        );
-        background-color: color-mix(
-            in oklab,
-            var(--callout-color) 2%,
-            var(--background-secondary)
-        );
-        border-top: 0;
-        border-right: 0;
-        border-bottom: 0;
-        border-left-width: 0.25rlh;
-    }
+    .markdown-reading-view {
+        .callout {
+            border-color: color-mix(
+                in oklab,
+                var(--callout-color) 20%,
+                var(--background-secondary)
+            );
+            background-color: color-mix(
+                in oklab,
+                var(--callout-color) 2%,
+                var(--background-secondary)
+            );
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 0;
+            border-left-width: 0.25rlh;
+        }
 
-    .callout-icon {
-        color: var(--callout-color);
-    }
+        .callout-icon {
+            color: var(--callout-color);
+        }
 
-    .callout-title {
-        color: var(--foreground-color);
-    }
+        .callout-title {
+            color: var(--foreground-color);
+        }
 
-    .callout-content {
-        border: 0;
-        background: transparent;
-        box-shadow: none;
+        .callout-content {
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+        }
     }
 
     .vertical-rhythm .markdown-preview-view ol > li,

@@ -76,12 +76,7 @@ body.chisel-color.cssclass-paper {
     }
 
     .inline-title,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    .markdown-reading-view :is(h1, h2, h3, h4, h5, h6) {
         text-align: center;
         color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
 

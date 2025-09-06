@@ -38,18 +38,7 @@ body.chisel-color.cssclass-avantgarde {
         opacity: 1;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .markdown-rendered h1,
-    .markdown-rendered h2,
-    .markdown-rendered h3,
-    .markdown-rendered h4,
-    .markdown-rendered h5,
-    .markdown-rendered h6,
+    .markdown-reading-view :is(h1, h2, h3, h4, h5, h6),
     .HyperMD-header-1,
     .HyperMD-header-2,
     .HyperMD-header-3,
@@ -71,15 +60,17 @@ body.chisel-color.cssclass-avantgarde {
         color: transparent;
     }
 
-    img {
-        filter: none !important;
-        mix-blend-mode: normal !important;
-    }
+    .markdown-reading-view {
+        img {
+            filter: none !important;
+            mix-blend-mode: normal !important;
+        }
 
-    ul,
-    ol {
-        padding: 0rlh 1rlh;
-        margin: 1rlh 0rlh;
+        ul,
+        ol {
+            padding: 0rlh 1rlh;
+            margin: 1rlh 0rlh;
+        }
     }
 }
 

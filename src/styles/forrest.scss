@@ -66,7 +66,7 @@ body.chisel-color.cssclass-forrest {
         --color-base-00: #231e1a;
     }
 
-    h1,
+    .markdown-reading-view h1,
     .inline-title {
         --color: color-mix(
             in oklab,
@@ -80,7 +80,7 @@ body.chisel-color.cssclass-forrest {
             1px 1px 1px var(--color) !important;
     }
 
-    &.theme-dark h1,
+    &.theme-dark .markdown-reading-view h1,
     &.theme-dark .inline-title {
         --color: color-mix(
             in oklab,
@@ -95,12 +95,7 @@ body.chisel-color.cssclass-forrest {
     }
 
     .inline-title,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    .markdown-reading-view :is(h1, h2, h3, h4, h5, h6) {
         color: color-mix(
             in oklab,
             var(--text-normal) 95%,
@@ -108,18 +103,12 @@ body.chisel-color.cssclass-forrest {
         );
     }
 
-    h1,
-    h2::first-letter,
-    h3::first-letter,
-    h4::first-letter,
-    h5::first-letter,
-    h6::first-letter,
-    .markdown-rendered h1,
-    .markdown-rendered h2::first-letter,
-    .markdown-rendered h3::first-letter,
-    .markdown-rendered h4::first-letter,
-    .markdown-rendered h5::first-letter,
-    .markdown-rendered h6::first-letter,
+    .markdown-reading-view h1,
+    .markdown-reading-view h2::first-letter,
+    .markdown-reading-view h3::first-letter,
+    .markdown-reading-view h4::first-letter,
+    .markdown-reading-view h5::first-letter,
+    .markdown-reading-view h6::first-letter,
     .HyperMD-header-1,
     .HyperMD-header-2::first-letter,
     .HyperMD-header-3::first-letter,
@@ -132,7 +121,7 @@ body.chisel-color.cssclass-forrest {
             "onum" on;
     }
 
-    h1,
+    .markdown-reading-view h1,
     .inline-title {
         text-align: center;
         margin-top: 4rlh;

@@ -50,7 +50,7 @@ body.chisel-color.cssclass-apex {
         text-decoration: underline !important;
     }
 
-    h1,
+    .markdown-reading-view h1,
     .inline-title {
         --color: color-mix(in oklab, var(--background-primary) 75%, black);
         text-shadow:
@@ -66,7 +66,7 @@ body.chisel-color.cssclass-apex {
         --font-interface: "Söhne Mono";
     }
 
-    &.theme-dark h1,
+    &.theme-dark .markdown-reading-view h1,
     &.theme-dark .inline-title {
         --color: color-mix(in oklab, var(--background-primary) 0%, #d14230);
         text-shadow:
@@ -77,12 +77,7 @@ body.chisel-color.cssclass-apex {
     }
 
     .inline-title,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    .markdown-reading-view :is(h1, h2, h3, h4, h5, h6) {
         color: color-mix(in oklab, currentcolor 90%, var(--background-primary));
 
         --shadow-color: color-mix(
@@ -99,12 +94,7 @@ body.chisel-color.cssclass-apex {
             0px var(--shadow-depth) var(--shadow-depth) var(--shadow-color);
     }
     &.theme-light .inline-title,
-    &.theme-light h1,
-    &.theme-light h2,
-    &.theme-light h3,
-    &.theme-light h4,
-    &.theme-light h5,
-    &.theme-light h6 {
+    &.theme-light .markdown-reading-view :is(h1, h2, h3, h4, h5, h6) {
         color: color-mix(
             in oklab,
             var(--color-red) 90%,

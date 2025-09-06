@@ -70,7 +70,7 @@ body.chisel-color.cssclass-reflexion {
         text-indent: 1.5rlh;
     }
 
-    h1,
+    .markdown-reading-view h1,
     .inline-title {
         --color: color-mix(in oklab, var(--background-primary) 25%, white);
         text-shadow:
@@ -80,7 +80,7 @@ body.chisel-color.cssclass-reflexion {
             1px 1px 1px var(--color) !important;
     }
 
-    &.theme-dark h1,
+    &.theme-dark .markdown-reading-view h1,
     &.theme-dark .inline-title {
         --color: color-mix(in oklab, var(--background-primary) 50%, black);
         text-shadow:
@@ -90,7 +90,7 @@ body.chisel-color.cssclass-reflexion {
             1px 1px 1px var(--color) !important;
     }
 
-    h1,
+    .markdown-reading-view h1,
     .inline-title {
         text-align: center;
         margin-bottom: 8rlh;
@@ -118,7 +118,7 @@ body.chisel-color.cssclass-reflexion {
         margin: 4rlh 8rlh;
     }
 
-    .callout {
+    .markdown-reading-view .callout {
         border-color: color-mix(
             in oklab,
             var(--callout-color) 20%,

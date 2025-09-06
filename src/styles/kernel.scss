@@ -84,21 +84,11 @@ body.chisel-color.cssclass-kernel {
         text-align: left;
     }
     .inline-title,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    .markdown-reading-view :is(h1, h2, h3, h4, h5, h6) {
         color: #403e3c;
     }
     &.theme-dark .inline-title,
-    &.theme-dark h1,
-    &.theme-dark h2,
-    &.theme-dark h3,
-    &.theme-dark h4,
-    &.theme-dark h5,
-    &.theme-dark h6 {
+    &.theme-dark .markdown-reading-view :is(h1, h2, h3, h4, h5, h6) {
         color: #b7b5ac;
     }
 
