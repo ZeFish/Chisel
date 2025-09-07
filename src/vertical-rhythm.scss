@@ -2,6 +2,11 @@
 /* Vertical Flow */
 /* ============================================= */
 .chisel-rhythm {
+    --tag-border-width: 1px;
+    --tag-radius: 0.25rlh;
+    --tag-padding-x: 0.5rlh;
+    --tag-padding-y: 0.1rlh;
+
     --table-margin: auto;
     --table-cell-padding: 0.5rlh 0.5rlh;
     --table-edge-cell-padding-first: 0.5rlh;

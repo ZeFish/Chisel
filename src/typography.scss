@@ -1,10 +1,10 @@
-.chisel-typography {
+body {
     /*
     --font-text: "Inter Variable", "Fern Variable", "Graveur Variable", Bookerly;
     --font-interface: var(--font-text);
     --font-monospace: "Monaspace Xenon Var";
-    --font-header: var(--font-text);
     */
+    --font-header: var(--font-text);
 
     --font-density: 1.7;
     --font-ratio: 1.333;
@@ -23,14 +23,8 @@
 
     --font-mono-feature: "";
     --font-mono-variation: "";
-
-    /* END VARIABLES */
-    /* END VARIABLES */
-    /* END VARIABLES */
-    /* END VARIABLES */
-    /* END VARIABLES */
-    /* END VARIABLES */
-
+}
+.chisel-typography {
     text-rendering: optimizeLegibility; /* kerning & ligatures */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

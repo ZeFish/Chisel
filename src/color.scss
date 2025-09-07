@@ -1,4 +1,4 @@
-.chisel-color {
+.chisel-colorssss {
     /* Light */
     --light-color-foreground: #222;
     --light-color-background: #ffffff;
@@ -37,79 +37,79 @@
 }
 .chisel-color.theme-light,
 .chisel-color.theme-dark {
-    /* --color-base-00:						var(--color-base-00); */
+    /* --color-background:						var(--color-background); */
     --color-base-05: color-mix(
         in oklab,
-        var(--color-base-100) 5%,
-        var(--color-base-00)
+        var(--color-foreground) 5%,
+        var(--color-background)
     );
     --color-base-10: color-mix(
         in oklab,
-        var(--color-base-100) 10%,
-        var(--color-base-00)
+        var(--color-foreground) 10%,
+        var(--color-background)
     );
     --color-base-20: color-mix(
         in oklab,
-        var(--color-base-100) 20%,
-        var(--color-base-00)
+        var(--color-foreground) 20%,
+        var(--color-background)
     );
     --color-base-25: color-mix(
         in oklab,
-        var(--color-base-100) 25%,
-        var(--color-base-00)
+        var(--color-foreground) 25%,
+        var(--color-background)
     );
     --color-base-30: color-mix(
         in oklab,
-        var(--color-base-100) 30%,
-        var(--color-base-00)
+        var(--color-foreground) 30%,
+        var(--color-background)
     );
     --color-base-35: color-mix(
         in oklab,
-        var(--color-base-100) 35%,
-        var(--color-base-00)
+        var(--color-foreground) 35%,
+        var(--color-background)
     );
     --color-base-40: color-mix(
         in oklab,
-        var(--color-base-100) 40%,
-        var(--color-base-00)
+        var(--color-foreground) 40%,
+        var(--color-background)
     );
     --color-base-50: color-mix(
         in oklab,
-        var(--color-base-100) 50%,
-        var(--color-base-00)
+        var(--color-foreground) 50%,
+        var(--color-background)
     );
     --color-base-60: color-mix(
         in oklab,
-        var(--color-base-100) 60%,
-        var(--color-base-00)
+        var(--color-foreground) 60%,
+        var(--color-background)
     );
     --color-base-70: color-mix(
         in oklab,
-        var(--color-base-100) 70%,
-        var(--color-base-00)
+        var(--color-foreground) 70%,
+        var(--color-background)
     );
 
-    --background-primary: var(--color-base-00);
+    --background-primary: var(--color-background);
     --background-primary-alt: var(--color-base-05);
 
     --background-secondary: var(--color-base-05);
     --background-secondary: color-mix(
         in oklab,
-        var(--color-base-100) 2.5%,
+        var(--color-foreground) 2.5%,
         var(--background-primary)
     );
-    --background-secondary-alt: var(--color-base-00);
+    --background-secondary-alt: var(--color-background);
 
     --accent-color: var(--color-yellow);
     --bold-color: var(--color-orange);
     --italic-color: var(--color-blue);
 
-    --h1-color: var(--color-base-100);
-    --h2-color: var(--color-base-100);
-    --h3-color: var(--color-base-100);
-    --h4-color: var(--color-base-100);
-    --h5-color: var(--color-base-100);
-    --h6-color: var(--color-base-100);
+    --h1-color: var(--color-foreground);
+    --h2-color: var(--color-foreground);
+    --h3-color: var(--color-foreground);
+    --h4-color: var(--color-foreground);
+    --h5-color: var(--color-foreground);
+    --h6-color: var(--color-foreground);
 
     --background-modifier-hover: var(--background-secondary);
     --background-modifier-active-hover: var(--background-secondary);
@@ -174,43 +174,39 @@
         --interactive-normal: var(--background-primary);
     }
 
-    --foreground-color: var(--color-base-100);
-    --text-normal: var(--color-base-100);
+    --foreground-color: var(--color-foreground);
+    --text-normal: var(--color-foreground);
     --text-muted: var(--color-base-70);
     --text-faint: var(--color-base-50);
-    --text-on-accent: var(--color-base-00);
-    --text-on-accent-inverted: var(--color-base-100);
-    --text-success: var(--color-base-100);
+    --text-on-accent: var(--color-background);
+    --text-on-accent-inverted: var(--color-foreground);
+    --text-success: var(--color-foreground);
     --text-warning: var(--color-red);
     --text-error: var(--color-red);
     --text-accent: var(--accent-color);
-    --text-accent-hover: var(--color-base-100);
+    --text-accent-hover: var(--color-foreground);
     --text-selection: color-mix(
         in oklab,
         var(--color-yellow) 25%,
-        var(--color-base-00)
+        var(--color-background)
     );
 
     --link-external-color: var(--color-green);
     --link-external-color-hover: color-mix(
         in oklab,
-        var(--color-base-100) 25%,
-        var(--color-base-00)
+        var(--color-foreground) 25%,
+        var(--color-background)
     );
     --link-color: var(--accent-color);
     --link-color-hover: color-mix(
         in oklab,
         var(--link-color) 25%,
-        var(--color-base-100)
+        var(--color-foreground)
     );
 
     --tag-background: var(--background-secondary);
     --tag-border: var(--border-color);
-    --tag-border-width: 1px;
-    --tag-radius: 0.25rlh;
     --tag-color: var(--text-muted);
-    --tag-padding-x: 0.5rlh;
-    --tag-padding-y: 0.1rlh;
 
     --icon-color-active: var(--text-normal);
     --icon-color-focused: var(--text-normal);
@@ -269,30 +265,34 @@
 
     --indentation-guide-color: color-mix(
         in oklab,
-        var(--color-base-100) 12%,
+        var(--color-foreground) 12%,
         transparent
     );
     --indentation-guide-color-active: color-mix(
         in oklab,
-        var(--color-base-100) 3%,
+        var(--color-foreground) 3%,
         transparent
     );
     --scrollbar-active-thumb-bg: color-mix(
         in oklab,
-        var(---color-base-100) 20%,
+        var(---color-foreground) 20%,
         transparent
     );
-    --scrollbar-bg: color-mix(in oklab, var(--color-base-100) 5%, transparent);
+    --scrollbar-bg: color-mix(
+        in oklab,
+        var(--color-foreground) 5%,
+        transparent
+    );
     --scrollbar-thumb-bg: color-mix(
         in oklab,
-        var(--color-base-100) 1%,
+        var(--color-foreground) 1%,
         transparent
     );
     --swatch-shadow: inset 0 0 0 1px
-        color-mix(in oklab, var(--color-base-100) 1%, transparent);
+        color-mix(in oklab, var(--color-foreground) 1%, transparent);
     --workspace-background-translucent: color-mix(
         in oklab,
-        var(--color-base-100) 40%,
+        var(--color-foreground) 40%,
         transparent
     );
     --text-highlight-bg: color-mix(
@@ -345,18 +345,21 @@
     }
 
     &.theme-light {
-        --color-base-100: var(--light-color-foreground);
-        --color-base-00: var(--light-color-background);
+        --color-foreground: var(
+            --light-color-foreground,
+            var(--color-base-100)
+        );
+        --color-background: var(--light-color-background, var(--color-base-00));
 
-        --color-white: var(--color-base-00);
-        --color-black: var(--color-base-100);
+        --color-white: var(--color-background);
+        --color-black: var(--color-foreground);
 
         --accent-color: var(--light-accent-color, var(--color-yellow));
         --bold-color: var(--light-bold-color, var(--color-red));
         --italic-color: var(--light-italic-color, var(--color-blue));
 
-        --color-white: var(--color-base-00);
-        --color-black: var(--color-base-100);
+        --color-white: var(--color-background);
+        --color-black: var(--color-foreground);
         /*
         --color-red: var(--light-color-red, #df453a);
         --color-orange: var(--light-color-orange, #ea702e);
@@ -389,13 +392,13 @@
 
     &.theme-dark,
     &.is-mobile.theme-dark {
-        --color-base-100: var(--dark-color-foreground);
-        --color-base-00: var(--dark-color-background);
+        --color-foreground: var(--dark-color-foreground, var(--color-base-100));
+        --color-background: var(--dark-color-background, var(--color-base-00));
 
-        --color-white: var(--color-base-100);
-        --color-black: var(--color-base-00);
+        --color-white: var(--color-foreground);
+        --color-black: var(--color-background);
 
-        --border-color: color-mix(in oklab, black 13%, var(--color-base-00));
+        --border-color: color-mix(in oklab, black 13%, var(--color-background));
 
         --accent-color: var(--dark-accent-color, var(--color-yellow));
         --bold-color: var(--dark-bold-color, var(--color-red));
@@ -425,32 +428,32 @@
 
         --h1-color: color-mix(
             in oklab,
-            var(--color-base-100) 85%,
-            var(--color-base-00)
+            var(--color-foreground) 85%,
+            var(--color-background)
         );
         --h2-color: color-mix(
             in oklab,
-            var(--color-base-100) 90%,
-            var(--color-base-00)
+            var(--color-foreground) 90%,
+            var(--color-background)
         );
         --h3-color: color-mix(
             in oklab,
-            var(--color-base-100) 95%,
-            var(--color-base-00)
+            var(--color-foreground) 95%,
+            var(--color-background)
         );
-        --h4-color: var(--color-base-100);
-        --h5-color: var(--color-base-100);
-        --h6-color: var(--color-base-100);
+        --h4-color: var(--color-foreground);
+        --h5-color: var(--color-foreground);
+        --h6-color: var(--color-foreground);
 
         --background-primary: var(--color-base-05);
         --background-primary: color-mix(
             in oklab,
-            var(--color-base-100) 2%,
-            var(--color-base-00)
+            var(--color-foreground) 2%,
+            var(--color-background)
         );
-        --background-primary-alt: var(--color-base-00);
+        --background-primary-alt: var(--color-background);
 
-        --background-secondary: var(--color-base-00);
+        --background-secondary: var(--color-background);
         --background-secondary-alt: var(--color-base-05);
 
         --text-highlight-bg: color-mix(

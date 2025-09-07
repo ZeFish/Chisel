@@ -7,9 +7,9 @@ Chisel is an Obsidian plugin that allows you to customize the appearance of your
 
 - **CSS Themes:** Apply a CSS theme to a note by specifying the theme name in the `chisel` frontmatter property.
 - **Custom CSS Properties:** Define custom CSS variables directly in the frontmatter of your notes.
-- **CSS Snippets:** Automatically load CSS snippets from notes that have the `chisel-autoload: true` frontmatter property.
+- **CSS Snippets:** Automatically load CSS snippets from multiple notes that have the `chisel-autoload: true` frontmatter property. The snippets are loaded in alphabetical order.
 - **Body Classes:** Chisel adds various CSS classes to the `<body>` element based on the context, allowing you to write more specific CSS rules.
-- **Default Theme:** Set a default theme that will be applied to all notes that don't have a specific theme.
+
 
 ## Usage
 
@@ -42,7 +42,7 @@ chisel: my-theme
 This note will have a light gray background.
 ```
 
-You can also organize your theme notes in a specific folder. To do so, you need to set the "Theme note path" in the Chisel settings.
+
 
 ### Custom CSS Properties
 
@@ -139,7 +139,7 @@ Chisel provides an abstract layer of CSS variables that you can customize in you
 
 CSS snippets are a way to automatically load CSS from multiple notes. This is useful for creating a library of reusable CSS snippets that you can use across your vault.
 
-To create a CSS snippet, create a new note with the `chisel-autoload: true` frontmatter property. The note must contain a CSS code block.
+To create a CSS snippet, create a new note with the `chisel-autoload: true` frontmatter property. The note must contain a CSS code block. You can have as many of these notes as you want.
 
 For example:
 
@@ -155,7 +155,7 @@ chisel-autoload: true
 ```
 ````
 
-Chisel will automatically find all the notes with `chisel-autoload: true` and load their CSS content. This allows you to create a modular and maintainable CSS system for your vault.
+Chisel will automatically find all the notes with `chisel-autoload: true` and load their CSS content. The CSS from all the snippets is combined into a single block and loaded in alphabetical order of the note paths. This allows you to create a modular and maintainable CSS system for your vault.
 
 ### Body Classes
 
@@ -178,15 +178,17 @@ body.chisel-reading {
 }
 ```
 
-### Default Theme
 
-You can set a default theme in the Chisel settings. This theme will be applied to all notes that don't have a specific theme defined in their frontmatter.
+
+
 
 ## Settings
 
-- **Frontmatter property:** The name of the frontmatter property to link to a CSS theme note. The default is `chisel`.
-- **Theme note path:** The base path where your theme notes are stored. If empty, it will search the entire vault.
-- **Default theme:** The default theme to apply if no theme is specified in the note's frontmatter.
+- **Enable Typography Classes:** Toggle the application of `chisel-typography` class to the body.
+- **Enable Color Classes:** Toggle the application of `chisel-color` class to the body.
+- **Enable Rhythm Classes:** Toggle the application of `chisel-rhythm` class to the body.
+
+
 
 ## Installation
 

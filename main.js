@@ -5,8 +5,6 @@ const obsidian_1 = require("obsidian");
 // Settings interface
 const DEFAULT_SETTINGS = {
   frontmatterProperty: "chisel",
-  themePath: "",
-  defaultTheme: "",
   enableTypography: false,
   enableColor: false,
   enableRhythm: false,
@@ -22,11 +20,12 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.defaultThemeStyleElement = null;
     this.currentMode = null;
     this.autoloadedSnippets = new Map();
+    this.concatenatedAutoloadCss = "";
   }
 
   async onload() {
+    setTimeout(() => document.body.classList.add("chisel"), 0);
     await this.loadSettings();
-    await this.applyDefaultTheme();
 
     // Add settings tab
     this.addSettingTab(new ChiselSettingTab(this.app, this));
@@ -64,6 +63,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
         if (activeFile && file === activeFile) {
           this.updateBodyClasses();
         }
+        this.updateAutoloadedSnippets();
       }),
     );
 
@@ -76,7 +76,6 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     this.updateModeClasses();
     setTimeout(() => this.updateBodyClasses(), 100);
-    this.updateAutoloadedSnippets();
 
     this.addCommand({
       id: "open-chisel-cheatsheet-modal",
@@ -88,6 +87,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
   }
 
   onunload() {
+    document.body.classList.remove("chisel");
     this.cleanup();
     this.clearModeClasses();
   }
@@ -96,7 +96,6 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.clearAllClasses();
     this.clearCustomProperties();
     this.clearChiselNoteStyle();
-    this.clearDefaultThemeStyle();
   }
 
   async loadSettings() {
@@ -135,7 +134,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       this.appliedClasses.add("chisel-rhythm");
     }
 
-    await this.applyDefaultTheme(); // Apply default theme here
+    
 
     if (!meta?.frontmatter) return;
 
@@ -171,7 +170,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     const fontProperties = new Set();
 
     for (const [key, value] of Object.entries(frontmatter)) {
-      if (key.startsWith("chisel-")) {
+      if (key.startsWith("chisel-") && key !== "chisel-autoload") {
         const cssVarName = "--" + key.substring(7);
         chiselProps[cssVarName] = value;
         const fontKeys = [
@@ -242,17 +241,14 @@ ${cssVars}
     }
 
     const files = this.app.vault.getMarkdownFiles();
-    const themePath = this.settings.themePath;
-
     const cssFile = files.find((file) => {
       const isCorrectFile = file.basename === chiselNoteName;
-      if (!themePath) return isCorrectFile;
-      return isCorrectFile && file.path.startsWith(themePath);
+      return isCorrectFile;
     });
 
     if (!cssFile) {
       console.warn(
-        `Chisel: Note "${chiselNoteName}" not found in path "${themePath || "vault root"}".`,
+        `Chisel: Note "${chiselNoteName}" not found`,
       );
       return;
     }
@@ -282,57 +278,7 @@ ${cssVars}
     this.chiselNoteStyleElement = null;
   }
 
-  async applyDefaultTheme() {
-    const defaultThemeName = this.settings.defaultTheme;
-    if (!defaultThemeName || typeof defaultThemeName !== "string") {
-      this.clearDefaultThemeStyle();
-      return;
-    }
-
-    const files = this.app.vault.getMarkdownFiles();
-    const themePath = this.settings.themePath;
-
-    const cssFile = files.find((file) => {
-      const isCorrectFile = file.basename === defaultThemeName;
-      if (!themePath) return isCorrectFile;
-      return isCorrectFile && file.path.startsWith(themePath);
-    });
-
-    if (!cssFile) {
-      console.warn(
-        `Chisel: Default theme note "${defaultThemeName}" not found in path "${themePath || "vault root"}".`,
-      );
-      this.clearDefaultThemeStyle();
-      return;
-    }
-
-    const noteContent = await this.app.vault.cachedRead(cssFile);
-    const codeBlockRegex = /^```css\n([\s\S]*?)\n```/m;
-    const match = noteContent.match(codeBlockRegex);
-    const cssContent = match ? match[1] : null;
-
-    if (cssContent) {
-      this.defaultThemeStyleElement = document.getElementById(
-        "chisel-default-theme-style",
-      );
-      if (!this.defaultThemeStyleElement) {
-        this.defaultThemeStyleElement = document.createElement("style");
-        this.defaultThemeStyleElement.id = "chisel-default-theme-style";
-        document.head.appendChild(this.defaultThemeStyleElement);
-      }
-      this.defaultThemeStyleElement.textContent = cssContent;
-    } else {
-      this.clearDefaultThemeStyle();
-    }
-  }
-
-  clearDefaultThemeStyle() {
-    const styleElement = document.getElementById("chisel-default-theme-style");
-    if (styleElement) {
-      styleElement.remove();
-    }
-    this.defaultThemeStyleElement = null;
-  }
+  
 
   async updateAutoloadedSnippets() {
     const autoloadStyleId = "chisel-autoload-styles";
@@ -342,7 +288,7 @@ ${cssVars}
     const autoloadFiles = files.filter((file) => {
       const meta = this.app.metadataCache.getFileCache(file);
       return meta?.frontmatter?.["chisel-autoload"];
-    });
+    }).sort((a, b) => a.path.localeCompare(b.path));
 
     if (autoloadFiles.length === 0) {
       if (autoloadStyleEl) {
@@ -363,6 +309,12 @@ ${cssVars}
         this.autoloadedSnippets.set(file.path, cssContent);
       }
     }
+
+    if (allCssContent === this.concatenatedAutoloadCss) {
+      return;
+    }
+
+    this.concatenatedAutoloadCss = allCssContent;
 
     if (!autoloadStyleEl) {
       autoloadStyleEl = document.createElement("style");
@@ -445,52 +397,6 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
     containerEl.createEl("h2", { text: "Chisel Settings" });
-
-    new obsidian_1.Setting(containerEl)
-      .setName("Frontmatter property")
-      .setDesc(
-        "The name of the frontmatter property to link to a CSS theme note.",
-      )
-      .addText((text) =>
-        text
-          .setPlaceholder("chisel")
-          .setValue(this.plugin.settings.frontmatterProperty)
-          .onChange(async (value) => {
-            this.plugin.settings.frontmatterProperty = value || "chisel";
-            await this.plugin.saveSettings();
-          }),
-      );
-
-    new obsidian_1.Setting(containerEl)
-      .setName("Theme note path")
-      .setDesc(
-        "The base path where your theme notes are stored. If empty, it will search the entire vault.",
-      )
-      .addText((text) =>
-        text
-          .setPlaceholder("themes/")
-          .setValue(this.plugin.settings.themePath)
-          .onChange(async (value) => {
-            this.plugin.settings.themePath = value.trim();
-            await this.plugin.saveSettings();
-          }),
-      );
-
-    new obsidian_1.Setting(containerEl)
-      .setName("Default theme")
-      .setDesc(
-        "The default theme to apply if no theme is specified in the note's frontmatter.",
-      )
-      .addText((text) =>
-        text
-          .setPlaceholder("my-default-theme")
-          .setValue(this.plugin.settings.defaultTheme)
-          .onChange(async (value) => {
-            this.plugin.settings.defaultTheme = value.trim();
-            await this.plugin.saveSettings();
-            this.plugin.applyDefaultTheme(); // Call applyDefaultTheme here
-          }),
-      );
 
     containerEl.createEl("h2", { text: "Body Class Toggles" });
 
