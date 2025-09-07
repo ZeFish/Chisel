@@ -307,14 +307,8 @@
     }
 
     &.theme-light {
-        --color-base-100: var(
-            --light-color-foreground,
-            var(--light-color-base-100, #1c1b1a)
-        );
-        --color-base-00: var(
-            --light-color-background,
-            var(--light-color-base-00, #ffffff)
-        );
+        --color-base-100: var(--light-color-foreground);
+        --color-base-00: var(--light-color-background);
 
         --color-white: var(--color-base-00);
         --color-black: var(--color-base-100);
@@ -357,14 +351,8 @@
 
     &.theme-dark,
     &.is-mobile.theme-dark {
-        --color-base-100: var(
-            --dark-color-foreground,
-            var(--dark-color-base-100, #b7b5ac)
-        );
-        --color-base-00: var(
-            --dark-color-background,
-            var(--dark-color-base-00, #1c1b1a)
-        );
+        --color-base-100: var(--dark-color-foreground);
+        --color-base-00: var(--dark-color-background);
 
         --color-white: var(--color-base-100);
         --color-black: var(--color-base-00);
