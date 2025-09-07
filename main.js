@@ -24,7 +24,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
   }
 
   async onload() {
-    setTimeout(() => document.body.classList.add("chisel"), 0);
+    document.body.classList.add("chisel");
     await this.loadSettings();
 
     // Add settings tab
@@ -109,8 +109,13 @@ class ChiselPlugin extends obsidian_1.Plugin {
   async updateBodyClasses() {
     const activeFile = this.app.workspace.getActiveFile();
 
-    if (!activeFile) {
+    // Only cleanup if the active file has changed or is null
+    if (activeFile !== this.currentFile || activeFile === null) {
       this.cleanup();
+      this.currentFile = activeFile;
+    }
+
+    if (!activeFile) {
       this.currentFile = null;
       return;
     }
@@ -335,6 +340,7 @@ ${cssVars}
 
       let newMode = null;
       const dataType = leafContentEl.getAttribute("data-type");
+      console.log("Data type: ", dataType);
       switch (dataType) {
         case "markdown":
           body.classList.add("chisel-note");
@@ -364,6 +370,11 @@ ${cssVars}
           newMode = "webviewer";
           body.classList.add("chisel-webviewer");
           this.appliedClasses.add("chisel-webviewer");
+          break;
+        case "bases":
+          newMode = "base";
+          body.classList.add("chisel-base");
+          this.appliedClasses.add("chisel-base");
           break;
       }
       this.currentMode = newMode;
