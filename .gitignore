@@ -13,3 +13,13 @@ chisel.css.map
 
 # VSCode
 .vscode/
+
+data.json
+
+.git*
+.gitignore
+
+.zed/
+
+style.css
+style.css.map
