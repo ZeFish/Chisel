@@ -67,6 +67,14 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.updateModeClasses();
     setTimeout(() => this.updateBodyClasses(), 100);
     this.updateAutoloadedSnippets();
+
+    this.addCommand({
+      id: "open-chisel-cheatsheet-modal",
+      name: "Open Frontmatter Cheatsheet",
+      callback: () => {
+        new ChiselCheatsheetModal(this.app).open();
+      },
+    });
   }
 
   onunload() {
@@ -157,7 +165,12 @@ class ChiselPlugin extends obsidian_1.Plugin {
       if (!this.styleElement) {
         this.styleElement = document.createElement("style");
         this.styleElement.id = "chisel-custom-props";
-        document.head.appendChild(this.styleElement);
+        const lastStyleTag = document.head.querySelector('style:last-of-type');
+        if (lastStyleTag) {
+            lastStyleTag.after(this.styleElement);
+        } else {
+            document.head.appendChild(this.styleElement);
+        }
       }
       const googleFontsImports = Array.from(fontProperties)
         .map((font) => {
@@ -405,6 +418,34 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
             </ul>
         `;
   }
+}
+
+class ChiselCheatsheetModal extends obsidian_1.Modal {
+    constructor(app) {
+        super(app);
+    }
+
+    onOpen() {
+        const {contentEl} = this;
+        contentEl.empty();
+        contentEl.createEl("h2", { text: "Chisel Frontmatter Cheatsheet" });
+
+        contentEl.createEl("p", { text: "The following `chisel-` prefixed frontmatter properties can be used to customize your notes:" });
+
+        const ul = contentEl.createEl("ul");
+
+        ul.createEl("li", { text: "`chisel-font-text`: Sets the font for body text. Example: `chisel-font-text: 'Inter', sans-serif`" });
+        ul.createEl("li", { text: "`chisel-font-header`: Sets the font for headings. Example: `chisel-font-header: 'Merriweather', serif`" });
+        ul.createEl("li", { text: "`chisel-font-monospace`: Sets the font for monospace text (e.g., code blocks). Example: `chisel-font-monospace: 'Fira Code', monospace`" });
+        ul.createEl("li", { text: "`chisel-font-interface`: Sets the font for the Obsidian UI. Example: `chisel-font-interface: 'System-UI', sans-serif`" });
+
+        contentEl.createEl("p", { text: "Any other frontmatter property starting with `chisel-` (e.g., `chisel-my-custom-property: value`) will be converted into a CSS variable `--my-custom-property: value` and applied to the `body` element. You can then use this CSS variable in your custom CSS snippets." });
+    }
+
+    onClose() {
+        const {contentEl} = this;
+        contentEl.empty();
+    }
 }
 
 module.exports = ChiselPlugin;
