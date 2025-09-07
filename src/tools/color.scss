@@ -1,4 +1,4 @@
-:root {
+.chisel-color {
     /* Light */
     --light-color-foreground: #222;
     --light-color-background: #ffffff;
@@ -35,7 +35,8 @@
 
     --bold-weight: 400;
 }
-.chisel-color {
+.chisel-color.theme-light,
+.chisel-color.theme-dark {
     /* --color-base-00:						var(--color-base-00); */
     --color-base-05: color-mix(
         in oklab,
@@ -344,7 +345,7 @@
     }
 
     &.theme-light {
-        --color-base-100: var(--light-color-foreground,);
+        --color-base-100: var(--light-color-foreground);
         --color-base-00: var(--light-color-background);
 
         --color-white: var(--color-base-00);

@@ -165,7 +165,7 @@
   line-height: max(var(--line-height-normal) * 0.75, var(--line-height-tight));
 }
 
-:root {
+.chisel-color {
   /* Light */
   --light-color-foreground: #222;
   --light-color-background: #ffffff;
@@ -197,7 +197,8 @@
   --bold-weight: 400;
 }
 
-.chisel-color {
+.chisel-color.theme-light,
+.chisel-color.theme-dark {
   /* --color-base-00:						var(--color-base-00); */
   --color-base-05: color-mix(
       in oklab,
@@ -459,27 +460,33 @@
   --alternating-color-3: var(--color-blue);
   --inline-title-color: var(--text-normal);
 }
-.chisel-color.is-mobile {
+.chisel-color.theme-light.is-mobile,
+.chisel-color.theme-dark.is-mobile {
   --interactive-accent: var(--text-muted);
   --interactive-accent-hover: var(--text-normal);
   --interactive-normal: var(--background-primary);
 }
-.chisel-color .nav-folder.is-being-dragged-over {
+.chisel-color.theme-light .nav-folder.is-being-dragged-over,
+.chisel-color.theme-dark .nav-folder.is-being-dragged-over {
   background: color-mix(in oklab, var(--accent-color) 5%, transparent) !important;
 }
-.chisel-color :not(.sidebar-color) .mod-right-split {
+.chisel-color.theme-light :not(.sidebar-color) .mod-right-split,
+.chisel-color.theme-dark :not(.sidebar-color) .mod-right-split {
   --background-secondary: unset !important;
 }
-.chisel-color.hider-tabs .workspace:not(.is-left-sidedock-open) {
+.chisel-color.theme-light.hider-tabs .workspace:not(.is-left-sidedock-open),
+.chisel-color.theme-dark.hider-tabs .workspace:not(.is-left-sidedock-open) {
   --bg1: var(--background-primary) !important;
   --titlebar-background: var(--background-primary) !important;
   --titlebar-background-focused: var(--background-primary) !important;
 }
-.chisel-color.is-mobile {
+.chisel-color.theme-light.is-mobile,
+.chisel-color.theme-dark.is-mobile {
   --mobile-sidebar-background: var(--background-secondary);
 }
-.chisel-color.theme-light {
-  --color-base-100: var(--light-color-foreground,);
+.chisel-color.theme-light.theme-light,
+.chisel-color.theme-dark.theme-light {
+  --color-base-100: var(--light-color-foreground);
   --color-base-00: var(--light-color-background);
   --color-white: var(--color-base-00);
   --color-black: var(--color-base-100);
@@ -507,15 +514,19 @@
   --color-purple: var(--light-color-purple, #5e409d);
   --color-pink: var(--light-color-pink, #a02f6f);
 }
-.chisel-color .markdown-source-view.mod-cm6 hr {
+.chisel-color.theme-light .markdown-source-view.mod-cm6 hr,
+.chisel-color.theme-dark .markdown-source-view.mod-cm6 hr {
   border-width: var(--hr-thickness);
 }
 @media only screen and (max-width: 600px) {
-  .chisel-color.is-mobile .workspace-split.mod-root {
+  .chisel-color.theme-light.is-mobile .workspace-split.mod-root,
+  .chisel-color.theme-dark.is-mobile .workspace-split.mod-root {
     background-color: var(--background-primary);
   }
 }
-.chisel-color.theme-dark, .chisel-color.is-mobile.theme-dark {
+.chisel-color.theme-light.theme-dark, .chisel-color.theme-light.is-mobile.theme-dark,
+.chisel-color.theme-dark.theme-dark,
+.chisel-color.theme-dark.is-mobile.theme-dark {
   --color-base-100: var(--dark-color-foreground);
   --color-base-00: var(--dark-color-background);
   --color-white: var(--color-base-100);
@@ -576,33 +587,45 @@
       transparent
   );
 }
-.chisel-color pre {
+.chisel-color.theme-light pre,
+.chisel-color.theme-dark pre {
   color: var(--color-base-70);
 }
-.chisel-color .markdown-rendered mark,
-.chisel-color .cm-s-obsidian span.cm-highlight {
+.chisel-color.theme-light .markdown-rendered mark,
+.chisel-color.theme-light .cm-s-obsidian span.cm-highlight,
+.chisel-color.theme-dark .markdown-rendered mark,
+.chisel-color.theme-dark .cm-s-obsidian span.cm-highlight {
   background-color: var(--text-highlight-bg);
   color: currentColor;
 }
-.chisel-color a.footnote-link {
+.chisel-color.theme-light a.footnote-link,
+.chisel-color.theme-dark a.footnote-link {
   color: var(--text-faint);
 }
-.chisel-color .sidebar-toggle-button.mod-right {
+.chisel-color.theme-light .sidebar-toggle-button.mod-right,
+.chisel-color.theme-dark .sidebar-toggle-button.mod-right {
   background: none !important;
 }
-.chisel-color .workspace-drawer-inner,
-.chisel-color .workspace-split.mod-root,
-.chisel-color .mod-root .workspace-tabs .workspace-leaf {
+.chisel-color.theme-light .workspace-drawer-inner,
+.chisel-color.theme-light .workspace-split.mod-root,
+.chisel-color.theme-light .mod-root .workspace-tabs .workspace-leaf,
+.chisel-color.theme-dark .workspace-drawer-inner,
+.chisel-color.theme-dark .workspace-split.mod-root,
+.chisel-color.theme-dark .mod-root .workspace-tabs .workspace-leaf {
   background: var(--background-secondary);
 }
-.chisel-color .workspace-leaf-content {
+.chisel-color.theme-light .workspace-leaf-content,
+.chisel-color.theme-dark .workspace-leaf-content {
   border-radius: var(--radius-m);
 }
-.chisel-color .notice,
-.chisel-color .tooltip {
+.chisel-color.theme-light .notice,
+.chisel-color.theme-light .tooltip,
+.chisel-color.theme-dark .notice,
+.chisel-color.theme-dark .tooltip {
   color: color-mix(in oklab, var(--text-normal) 50%, transparent);
 }
-.chisel-color .is-translucent:not(.is-fullscreen) {
+.chisel-color.theme-light .is-translucent:not(.is-fullscreen),
+.chisel-color.theme-dark .is-translucent:not(.is-fullscreen) {
   --nav-collapse-icon-color: color-mix(
       in oklab,
       var(--mono-100) 30%,
@@ -614,34 +637,44 @@
       transparent
   );
 }
-.chisel-color .diff-line.mod-left {
+.chisel-color.theme-light .diff-line.mod-left,
+.chisel-color.theme-dark .diff-line.mod-left {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
-.chisel-color .diff-line.mod-left .diff-changed {
+.chisel-color.theme-light .diff-line.mod-left .diff-changed,
+.chisel-color.theme-dark .diff-line.mod-left .diff-changed {
   background-color: color-mix(in oklab, var(--background-modifier-error) 40%, transparent);
 }
-.chisel-color .diff-line.mod-right {
+.chisel-color.theme-light .diff-line.mod-right,
+.chisel-color.theme-dark .diff-line.mod-right {
   background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
 }
-.chisel-color .diff-line.mod-right .diff-changed {
+.chisel-color.theme-light .diff-line.mod-right .diff-changed,
+.chisel-color.theme-dark .diff-line.mod-right .diff-changed {
   background-color: color-mix(in oklab, var(--background-modifier-success) 40%, transparent);
 }
-.chisel-color input.document-search-input.mod-no-match,
-.chisel-color input.document-replace-input.mod-no-match {
+.chisel-color.theme-light input.document-search-input.mod-no-match,
+.chisel-color.theme-light input.document-replace-input.mod-no-match,
+.chisel-color.theme-dark input.document-search-input.mod-no-match,
+.chisel-color.theme-dark input.document-replace-input.mod-no-match {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
 @media (hover: hover) {
-  .chisel-color input.document-search-input.mod-no-match:hover,
-  .chisel-color input.document-replace-input.mod-no-match:hover {
+  .chisel-color.theme-light input.document-search-input.mod-no-match:hover,
+  .chisel-color.theme-light input.document-replace-input.mod-no-match:hover,
+  .chisel-color.theme-dark input.document-search-input.mod-no-match:hover,
+  .chisel-color.theme-dark input.document-replace-input.mod-no-match:hover {
     background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
   }
 }
 @media (hover: hover) {
-  .chisel-color input[type=color]::-webkit-color-swatch:hover {
+  .chisel-color.theme-light input[type=color]::-webkit-color-swatch:hover,
+  .chisel-color.theme-dark input[type=color]::-webkit-color-swatch:hover {
     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--mono-100) 20%, transparent), 0 0 0 3px var(--background-modifier-border-hover);
   }
 }
-.chisel-color .pdf-findbar .mod-not-found {
+.chisel-color.theme-light .pdf-findbar .mod-not-found,
+.chisel-color.theme-dark .pdf-findbar .mod-not-found {
   --background-modifier-form-field: color-mix(
       in oklab,
       var(--background-modifier-error) 10%,
@@ -654,44 +687,58 @@
   );
 }
 @media (hover: hover) {
-  .chisel-color .metadata-property-warning-icon:hover {
+  .chisel-color.theme-light .metadata-property-warning-icon:hover,
+  .chisel-color.theme-dark .metadata-property-warning-icon:hover {
     background-color: color-mix(in oklab, var(--color-orange) 15%, transparent);
   }
 }
-.chisel-color .file-tree .mod-new.is-selected {
+.chisel-color.theme-light .file-tree .mod-new.is-selected,
+.chisel-color.theme-dark .file-tree .mod-new.is-selected {
   background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
 }
-.chisel-color .file-tree .mod-deleted.is-selected,
-.chisel-color .file-tree .mod-to-delete.is-selected {
+.chisel-color.theme-light .file-tree .mod-deleted.is-selected,
+.chisel-color.theme-light .file-tree .mod-to-delete.is-selected,
+.chisel-color.theme-dark .file-tree .mod-deleted.is-selected,
+.chisel-color.theme-dark .file-tree .mod-to-delete.is-selected {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
-.chisel-color .publish-upload-item:before {
+.chisel-color.theme-light .publish-upload-item:before,
+.chisel-color.theme-dark .publish-upload-item:before {
   background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
 }
-.chisel-color .publish-upload-item.mod-failed:before {
+.chisel-color.theme-light .publish-upload-item.mod-failed:before,
+.chisel-color.theme-dark .publish-upload-item.mod-failed:before {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
-.chisel-color .sync-history-list-item-header .sync-history-list-item-avatar {
+.chisel-color.theme-light .sync-history-list-item-header .sync-history-list-item-avatar,
+.chisel-color.theme-dark .sync-history-list-item-header .sync-history-list-item-avatar {
   border: 1px solid color-mix(in oklab, var(--mono-100) 20%, transparent);
 }
-.chisel-color .canvas-node-placeholder::after {
+.chisel-color.theme-light .canvas-node-placeholder::after,
+.chisel-color.theme-dark .canvas-node-placeholder::after {
   background-color: color-mix(in oklab, var(--canvas-color) 10%, transparent);
 }
-.chisel-color .canvas-node.is-themed .canvas-node-container {
+.chisel-color.theme-light .canvas-node.is-themed .canvas-node-container,
+.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-container {
   border-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--canvas-color) 70%, transparent), var(--shadow-stationary);
 }
-.chisel-color .canvas-node-group .canvas-node-content {
+.chisel-color.theme-light .canvas-node-group .canvas-node-content,
+.chisel-color.theme-dark .canvas-node-group .canvas-node-content {
   background-color: color-mix(in oklab, var(--canvas-color) 7%, transparent);
 }
-.chisel-color .canvas-group-label {
+.chisel-color.theme-light .canvas-group-label,
+.chisel-color.theme-dark .canvas-group-label {
   background-color: color-mix(in oklab, var(--canvas-color) 1%, transparent);
 }
-.chisel-color .canvas-node.is-themed .canvas-node-content {
+.chisel-color.theme-light .canvas-node.is-themed .canvas-node-content,
+.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-content {
   background-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
 }
-.chisel-color .canvas-edges g.is-focused path.canvas-interaction-path,
-.chisel-color .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
+.chisel-color.theme-light .canvas-edges g.is-focused path.canvas-interaction-path,
+.chisel-color.theme-light .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path,
+.chisel-color.theme-dark .canvas-edges g.is-focused path.canvas-interaction-path,
+.chisel-color.theme-dark .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
   stroke: color-mix(in oklab, var(--canvas-color) 10%, transparent);
 }
 
@@ -892,9 +939,9 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .chisel-rhythm .callout,
-  .chisel-rhythm blockquote,
-  .chisel-rhythm pre {
+  .chisel-rhythm .markdown-reading-view .callout,
+  .chisel-rhythm .markdown-reading-view blockquote,
+  .chisel-rhythm .markdown-reading-view pre {
     margin: 2rlh 0rlh !important;
   }
   .chisel-rhythm .inline-title {
@@ -904,10 +951,10 @@
   .chisel-rhythm .markdown-source-view .inline-title {
     margin-bottom: 1rlh;
   }
-  .chisel-rhythm ul,
-  .chisel-rhythm ol,
-  .chisel-rhythm .callout-content ul,
-  .chisel-rhythm .callout-content ol {
+  .chisel-rhythm .markdown-reading-view ul,
+  .chisel-rhythm .markdown-reading-view ol,
+  .chisel-rhythm .markdown-reading-view .callout-content ul,
+  .chisel-rhythm .markdown-reading-view .callout-content ol {
     padding: 0rlh 0rlh 0rlh 0.5rlh;
   }
   .chisel-rhythm .markdown-reading-view hr {

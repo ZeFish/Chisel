@@ -121,6 +121,22 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     this.cleanup();
 
+    // Apply global settings classes regardless of frontmatter
+    if (this.settings.enableTypography) {
+      document.body.classList.add("chisel-typography");
+      this.appliedClasses.add("chisel-typography");
+    }
+    if (this.settings.enableColor) {
+      document.body.classList.add("chisel-color");
+      this.appliedClasses.add("chisel-color");
+    }
+    if (this.settings.enableRhythm) {
+      document.body.classList.add("chisel-rhythm");
+      this.appliedClasses.add("chisel-rhythm");
+    }
+
+    await this.applyDefaultTheme(); // Apply default theme here
+
     if (!meta?.frontmatter) return;
 
     // Handle cssClasses
@@ -135,19 +151,6 @@ class ChiselPlugin extends obsidian_1.Plugin {
           this.appliedClasses.add(className);
         }
       });
-    }
-
-    if (this.settings.enableTypography) {
-      document.body.classList.add("chisel-typography");
-      this.appliedClasses.add("chisel-typography");
-    }
-    if (this.settings.enableColor) {
-      document.body.classList.add("chisel-color");
-      this.appliedClasses.add("chisel-color");
-    }
-    if (this.settings.enableRhythm) {
-      document.body.classList.add("chisel-rhythm");
-      this.appliedClasses.add("chisel-rhythm");
     }
 
     await this.applyChiselNote(
@@ -201,11 +204,17 @@ class ChiselPlugin extends obsidian_1.Plugin {
       const googleFontsImports = Array.from(fontProperties)
         .map((font) => {
           const fontUrl = font.replace(/\s+/g, "+");
-          return `@import url('https://fonts.googleapis.com/css2?family=${fontUrl}:wght@300;400;500;600;700&display=swap');`;
+          return `@import url('https://fonts.googleapis.com/css2?family=${fontUrl}&display=swap');`;
         })
         .join("\n");
       const cssVars = Object.entries(chiselProps)
-        .map(([prop, value]) => `  ${prop}: ${value} !important;`)
+        .map(([prop, value]) => {
+          const formattedValue =
+            typeof value === "string" && value.includes(" ")
+              ? `'${value}'`
+              : value;
+          return `  ${prop}: ${formattedValue} !important;`;
+        })
         .join("\n");
       this.styleElement.textContent = [
         googleFontsImports,
@@ -303,8 +312,9 @@ ${cssVars}
     const cssContent = match ? match[1] : null;
 
     if (cssContent) {
-      this.defaultThemeStyleElement =
-        document.getElementById("chisel-default-theme-style");
+      this.defaultThemeStyleElement = document.getElementById(
+        "chisel-default-theme-style",
+      );
       if (!this.defaultThemeStyleElement) {
         this.defaultThemeStyleElement = document.createElement("style");
         this.defaultThemeStyleElement.id = "chisel-default-theme-style";
@@ -486,14 +496,16 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
 
     new obsidian_1.Setting(containerEl)
       .setName("Enable Typography Classes")
-      .setDesc("Toggle the application of 'chisel-typography' class to the body.")
+      .setDesc(
+        "Toggle the application of 'chisel-typography' class to the body.",
+      )
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.enableTypography)
           .onChange(async (value) => {
             this.plugin.settings.enableTypography = value;
             await this.plugin.saveSettings();
-            this.plugin.updateBodyClasses(); // Update classes immediately
+            setTimeout(() => this.plugin.updateBodyClasses(), 0); // Update classes immediately
           }),
       );
 
@@ -506,7 +518,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           .onChange(async (value) => {
             this.plugin.settings.enableColor = value;
             await this.plugin.saveSettings();
-            this.plugin.updateBodyClasses(); // Update classes immediately
+            setTimeout(() => this.plugin.updateBodyClasses(), 0); // Update classes immediately
           }),
       );
 
@@ -519,7 +531,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           .onChange(async (value) => {
             this.plugin.settings.enableRhythm = value;
             await this.plugin.saveSettings();
-            this.plugin.updateBodyClasses(); // Update classes immediately
+            setTimeout(() => this.plugin.updateBodyClasses(), 0); // Update classes immediately
           }),
       );
 

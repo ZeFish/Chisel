@@ -223,9 +223,9 @@ is commented because is bugged the ability to select text
 }
 
 @media only screen and (max-width: 600px) {
-    .chisel-rhythm .callout,
-    .chisel-rhythm blockquote,
-    .chisel-rhythm pre {
+    .chisel-rhythm .markdown-reading-view .callout,
+    .chisel-rhythm .markdown-reading-view blockquote,
+    .chisel-rhythm .markdown-reading-view pre {
         margin: 2rlh 0rlh !important;
     }
     .chisel-rhythm .inline-title {
@@ -235,10 +235,10 @@ is commented because is bugged the ability to select text
     .chisel-rhythm .markdown-source-view .inline-title {
         margin-bottom: 1rlh;
     }
-    .chisel-rhythm ul,
-    .chisel-rhythm ol,
-    .chisel-rhythm .callout-content ul,
-    .chisel-rhythm .callout-content ol {
+    .chisel-rhythm .markdown-reading-view ul,
+    .chisel-rhythm .markdown-reading-view ol,
+    .chisel-rhythm .markdown-reading-view .callout-content ul,
+    .chisel-rhythm .markdown-reading-view .callout-content ol {
         padding: 0rlh 0rlh 0rlh 0.5rlh;
     }
     .chisel-rhythm .markdown-reading-view hr {
