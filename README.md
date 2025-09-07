@@ -75,6 +75,66 @@ body {
 }
 ```
 
+### Available Custom Properties
+
+Chisel provides an abstract layer of CSS variables that you can customize in your theme files or directly through `chisel-` prefixed frontmatter properties. These variables allow for fine-grained control over various aspects of your note's appearance:
+
+```css
+    --light-color-background: #fffcf0;
+    --light-color-foreground: #100f0f;
+    /* Accent system */
+    --light-color-red: #af3029; /* warning, highlight */
+    --light-color-orange: #bc5215; /* attention blocks */
+    --light-color-yellow: #ad8301; /* vintage punchcard yellow */
+    --light-color-green: #66800b; /* success, approval */
+    --light-color-cyan: #24837b; /* teal-y terminal feel */
+    --light-color-blue: #205ea6; /* link, info */
+    --light-color-purple: #5e409d; /* utility, label tags */
+    --light-color-pink: #a02f6f; /* softer */
+
+    --dark-color-background: oklch(0.2228 0.0025 67.7); /* dark terminal feel */
+    --dark-color-foreground: oklch(0.8174 0.0149 98.3);
+
+    /* Accent system */
+    --dark-color-red: #d14d41;
+    --dark-color-orange: #da702c;
+    --dark-color-yellow: #ad8301;
+    --dark-color-green: #879a39;
+    --dark-color-cyan: #24837b;
+    --dark-color-blue: #4385be;
+    --dark-color-purple: #8b7ec8;
+    --dark-color-pink: #ce5d97;
+
+    /* Code and UI extras */
+    --accent-color: var(--color-blue);
+    --bold-color: var(--color-red);
+    --italic-color: var(--color-green);
+
+    --font-density: 1.5;
+    --font-ratio: 1.333;
+
+    --margin: 2;
+
+    --font-text: "Söhne Mono", "Oktah Round Variable";
+    --font-weight: 400;
+    --bold-weight: 400;
+    --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
+    --font-variation: "";
+
+    --font-header: "Inter Variable";
+    --font-header-weight: 400;
+    --font-header-letter-spacing: -0.025em;
+    --font-header-line-height: 1.3em;
+    --font-header-feature: "";
+    --font-header-variation: "";
+
+    --font-monospace: "MonoLisa";
+    --font-mono-feature: "";
+    --font-mono-variation: "";
+
+    --font-interface: "Söhne Mono";
+```
+
 ### CSS Snippets
 
 CSS snippets are a way to automatically load CSS from multiple notes. This is useful for creating a library of reusable CSS snippets that you can use across your vault.

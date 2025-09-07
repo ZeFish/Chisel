@@ -1,4 +1,4 @@
-body.chisel-typography {
+.chisel-typography {
     /*
     --font-text: "Inter Variable", "Fern Variable", "Graveur Variable", Bookerly;
     --font-interface: var(--font-text);
@@ -46,13 +46,6 @@ body.chisel-typography {
     --line-width: var(--font-line-width);
     --nav-item-weight: 400;
 
-    --h1-font: var(--font-header);
-    --h2-font: var(--font-header);
-    --h3-font: var(--font-header);
-    --h4-font: var(--font-header);
-    --h5-font: var(--font-header);
-    --h6-font: var(--font-header);
-
     --inline-title-size: calc(var(--font-size) * pow(var(--font-ratio), 4));
     --h1-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
     --h2-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
@@ -78,6 +71,28 @@ body.chisel-typography {
     --h5-weight: calc(var(--font-header-weight) * 1);
     --h6-weight: calc(var(--font-header-weight) * 1);
 
+    --h1-font: var(--font-header);
+    --h2-font: var(--font-header);
+    --h3-font: var(--font-header);
+    --h4-font: var(--font-header);
+    --h5-font: var(--font-header);
+    --h6-font: var(--font-header);
+
+    .vertical-tab-header-group-title,
+    .setting-item-heading .setting-item-name {
+        font-family: var(--font-header);
+        font-size: var(--font-ui-large);
+    }
+    .markdown-preview-view,
+    .markdown-reading-view {
+        --h1-font: var(--font-header);
+        --h2-font: var(--font-header);
+        --h3-font: var(--font-header);
+        --h4-font: var(--font-header);
+        --h5-font: var(--font-header);
+        --h6-font: var(--font-header);
+    }
+
     .markdown-preview-view,
     .markdown-reading-view,
     .markdown-source-view {
@@ -90,6 +105,7 @@ body.chisel-typography {
     .markdown-reading-view code,
     .HyperMD-codeblock {
         font-weight: 400;
+        line-height: 1.5 !important;
     }
     .cm-comment.cm-strong {
         color: color-mix(in oklab, inherit 50%, transparent);
@@ -97,10 +113,6 @@ body.chisel-typography {
 
     .nav-file-tag {
         line-height: inherit;
-    }
-
-    .HyperMD-codeblock {
-        line-height: var(--line-height-tight);
     }
 
     .markdown-reading-view sup {

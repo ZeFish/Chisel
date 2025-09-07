@@ -1,0 +1,1012 @@
+.chisel-typography {
+  /*
+  --font-text: "Inter Variable", "Fern Variable", "Graveur Variable", Bookerly;
+  --font-interface: var(--font-text);
+  --font-monospace: "Monaspace Xenon Var";
+  --font-header: var(--font-text);
+  */
+  --font-density: 1.7;
+  --font-ratio: 1.333;
+  --font-line-width: 35rlh;
+  --font-weight: 400;
+  --font-feature: "";
+  --font-variation: "";
+  --font-size: var(--font-text-size);
+  --bold-weight: 600;
+  --font-header-weight: 400;
+  --font-header-letter-spacing: -0.025em;
+  --font-header-line-height: 1.3em;
+  --font-header-feature: "";
+  --font-header-variation: "";
+  --font-mono-feature: "";
+  --font-mono-variation: "";
+  /* END VARIABLES */
+  /* END VARIABLES */
+  /* END VARIABLES */
+  /* END VARIABLES */
+  /* END VARIABLES */
+  /* END VARIABLES */
+  text-rendering: optimizeLegibility; /* kerning & ligatures */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  --normal-weight: var(--font-weight);
+  --font-feature-settings: var(--font-feature);
+  --font-variation-settings: var(--font-variation);
+  --line-height-normal: var(--font-density);
+  --heading-spacing: var(--line-height-normal);
+  --inline-title-font: var(--font-header);
+  --file-line-width: var(--font-line-width);
+  --line-width: var(--font-line-width);
+  --nav-item-weight: 400;
+  --inline-title-size: calc(var(--font-size) * pow(var(--font-ratio), 4));
+  --h1-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
+  --h2-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
+  --h3-size: calc(var(--font-size) * pow(var(--font-ratio), 2));
+  --h4-size: calc(var(--font-size) * pow(var(--font-ratio), 1));
+  --h5-size: calc(var(--font-size) * pow(var(--font-ratio), 0.5));
+  --h6-size: calc(var(--font-size) * pow(var(--font-ratio), 0.5));
+  --font-smallest: calc(var(--font-size) * pow(var(--font-ratio), -1.5));
+  --font-smaller: calc(var(--font-size) * pow(var(--font-ratio), -1));
+  --font-small: calc(var(--font-size) * pow(var(--font-ratio), -0.5));
+  --tag-size: var(--font-smaller);
+  --code-size: var(--font-small);
+  --metadata-input-font-size: calc(
+      var(--font-size) * pow(var(--font-ratio), 0)
+  );
+  --inline-title-weight: var(--font-header-weight);
+  --h1-weight: var(--font-header-weight);
+  --h2-weight: calc(var(--font-header-weight) * 1);
+  --h3-weight: calc(var(--font-header-weight) * 1);
+  --h4-weight: calc(var(--font-header-weight) * 1);
+  --h5-weight: calc(var(--font-header-weight) * 1);
+  --h6-weight: calc(var(--font-header-weight) * 1);
+  --h1-font: var(--font-header);
+  --h2-font: var(--font-header);
+  --h3-font: var(--font-header);
+  --h4-font: var(--font-header);
+  --h5-font: var(--font-header);
+  --h6-font: var(--font-header);
+}
+.chisel-typography .vertical-tab-header-group-title,
+.chisel-typography .setting-item-heading .setting-item-name {
+  font-family: var(--font-header);
+  font-size: var(--font-ui-large);
+}
+.chisel-typography .markdown-preview-view,
+.chisel-typography .markdown-reading-view {
+  --h1-font: var(--font-header);
+  --h2-font: var(--font-header);
+  --h3-font: var(--font-header);
+  --h4-font: var(--font-header);
+  --h5-font: var(--font-header);
+  --h6-font: var(--font-header);
+}
+.chisel-typography .markdown-preview-view,
+.chisel-typography .markdown-reading-view,
+.chisel-typography .markdown-source-view {
+  font-weight: var(--normal-weight);
+  font-feature-settings: var(--font-feature);
+  font-variation-settings: var(--font-variation);
+  --font-text-size: var(--font-size);
+  /*letter-spacing: 0.01rem;*/
+}
+.chisel-typography .markdown-reading-view code,
+.chisel-typography .HyperMD-codeblock {
+  font-weight: 400;
+  line-height: 1.5 !important;
+}
+.chisel-typography .cm-comment.cm-strong {
+  color: color-mix(in oklab, inherit 50%, transparent);
+}
+.chisel-typography .nav-file-tag {
+  line-height: inherit;
+}
+.chisel-typography .markdown-reading-view sup {
+  line-height: 0;
+  font-feature-settings: "sups" on;
+}
+@media only screen and (max-width: 600px) {
+  .chisel-typography {
+    --font-ratio: 1.3 !important;
+  }
+}
+.chisel-typography .inline-title:not([data-level]) {
+  letter-spacing: var(--font-header-letter-spacing, normal);
+}
+.chisel-typography .markdown-reading-view h1,
+.chisel-typography .markdown-reading-view h2,
+.chisel-typography .markdown-reading-view h3,
+.chisel-typography .markdown-reading-view h4,
+.chisel-typography .markdown-reading-view h5,
+.chisel-typography .markdown-reading-view h6,
+.chisel-typography .HyperMD-header-1,
+.chisel-typography .HyperMD-header-2,
+.chisel-typography .HyperMD-header-3,
+.chisel-typography .HyperMD-header-4,
+.chisel-typography .HyperMD-header-5,
+.chisel-typography .HyperMD-header-6,
+.chisel-typography .inline-title,
+.chisel-typography .inline-title:not([data-level]) {
+  font-feature-settings: var(--font-header-feature);
+  font-variation-settings: var(--font-header-variation);
+  overflow-wrap: normal;
+  letter-spacing: var(--font-header-letter-spacing, normal);
+  line-height: var(--font-header-line-height, 1em); /*0.50em;*/
+  text-wrap: balance;
+  font-style: var(--font-header-style, normal);
+  font-weight: var(--font-header-weight);
+  font-family: var(--font-header);
+}
+.chisel-typography .markdown-reading-view b,
+.chisel-typography .markdown-reading-view strong,
+.chisel-typography .cm-strong {
+  font-weight: var(--bold-weight);
+  font-variation-settings: "wght" var(--bold-weight);
+  color: var(--bold-color);
+}
+.chisel-typography .markdown-reading-view h5,
+.chisel-typography .HyperMD-header-5 {
+  letter-spacing: 0.005em !important;
+  font-weight: var(--h5-weight);
+}
+.chisel-typography .markdown-reading-view h6,
+.chisel-typography .HyperMD-header-6 {
+  letter-spacing: 0.005em !important;
+}
+.chisel-typography .markdown-reading-view code,
+.chisel-typography .markdown-reading-view pre {
+  font-feature-settings: var(--font-mono-feature);
+  font-variation-settings: var(--font-mono-variation);
+}
+.chisel-typography .markdown-reading-view ol > li,
+.chisel-typography .markdown-reading-view ul > li,
+.chisel-typography .mod-cm6 .HyperMD-list-line.cm-line {
+  line-height: max(var(--line-height-normal) * 0.75, var(--line-height-tight));
+}
+
+:root {
+  /* Light */
+  --light-color-foreground: #222;
+  --light-color-background: #ffffff;
+  --light-color-red: #b33a2a;
+  --light-color-orange: #bc5215;
+  --light-color-yellow: #cc8815;
+  --light-color-green: #66800b;
+  --light-color-cyan: #82a1b2;
+  --light-color-blue: #438199;
+  --light-color-purple: #5e409d;
+  --light-color-pink: #a02f6f;
+  --light-accent-color: var(--color-yellow);
+  --light-bold-color: var(--color-red);
+  --light-italic-color: var(--color-blue);
+  /* Dark */
+  --dark-color-foreground: oklch(0.7721 0.0228 96.47);
+  --dark-color-background: oklch(0.2308 0.0023 67.73);
+  --dark-color-red: #d14d41;
+  --dark-color-orange: #da702c;
+  --dark-color-yellow: #cc8815;
+  --dark-color-green: #879a39;
+  --dark-color-cyan: #3aa99f;
+  --dark-color-blue: #4385be;
+  --dark-color-purple: #9a462b;
+  --dark-color-pink: #a8431b;
+  --dark-accent-color: var(--color-yellow);
+  --dark-bold-color: var(--color-red);
+  --dark-italic-color: var(--color-blue);
+  --bold-weight: 400;
+}
+
+.chisel-color {
+  /* --color-base-00:						var(--color-base-00); */
+  --color-base-05: color-mix(
+      in oklab,
+      var(--color-base-100) 5%,
+      var(--color-base-00)
+  );
+  --color-base-10: color-mix(
+      in oklab,
+      var(--color-base-100) 10%,
+      var(--color-base-00)
+  );
+  --color-base-20: color-mix(
+      in oklab,
+      var(--color-base-100) 20%,
+      var(--color-base-00)
+  );
+  --color-base-25: color-mix(
+      in oklab,
+      var(--color-base-100) 25%,
+      var(--color-base-00)
+  );
+  --color-base-30: color-mix(
+      in oklab,
+      var(--color-base-100) 30%,
+      var(--color-base-00)
+  );
+  --color-base-35: color-mix(
+      in oklab,
+      var(--color-base-100) 35%,
+      var(--color-base-00)
+  );
+  --color-base-40: color-mix(
+      in oklab,
+      var(--color-base-100) 40%,
+      var(--color-base-00)
+  );
+  --color-base-50: color-mix(
+      in oklab,
+      var(--color-base-100) 50%,
+      var(--color-base-00)
+  );
+  --color-base-60: color-mix(
+      in oklab,
+      var(--color-base-100) 60%,
+      var(--color-base-00)
+  );
+  --color-base-70: color-mix(
+      in oklab,
+      var(--color-base-100) 70%,
+      var(--color-base-00)
+  );
+  --background-primary: var(--color-base-00);
+  --background-primary-alt: var(--color-base-05);
+  --background-secondary: var(--color-base-05);
+  --background-secondary: color-mix(
+      in oklab,
+      var(--color-base-100) 2.5%,
+      var(--background-primary)
+  );
+  --background-secondary-alt: var(--color-base-00);
+  --accent-color: var(--color-yellow);
+  --bold-color: var(--color-orange);
+  --italic-color: var(--color-blue);
+  --h1-color: var(--color-base-100);
+  --h2-color: var(--color-base-100);
+  --h3-color: var(--color-base-100);
+  --h4-color: var(--color-base-100);
+  --h5-color: var(--color-base-100);
+  --h6-color: var(--color-base-100);
+  --background-modifier-hover: var(--background-secondary);
+  --background-modifier-active-hover: var(--background-secondary);
+  --background-modifier-border: var(--background-secondary);
+  --background-modifier-border-hover: var(--color-base-20);
+  --background-modifier-border-focus: var(--color-base-70);
+  --background-modifier-error: var(--color-base-05);
+  --background-modifier-error-hover: var(--color-base-05);
+  --background-modifier-success: var(--color-base-05);
+  --background-modifier-message: var(--color-base-05);
+  --background-modifier-form-field: var(--color-base-05);
+  --border-color: color-mix(in oklab, black 10%, var(--background-primary));
+  --border-width: 1px;
+  --divider-color: var(--border-color);
+  --divider-width: var(--border-width);
+  --hr-color: color-mix(
+      in oklab,
+      var(--text-normal) 25%,
+      var(--background-primary)
+  );
+  --hr-thickness: 1px;
+  --tab-outline-color: var(--border-color);
+  --tab-outline-width: var(--border-width);
+  --tab-outline-color: var(--border-color);
+  --tab-outline-width: var(--border-width);
+  --prompt-border-color: var(--border-color);
+  --prompt-border-width: var(--border-width);
+  --table-border-color: var(--border-color);
+  --modal-border-color: var(--border-color);
+  --status-bar-border-width: var(--border-width);
+  --status-bar-border-color: var(--border-color);
+  --status-bar-border-width: 0;
+  --blockquote-border-thickness: 2px;
+  --blockquote-border-color: var(--border-color);
+  /*--background-modifier-border: var(--border-color);*/
+  --interactive-normal: var(--color-base-05);
+  --interactive-hover: color-mix(
+      in oklab,
+      var(--accent-color) 66%,
+      transparent
+  );
+  --interactive-accent: color-mix(
+      in oklab,
+      var(--accent-color) 33%,
+      transparent
+  );
+  --interactive-accent-hsl: 0, 0, 50;
+  --interactive-accent-hover: color-mix(
+      in oklab,
+      var(--accent-color) 66%,
+      transparent
+  );
+  --foreground-color: var(--color-base-100);
+  --text-normal: var(--color-base-100);
+  --text-muted: var(--color-base-70);
+  --text-faint: var(--color-base-50);
+  --text-on-accent: var(--color-base-00);
+  --text-on-accent-inverted: var(--color-base-100);
+  --text-success: var(--color-base-100);
+  --text-warning: var(--color-red);
+  --text-error: var(--color-red);
+  --text-accent: var(--accent-color);
+  --text-accent-hover: var(--color-base-100);
+  --text-selection: color-mix(
+      in oklab,
+      var(--color-yellow) 25%,
+      var(--color-base-00)
+  );
+  --link-external-color: var(--color-green);
+  --link-external-color-hover: color-mix(
+      in oklab,
+      var(--color-base-100) 25%,
+      var(--color-base-00)
+  );
+  --link-color: var(--accent-color);
+  --link-color-hover: color-mix(
+      in oklab,
+      var(--link-color) 25%,
+      var(--color-base-100)
+  );
+  --tag-background: var(--background-secondary);
+  --tag-border: var(--border-color);
+  --tag-border-width: 1px;
+  --tag-radius: 0.25rlh;
+  --tag-color: var(--text-muted);
+  --tag-padding-x: 0.5rlh;
+  --tag-padding-y: 0.1rlh;
+  --icon-color-active: var(--text-normal);
+  --icon-color-focused: var(--text-normal);
+  --icon-color-hover: var(--text-faint);
+  --icon-color: var(--text-faint);
+  --icon-hex: var(--mono0);
+  --nav-item-color: var(--text-muted);
+  --nav-item-color-active: var(--text-normal);
+  --nav-item-color-hover: var(--text-normal);
+  --nav-collapse-icon-color: color-mix(
+      in oklab,
+      var(--text-normal) 25%,
+      transparent
+  );
+  --nav-collapse-icon-color-collapsed: color-mix(
+      in oklab,
+      var(--text-normal) 25%,
+      transparent
+  );
+  --nav-indentation-guide-color: color-mix(
+      in oklab,
+      var(--text-normal) 10%,
+      transparent
+  );
+  --nav-item-background-hover: color-mix(
+      in oklab,
+      var(--foreground-color) 5%,
+      transparent
+  );
+  --nav-item-background-active: color-mix(
+      in oklab,
+      var(--accent-color) 10%,
+      transparent
+  );
+  --nav-item-color-highlighted: var(--foreground-color);
+  --ribbon-background: var(--background-secondary);
+  --ribbon-background-collapsed: var(--background-secondary);
+  --titlebar-background: var(--background-secondary) !important;
+  --titlebar-background-focused: var(--background-secondary) !important;
+  --titlebar-text-color-focused: var(--text-normal) !important;
+  --tab-container-background: var(--background-secondary) !important;
+  --indentation-guide-color: color-mix(
+      in oklab,
+      var(--color-base-100) 12%,
+      transparent
+  );
+  --indentation-guide-color-active: color-mix(
+      in oklab,
+      var(--color-base-100) 3%,
+      transparent
+  );
+  --scrollbar-active-thumb-bg: color-mix(
+      in oklab,
+      var(---color-base-100) 20%,
+      transparent
+  );
+  --scrollbar-bg: color-mix(in oklab, var(--color-base-100) 5%, transparent);
+  --scrollbar-thumb-bg: color-mix(
+      in oklab,
+      var(--color-base-100) 1%,
+      transparent
+  );
+  --swatch-shadow: inset 0 0 0 1px
+      color-mix(in oklab, var(--color-base-100) 1%, transparent);
+  --workspace-background-translucent: color-mix(
+      in oklab,
+      var(--color-base-100) 40%,
+      transparent
+  );
+  --text-highlight-bg: color-mix(
+      in oklab,
+      var(--color-yellow) 15%,
+      transparent
+  );
+  --callout-default: var(--color-blue);
+  --callout-content-padding: 0;
+  --callout-content-background: transparent;
+  --callout-bug: var(--color-red);
+  --callout-error: var(--color-red);
+  --callout-example: var(--color-purple);
+  --callout-fail: var(--color-red);
+  --callout-important: var(--color-cyan);
+  --callout-info: var(--color-blue);
+  --callout-question: var(--color-orange);
+  --callout-success: var(--color-green);
+  --callout-summary: var(--color-cyan);
+  --callout-tip: var(--color-cyan);
+  --callout-todo: var(--color-blue);
+  --callout-warning: var(--color-orange);
+  --callout-quote: var(--color-cyan);
+  /*
+  Theme specific
+  */
+  --tx1: var(--text-normal) !important;
+  --tx2: var(--text-muted) !important;
+  --tx3: var(--text-faint) !important;
+  --ui1: var(--divider-color) !important;
+  --ui2: var(--divider-color) !important;
+  --ui3: var(--divider-color) !important;
+  --bg1: var(--background-secondary) !important;
+  --bg2: var(--background-secondary) !important;
+  --bg3: var(--interactive-accent) !important;
+  --alternating-color-1: var(--color-yellow);
+  --alternating-color-2: var(--color-red);
+  --alternating-color-3: var(--color-blue);
+  --inline-title-color: var(--text-normal);
+}
+.chisel-color.is-mobile {
+  --interactive-accent: var(--text-muted);
+  --interactive-accent-hover: var(--text-normal);
+  --interactive-normal: var(--background-primary);
+}
+.chisel-color .nav-folder.is-being-dragged-over {
+  background: color-mix(in oklab, var(--accent-color) 5%, transparent) !important;
+}
+.chisel-color :not(.sidebar-color) .mod-right-split {
+  --background-secondary: unset !important;
+}
+.chisel-color.hider-tabs .workspace:not(.is-left-sidedock-open) {
+  --bg1: var(--background-primary) !important;
+  --titlebar-background: var(--background-primary) !important;
+  --titlebar-background-focused: var(--background-primary) !important;
+}
+.chisel-color.is-mobile {
+  --mobile-sidebar-background: var(--background-secondary);
+}
+.chisel-color.theme-light {
+  --color-base-100: var(--light-color-foreground,);
+  --color-base-00: var(--light-color-background);
+  --color-white: var(--color-base-00);
+  --color-black: var(--color-base-100);
+  --accent-color: var(--light-accent-color, var(--color-yellow));
+  --bold-color: var(--light-bold-color, var(--color-red));
+  --italic-color: var(--light-italic-color, var(--color-blue));
+  --color-white: var(--color-base-00);
+  --color-black: var(--color-base-100);
+  /*
+  --color-red: var(--light-color-red, #df453a);
+  --color-orange: var(--light-color-orange, #ea702e);
+  --color-yellow: var(--light-color-yellow, #e4ae25) !important;
+  --color-green: var(--light-color-green, #1e9316) !important;
+  --color-cyan: var(--light-color-cyan, #23a5a7) !important;
+  --color-blue: var(--light-color-blue, #2882c3) !important;
+  --color-purple: var(--light-color-purple, #8d6fb3) !important;
+  --color-pink: var(--light-color-pink, #da58b5) !important;
+  */
+  --color-red: var(--light-color-red, #af3029);
+  --color-orange: var(--light-color-orange, #bc5215);
+  --color-yellow: var(--light-color-yellow, #ad8301);
+  --color-green: var(--light-color-green, #66800b);
+  --color-cyan: var(--light-color-cyan, #24837b);
+  --color-blue: var(--light-color-blue, #205ea6);
+  --color-purple: var(--light-color-purple, #5e409d);
+  --color-pink: var(--light-color-pink, #a02f6f);
+}
+.chisel-color .markdown-source-view.mod-cm6 hr {
+  border-width: var(--hr-thickness);
+}
+@media only screen and (max-width: 600px) {
+  .chisel-color.is-mobile .workspace-split.mod-root {
+    background-color: var(--background-primary);
+  }
+}
+.chisel-color.theme-dark, .chisel-color.is-mobile.theme-dark {
+  --color-base-100: var(--dark-color-foreground);
+  --color-base-00: var(--dark-color-background);
+  --color-white: var(--color-base-100);
+  --color-black: var(--color-base-00);
+  --border-color: color-mix(in oklab, black 13%, var(--color-base-00));
+  --accent-color: var(--dark-accent-color, var(--color-yellow));
+  --bold-color: var(--dark-bold-color, var(--color-red));
+  --italic-color: var(--dark-italic-color, var(--color-blue));
+  /*
+  --color-red: var(--dark-color-red, #bf3f36);
+  --color-orange: var(--dark-color-orange, #ce6325);
+  --color-yellow: var(--dark-color-yellow, #d69a00) !important;
+  --color-green: var(--dark-color-green, #2e9066) !important;
+  --color-cyan: var(--dark-color-cyan, #4dadd5) !important;
+  --color-blue: var(--dark-color-blue, #256ea2) !important;
+  --color-purple: var(--dark-color-purple, #8e6ac7) !important;
+  --color-pink: var(--dark-color-pink, #dd78db) !important;
+  */
+  --color-red: var(--dark-color-red, #d14d41);
+  --color-orange: var(--dark-color-orange, #da702c);
+  --color-yellow: var(--dark-color-yellow, #ad8301);
+  --color-green: var(--dark-color-green, #879a39);
+  --color-cyan: var(--dark-color-cyan, #3aa99f);
+  --color-blue: var(--dark-color-blue, #4385be);
+  --color-purple: var(--dark-color-purple, #8b7ec8);
+  --color-pink: var(--dark-color-pink, #ce5d97);
+  --blockquote-border-color: var(--text-faint);
+  --h1-color: color-mix(
+      in oklab,
+      var(--color-base-100) 85%,
+      var(--color-base-00)
+  );
+  --h2-color: color-mix(
+      in oklab,
+      var(--color-base-100) 90%,
+      var(--color-base-00)
+  );
+  --h3-color: color-mix(
+      in oklab,
+      var(--color-base-100) 95%,
+      var(--color-base-00)
+  );
+  --h4-color: var(--color-base-100);
+  --h5-color: var(--color-base-100);
+  --h6-color: var(--color-base-100);
+  --background-primary: var(--color-base-05);
+  --background-primary: color-mix(
+      in oklab,
+      var(--color-base-100) 2%,
+      var(--color-base-00)
+  );
+  --background-primary-alt: var(--color-base-00);
+  --background-secondary: var(--color-base-00);
+  --background-secondary-alt: var(--color-base-05);
+  --text-highlight-bg: color-mix(
+      in oklab,
+      var(--color-yellow) 20%,
+      transparent
+  );
+}
+.chisel-color pre {
+  color: var(--color-base-70);
+}
+.chisel-color .markdown-rendered mark,
+.chisel-color .cm-s-obsidian span.cm-highlight {
+  background-color: var(--text-highlight-bg);
+  color: currentColor;
+}
+.chisel-color a.footnote-link {
+  color: var(--text-faint);
+}
+.chisel-color .sidebar-toggle-button.mod-right {
+  background: none !important;
+}
+.chisel-color .workspace-drawer-inner,
+.chisel-color .workspace-split.mod-root,
+.chisel-color .mod-root .workspace-tabs .workspace-leaf {
+  background: var(--background-secondary);
+}
+.chisel-color .workspace-leaf-content {
+  border-radius: var(--radius-m);
+}
+.chisel-color .notice,
+.chisel-color .tooltip {
+  color: color-mix(in oklab, var(--text-normal) 50%, transparent);
+}
+.chisel-color .is-translucent:not(.is-fullscreen) {
+  --nav-collapse-icon-color: color-mix(
+      in oklab,
+      var(--mono-100) 30%,
+      transparent
+  );
+  --nav-collapse-icon-color-collapsed: color-mix(
+      in oklab,
+      var(--mono-100) 30%,
+      transparent
+  );
+}
+.chisel-color .diff-line.mod-left {
+  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+}
+.chisel-color .diff-line.mod-left .diff-changed {
+  background-color: color-mix(in oklab, var(--background-modifier-error) 40%, transparent);
+}
+.chisel-color .diff-line.mod-right {
+  background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
+}
+.chisel-color .diff-line.mod-right .diff-changed {
+  background-color: color-mix(in oklab, var(--background-modifier-success) 40%, transparent);
+}
+.chisel-color input.document-search-input.mod-no-match,
+.chisel-color input.document-replace-input.mod-no-match {
+  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+}
+@media (hover: hover) {
+  .chisel-color input.document-search-input.mod-no-match:hover,
+  .chisel-color input.document-replace-input.mod-no-match:hover {
+    background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+  }
+}
+@media (hover: hover) {
+  .chisel-color input[type=color]::-webkit-color-swatch:hover {
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--mono-100) 20%, transparent), 0 0 0 3px var(--background-modifier-border-hover);
+  }
+}
+.chisel-color .pdf-findbar .mod-not-found {
+  --background-modifier-form-field: color-mix(
+      in oklab,
+      var(--background-modifier-error) 10%,
+      transparent
+  );
+  --background-modifier-border-focus: color-mix(
+      in oklab,
+      var(--background-modifier-error) 60%,
+      transparent
+  );
+}
+@media (hover: hover) {
+  .chisel-color .metadata-property-warning-icon:hover {
+    background-color: color-mix(in oklab, var(--color-orange) 15%, transparent);
+  }
+}
+.chisel-color .file-tree .mod-new.is-selected {
+  background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
+}
+.chisel-color .file-tree .mod-deleted.is-selected,
+.chisel-color .file-tree .mod-to-delete.is-selected {
+  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+}
+.chisel-color .publish-upload-item:before {
+  background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
+}
+.chisel-color .publish-upload-item.mod-failed:before {
+  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+}
+.chisel-color .sync-history-list-item-header .sync-history-list-item-avatar {
+  border: 1px solid color-mix(in oklab, var(--mono-100) 20%, transparent);
+}
+.chisel-color .canvas-node-placeholder::after {
+  background-color: color-mix(in oklab, var(--canvas-color) 10%, transparent);
+}
+.chisel-color .canvas-node.is-themed .canvas-node-container {
+  border-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--canvas-color) 70%, transparent), var(--shadow-stationary);
+}
+.chisel-color .canvas-node-group .canvas-node-content {
+  background-color: color-mix(in oklab, var(--canvas-color) 7%, transparent);
+}
+.chisel-color .canvas-group-label {
+  background-color: color-mix(in oklab, var(--canvas-color) 1%, transparent);
+}
+.chisel-color .canvas-node.is-themed .canvas-node-content {
+  background-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
+}
+.chisel-color .canvas-edges g.is-focused path.canvas-interaction-path,
+.chisel-color .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
+  stroke: color-mix(in oklab, var(--canvas-color) 10%, transparent);
+}
+
+/* ============================================= */
+/* Vertical Flow */
+/* ============================================= */
+.chisel-rhythm {
+  --table-margin: auto;
+  --table-cell-padding: 0.5rlh 0.5rlh;
+  --table-edge-cell-padding-first: 0.5rlh;
+  --margin: 2rlh;
+  /*
+      .markdown-source-view .cm-callout .callout {
+          margin: 0;
+      }
+
+      .view-content:not(:has(callout-content))
+          .markdown-source-view
+          > div:has(.image-embed)
+          > p,
+      .view-content:not(:has(callout-content))
+          .markdown-source-view
+          p:has(> .image-embed ~ .image-embed) {
+          margin-top: 2rlh;
+          margin-bottom: 2rlh;
+      }
+
+      .view-content:not(:has(callout-content))
+          .markdown-source-view
+          > div:has(.image-embed)
+          + div:has(.image-embed)
+          > p {
+          margin-top: calc(-2rlh + var(--img-grid-gap));
+      }
+  */
+  /*
+   .markdown-reading-view,  .markdown-source-view {
+   padding:0 !important;
+   margin:2rlh;
+  }
+  */
+  /*
+      .mod-cm6 .HyperMD-list-line.cm-line {
+          margin-bottom: 0.5rlh !important;
+      }
+  */
+  /*  .HyperMD-header-1.cm-line */
+  /*  .HyperMD-header-2.cm-line  */
+  /*  .HyperMD-header-3.cm-line
+  is commented because is bugged the ability to select text
+  */
+  /*  .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line */
+  /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+  /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+  /*  .HyperMD-header-4.cm-line */
+  /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
+  /*  .HyperMD-header-5.cm-line */
+  /*  .HyperMD-header-6.cm-line  */
+}
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) table {
+  margin-left: var(--table-margin);
+  margin-right: var(--table-margin);
+}
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) p,
+.chisel-rhythm .cm-line {
+  line-height: var(--line-height-normal);
+  margin-top: 0rlh;
+  margin-bottom: var(--margin);
+  padding: 0;
+  margin-block-start: 0;
+}
+.chisel-rhythm.img-grid .markdown-preview-section > div.el-p:has(.image-embed) {
+  margin: 2rlh 0;
+}
+.chisel-rhythm.img-grid .markdown-preview-section > div.el-p:has(.image-embed) + div.el-p:has(.image-embed) {
+  margin-top: -1.75rlh;
+}
+.chisel-rhythm .markdown-reading-view .callout,
+.chisel-rhythm .markdown-reading-view.mod-cm6 .callout,
+.chisel-rhythm .markdown-reading-view blockquote,
+.chisel-rhythm .markdown-reading-view pre {
+  margin: calc(var(--margin) * 1.5) 2rlh;
+}
+.chisel-rhythm .markdown-reading-view blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content,
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) blockquote {
+  font-size: var(--font-small);
+  line-height: var(--line-height-tight);
+}
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > p:last-of-type {
+  margin: 0;
+}
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
+  margin: 0rlh 0 0 0;
+  padding: 0 0 0 1rlh;
+}
+.chisel-rhythm .markdown-reading-view hr {
+  margin: 5rlh 8rlh 6rlh 8rlh;
+}
+.chisel-rhythm .markdown-source-view hr {
+  margin: 0 25%;
+}
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .popover .markdown-embed-content,
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-content,
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .popover .markdown-embed-title,
+.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-title {
+  padding: 1rlh !important;
+}
+.chisel-rhythm .markdown-preview-view ul,
+.chisel-rhythm .markdown-preview-view ol {
+  padding: 0rlh 2rlh;
+  margin: 1rlh 0rlh;
+}
+.chisel-rhythm .el-h1 + .el-ul ul,
+.chisel-rhythm .el-h2 + .el-ul ul,
+.chisel-rhythm .el-h3 + .el-ul ul,
+.chisel-rhythm .el-h4 + .el-ul ul,
+.chisel-rhythm .el-h5 + .el-ul ul,
+.chisel-rhythm .el-h6 + .el-ul ul,
+.chisel-rhythm .el-h1 + .el-ol ol,
+.chisel-rhythm .el-h2 + .el-ol ol,
+.chisel-rhythm .el-h3 + .el-ol ol,
+.chisel-rhythm .el-h4 + .el-ol ol,
+.chisel-rhythm .el-h5 + .el-ol ol,
+.chisel-rhythm .el-h6 + .el-ol ol {
+  margin-top: 0.25rlh;
+}
+.chisel-rhythm .markdown-preview-view ol > li,
+.chisel-rhythm .markdown-preview-view ul > li,
+.chisel-rhythm .markdown-source-view ol > li,
+.chisel-rhythm .markdown-source-view ul > li {
+  margin: 0rlh;
+}
+.chisel-rhythm .markdown-preview-view ol > li:not(:first-child),
+.chisel-rhythm .markdown-preview-view ul > li:not(:first-child),
+.chisel-rhythm .markdown-source-view ol > li:not(:first-child),
+.chisel-rhythm .markdown-source-view ul > li:not(:first-child) {
+  margin-top: 0.5rlh;
+}
+.chisel-rhythm .markdown-reading-view .inline-title {
+  margin-top: 4rlh;
+  margin-bottom: 4rlh;
+  padding: 0;
+  line-height: 0.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.chisel-rhythm .markdown-reading-view div div h1 {
+  margin-top: 8rlh;
+  margin-bottom: 4rlh;
+  padding: 0;
+}
+.chisel-rhythm .markdown-reading-view div div h2 {
+  margin-top: 6rlh;
+  margin-bottom: 2rlh;
+  padding: 0;
+}
+.chisel-rhythm .markdown-reading-view div div h3 {
+  margin-top: 4rlh;
+  margin-bottom: 2rlh;
+  padding: 0;
+}
+.chisel-rhythm .markdown-reading-view div.el-h1 + div.el-h2 h2 {
+  margin-top: 1rlh;
+}
+.chisel-rhythm .markdown-reading-view div.el-h2 + div.el-h3 h3 {
+  margin-top: 4rlh;
+}
+.chisel-rhythm .markdown-reading-view div.el-h3 + div.el-h4 h4 {
+  margin-top: 0rlh;
+}
+.chisel-rhythm .markdown-reading-view div div h4 {
+  margin-top: 4rlh;
+  margin-bottom: 1rlh;
+  padding: 0;
+}
+.chisel-rhythm .markdown-reading-view div.el-h4 + div.el-h5 h5 {
+  margin-top: 0rlh;
+}
+.chisel-rhythm .markdown-reading-view div div h5 {
+  margin-top: 2rlh;
+  margin-bottom: 1rlh;
+  padding: 0;
+}
+.chisel-rhythm .markdown-reading-view div div h6 {
+  margin-top: 2rlh;
+  margin-bottom: 0rlh;
+  padding: 0;
+}
+.chisel-rhythm .markdown-reading-view div.el-h6 + div blockquote {
+  margin-top: 1rlh;
+}
+
+@media only screen and (max-width: 600px) {
+  .chisel-rhythm .callout,
+  .chisel-rhythm blockquote,
+  .chisel-rhythm pre {
+    margin: 2rlh 0rlh !important;
+  }
+  .chisel-rhythm .inline-title {
+    margin-bottom: 3rlh;
+    margin-top: 1rlh;
+  }
+  .chisel-rhythm .markdown-source-view .inline-title {
+    margin-bottom: 1rlh;
+  }
+  .chisel-rhythm ul,
+  .chisel-rhythm ol,
+  .chisel-rhythm .callout-content ul,
+  .chisel-rhythm .callout-content ol {
+    padding: 0rlh 0rlh 0rlh 0.5rlh;
+  }
+  .chisel-rhythm .markdown-reading-view hr {
+    margin: 4rlh 25% !important;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .chisel-rhythm .inline-title {
+    margin-top: 8rlh;
+  }
+}
+/* Preview mode (reading view) */
+.chisel-rhythm .markdown-reading-view h1 + h1,
+.chisel-rhythm .markdown-reading-view h1 + h2,
+.chisel-rhythm .markdown-reading-view h1 + h3,
+.chisel-rhythm .markdown-reading-view h1 + h4,
+.chisel-rhythm .markdown-reading-view h1 + h5,
+.chisel-rhythm .markdown-reading-view h1 + h6,
+.chisel-rhythm .markdown-reading-view h2 + h1,
+.chisel-rhythm .markdown-reading-view h2 + h2,
+.chisel-rhythm .markdown-reading-view h2 + h3,
+.chisel-rhythm .markdown-reading-view h2 + h4,
+.chisel-rhythm .markdown-reading-view h2 + h5,
+.chisel-rhythm .markdown-reading-view h2 + h6,
+.chisel-rhythm .markdown-reading-view h3 + h1,
+.chisel-rhythm .markdown-reading-view h3 + h2,
+.chisel-rhythm .markdown-reading-view h3 + h3,
+.chisel-rhythm .markdown-reading-view h3 + h4,
+.chisel-rhythm .markdown-reading-view h3 + h5,
+.chisel-rhythm .markdown-reading-view h3 + h6,
+.chisel-rhythm .markdown-reading-view h4 + h1,
+.chisel-rhythm .markdown-reading-view h4 + h2,
+.chisel-rhythm .markdown-reading-view h4 + h3,
+.chisel-rhythm .markdown-reading-view h4 + h4,
+.chisel-rhythm .markdown-reading-view h4 + h5,
+.chisel-rhythm .markdown-reading-view h4 + h6,
+.chisel-rhythm .markdown-reading-view h5 + h1,
+.chisel-rhythm .markdown-reading-view h5 + h2,
+.chisel-rhythm .markdown-reading-view h5 + h3,
+.chisel-rhythm .markdown-reading-view h5 + h4,
+.chisel-rhythm .markdown-reading-view h5 + h5,
+.chisel-rhythm .markdown-reading-view h5 + h6,
+.chisel-rhythm .markdown-reading-view h6 + h1,
+.chisel-rhythm .markdown-reading-view h6 + h2,
+.chisel-rhythm .markdown-reading-view h6 + h3,
+.chisel-rhythm .markdown-reading-view h6 + h4,
+.chisel-rhythm .markdown-reading-view h6 + h5,
+.chisel-rhythm .markdown-reading-view h6 + h6,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-1.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line,
+.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-1.cm-line,
+.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-2.cm-line,
+.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line,
+.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-4.cm-line,
+.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-5.cm-line,
+.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-6.cm-line,
+.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-1.cm-line,
+.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-2.cm-line,
+.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-3.cm-line,
+.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-4.cm-line,
+.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-5.cm-line,
+.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-6.cm-line,
+.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-1.cm-line,
+.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-2.cm-line,
+.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-3.cm-line,
+.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-4.cm-line,
+.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-5.cm-line,
+.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-6.cm-line,
+.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-1.cm-line,
+.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-2.cm-line,
+.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-3.cm-line,
+.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-4.cm-line,
+.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-5.cm-line,
+.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-6.cm-line,
+.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-1.cm-line,
+.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-2.cm-line,
+.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-3.cm-line,
+.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-4.cm-line,
+.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-5.cm-line,
+.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-6.cm-line {
+  margin-top: 0rlh;
+}
+
+/* Preview mode */
+.chisel-rhythm .markdown-reading-view h1 + h2,
+.chisel-rhythm .markdown-reading-view h1 + h3,
+.chisel-rhythm .markdown-reading-view h1 + h4,
+.chisel-rhythm .markdown-reading-view h1 + h5,
+.chisel-rhythm .markdown-reading-view h1 + h6,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
+.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line {
+  margin-top: 2rlh;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,22 +1,4 @@
 body.chisel-color.cssclass-kernel {
-    --light-color-background: #f4f5f3;
-    --light-color-foreground: #1d3557;
-
-    /* Neutrals */
-    --light-color-gray: #6b7280; /* text gray */
-    --light-color-muted: #a0a0a0; /* UI border / secondary */
-    --light-color-soft: #e2e2df; /* UI backgrounds, blockquotes */
-
-    /* Accent system */
-    --light-color-red: #c92a2a; /* warning, highlight */
-    --light-color-orange: #e08e1f; /* attention blocks */
-    --light-color-yellow: #d4af37; /* vintage punchcard yellow */
-    --light-color-green: #4ca06b; /* success, approval */
-    --light-color-cyan: #2aa198; /* teal-y terminal feel */
-    --light-color-blue: #3b82f6; /* link, info */
-    --light-color-purple: #7e5bef; /* utility, label tags */
-    --light-color-pink: #d16d92; /* softer technical touch */
-
     --light-color-background: #fffcf0;
     --light-color-foreground: #100f0f;
     /* Accent system */
@@ -27,13 +9,7 @@ body.chisel-color.cssclass-kernel {
     --light-color-cyan: #24837b; /* teal-y terminal feel */
     --light-color-blue: #205ea6; /* link, info */
     --light-color-purple: #5e409d; /* utility, label tags */
-    --light-color-pink: #a02f6f; /* softer t
-
-
-    /* Neutrals */
-    --dark-color-gray: #c9c9c9; /* text gray */
-    --dark-color-muted: #999; /* borders, UI frame */
-    --dark-color-soft: #2d2f33; /* dark gray blocks */
+    --light-color-pink: #a02f6f; /* softer */
 
     --dark-color-background: oklch(0.2228 0.0025 67.7); /* dark terminal feel */
     --dark-color-foreground: oklch(0.8174 0.0149 98.3);
@@ -53,24 +29,27 @@ body.chisel-color.cssclass-kernel {
     --bold-color: var(--color-red);
     --italic-color: var(--color-green);
 
-    --font-text: "Söhne Mono", "Oktah Round Variable";
-    --normal-weight: 400;
-    --bold-weight: 400;
-    --link-weight: 400;
-    --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
-    --font-header: "Inter Variable";
-    --font-header-feature:
-        "liga", "calt", "case", "kern", "cv01", "cv02", "cv03", "cv04", "cv06",
-        "cv09", "cv10", "cv11", "cv12", "cv13";
-    --font-monospace: "MonoLisa";
-    --font-mono-feature:
-        "liga", "zero", "calt", "ss02", "ss03", "ss07", "ss10", "ss15", "ss16";
-    --font-interface: "Söhne Mono";
-
     --font-density: 1.5;
-    --font-header-line-height: 1em;
-    --font-header-weight: 900;
-    --font-header-letter-spacing: -0.07em;
+    --font-ratio: 1.333;
+
+    --font-text: "Söhne Mono", "Oktah Round Variable";
+    --font-weight: 400;
+    --bold-weight: 400;
+    --font-feature: "liga", "clig", "kern", "calt", "zero", "ss05";
+    --font-variation: "";
+
+    --font-header: "Inter Variable";
+    --font-header-weight: 400;
+    --font-header-letter-spacing: -0.025em;
+    --font-header-line-height: 1.3em;
+    --font-header-feature: "";
+    --font-header-variation: "";
+
+    --font-monospace: "MonoLisa";
+    --font-mono-feature: "";
+    --font-mono-variation: "";
+
+    --font-interface: "Söhne Mono";
 
     --code-function: var(--color-pink);
 

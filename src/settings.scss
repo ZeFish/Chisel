@@ -9,24 +9,6 @@ settings:
         type: heading
 		collapsed: false
         level: 1
-    -
-		id: chisel-typography
-		title: Grant permission to chisel to change typography settings and apply change in the settings above.
-		description:
-		type: class-toggle
-		default: false
-    -
-        id: chisel-color
-        title: Manage Color
-        description: chisel-color
-        type: class-toggle
-		default: false
-	-
-        id: vertical-rhythm
-        title: Create a vertical harmony between text, images and so on.
-        description: vertical-rhythm
-        type: class-toggle
-		default: false
 	-
         id: chisel-small
         title: Smaller file in file tree

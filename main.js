@@ -7,6 +7,9 @@ const DEFAULT_SETTINGS = {
   frontmatterProperty: "chisel",
   themePath: "",
   defaultTheme: "",
+  enableTypography: false,
+  enableColor: false,
+  enableRhythm: false,
 };
 
 class ChiselPlugin extends obsidian_1.Plugin {
@@ -16,12 +19,14 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.appliedClasses = new Set();
     this.styleElement = null;
     this.chiselNoteStyleElement = null;
+    this.defaultThemeStyleElement = null;
     this.currentMode = null;
     this.autoloadedSnippets = new Map();
   }
 
   async onload() {
     await this.loadSettings();
+    await this.applyDefaultTheme();
 
     // Add settings tab
     this.addSettingTab(new ChiselSettingTab(this.app, this));
@@ -41,7 +46,12 @@ class ChiselPlugin extends obsidian_1.Plugin {
         if (activeFile && file === activeFile) {
           this.updateBodyClasses();
         }
-        if (this.autoloadedSnippets.has(file.path) || this.app.metadataCache.getFileCache(file)?.frontmatter?.["chisel-autoload"]) {
+        if (
+          this.autoloadedSnippets.has(file.path) ||
+          this.app.metadataCache.getFileCache(file)?.frontmatter?.[
+            "chisel-autoload"
+          ]
+        ) {
           this.updateAutoloadedSnippets();
         }
       }),
@@ -86,6 +96,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.clearAllClasses();
     this.clearCustomProperties();
     this.clearChiselNoteStyle();
+    this.clearDefaultThemeStyle();
   }
 
   async loadSettings() {
@@ -126,8 +137,23 @@ class ChiselPlugin extends obsidian_1.Plugin {
       });
     }
 
+    if (this.settings.enableTypography) {
+      document.body.classList.add("chisel-typography");
+      this.appliedClasses.add("chisel-typography");
+    }
+    if (this.settings.enableColor) {
+      document.body.classList.add("chisel-color");
+      this.appliedClasses.add("chisel-color");
+    }
+    if (this.settings.enableRhythm) {
+      document.body.classList.add("chisel-rhythm");
+      this.appliedClasses.add("chisel-rhythm");
+    }
+
+    await this.applyChiselNote(
+      meta.frontmatter[this.settings.frontmatterProperty],
+    );
     this.applyCustomProperties(meta.frontmatter);
-    await this.applyChiselNote(meta.frontmatter[this.settings.frontmatterProperty]);
   }
 
   clearAllClasses() {
@@ -165,11 +191,11 @@ class ChiselPlugin extends obsidian_1.Plugin {
       if (!this.styleElement) {
         this.styleElement = document.createElement("style");
         this.styleElement.id = "chisel-custom-props";
-        const lastStyleTag = document.head.querySelector('style:last-of-type');
+        const lastStyleTag = document.head.querySelector("style:last-of-type");
         if (lastStyleTag) {
-            lastStyleTag.after(this.styleElement);
+          lastStyleTag.after(this.styleElement);
         } else {
-            document.head.appendChild(this.styleElement);
+          document.head.appendChild(this.styleElement);
         }
       }
       const googleFontsImports = Array.from(fontProperties)
@@ -183,7 +209,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
         .join("\n");
       this.styleElement.textContent = [
         googleFontsImports,
-        `body {
+        `html body {
 ${cssVars}
 }`,
       ]
@@ -201,8 +227,8 @@ ${cssVars}
   }
 
   async applyChiselNote(chiselNoteName) {
-    chiselNoteName = chiselNoteName || this.settings.defaultTheme;
     if (!chiselNoteName || typeof chiselNoteName !== "string") {
+      this.clearChiselNoteStyle(); // Clear note-specific style if no theme is specified
       return;
     }
 
@@ -228,7 +254,8 @@ ${cssVars}
     const cssContent = match ? match[1] : null;
 
     if (cssContent) {
-      this.chiselNoteStyleElement = document.getElementById("chisel-note-style");
+      this.chiselNoteStyleElement =
+        document.getElementById("chisel-note-style");
       if (!this.chiselNoteStyleElement) {
         this.chiselNoteStyleElement = document.createElement("style");
         this.chiselNoteStyleElement.id = "chisel-note-style";
@@ -244,6 +271,57 @@ ${cssVars}
       styleElement.remove();
     }
     this.chiselNoteStyleElement = null;
+  }
+
+  async applyDefaultTheme() {
+    const defaultThemeName = this.settings.defaultTheme;
+    if (!defaultThemeName || typeof defaultThemeName !== "string") {
+      this.clearDefaultThemeStyle();
+      return;
+    }
+
+    const files = this.app.vault.getMarkdownFiles();
+    const themePath = this.settings.themePath;
+
+    const cssFile = files.find((file) => {
+      const isCorrectFile = file.basename === defaultThemeName;
+      if (!themePath) return isCorrectFile;
+      return isCorrectFile && file.path.startsWith(themePath);
+    });
+
+    if (!cssFile) {
+      console.warn(
+        `Chisel: Default theme note "${defaultThemeName}" not found in path "${themePath || "vault root"}".`,
+      );
+      this.clearDefaultThemeStyle();
+      return;
+    }
+
+    const noteContent = await this.app.vault.cachedRead(cssFile);
+    const codeBlockRegex = /^```css\n([\s\S]*?)\n```/m;
+    const match = noteContent.match(codeBlockRegex);
+    const cssContent = match ? match[1] : null;
+
+    if (cssContent) {
+      this.defaultThemeStyleElement =
+        document.getElementById("chisel-default-theme-style");
+      if (!this.defaultThemeStyleElement) {
+        this.defaultThemeStyleElement = document.createElement("style");
+        this.defaultThemeStyleElement.id = "chisel-default-theme-style";
+        document.head.appendChild(this.defaultThemeStyleElement);
+      }
+      this.defaultThemeStyleElement.textContent = cssContent;
+    } else {
+      this.clearDefaultThemeStyle();
+    }
+  }
+
+  clearDefaultThemeStyle() {
+    const styleElement = document.getElementById("chisel-default-theme-style");
+    if (styleElement) {
+      styleElement.remove();
+    }
+    this.defaultThemeStyleElement = null;
   }
 
   async updateAutoloadedSnippets() {
@@ -390,7 +468,9 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
 
     new obsidian_1.Setting(containerEl)
       .setName("Default theme")
-      .setDesc("The default theme to apply if no theme is specified in the note's frontmatter.")
+      .setDesc(
+        "The default theme to apply if no theme is specified in the note's frontmatter.",
+      )
       .addText((text) =>
         text
           .setPlaceholder("my-default-theme")
@@ -398,6 +478,48 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           .onChange(async (value) => {
             this.plugin.settings.defaultTheme = value.trim();
             await this.plugin.saveSettings();
+            this.plugin.applyDefaultTheme(); // Call applyDefaultTheme here
+          }),
+      );
+
+    containerEl.createEl("h2", { text: "Body Class Toggles" });
+
+    new obsidian_1.Setting(containerEl)
+      .setName("Enable Typography Classes")
+      .setDesc("Toggle the application of 'chisel-typography' class to the body.")
+      .addToggle((toggle) =>
+        toggle
+          .setValue(this.plugin.settings.enableTypography)
+          .onChange(async (value) => {
+            this.plugin.settings.enableTypography = value;
+            await this.plugin.saveSettings();
+            this.plugin.updateBodyClasses(); // Update classes immediately
+          }),
+      );
+
+    new obsidian_1.Setting(containerEl)
+      .setName("Enable Color Classes")
+      .setDesc("Toggle the application of 'chisel-color' class to the body.")
+      .addToggle((toggle) =>
+        toggle
+          .setValue(this.plugin.settings.enableColor)
+          .onChange(async (value) => {
+            this.plugin.settings.enableColor = value;
+            await this.plugin.saveSettings();
+            this.plugin.updateBodyClasses(); // Update classes immediately
+          }),
+      );
+
+    new obsidian_1.Setting(containerEl)
+      .setName("Enable Rhythm Classes")
+      .setDesc("Toggle the application of 'chisel-rhythm' class to the body.")
+      .addToggle((toggle) =>
+        toggle
+          .setValue(this.plugin.settings.enableRhythm)
+          .onChange(async (value) => {
+            this.plugin.settings.enableRhythm = value;
+            await this.plugin.saveSettings();
+            this.plugin.updateBodyClasses(); // Update classes immediately
           }),
       );
 
@@ -405,7 +527,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
     containerEl.createEl("h2", { text: "Body Class Documentation" });
     const docEl = containerEl.createEl("div");
     docEl.innerHTML = `
-            <p>The plugin adds the following CSS classes to the <code>&lt;body&gt;</code> element based on the context:</p>
+            <p>The plugin adds the following CSS classes to the <code><body></code> element based on the context:</p>
             <ul>
                 <li><code>cssclass-<b>{name}</b></code>: Applied for each class listed in the <code>cssclasses</code> frontmatter property.</li>
                 <li><code>chisel-note</code>: Applied when viewing any markdown note.</li>
@@ -421,31 +543,43 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
 }
 
 class ChiselCheatsheetModal extends obsidian_1.Modal {
-    constructor(app) {
-        super(app);
-    }
+  constructor(app) {
+    super(app);
+  }
 
-    onOpen() {
-        const {contentEl} = this;
-        contentEl.empty();
-        contentEl.createEl("h2", { text: "Chisel Frontmatter Cheatsheet" });
+  onOpen() {
+    const { contentEl } = this;
+    contentEl.empty();
+    contentEl.createEl("h2", { text: "Chisel Frontmatter Cheatsheet" });
 
-        contentEl.createEl("p", { text: "The following `chisel-` prefixed frontmatter properties can be used to customize your notes:" });
+    contentEl.createEl("p", {
+      text: "The following `chisel-` prefixed frontmatter properties can be used to customize your notes:",
+    });
 
-        const ul = contentEl.createEl("ul");
+    const ul = contentEl.createEl("ul");
 
-        ul.createEl("li", { text: "`chisel-font-text`: Sets the font for body text. Example: `chisel-font-text: 'Inter', sans-serif`" });
-        ul.createEl("li", { text: "`chisel-font-header`: Sets the font for headings. Example: `chisel-font-header: 'Merriweather', serif`" });
-        ul.createEl("li", { text: "`chisel-font-monospace`: Sets the font for monospace text (e.g., code blocks). Example: `chisel-font-monospace: 'Fira Code', monospace`" });
-        ul.createEl("li", { text: "`chisel-font-interface`: Sets the font for the Obsidian UI. Example: `chisel-font-interface: 'System-UI', sans-serif`" });
+    ul.createEl("li", {
+      text: "`chisel-font-text`: Sets the font for body text. Example: `chisel-font-text: 'Inter', sans-serif`",
+    });
+    ul.createEl("li", {
+      text: "`chisel-font-header`: Sets the font for headings. Example: `chisel-font-header: 'Merriweather', serif`",
+    });
+    ul.createEl("li", {
+      text: "`chisel-font-monospace`: Sets the font for monospace text (e.g., code blocks). Example: `chisel-font-monospace: 'Fira Code', monospace`",
+    });
+    ul.createEl("li", {
+      text: "`chisel-font-interface`: Sets the font for the Obsidian UI. Example: `chisel-font-interface: 'System-UI', sans-serif`",
+    });
 
-        contentEl.createEl("p", { text: "Any other frontmatter property starting with `chisel-` (e.g., `chisel-my-custom-property: value`) will be converted into a CSS variable `--my-custom-property: value` and applied to the `body` element. You can then use this CSS variable in your custom CSS snippets." });
-    }
+    contentEl.createEl("p", {
+      text: "Any other frontmatter property starting with `chisel-` (e.g., `chisel-my-custom-property: value`) will be converted into a CSS variable `--my-custom-property: value` and applied to the `body` element. You can then use this CSS variable in your custom CSS snippets.",
+    });
+  }
 
-    onClose() {
-        const {contentEl} = this;
-        contentEl.empty();
-    }
+  onClose() {
+    const { contentEl } = this;
+    contentEl.empty();
+  }
 }
 
 module.exports = ChiselPlugin;

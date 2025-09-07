@@ -1,3 +1,40 @@
+:root {
+    /* Light */
+    --light-color-foreground: #222;
+    --light-color-background: #ffffff;
+
+    --light-color-red: #b33a2a;
+    --light-color-orange: #bc5215;
+    --light-color-yellow: #cc8815;
+    --light-color-green: #66800b;
+    --light-color-cyan: #82a1b2;
+    --light-color-blue: #438199;
+    --light-color-purple: #5e409d;
+    --light-color-pink: #a02f6f;
+
+    --light-accent-color: var(--color-yellow);
+    --light-bold-color: var(--color-red);
+    --light-italic-color: var(--color-blue);
+
+    /* Dark */
+    --dark-color-foreground: oklch(0.7721 0.0228 96.47);
+    --dark-color-background: oklch(0.2308 0.0023 67.73);
+
+    --dark-color-red: #d14d41;
+    --dark-color-orange: #da702c;
+    --dark-color-yellow: #cc8815;
+    --dark-color-green: #879a39;
+    --dark-color-cyan: #3aa99f;
+    --dark-color-blue: #4385be;
+    --dark-color-purple: #9a462b;
+    --dark-color-pink: #a8431b;
+
+    --dark-accent-color: var(--color-yellow);
+    --dark-bold-color: var(--color-red);
+    --dark-italic-color: var(--color-blue);
+
+    --bold-weight: 400;
+}
 .chisel-color {
     /* --color-base-00:						var(--color-base-00); */
     --color-base-05: color-mix(
@@ -251,7 +288,7 @@
         transparent
     );
     --swatch-shadow: inset 0 0 0 1px
-        color-mix(in oklab, var(--color-base-1000) 1%, transparent);
+        color-mix(in oklab, var(--color-base-100) 1%, transparent);
     --workspace-background-translucent: color-mix(
         in oklab,
         var(--color-base-100) 40%,
@@ -307,7 +344,7 @@
     }
 
     &.theme-light {
-        --color-base-100: var(--light-color-foreground);
+        --color-base-100: var(--light-color-foreground,);
         --color-base-00: var(--light-color-background);
 
         --color-white: var(--color-base-00);
@@ -420,10 +457,6 @@
             var(--color-yellow) 20%,
             transparent
         );
-    }
-
-    .inline-title:not([data-level]) {
-        text-align: left;
     }
 
     pre {
