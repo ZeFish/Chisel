@@ -783,7 +783,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       let descCell = row.createEl("td");
       let descText = descCell.createEl("textarea");
       descText.value = allColorDescriptions;
-      descText.setAttr("rows", 10); // Adjust rows as needed
+      descText.setAttr("rows", 26); // Adjust rows as needed
       descText.setAttr("cols", 30); // Adjust cols as needed
       descText.disabled = true; // Make it read-only
 
@@ -791,14 +791,14 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       let cssCell = row.createEl("td");
       let cssText = cssCell.createEl("textarea");
       cssText.value = allColorCss;
-      cssText.setAttr("rows", 10); // Adjust rows as needed
+      cssText.setAttr("rows", 26); // Adjust rows as needed
       cssText.setAttr("cols", 30); // Adjust cols as needed
 
       // Frontmatter column
       let fmCell = row.createEl("td");
       let fmText = fmCell.createEl("textarea");
       fmText.value = allColorFm;
-      fmText.setAttr("rows", 10); // Adjust rows as needed
+      fmText.setAttr("rows", 26); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
     }
 
@@ -843,7 +843,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       let descCell = row.createEl("td");
       let descText = descCell.createEl("textarea");
       descText.value = allRhythmDescriptions;
-      descText.setAttr("rows", 5); // Adjust rows as needed
+      descText.setAttr("rows", 10); // Adjust rows as needed
       descText.setAttr("cols", 30); // Adjust cols as needed
       descText.disabled = true; // Make it read-only
 
@@ -851,14 +851,14 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       let cssCell = row.createEl("td");
       let cssText = cssCell.createEl("textarea");
       cssText.value = allRhythmCss;
-      cssText.setAttr("rows", 5); // Adjust rows as needed
+      cssText.setAttr("rows", 10); // Adjust rows as needed
       cssText.setAttr("cols", 30); // Adjust cols as needed
 
       // Frontmatter column
       let fmCell = row.createEl("td");
       let fmText = fmCell.createEl("textarea");
       fmText.value = allRhythmFm;
-      fmText.setAttr("rows", 5); // Adjust rows as needed
+      fmText.setAttr("rows", 10); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
     }
 
