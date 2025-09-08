@@ -987,7 +987,7 @@ body {
   margin-top: calc(var(--margin) * 2);
 }
 
-.plugin-setting-tab details {
-  margin-top: 1em; /* Adjust as needed */
+.plugin-setting-tab .setting-item {
+  margin-bottom: 1em; /* Adjust as needed */
 }
 /*# sourceMappingURL=styles.css.map */
