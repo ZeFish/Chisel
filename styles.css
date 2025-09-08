@@ -990,4 +990,8 @@ body {
 .plugin-setting-tab .setting-item {
   margin-bottom: 1em; /* Adjust as needed */
 }
+
+.plugin-setting-tab details {
+  margin-bottom: 1em !important; /* Testing a more aggressive margin */
+}
 /*# sourceMappingURL=styles.css.map */
