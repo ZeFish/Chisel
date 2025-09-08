@@ -8,6 +8,10 @@ const DEFAULT_SETTINGS = {
   enableTypography: false,
   enableColor: false,
   enableRhythm: false,
+  startupSnapshot: {
+    cssClasses: [],
+    snippetNames: [],
+  },
 };
 
 class ChiselPlugin extends obsidian_1.Plugin {
@@ -16,6 +20,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.currentFile = null;
     this.appliedClasses = new Set();
     this.appliedSnippetViewClasses = new Set();
+    this.hasAppliedStartupSnapshot = false;
     this.styleElement = null;
     this.chiselNoteStyleElement = null;
     this.defaultThemeStyleElement = null;
@@ -47,7 +52,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
           this.updateBodyClasses();
         }
         const fm = this.app.metadataCache.getFileCache(file)?.frontmatter;
-        if (this.autoloadedSnippets.has(file.path) || this.hasAutoloadFlag(fm)) {
+        if (
+          this.autoloadedSnippets.has(file.path) ||
+          this.hasAutoloadFlag(fm)
+        ) {
           this.updateAutoloadedSnippets();
         }
       }),
@@ -61,6 +69,8 @@ class ChiselPlugin extends obsidian_1.Plugin {
           this.updateBodyClasses();
         }
         this.updateAutoloadedSnippets();
+        // Try applying startup snapshot if still idle and not yet applied
+        if (!this.hasAppliedStartupSnapshot) this.applyStartupSnapshotIfIdle();
       }),
     );
 
@@ -73,6 +83,20 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     this.updateModeClasses();
     setTimeout(() => this.updateBodyClasses(), 100);
+    // If no file is open on startup, apply last saved snapshot of classes/snippets
+    setTimeout(() => this.applyStartupSnapshotIfIdle(), 300);
+    // Also attempt once the workspace layout is ready
+    // (ensures vault files are available)
+    if (this.app?.workspace?.onLayoutReady) {
+      this.app.workspace.onLayoutReady(() => this.applyStartupSnapshotIfIdle());
+    } else {
+      // Fallback for older Obsidian versions
+      this.app.workspace.on("layout-ready", () =>
+        this.applyStartupSnapshotIfIdle(),
+      );
+    }
+
+    this.updateAutoloadedSnippets();
 
     this.addCommand({
       id: "open-chisel-cheatsheet-modal",
@@ -100,11 +124,15 @@ class ChiselPlugin extends obsidian_1.Plugin {
     const data = await this.loadData();
     this.settings = Object.assign({}, DEFAULT_SETTINGS, data);
     // Migration: ensure frontmatterProperty uses the new key "cssclasses"
-    if (!this.settings.frontmatterProperty || 
-        this.settings.frontmatterProperty === "chisel" ||
-        this.settings.frontmatterProperty === "snippets") {
+    if (
+      !this.settings.frontmatterProperty ||
+      this.settings.frontmatterProperty === "chisel" ||
+      this.settings.frontmatterProperty === "snippets"
+    ) {
       this.settings.frontmatterProperty = "cssclasses";
-      try { await this.saveSettings(); } catch (e) {}
+      try {
+        await this.saveSettings();
+      } catch (e) {}
     }
   }
 
@@ -115,54 +143,52 @@ class ChiselPlugin extends obsidian_1.Plugin {
   async updateBodyClasses() {
     const activeFile = this.app.workspace.getActiveFile();
 
-    // Only cleanup if the active file has changed or is null
-    if (activeFile !== this.currentFile || activeFile === null) {
-      this.cleanup();
-      this.currentFile = activeFile;
-    }
+    const newClasses = new Set();
 
-    if (!activeFile) {
-      this.currentFile = null;
-      return;
-    }
+    // Global settings classes
+    if (this.settings.enableTypography) newClasses.add("chisel-typography");
+    if (this.settings.enableColor) newClasses.add("chisel-color");
+    if (this.settings.enableRhythm) newClasses.add("chisel-rhythm");
 
-    this.currentFile = activeFile;
-    const meta = this.app.metadataCache.getFileCache(activeFile);
-
-    this.cleanup();
-
-    // Apply global settings classes regardless of frontmatter
-    if (this.settings.enableTypography) {
-      document.body.classList.add("chisel-typography");
-      this.addClassToViews("chisel-typography");
-      this.appliedClasses.add("chisel-typography");
-    }
-    if (this.settings.enableColor) {
-      document.body.classList.add("chisel-color");
-      this.addClassToViews("chisel-color");
-      this.appliedClasses.add("chisel-color");
-    }
-    if (this.settings.enableRhythm) {
-      document.body.classList.add("chisel-rhythm");
-      this.addClassToViews("chisel-rhythm");
-      this.appliedClasses.add("chisel-rhythm");
-    }
-
-    if (!meta?.frontmatter) return;
-
-    // Handle cssClasses
-    const cssclasses =
-      meta.frontmatter.cssclasses || meta.frontmatter.cssClasses;
-    if (cssclasses) {
-      const classList = Array.isArray(cssclasses) ? cssclasses : [cssclasses];
-      classList.forEach((cls) => {
-        if (typeof cls === "string" && cls.trim().length > 0) {
-          const className = "cssclass-" + cls.trim();
-          document.body.classList.add(className);
-          this.appliedClasses.add(className);
+    if (activeFile) {
+        // Frontmatter classes
+        const meta = this.app.metadataCache.getFileCache(activeFile);
+        if (meta?.frontmatter) {
+          const cssclasses = 
+            meta.frontmatter.cssclasses || meta.frontmatter.cssClasses;
+          if (cssclasses) {
+            const classList = Array.isArray(cssclasses) ? cssclasses : [cssclasses];
+            classList.forEach((cls) => {
+              if (typeof cls === "string" && cls.trim().length > 0) {
+                newClasses.add("cssclass-" + cls.trim());
+              }
+            });
+          }
         }
-      });
     }
+
+    // Diff and update classes
+    const classesToAdd = [...newClasses].filter(
+      (cls) => !this.appliedClasses.has(cls),
+    );
+    const classesToRemove = [...this.appliedClasses].filter(
+      (cls) => !newClasses.has(cls),
+    );
+
+    classesToAdd.forEach((cls) => document.body.classList.add(cls));
+    classesToRemove.forEach((cls) => document.body.classList.remove(cls));
+
+    this.appliedClasses = newClasses;
+
+    if (activeFile) {
+        // Handle snippets and other properties
+        const meta = this.app.metadataCache.getFileCache(activeFile);
+        this.updateSnippetsAndProperties(meta);
+    }
+  }
+
+  async updateSnippetsAndProperties(meta) {
+    if (!meta?.frontmatter) return;
 
     // Also add snippet names as classes to active markdown view containers
     const snippetProp = meta.frontmatter[this.settings.frontmatterProperty];
@@ -175,6 +201,21 @@ class ChiselPlugin extends obsidian_1.Plugin {
         .map((s) => s.trim())
         .filter(Boolean);
     }
+
+    // Save snapshot for startup when no file is open
+    try {
+      this.settings.startupSnapshot = {
+        cssClasses: this.appliedClasses
+          ? Array.from(this.appliedClasses).map((c) =>
+              c.replace("cssclass-", ""),
+            )
+          : [],
+        snippetNames: snippetNames,
+      };
+      await this.saveSettings();
+    } catch (e) {}
+
+    this.clearSnippetViewClasses();
     if (snippetNames.length > 0) {
       const activeLeaf = document.querySelector(
         ".mod-root .workspace-leaf.mod-active .workspace-leaf-content",
@@ -198,9 +239,15 @@ class ChiselPlugin extends obsidian_1.Plugin {
     }
 
     const chiselNoteName = snippetProp;
-    if (chiselNoteName && (typeof chiselNoteName === 'string' || Array.isArray(chiselNoteName))) {
+    if (
+      chiselNoteName &&
+      (typeof chiselNoteName === "string" || Array.isArray(chiselNoteName))
+    ) {
       await this.applyChiselNote(chiselNoteName);
+    } else {
+      this.clearChiselNoteStyle();
     }
+    this.clearCustomProperties();
     this.applyCustomProperties(meta.frontmatter);
   }
 
@@ -212,7 +259,11 @@ class ChiselPlugin extends obsidian_1.Plugin {
   }
 
   clearSnippetViewClasses() {
-    if (!this.appliedSnippetViewClasses || this.appliedSnippetViewClasses.size === 0) return;
+    if (
+      !this.appliedSnippetViewClasses ||
+      this.appliedSnippetViewClasses.size === 0
+    )
+      return;
     const activeLeaf = document.querySelector(
       ".mod-root .workspace-leaf.mod-active .workspace-leaf-content",
     );
@@ -239,6 +290,57 @@ class ChiselPlugin extends obsidian_1.Plugin {
     );
     viewEls.forEach((el) => el.classList.add(className));
     this.appliedSnippetViewClasses.add(className);
+  }
+
+  async applyStartupSnapshotIfIdle() {
+    const activeFile = this.app.workspace.getActiveFile();
+    if (activeFile) return;
+    if (this.hasAppliedStartupSnapshot) return;
+
+    const snap = this.settings?.startupSnapshot;
+    if (!snap) return;
+
+    // Wait until vault files are available
+    const files = this.app.vault.getMarkdownFiles();
+    if (!files || files.length === 0) {
+      setTimeout(() => this.applyStartupSnapshotIfIdle(), 300);
+      return;
+    }
+
+    // Apply saved cssclasses to body
+    if (Array.isArray(snap.cssClasses)) {
+      snap.cssClasses.forEach((cls) => {
+        if (typeof cls === "string" && cls.trim().length > 0) {
+          const className = "cssclass-" + cls.trim();
+          document.body.classList.add(className);
+          this.appliedClasses.add(className);
+        }
+      });
+    }
+
+    // Apply saved snippets by reloading their CSS
+    if (Array.isArray(snap.snippetNames) && snap.snippetNames.length > 0) {
+      await this.applyChiselNote(snap.snippetNames);
+    }
+
+    // Also explicitly update autoloaded snippets
+    await this.updateAutoloadedSnippets();
+
+    this.hasAppliedStartupSnapshot = true;
+
+    // Apply global settings classes
+    if (this.settings.enableTypography) {
+      document.body.classList.add("chisel-typography");
+      this.appliedClasses.add("chisel-typography");
+    }
+    if (this.settings.enableColor) {
+      document.body.classList.add("chisel-color");
+      this.appliedClasses.add("chisel-color");
+    }
+    if (this.settings.enableRhythm) {
+      document.body.classList.add("chisel-rhythm");
+      this.appliedClasses.add("chisel-rhythm");
+    }
   }
 
   clearModeViewClasses() {
@@ -344,7 +446,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     }
 
     // Handle boolean values (common mistake in frontmatter)
-    if (typeof chiselNoteName === 'boolean') {
+    if (typeof chiselNoteName === "boolean") {
       return;
     }
 
@@ -352,9 +454,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
     let noteNames;
     if (Array.isArray(chiselNoteName)) {
       noteNames = chiselNoteName
-        .filter(name => typeof name === 'string' && name.trim().length > 0)
-        .map(name => name.trim());
-    } else if (typeof chiselNoteName === 'string') {
+        .filter((name) => typeof name === "string" && name.trim().length > 0)
+        .map((name) => name.trim());
+    } else if (typeof chiselNoteName === "string") {
       noteNames = [chiselNoteName.trim()];
     } else {
       return;
@@ -377,7 +479,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       const noteContent = await this.app.vault.cachedRead(cssFile);
       const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)```/gi;
       const matches = [...noteContent.matchAll(codeBlockRegex)];
-      const cssContent = matches.map(match => match[1]).join('\n');
+      const cssContent = matches.map((match) => match[1]).join("\n");
 
       if (cssContent && cssContent.trim().length > 0) {
         allCssContent += cssContent + "\n";
@@ -435,7 +537,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       const noteContent = await this.app.vault.cachedRead(file);
       const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)```/gi;
       const matches = [...noteContent.matchAll(codeBlockRegex)];
-      const cssContent = matches.map(match => match[1]).join('\n');
+      const cssContent = matches.map((match) => match[1]).join("\n");
       if (cssContent && cssContent.trim().length > 0) {
         allCssContent += cssContent + "\n";
         this.autoloadedSnippets.set(file.path, cssContent);
@@ -534,12 +636,10 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: "Chisel Settings" });
-
-    containerEl.createEl("h2", { text: "Body Class Toggles" });
+    containerEl.createEl("h1", { text: "Chisel" });
 
     new obsidian_1.Setting(containerEl)
-      .setName("Enable Typography Classes")
+      .setName("Typography Abstraction")
       .setDesc(
         "Toggle the application of 'chisel-typography' class to the body.",
       )
@@ -549,12 +649,63 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           .onChange(async (value) => {
             this.plugin.settings.enableTypography = value;
             await this.plugin.saveSettings();
-            setTimeout(() => this.plugin.updateBodyClasses(), 0); // Update classes immediately
+            this.plugin.updateBodyClasses();
           }),
       );
 
+    if (this.plugin.settings.enableTypography) {
+      const typographyDetails = containerEl.createEl("details");
+      const typographySummary = typographyDetails.createEl("summary");
+      typographySummary.setText("Variables");
+      const typographyContent = typographyDetails.createEl("div");
+      const typographyCss = typographyContent.createEl("textarea");
+      typographyCss.value = `
+--font-ratio: 1.333;
+--font-density: 1.7;
+--font-text: "Forrest";
+--font-feature: "";
+--font-variation: "wght" 400;
+--font-weight: 400;
+--bold-weight: 500;
+--font-header: "Bright Morning";
+--font-header-feature: "";
+--font-header-variation: "wght" 500;
+--font-header-letter-spacing: 0em;
+--font-header-style: none;
+--font-header-weight: 800;
+--font-monospace: "MonoStein Pro Var";
+--font-monospace-feature: "salt";
+--font-monospace-variation: "";
+--font-interface: "MonoStein Pro Var";
+--font-interface-feature: "salt";
+--font-interface-variation: "";
+      `;
+      const typographyFm = typographyContent.createEl("textarea");
+      typographyFm.value = `
+chisel-font-ratio: 1.333
+chisel-font-density: 1.7
+chisel-font-text: Forrest
+chisel-font-feature: ''
+chisel-font-variation: 'wght' 400
+chisel-font-weight: 400
+chisel-bold-weight: 500
+chisel-font-header: Bright Morning
+chisel-font-header-feature: ''
+chisel-font-header-variation: 'wght' 500
+chisel-font-header-letter-spacing: 0em
+chisel-font-header-style: none
+chisel-font-header-weight: 800
+chisel-font-monospace: MonoStein Pro Var
+chisel-font-monospace-feature: salt
+chisel-font-monospace-variation: ''
+chisel-font-interface: MonoStein Pro Var
+chisel-font-interface-feature: salt
+chisel-font-interface-variation: ''
+      `;
+    }
+
     new obsidian_1.Setting(containerEl)
-      .setName("Enable Color Classes")
+      .setName("Color Abstraction")
       .setDesc("Toggle the application of 'chisel-color' class to the body.")
       .addToggle((toggle) =>
         toggle
@@ -562,12 +713,77 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           .onChange(async (value) => {
             this.plugin.settings.enableColor = value;
             await this.plugin.saveSettings();
-            setTimeout(() => this.plugin.updateBodyClasses(), 0); // Update classes immediately
+            this.plugin.updateBodyClasses();
           }),
       );
 
+    if (this.plugin.settings.enableColor) {
+      const colorDetails = containerEl.createEl("details");
+      const colorSummary = colorDetails.createEl("summary");
+      colorSummary.setText("Variables");
+      const colorContent = colorDetails.createEl("div");
+      const colorCss = colorContent.createEl("textarea");
+      colorCss.value = `
+--light-color-foreground:   #222;
+--light-color-background:   #ffffff;
+--light-color-red:           #b33a2a;
+--light-color-orange:     #bc5215;
+--light-color-yellow: #cc8815;
+--light-color-green: #66800b;
+--light-color-cyan: #82a1b2;
+--light-color-blue: #438199;
+--light-color-purple: #5e409d;
+--light-color-pink: #a02f6f;
+--light-accent-color: var(--color-yellow);
+--light-bold-color: var(--color-red);
+--light-italic-color: var(--color-blue);
+--dark-color-foreground: oklch(0.7721 0.0228 96.47);
+--dark-color-background: oklch(0.2308 0.0023 67.73);
+--dark-color-red: #d14d41;
+--dark-color-orange: #da702c;
+--dark-color-yellow: #cc8815;
+--dark-color-green: #879a39;
+--dark-color-cyan: #3aa99f;
+--dark-color-blue: #4385be;
+--dark-color-purple: #9a462b;
+--dark-color-pink: #a8431b;
+--dark-accent-color: var(--color-yellow);
+--dark-bold-color: var(--color-red);
+--dark-italic-color: var(--color-blue);
+      `;
+      const colorFm = colorContent.createEl("textarea");
+      colorFm.value = `
+chisel-light-color-foreground:   #222
+chisel-light-color-background:   #ffffff
+chisel-light-color-red:           #b33a2a
+chisel-light-color-orange:     #bc5215
+chisel-light-color-yellow: #cc8815
+chisel-light-color-green: #66800b
+chisel-light-color-cyan: #82a1b2
+chisel-light-color-blue: #438199
+chisel-light-color-purple: #5e409d
+chisel-light-color-pink: #a02f6f
+chisel-light-accent-color: var(--color-yellow) 
+chisel-light-bold-color: var(--color-red) 
+chisel-light-italic-color: var(--color-blue) 
+chisel-dark-color-foreground: oklch(0.7721 0.0228 96.47)
+chisel-dark-color-background: oklch(0.2308 0.0023 67.73)
+chisel-dark-color-red: #d14d41
+chisel-dark-color-orange: #da702c
+chisel-dark-color-yellow: #cc8815
+chisel-dark-color-green: #879a39
+chisel-dark-color-cyan: #3aa99f
+chisel-dark-color-blue: #4385be
+chisel-dark-color-purple: #9a462b
+chisel-dark-color-pink: #a8431b
+chisel-dark-accent-color: var(--color-yellow)
+chisel-dark-bold-color: var(--color-red)
+chisel-dark-italic-color: var(--color-blue)
+      `;
+    }
+
     new obsidian_1.Setting(containerEl)
-      .setName("Enable Rhythm Classes")
+      .setName("Vertical Rhythm Abstraction")
       .setDesc("Toggle the application of 'chisel-rhythm' class to the body.")
       .addToggle((toggle) =>
         toggle
@@ -575,9 +791,26 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           .onChange(async (value) => {
             this.plugin.settings.enableRhythm = value;
             await this.plugin.saveSettings();
-            setTimeout(() => this.plugin.updateBodyClasses(), 0); // Update classes immediately
+            this.plugin.updateBodyClasses();
           }),
       );
+
+    if (this.plugin.settings.enableRhythm) {
+      const rhythmDetails = containerEl.createEl("details");
+      const rhythmSummary = rhythmDetails.createEl("summary");
+      rhythmSummary.setText("Variables");
+      const rhythmContent = rhythmDetails.createEl("div");
+      const rhythmCss = rhythmContent.createEl("textarea");
+      rhythmCss.value = `
+--chisel-single: 2rlh
+--chisel-global: 1rlh
+      `;
+      const rhythmFm = rhythmContent.createEl("textarea");
+      rhythmFm.value = `
+chisel-single: 2rlh
+chisel-global: 1rlh
+      `;
+    }
 
     // Snippets frontmatter key setting
     new obsidian_1.Setting(containerEl)
@@ -593,26 +826,29 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
             const v = (value || "").trim() || "cssclasses";
             this.plugin.settings.frontmatterProperty = v;
             await this.plugin.saveSettings();
-            setTimeout(() => this.plugin.updateBodyClasses(), 0);
+            this.plugin.updateBodyClasses();
           }),
       );
 
     // Documentation Section
-    containerEl.createEl("h2", { text: "Body Class Documentation" });
     const docEl = containerEl.createEl("div");
+    const docContent = `
+- cssclass-{name}: Applied for each class listed in the cssclasses frontmatter property.
+- chisel-note: Applied when viewing any markdown note.
+- chisel-reading: Applied when in reading (preview) mode.
+- chisel-editing: Applied when in editing (source) mode.
+- chisel-canvas: Applied when viewing a canvas.
+- chisel-base: Applied when viewing a base.
+- chisel-empty: Applied when the active pane is empty.
+- chisel-webviewer: Applied when viewing a web page.
+    `;
     docEl.innerHTML = `
             <p>The plugin adds the following CSS classes to the <code>&lt;body&gt;</code> element based on the context:</p>
-            <ul>
-                <li><code>cssclass-<b>{name}</b></code>: Applied for each class listed in the <code>cssclasses</code> frontmatter property.</li>
-                <li><code>chisel-note</code>: Applied when viewing any markdown note.</li>
-                <li><code>chisel-reading</code>: Applied when in reading (preview) mode.</li>
-                <li><code>chisel-editing</code>: Applied when in editing (source) mode.</li>
-                <li><code>chisel-canvas</code>: Applied when viewing a canvas.</li>
-                <li><code>chisel-base</code>: Applied when viewing a base.</li>
-                <li><code>chisel-empty</code>: Applied when the active pane is empty.</li>
-                <li><code>chisel-webviewer</code>: Applied when viewing a web page.</li>
-            </ul>
         `;
+    const textarea = docEl.createEl("textarea", { text: docContent });
+    textarea.style.width = "100%";
+    textarea.style.height = "150px";
+    textarea.readOnly = true;
   }
 }
 

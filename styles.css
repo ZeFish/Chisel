@@ -752,9 +752,9 @@ body {
 
 .chisel-rhythm {
   --tag-border-width: 1px;
-  --tag-radius: 0.2 calc(var(--margin) * 5);
-  --tag-padding-x: 0 calc(var(--margin) * 5);
-  --tag-padding-y: 0 var(--margin);
+  --tag-radius: calc(var(--margin) * 0.25);
+  --tag-padding-x: calc(var(--margin) * 0.25);
+  --tag-padding-y: calc(var(--margin) * 0.25);
   --table-margin: auto;
   --table-cell-padding: 0 calc(var(--margin) * 5) 0 calc(var(--margin) * 5);
   --table-edge-cell-padding-first: 0 calc(var(--margin) * 5);
