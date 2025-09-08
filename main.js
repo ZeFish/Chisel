@@ -18,14 +18,11 @@ const DEFAULT_SETTINGS = {
 class ChiselPlugin extends obsidian_1.Plugin {
   constructor() {
     super(...arguments);
-    this.currentFile = null;
     this.appliedClasses = new Set();
     this.appliedSnippetViewClasses = new Set();
     this.hasAppliedStartupSnapshot = false;
     this.styleElement = null;
     this.chiselNoteStyleElement = null;
-    this.defaultThemeStyleElement = null;
-    this.currentMode = null;
     this.autoloadedSnippets = new Map();
     this.concatenatedAutoloadCss = "";
   }
@@ -124,17 +121,6 @@ class ChiselPlugin extends obsidian_1.Plugin {
   async loadSettings() {
     const data = await this.loadData();
     this.settings = Object.assign({}, DEFAULT_SETTINGS, data);
-    // Migration: ensure frontmatterProperty uses the new key "cssclasses"
-    if (
-      !this.settings.frontmatterProperty ||
-      this.settings.frontmatterProperty === "chisel" ||
-      this.settings.frontmatterProperty === "snippets"
-    ) {
-      this.settings.frontmatterProperty = "cssclasses";
-      try {
-        await this.saveSettings();
-      } catch (e) {}
-    }
   }
 
   async saveSettings() {
@@ -193,17 +179,39 @@ class ChiselPlugin extends obsidian_1.Plugin {
   async updateSnippetsAndProperties(meta) {
     if (!meta?.frontmatter) return;
 
-    // Also add snippet names as classes to active markdown view containers
-    const snippetProp = meta.frontmatter[this.settings.snippets_global];
+    // Collect snippet names from both global and local properties
     let snippetNames = [];
-    if (typeof snippetProp === "string" && snippetProp.trim().length > 0) {
-      snippetNames = [snippetProp.trim()];
-    } else if (Array.isArray(snippetProp)) {
-      snippetNames = snippetProp
-        .filter((s) => typeof s === "string")
-        .map((s) => s.trim())
-        .filter(Boolean);
+    
+    // Check global snippets property (default: "chisel")
+    const globalSnippetProp = meta.frontmatter[this.settings.snippets_global];
+    if (typeof globalSnippetProp === "string" && globalSnippetProp.trim().length > 0) {
+      snippetNames.push(globalSnippetProp.trim());
+    } else if (Array.isArray(globalSnippetProp)) {
+      snippetNames = snippetNames.concat(
+        globalSnippetProp
+          .filter((s) => typeof s === "string")
+          .map((s) => s.trim())
+          .filter(Boolean)
+      );
     }
+    
+    // Check local snippets property (default: "cssclasses")
+    const localSnippetProp = meta.frontmatter[this.settings.snippets_local];
+    if (typeof localSnippetProp === "string" && localSnippetProp.trim().length > 0) {
+      snippetNames.push(localSnippetProp.trim());
+    } else if (Array.isArray(localSnippetProp)) {
+      snippetNames = snippetNames.concat(
+        localSnippetProp
+          .filter((s) => typeof s === "string")
+          .map((s) => s.trim())
+          .filter(Boolean)
+      );
+    }
+    
+    // Remove duplicates
+    snippetNames = [...new Set(snippetNames)];
+    
+    // Also add snippet names as classes to active markdown view containers
 
     // Save snapshot for startup when no file is open
     try {
@@ -241,12 +249,8 @@ class ChiselPlugin extends obsidian_1.Plugin {
       }
     }
 
-    const chiselNoteName = snippetProp;
-    if (
-      chiselNoteName &&
-      (typeof chiselNoteName === "string" || Array.isArray(chiselNoteName))
-    ) {
-      await this.applyChiselNote(chiselNoteName);
+    if (snippetNames.length > 0) {
+      await this.applyChiselNote(snippetNames);
     } else {
       this.clearChiselNoteStyle();
     }
@@ -609,7 +613,6 @@ class ChiselPlugin extends obsidian_1.Plugin {
           this.addClassToViews("chisel-base");
           break;
       }
-      this.currentMode = newMode;
     }, 100);
   }
 
@@ -655,117 +658,6 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           }),
       );
 
-    if (this.plugin.settings.enableTypography) {
-      const typographyDetails = containerEl.createEl("details"); // Temporarily create it here
-      const typographySummary = typographyDetails.createEl("summary");
-      typographySummary.setText("Variables");
-      const typographyContent = typographyDetails.createEl("div");
-      const typographyTable = typographyContent.createEl("table");
-      typographyTable.addClass("chisel-variables-table");
-      const typographyTableHead = typographyTable.createEl("thead");
-      const typographyTableHeadRow = typographyTableHead.createEl("tr");
-      typographyTableHeadRow.createEl("th", { text: "Description" });
-      typographyTableHeadRow.createEl("th", { text: "CSS" });
-      typographyTableHeadRow.createEl("th", { text: "Frontmatter" });
-      const typographyTableBody = typographyTable.createEl("tbody");
-      const typographyVars = {
-        "Font Ratio": { css: "--font-ratio", fm: "chisel-font-ratio" },
-        "Font Density": { css: "--font-density", fm: "chisel-font-density" },
-        "Font Text": { css: "--font-text", fm: "chisel-font-text" },
-        "Font Feature": { css: "--font-feature", fm: "chisel-font-feature" },
-        "Font Variation": {
-          css: "--font-variation",
-          fm: "chisel-font-variation",
-        },
-        "Font Weight": { css: "--font-weight", fm: "chisel-font-weight" },
-        "Bold Weight": { css: "--bold-weight", fm: "chisel-bold-weight" },
-        "Font Header": { css: "--font-header", fm: "chisel-font-header" },
-        "Font Header Feature": {
-          css: "--font-header-feature",
-          fm: "chisel-font-header-feature",
-        },
-        "Font Header Variation": {
-          css: "--font-header-variation",
-          fm: "chisel-font-header-variation",
-        },
-        "Font Header Letter Spacing": {
-          css: "--font-header-letter-spacing",
-          fm: "chisel-font-header-letter-spacing",
-        },
-        "Font Header Style": {
-          css: "--font-header-style",
-          fm: "chisel-font-header-style",
-        },
-        "Font Header Weight": {
-          css: "--font-header-weight",
-          fm: "chisel-font-header-weight",
-        },
-        "Font Monospace": {
-          css: "--font-monospace",
-          fm: "chisel-font-monospace",
-        },
-        "Font Monospace Feature": {
-          css: "--font-monospace-feature",
-          fm: "chisel-font-monospace-feature",
-        },
-        "Font Monospace Variation": {
-          css: "--font-monospace-variation",
-          fm: "chisel-font-monospace-variation",
-        },
-        "Font Interface": {
-          css: "--font-interface",
-          fm: "chisel-font-interface",
-        },
-        "Font Interface Feature": {
-          css: "--font-interface-feature",
-          fm: "chisel-font-interface-feature",
-        },
-        "Font Interface Variation": {
-          css: "--font-interface-variation",
-          fm: "chisel-font-interface-variation",
-        },
-      };
-
-      const allTypographyDescriptions = Object.keys(typographyVars).join("\n");
-      const allTypographyCss = Object.values(typographyVars)
-        .map((v) => v.css)
-        .join("\n");
-      const allTypographyFm = Object.values(typographyVars)
-        .map((v) => v.fm)
-        .join("\n");
-
-      let row = typographyTableBody.createEl("tr");
-
-      // Description column
-      let descCell = row.createEl("td");
-      let descText = descCell.createEl("textarea");
-      descText.value = allTypographyDescriptions;
-      descText.setAttr("rows", 10); // Adjust rows as needed
-      descText.setAttr("cols", 30); // Adjust cols as needed
-      descText.disabled = true; // Make it read-only
-
-      // CSS column
-      let cssCell = row.createEl("td");
-      let cssText = cssCell.createEl("textarea");
-      cssText.value = allTypographyCss;
-      cssText.setAttr("rows", 10); // Adjust rows as needed
-      cssText.setAttr("cols", 30); // Adjust cols as needed
-
-      // Frontmatter column
-      let fmCell = row.createEl("td");
-      let fmText = fmCell.createEl("textarea");
-      fmText.value = allTypographyFm;
-      fmText.setAttr("rows", 10); // Adjust rows as needed
-      fmText.setAttr("cols", 30); // Adjust cols as needed
-
-      // Find the description element and append details
-      const descriptionEl = typographySetting.settingEl.querySelector(
-        ".setting-item-description",
-      );
-      if (descriptionEl) {
-        descriptionEl.appendChild(typographyDetails);
-      }
-    }
 
     const colorSetting = new obsidian_1.Setting(containerEl)
       .setName("Color")
@@ -781,148 +673,6 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           }),
       );
 
-    if (this.plugin.settings.enableColor) {
-      const colorDetails = containerEl.createEl("details"); // Temporarily create it here
-      const colorSummary = colorDetails.createEl("summary");
-      colorSummary.setText("Variables");
-      const colorContent = colorDetails.createEl("div");
-      const colorTable = colorContent.createEl("table");
-      colorTable.addClass("chisel-variables-table");
-      const colorTableHead = colorTable.createEl("thead");
-      const colorTableHeadRow = colorTableHead.createEl("tr");
-      colorTableHeadRow.createEl("th", { text: "Description" });
-      colorTableHeadRow.createEl("th", { text: "CSS" });
-      colorTableHeadRow.createEl("th", { text: "Frontmatter" });
-      const colorTableBody = colorTable.createEl("tbody");
-      const colorVars = {
-        "Light Foreground": {
-          css: "--light-color-foreground",
-          fm: "chisel-light-color-foreground",
-        },
-        "Light Background": {
-          css: "--light-color-background",
-          fm: "chisel-light-color-background",
-        },
-        "Light Red": { css: "--light-color-red", fm: "chisel-light-color-red" },
-        "Light Orange": {
-          css: "--light-color-orange",
-          fm: "chisel-light-color-orange",
-        },
-        "Light Yellow": {
-          css: "--light-color-yellow",
-          fm: "chisel-light-color-yellow",
-        },
-        "Light Green": {
-          css: "--light-color-green",
-          fm: "chisel-light-color-green",
-        },
-        "Light Cyan": {
-          css: "--light-color-cyan",
-          fm: "chisel-light-color-cyan",
-        },
-        "Light Blue": {
-          css: "--light-color-blue",
-          fm: "chisel-light-color-blue",
-        },
-        "Light Purple": {
-          css: "--light-color-purple",
-          fm: "chisel-light-color-purple",
-        },
-        "Light Pink": {
-          css: "--light-color-pink",
-          fm: "chisel-light-color-pink",
-        },
-        "Light Accent": {
-          css: "--light-accent-color",
-          fm: "chisel-light-accent-color",
-        },
-        "Light Bold": {
-          css: "--light-bold-color",
-          fm: "chisel-light-bold-color",
-        },
-        "Light Italic": {
-          css: "--light-italic-color",
-          fm: "chisel-light-italic-color",
-        },
-        "Dark Foreground": {
-          css: "--dark-color-foreground",
-          fm: "chisel-dark-color-foreground",
-        },
-        "Dark Background": {
-          css: "--dark-color-background",
-          fm: "chisel-dark-color-background",
-        },
-        "Dark Red": { css: "--dark-color-red", fm: "chisel-dark-color-red" },
-        "Dark Orange": {
-          css: "--dark-color-orange",
-          fm: "chisel-dark-color-orange",
-        },
-        "Dark Yellow": {
-          css: "--dark-color-yellow",
-          fm: "chisel-dark-color-yellow",
-        },
-        "Dark Green": {
-          css: "--dark-color-green",
-          fm: "chisel-dark-color-green",
-        },
-        "Dark Cyan": { css: "--dark-color-cyan", fm: "chisel-dark-color-cyan" },
-        "Dark Blue": { css: "--dark-color-blue", fm: "chisel-dark-color-blue" },
-        "Dark Purple": {
-          css: "--dark-color-purple",
-          fm: "chisel-dark-color-purple",
-        },
-        "Dark Pink": { css: "--dark-color-pink", fm: "chisel-dark-color-pink" },
-        "Dark Accent": {
-          css: "--dark-accent-color",
-          fm: "chisel-dark-accent-color",
-        },
-        "Dark Bold": { css: "--dark-bold-color", fm: "chisel-dark-bold-color" },
-        "Dark Italic": {
-          css: "--dark-italic-color",
-          fm: "chisel-dark-italic-color",
-        },
-      };
-
-      const allColorDescriptions = Object.keys(colorVars).join("\n");
-      const allColorCss = Object.values(colorVars)
-        .map((v) => v.css)
-        .join("\n");
-      const allColorFm = Object.values(colorVars)
-        .map((v) => v.fm)
-        .join("\n");
-
-      let row = colorTableBody.createEl("tr");
-
-      // Description column
-      let descCell = row.createEl("td");
-      let descText = descCell.createEl("textarea");
-      descText.value = allColorDescriptions;
-      descText.setAttr("rows", 26); // Adjust rows as needed
-      descText.setAttr("cols", 30); // Adjust cols as needed
-      descText.disabled = true; // Make it read-only
-
-      // CSS column
-      let cssCell = row.createEl("td");
-      let cssText = cssCell.createEl("textarea");
-      cssText.value = allColorCss;
-      cssText.setAttr("rows", 26); // Adjust rows as needed
-      cssText.setAttr("cols", 30); // Adjust cols as needed
-
-      // Frontmatter column
-      let fmCell = row.createEl("td");
-      let fmText = fmCell.createEl("textarea");
-      fmText.value = allColorFm;
-      fmText.setAttr("rows", 26); // Adjust rows as needed
-      fmText.setAttr("cols", 30); // Adjust cols as needed
-
-      // Find the description element and append details
-      const descriptionEl = colorSetting.settingEl.querySelector(
-        ".setting-item-description",
-      );
-      if (descriptionEl) {
-        descriptionEl.appendChild(colorDetails);
-      }
-    }
 
     const rhythmSetting = new obsidian_1.Setting(containerEl)
       .setName("Vertical Rhythm")
@@ -938,64 +688,6 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           }),
       );
 
-    if (this.plugin.settings.enableRhythm) {
-      const rhythmDetails = containerEl.createEl("details"); // Temporarily create it here
-      const rhythmSummary = rhythmDetails.createEl("summary");
-      rhythmSummary.setText("Variables");
-      const rhythmContent = rhythmDetails.createEl("div");
-      const rhythmTable = rhythmContent.createEl("table");
-      rhythmTable.addClass("chisel-variables-table");
-      const rhythmTableHead = rhythmTable.createEl("thead");
-      const rhythmTableHeadRow = rhythmTableHead.createEl("tr");
-      rhythmTableHeadRow.createEl("th", { text: "Description" });
-      rhythmTableHeadRow.createEl("th", { text: "CSS" });
-      rhythmTableHeadRow.createEl("th", { text: "Frontmatter" });
-      const rhythmTableBody = rhythmTable.createEl("tbody");
-      const rhythmVars = {
-        Single: { css: "--chisel-single", fm: "chisel-single" },
-        Global: { css: "--chisel-global", fm: "chisel-global" },
-      };
-
-      const allRhythmDescriptions = Object.keys(rhythmVars).join("\n");
-      const allRhythmCss = Object.values(rhythmVars)
-        .map((v) => v.css)
-        .join("\n");
-      const allRhythmFm = Object.values(rhythmVars)
-        .map((v) => v.fm)
-        .join("\n");
-
-      let row = rhythmTableBody.createEl("tr");
-
-      // Description column
-      let descCell = row.createEl("td");
-      let descText = descCell.createEl("textarea");
-      descText.value = allRhythmDescriptions;
-      descText.setAttr("rows", 10); // Adjust rows as needed
-      descText.setAttr("cols", 30); // Adjust cols as needed
-      descText.disabled = true; // Make it read-only
-
-      // CSS column
-      let cssCell = row.createEl("td");
-      let cssText = cssCell.createEl("textarea");
-      cssText.value = allRhythmCss;
-      cssText.setAttr("rows", 10); // Adjust rows as needed
-      cssText.setAttr("cols", 30); // Adjust cols as needed
-
-      // Frontmatter column
-      let fmCell = row.createEl("td");
-      let fmText = fmCell.createEl("textarea");
-      fmText.value = allRhythmFm;
-      fmText.setAttr("rows", 10); // Adjust rows as needed
-      fmText.setAttr("cols", 30); // Adjust cols as needed
-
-      // Find the description element and append details
-      const descriptionEl = rhythmSetting.settingEl.querySelector(
-        ".setting-item-description",
-      );
-      if (descriptionEl) {
-        descriptionEl.appendChild(rhythmDetails);
-      }
-    }
 
     containerEl.createEl("h2", { text: "Frontmatter" });
 
@@ -1027,25 +719,289 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
           }),
       );
     containerEl.createEl("h2", { text: "Documentation" });
-    // Documentation Section
-    const docEl = containerEl.createEl("div");
-    const docContent = `
-- cssclass-{name}: Applied for each class listed in the cssclasses frontmatter property.
-- chisel-note: Applied when viewing any markdown note.
-- chisel-reading: Applied when in reading (preview) mode.
-- chisel-editing: Applied when in editing (source) mode.
-- chisel-canvas: Applied when viewing a canvas.
-- chisel-base: Applied when viewing a base.
-- chisel-empty: Applied when the active pane is empty.
-- chisel-webviewer: Applied when viewing a web page.
-    `;
-    docEl.innerHTML = `
-            <p>The plugin adds the following CSS classes to the <code>&lt;body&gt;</code> element based on the context:</p>
-        `;
-    const textarea = docEl.createEl("textarea", { text: docContent });
-    textarea.style.width = "100%";
-    textarea.style.height = "150px";
-    textarea.readOnly = true;
+    
+    const cssClassesSection = containerEl.createEl("details");
+    const cssClassesSummary = cssClassesSection.createEl("summary");
+    cssClassesSummary.setText("CSS Classes");
+    const cssClassesContent = cssClassesSection.createEl("div");
+    cssClassesContent.style.padding = "10px";
+    cssClassesContent.style.marginBottom = "20px";
+    
+    const introEl = cssClassesContent.createEl("p");
+    introEl.innerHTML = `The plugin adds the following CSS classes to the <code>&lt;body&gt;</code> element based on the context:`;
+    introEl.style.marginBottom = "15px";
+    
+    const cssClasses = [
+      { 
+        class: "cssclass-{name}", 
+        desc: "Dynamic class for frontmatter", 
+        context: "Applied for each class listed in the cssclasses frontmatter property",
+        example: "cssclass-my-style, cssclass-fancy-layout"
+      },
+      { 
+        class: "chisel-note", 
+        desc: "Markdown note context", 
+        context: "Applied when viewing any markdown note",
+        example: "Always present when viewing .md files"
+      },
+      { 
+        class: "chisel-reading", 
+        desc: "Reading mode", 
+        context: "Applied when in reading (preview) mode",
+        example: "When viewing rendered markdown content"
+      },
+      { 
+        class: "chisel-editing", 
+        desc: "Editing mode", 
+        context: "Applied when in editing (source) mode",
+        example: "When editing raw markdown content"
+      },
+      { 
+        class: "chisel-canvas", 
+        desc: "Canvas view", 
+        context: "Applied when viewing a canvas",
+        example: "When working with Obsidian Canvas files"
+      },
+      { 
+        class: "chisel-base", 
+        desc: "Base view", 
+        context: "Applied when viewing a base",
+        example: "When viewing database/base files"
+      },
+      { 
+        class: "chisel-empty", 
+        desc: "Empty pane", 
+        context: "Applied when the active pane is empty",
+        example: "No file is currently open"
+      },
+      { 
+        class: "chisel-webviewer", 
+        desc: "Web page view", 
+        context: "Applied when viewing a web page",
+        example: "When using web browser view in Obsidian"
+      },
+    ];
+
+    cssClasses.forEach(({ class: className, desc, context, example }) => {
+      const classDiv = cssClassesContent.createEl("div");
+      classDiv.style.marginBottom = "12px";
+      classDiv.style.padding = "8px";
+      classDiv.style.backgroundColor = "var(--background-secondary)";
+      classDiv.style.borderRadius = "4px";
+      
+      const titleEl = classDiv.createEl("strong");
+      titleEl.setText(desc);
+      
+      const classNameEl = classDiv.createEl("span");
+      classNameEl.style.marginLeft = "8px";
+      classNameEl.style.padding = "2px 6px";
+      classNameEl.style.backgroundColor = "var(--background-modifier-border)";
+      classNameEl.style.borderRadius = "3px";
+      classNameEl.style.fontFamily = "monospace";
+      classNameEl.style.fontSize = "0.85em";
+      classNameEl.setText(className);
+      
+      const detailsEl = classDiv.createEl("div");
+      detailsEl.style.marginTop = "6px";
+      detailsEl.style.fontSize = "0.9em";
+      
+      const contextEl = detailsEl.createEl("div");
+      contextEl.style.color = "var(--text-muted)";
+      contextEl.setText(context);
+      
+      const exampleEl = detailsEl.createEl("div");
+      exampleEl.style.fontStyle = "italic";
+      exampleEl.style.fontSize = "0.85em";
+      exampleEl.style.color = "var(--text-faint)";
+      exampleEl.style.marginTop = "2px";
+      exampleEl.setText(`Example: ${example}`);
+    });
+    
+    const typographySection = containerEl.createEl("details");
+    const typographySummary = typographySection.createEl("summary");
+    typographySummary.setText("Typography");
+    const typographyContent = typographySection.createEl("div");
+    typographyContent.style.padding = "10px";
+    
+    const typographyIntroEl = typographyContent.createEl("p");
+    typographyIntroEl.innerHTML = `Customize typography settings including fonts, weights, ratios, and text styling. These variables control how text appears throughout your notes:`;
+    typographyIntroEl.style.marginBottom = "15px";
+    
+    const typographyVars = [
+      { desc: "Font Ratio", css: "--font-ratio", fm: "chisel-font-ratio", example: "1.25", explanation: "Scale ratio between text sizes (paragraphs vs headings). Higher values create more dramatic size differences." },
+      { desc: "Font Density", css: "--font-density", fm: "chisel-font-density", example: "1.2", explanation: "Line height multiplier that affects text spacing and vertical rhythm. Higher values create more space between lines." },
+      { desc: "Font Text", css: "--font-text", fm: "chisel-font-text", example: "'Inter', sans-serif", explanation: "Primary font for body text content." },
+      { desc: "Font Feature", css: "--font-feature", fm: "chisel-font-feature", example: "'liga', 'kern'", explanation: "OpenType font features for body text. Common values: 'liga' (ligatures), 'kern' (kerning), 'onum' (old-style numerals)." },
+      { desc: "Font Variation", css: "--font-variation", fm: "chisel-font-variation", example: "'wght' 400", explanation: "Variable font settings for body text. Format: 'axis' value (e.g., 'wght' for weight, 'wdth' for width)." },
+      { desc: "Font Weight", css: "--font-weight", fm: "chisel-font-weight", example: "400", explanation: "Default weight for body text. 400 = normal, 300 = light, 500 = medium." },
+      { desc: "Bold Weight", css: "--bold-weight", fm: "chisel-bold-weight", example: "700", explanation: "Weight used for bold text. Should be heavier than font-weight for proper contrast." },
+      { desc: "Font Header", css: "--font-header", fm: "chisel-font-header", example: "'Merriweather', serif", explanation: "Font family used for all headings (H1-H6)." },
+      { desc: "Font Header Feature", css: "--font-header-feature", fm: "chisel-font-header-feature", example: "'liga'", explanation: "OpenType features specifically for headings." },
+      { desc: "Font Header Variation", css: "--font-header-variation", fm: "chisel-font-header-variation", example: "'wght' 600", explanation: "Variable font settings for headings." },
+      { desc: "Font Header Letter Spacing", css: "--font-header-letter-spacing", fm: "chisel-font-header-letter-spacing", example: "-0.02em", explanation: "Space between letters in headings. Negative values tighten, positive values loosen." },
+      { desc: "Font Header Style", css: "--font-header-style", fm: "chisel-font-header-style", example: "normal", explanation: "Style for headings: normal, italic, or oblique." },
+      { desc: "Font Header Weight", css: "--font-header-weight", fm: "chisel-font-header-weight", example: "600", explanation: "Weight for headings. Usually heavier than body text for hierarchy." },
+      { desc: "Font Monospace", css: "--font-monospace", fm: "chisel-font-monospace", example: "'Fira Code', monospace", explanation: "Font for code blocks and inline code." },
+      { desc: "Font Monospace Feature", css: "--font-monospace-feature", fm: "chisel-font-monospace-feature", example: "'liga'", explanation: "OpenType features for code font. 'liga' enables coding ligatures (e.g., -> becomes →)." },
+      { desc: "Font Monospace Variation", css: "--font-monospace-variation", fm: "chisel-font-monospace-variation", example: "'wght' 400", explanation: "Variable font settings for monospace text." },
+      { desc: "Font Interface", css: "--font-interface", fm: "chisel-font-interface", example: "'System-UI', sans-serif", explanation: "Font for Obsidian's user interface elements." },
+      { desc: "Font Interface Feature", css: "--font-interface-feature", fm: "chisel-font-interface-feature", example: "'liga'", explanation: "OpenType features for interface text." },
+      { desc: "Font Interface Variation", css: "--font-interface-variation", fm: "chisel-font-interface-variation", example: "'wght' 400", explanation: "Variable font settings for interface text." },
+    ];
+
+    typographyVars.forEach(({ desc, css, fm, example, explanation }) => {
+      const varDiv = typographyContent.createEl("div");
+      varDiv.style.marginBottom = "12px";
+      varDiv.style.padding = "8px";
+      varDiv.style.backgroundColor = "var(--background-secondary)";
+      varDiv.style.borderRadius = "4px";
+      
+      const titleEl = varDiv.createEl("strong");
+      titleEl.setText(desc);
+      
+      if (explanation) {
+        const explanationEl = varDiv.createEl("div");
+        explanationEl.style.marginTop = "4px";
+        explanationEl.style.fontSize = "0.9em";
+        explanationEl.style.color = "var(--text-muted)";
+        explanationEl.style.fontStyle = "italic";
+        explanationEl.setText(explanation);
+      }
+      
+      const detailsEl = varDiv.createEl("div");
+      detailsEl.style.marginTop = "6px";
+      detailsEl.style.fontSize = "0.85em";
+      detailsEl.style.fontFamily = "monospace";
+      detailsEl.style.color = "var(--text-faint)";
+      
+      detailsEl.createEl("div").setText(`CSS: ${css}`);
+      detailsEl.createEl("div").setText(`Frontmatter: ${fm}`);
+      detailsEl.createEl("div").setText(`Example: ${example}`);
+    });
+
+    const colorSection = containerEl.createEl("details");
+    const colorSummary = colorSection.createEl("summary");
+    colorSummary.setText("Color");
+    const colorContent = colorSection.createEl("div");
+    colorContent.style.padding = "10px";
+    
+    const colorIntroEl = colorContent.createEl("p");
+    colorIntroEl.innerHTML = `Define custom colors for both light and dark themes. These variables allow you to override default colors with your preferred palette:`;
+    colorIntroEl.style.marginBottom = "15px";
+    
+    const colorVars = [
+      { desc: "Light Foreground", css: "--light-color-foreground", fm: "chisel-light-color-foreground", example: "#1a1a1a", explanation: "Main text color in light theme." },
+      { desc: "Light Background", css: "--light-color-background", fm: "chisel-light-color-background", example: "#ffffff", explanation: "Main background color in light theme." },
+      { desc: "Light Red", css: "--light-color-red", fm: "chisel-light-color-red", example: "#dc3545", explanation: "Red accent color for light theme (errors, warnings, highlights)." },
+      { desc: "Light Orange", css: "--light-color-orange", fm: "chisel-light-color-orange", example: "#fd7e14", explanation: "Orange accent color for light theme." },
+      { desc: "Light Yellow", css: "--light-color-yellow", fm: "chisel-light-color-yellow", example: "#ffc107", explanation: "Yellow accent color for light theme (highlights, tags)." },
+      { desc: "Light Green", css: "--light-color-green", fm: "chisel-light-color-green", example: "#28a745", explanation: "Green accent color for light theme (success, confirmations)." },
+      { desc: "Light Cyan", css: "--light-color-cyan", fm: "chisel-light-color-cyan", example: "#17a2b8", explanation: "Cyan accent color for light theme." },
+      { desc: "Light Blue", css: "--light-color-blue", fm: "chisel-light-color-blue", example: "#007bff", explanation: "Blue accent color for light theme (links, info)." },
+      { desc: "Light Purple", css: "--light-color-purple", fm: "chisel-light-color-purple", example: "#6f42c1", explanation: "Purple accent color for light theme." },
+      { desc: "Light Pink", css: "--light-color-pink", fm: "chisel-light-color-pink", example: "#e83e8c", explanation: "Pink accent color for light theme." },
+      { desc: "Light Accent", css: "--light-accent-color", fm: "chisel-light-accent-color", example: "#007bff", explanation: "Primary accent color for interactive elements in light theme." },
+      { desc: "Light Bold", css: "--light-bold-color", fm: "chisel-light-bold-color", example: "#000000", explanation: "Color for bold text in light theme." },
+      { desc: "Light Italic", css: "--light-italic-color", fm: "chisel-light-italic-color", example: "#495057", explanation: "Color for italic text in light theme." },
+      { desc: "Dark Foreground", css: "--dark-color-foreground", fm: "chisel-dark-color-foreground", example: "#ffffff", explanation: "Main text color in dark theme." },
+      { desc: "Dark Background", css: "--dark-color-background", fm: "chisel-dark-color-background", example: "#1a1a1a", explanation: "Main background color in dark theme." },
+      { desc: "Dark Red", css: "--dark-color-red", fm: "chisel-dark-color-red", example: "#ff6b6b", explanation: "Red accent color for dark theme (errors, warnings, highlights)." },
+      { desc: "Dark Orange", css: "--dark-color-orange", fm: "chisel-dark-color-orange", example: "#ffa726", explanation: "Orange accent color for dark theme." },
+      { desc: "Dark Yellow", css: "--dark-color-yellow", fm: "chisel-dark-color-yellow", example: "#ffeb3b", explanation: "Yellow accent color for dark theme (highlights, tags)." },
+      { desc: "Dark Green", css: "--dark-color-green", fm: "chisel-dark-color-green", example: "#66bb6a", explanation: "Green accent color for dark theme (success, confirmations)." },
+      { desc: "Dark Cyan", css: "--dark-color-cyan", fm: "chisel-dark-color-cyan", example: "#4dd0e1", explanation: "Cyan accent color for dark theme." },
+      { desc: "Dark Blue", css: "--dark-color-blue", fm: "chisel-dark-color-blue", example: "#42a5f5", explanation: "Blue accent color for dark theme (links, info)." },
+      { desc: "Dark Purple", css: "--dark-color-purple", fm: "chisel-dark-color-purple", example: "#ab47bc", explanation: "Purple accent color for dark theme." },
+      { desc: "Dark Pink", css: "--dark-color-pink", fm: "chisel-dark-color-pink", example: "#ec407a", explanation: "Pink accent color for dark theme." },
+      { desc: "Dark Accent", css: "--dark-accent-color", fm: "chisel-dark-accent-color", example: "#42a5f5", explanation: "Primary accent color for interactive elements in dark theme." },
+      { desc: "Dark Bold", css: "--dark-bold-color", fm: "chisel-dark-bold-color", example: "#ffffff", explanation: "Color for bold text in dark theme." },
+      { desc: "Dark Italic", css: "--dark-italic-color", fm: "chisel-dark-italic-color", example: "#adb5bd", explanation: "Color for italic text in dark theme." },
+    ];
+
+    colorVars.forEach(({ desc, css, fm, example, explanation }) => {
+      const varDiv = colorContent.createEl("div");
+      varDiv.style.marginBottom = "12px";
+      varDiv.style.padding = "8px";
+      varDiv.style.backgroundColor = "var(--background-secondary)";
+      varDiv.style.borderRadius = "4px";
+      
+      const titleEl = varDiv.createEl("strong");
+      titleEl.setText(desc);
+      
+      // Add color preview for color variables
+      const colorPreview = varDiv.createEl("span");
+      colorPreview.style.display = "inline-block";
+      colorPreview.style.width = "16px";
+      colorPreview.style.height = "16px";
+      colorPreview.style.backgroundColor = example;
+      colorPreview.style.marginLeft = "8px";
+      colorPreview.style.border = "1px solid var(--background-modifier-border)";
+      colorPreview.style.borderRadius = "2px";
+      
+      if (explanation) {
+        const explanationEl = varDiv.createEl("div");
+        explanationEl.style.marginTop = "4px";
+        explanationEl.style.fontSize = "0.9em";
+        explanationEl.style.color = "var(--text-muted)";
+        explanationEl.style.fontStyle = "italic";
+        explanationEl.setText(explanation);
+      }
+      
+      const detailsEl = varDiv.createEl("div");
+      detailsEl.style.marginTop = "6px";
+      detailsEl.style.fontSize = "0.85em";
+      detailsEl.style.fontFamily = "monospace";
+      detailsEl.style.color = "var(--text-faint)";
+      
+      detailsEl.createEl("div").setText(`CSS: ${css}`);
+      detailsEl.createEl("div").setText(`Frontmatter: ${fm}`);
+      detailsEl.createEl("div").setText(`Example: ${example}`);
+    });
+
+    const rhythmSection = containerEl.createEl("details");
+    const rhythmSummary = rhythmSection.createEl("summary");
+    rhythmSummary.setText("Vertical Rhythm");
+    const rhythmContent = rhythmSection.createEl("div");
+    rhythmContent.style.padding = "10px";
+    
+    const rhythmIntroEl = rhythmContent.createEl("p");
+    rhythmIntroEl.innerHTML = `Control spacing and proportions throughout your notes with these rhythm variables. They help create consistent vertical spacing:`;
+    rhythmIntroEl.style.marginBottom = "15px";
+    
+    const rhythmVars = [
+      { desc: "Single", css: "--chisel-single", fm: "chisel-single", example: "1.5rem", explanation: "Base spacing unit for vertical rhythm. Used as the foundation for all spacing calculations (margins, padding, line heights)." },
+      { desc: "Global", css: "--chisel-global", fm: "chisel-global", example: "1.2", explanation: "Global rhythm multiplier that scales all spacing proportionally. Works with font-density to maintain consistent vertical rhythm." },
+    ];
+
+    rhythmVars.forEach(({ desc, css, fm, example, explanation }) => {
+      const varDiv = rhythmContent.createEl("div");
+      varDiv.style.marginBottom = "12px";
+      varDiv.style.padding = "8px";
+      varDiv.style.backgroundColor = "var(--background-secondary)";
+      varDiv.style.borderRadius = "4px";
+      
+      const titleEl = varDiv.createEl("strong");
+      titleEl.setText(desc);
+      
+      if (explanation) {
+        const explanationEl = varDiv.createEl("div");
+        explanationEl.style.marginTop = "4px";
+        explanationEl.style.fontSize = "0.9em";
+        explanationEl.style.color = "var(--text-muted)";
+        explanationEl.style.fontStyle = "italic";
+        explanationEl.setText(explanation);
+      }
+      
+      const detailsEl = varDiv.createEl("div");
+      detailsEl.style.marginTop = "6px";
+      detailsEl.style.fontSize = "0.85em";
+      detailsEl.style.fontFamily = "monospace";
+      detailsEl.style.color = "var(--text-faint)";
+      
+      detailsEl.createEl("div").setText(`CSS: ${css}`);
+      detailsEl.createEl("div").setText(`Frontmatter: ${fm}`);
+      detailsEl.createEl("div").setText(`Example: ${example}`);
+    });
   }
 }
 
@@ -1058,29 +1014,86 @@ class ChiselCheatsheetModal extends obsidian_1.Modal {
     const { contentEl } = this;
     contentEl.empty();
     contentEl.createEl("h2", { text: "Chisel Frontmatter Cheatsheet" });
+    
+    const codeContainer = contentEl.createEl("div");
+    codeContainer.style.padding = "10px";
+    codeContainer.style.backgroundColor = "var(--background-secondary)";
+    codeContainer.style.borderRadius = "4px";
+    codeContainer.style.marginBottom = "20px";
+    
+    const codeExample = codeContainer.createEl("pre");
+    codeExample.style.fontSize = "0.8em";
+    codeExample.style.overflow = "auto";
+    codeExample.style.whiteSpace = "pre";
+    codeExample.style.lineHeight = "1.4";
+    codeExample.style.fontFamily = "monospace";
+    codeExample.style.userSelect = "text";
+    codeExample.style.cursor = "text";
+    codeExample.textContent = `---
+# SNIPPETS
+cssclasses: [my-snippet, another-snippet]           # Local snippets (adds CSS classes)
+chisel: [global-snippet, base-styles]               # Global snippets (auto-loaded CSS)
 
-    contentEl.createEl("p", {
-      text: "The following `chisel-` prefixed frontmatter properties can be used to customize your notes:",
-    });
+# TYPOGRAPHY
+chisel-font-ratio: 1.25                             # Scale ratio between text sizes
+chisel-font-density: 1.2                            # Line height multiplier, affects vertical rhythm
+chisel-font-text: "'Inter', sans-serif"               # Body text font
+chisel-font-header: "'Merriweather', serif"           # Headings font (H1-H6)
+chisel-font-monospace: "'Fira Code', mono"            # Code blocks and inline code font
+chisel-font-interface: "'System-UI', sans"           # Obsidian UI font
+chisel-font-feature: "'liga', 'kern'"                 # OpenType features for body text
+chisel-font-variation: "'wght' 400"                  # Variable font settings for body text
+chisel-font-weight: 400                              # Default weight for body text
+chisel-bold-weight: 700                              # Weight for bold text
+chisel-font-header-feature: "'liga'"                  # OpenType features for headings
+chisel-font-header-variation: "'wght' 600"           # Variable font settings for headings
+chisel-font-header-letter-spacing: "-0.02em"         # Letter spacing for headings
+chisel-font-header-style: normal                     # Style for headings (normal, italic)
+chisel-font-header-weight: 600                       # Weight for headings
+chisel-font-monospace-feature: "'liga'"               # Code font features (enables ligatures)
+chisel-font-monospace-variation: "'wght' 400"        # Variable font settings for code
+chisel-font-interface-feature: "'liga'"               # OpenType features for UI text
+chisel-font-interface-variation: "'wght' 400"         # Variable font settings for UI
 
-    const ul = contentEl.createEl("ul");
+# COLORS - LIGHT THEME
+chisel-light-color-foreground: "#1a1a1a"             # Main text color
+chisel-light-color-background: "#ffffff"             # Main background color
+chisel-light-color-red: "#dc3545"                   # Red accent (errors, warnings)
+chisel-light-color-orange: "#fd7e14"                # Orange accent
+chisel-light-color-yellow: "#ffc107"                # Yellow accent (highlights, tags)
+chisel-light-color-green: "#28a745"                 # Green accent (success)
+chisel-light-color-cyan: "#17a2b8"                  # Cyan accent
+chisel-light-color-blue: "#007bff"                  # Blue accent (links, info)
+chisel-light-color-purple: "#6f42c1"                # Purple accent
+chisel-light-color-pink: "#e83e8c"                  # Pink accent
+chisel-light-accent-color: "#007bff"                # Primary accent for interactive elements
+chisel-light-bold-color: "#000000"                  # Bold text color
+chisel-light-italic-color: "#495057"                # Italic text color
 
-    ul.createEl("li", {
-      text: "`chisel-font-text`: Sets the font for body text. Example: `chisel-font-text: 'Inter', sans-serif`",
-    });
-    ul.createEl("li", {
-      text: "`chisel-font-header`: Sets the font for headings. Example: `chisel-font-header: 'Merriweather', serif`",
-    });
-    ul.createEl("li", {
-      text: "`chisel-font-monospace`: Sets the font for monospace text (e.g., code blocks). Example: `chisel-font-monospace: 'Fira Code', monospace`",
-    });
-    ul.createEl("li", {
-      text: "`chisel-font-interface`: Sets the font for the Obsidian UI. Example: `chisel-font-interface: 'System-UI', sans-serif`",
-    });
+# COLORS - DARK THEME
+chisel-dark-color-foreground: "#ffffff"              # Main text color
+chisel-dark-color-background: "#1a1a1a"              # Main background color
+chisel-dark-color-red: "#ff6b6b"                    # Red accent (errors, warnings)
+chisel-dark-color-orange: "#ffa726"                 # Orange accent
+chisel-dark-color-yellow: "#ffeb3b"                 # Yellow accent (highlights, tags)
+chisel-dark-color-green: "#66bb6a"                  # Green accent (success)
+chisel-dark-color-cyan: "#4dd0e1"                   # Cyan accent
+chisel-dark-color-blue: "#42a5f5"                   # Blue accent (links, info)
+chisel-dark-color-purple: "#ab47bc"                 # Purple accent
+chisel-dark-color-pink: "#ec407a"                   # Pink accent
+chisel-dark-accent-color: "#42a5f5"                 # Primary accent for interactive elements
+chisel-dark-bold-color: "#ffffff"                   # Bold text color
+chisel-dark-italic-color: "#adb5bd"                 # Italic text color
 
-    contentEl.createEl("p", {
-      text: "Any other frontmatter property starting with `chisel-` (e.g., `chisel-my-custom-property: value`) will be converted into a CSS variable `--my-custom-property: value` and applied to the `body` element. You can then use this CSS variable in your custom CSS snippets.",
-    });
+# VERTICAL RHYTHM
+chisel-single: "1.5rem"                              # Base spacing unit for vertical rhythm
+chisel-global: 1.2                                  # Global rhythm multiplier
+
+# CUSTOM VARIABLES
+# Any property starting with 'chisel-' becomes a CSS variable
+# Example: chisel-my-color: "#ff0000" creates --my-color: #ff0000
+chisel-custom-property: "value"                      # Becomes --custom-property: value
+---`;
   }
 
   onClose() {
