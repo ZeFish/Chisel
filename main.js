@@ -4,7 +4,8 @@ const obsidian_1 = require("obsidian");
 
 // Settings interface
 const DEFAULT_SETTINGS = {
-  frontmatterProperty: "cssclasses",
+  snippets_local: "cssclasses",
+  snippets_global: "chisel",
   enableTypography: false,
   enableColor: false,
   enableRhythm: false,
@@ -151,20 +152,22 @@ class ChiselPlugin extends obsidian_1.Plugin {
     if (this.settings.enableRhythm) newClasses.add("chisel-rhythm");
 
     if (activeFile) {
-        // Frontmatter classes
-        const meta = this.app.metadataCache.getFileCache(activeFile);
-        if (meta?.frontmatter) {
-          const cssclasses = 
-            meta.frontmatter.cssclasses || meta.frontmatter.cssClasses;
-          if (cssclasses) {
-            const classList = Array.isArray(cssclasses) ? cssclasses : [cssclasses];
-            classList.forEach((cls) => {
-              if (typeof cls === "string" && cls.trim().length > 0) {
-                newClasses.add("cssclass-" + cls.trim());
-              }
-            });
-          }
+      // Frontmatter classes
+      const meta = this.app.metadataCache.getFileCache(activeFile);
+      if (meta?.frontmatter) {
+        const cssclasses =
+          meta.frontmatter.cssclasses || meta.frontmatter.cssClasses;
+        if (cssclasses) {
+          const classList = Array.isArray(cssclasses)
+            ? cssclasses
+            : [cssclasses];
+          classList.forEach((cls) => {
+            if (typeof cls === "string" && cls.trim().length > 0) {
+              newClasses.add("cssclass-" + cls.trim());
+            }
+          });
         }
+      }
     }
 
     // Diff and update classes
@@ -181,9 +184,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.appliedClasses = newClasses;
 
     if (activeFile) {
-        // Handle snippets and other properties
-        const meta = this.app.metadataCache.getFileCache(activeFile);
-        this.updateSnippetsAndProperties(meta);
+      // Handle snippets and other properties
+      const meta = this.app.metadataCache.getFileCache(activeFile);
+      this.updateSnippetsAndProperties(meta);
     }
   }
 
@@ -191,7 +194,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     if (!meta?.frontmatter) return;
 
     // Also add snippet names as classes to active markdown view containers
-    const snippetProp = meta.frontmatter[this.settings.frontmatterProperty];
+    const snippetProp = meta.frontmatter[this.settings.snippets_global];
     let snippetNames = [];
     if (typeof snippetProp === "string" && snippetProp.trim().length > 0) {
       snippetNames = [snippetProp.trim()];
@@ -509,7 +512,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
   hasAutoloadFlag(frontmatter) {
     if (!frontmatter) return false;
     // Only the "chisel" frontmatter flag enables autoload
-    return Boolean(frontmatter["chisel"]);
+    return Boolean(frontmatter[this.settings.snippets_global]);
   }
 
   async updateAutoloadedSnippets() {
@@ -637,12 +640,10 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
     containerEl.createEl("h1", { text: "Chisel" });
-
+    containerEl.createEl("h2", { text: "Abstraction Layer" });
     const typographySetting = new obsidian_1.Setting(containerEl)
-      .setName("Typography Abstraction")
-      .setDesc(
-        "Toggle the application of 'chisel-typography' class to the body.",
-      )
+      .setName("Typography")
+      .setDesc("")
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.enableTypography)
@@ -672,26 +673,66 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
         "Font Density": { css: "--font-density", fm: "chisel-font-density" },
         "Font Text": { css: "--font-text", fm: "chisel-font-text" },
         "Font Feature": { css: "--font-feature", fm: "chisel-font-feature" },
-        "Font Variation": { css: "--font-variation", fm: "chisel-font-variation" },
+        "Font Variation": {
+          css: "--font-variation",
+          fm: "chisel-font-variation",
+        },
         "Font Weight": { css: "--font-weight", fm: "chisel-font-weight" },
         "Bold Weight": { css: "--bold-weight", fm: "chisel-bold-weight" },
         "Font Header": { css: "--font-header", fm: "chisel-font-header" },
-        "Font Header Feature": { css: "--font-header-feature", fm: "chisel-font-header-feature" },
-        "Font Header Variation": { css: "--font-header-variation", fm: "chisel-font-header-variation" },
-        "Font Header Letter Spacing": { css: "--font-header-letter-spacing", fm: "chisel-font-header-letter-spacing" },
-        "Font Header Style": { css: "--font-header-style", fm: "chisel-font-header-style" },
-        "Font Header Weight": { css: "--font-header-weight", fm: "chisel-font-header-weight" },
-        "Font Monospace": { css: "--font-monospace", fm: "chisel-font-monospace" },
-        "Font Monospace Feature": { css: "--font-monospace-feature", fm: "chisel-font-monospace-feature" },
-        "Font Monospace Variation": { css: "--font-monospace-variation", fm: "chisel-font-monospace-variation" },
-        "Font Interface": { css: "--font-interface", fm: "chisel-font-interface" },
-        "Font Interface Feature": { css: "--font-interface-feature", fm: "chisel-font-interface-feature" },
-        "Font Interface Variation": { css: "--font-interface-variation", fm: "chisel-font-interface-variation" },
+        "Font Header Feature": {
+          css: "--font-header-feature",
+          fm: "chisel-font-header-feature",
+        },
+        "Font Header Variation": {
+          css: "--font-header-variation",
+          fm: "chisel-font-header-variation",
+        },
+        "Font Header Letter Spacing": {
+          css: "--font-header-letter-spacing",
+          fm: "chisel-font-header-letter-spacing",
+        },
+        "Font Header Style": {
+          css: "--font-header-style",
+          fm: "chisel-font-header-style",
+        },
+        "Font Header Weight": {
+          css: "--font-header-weight",
+          fm: "chisel-font-header-weight",
+        },
+        "Font Monospace": {
+          css: "--font-monospace",
+          fm: "chisel-font-monospace",
+        },
+        "Font Monospace Feature": {
+          css: "--font-monospace-feature",
+          fm: "chisel-font-monospace-feature",
+        },
+        "Font Monospace Variation": {
+          css: "--font-monospace-variation",
+          fm: "chisel-font-monospace-variation",
+        },
+        "Font Interface": {
+          css: "--font-interface",
+          fm: "chisel-font-interface",
+        },
+        "Font Interface Feature": {
+          css: "--font-interface-feature",
+          fm: "chisel-font-interface-feature",
+        },
+        "Font Interface Variation": {
+          css: "--font-interface-variation",
+          fm: "chisel-font-interface-variation",
+        },
       };
 
-      const allTypographyDescriptions = Object.keys(typographyVars).join('\n');
-      const allTypographyCss = Object.values(typographyVars).map(v => v.css).join('\n');
-      const allTypographyFm = Object.values(typographyVars).map(v => v.fm).join('\n');
+      const allTypographyDescriptions = Object.keys(typographyVars).join("\n");
+      const allTypographyCss = Object.values(typographyVars)
+        .map((v) => v.css)
+        .join("\n");
+      const allTypographyFm = Object.values(typographyVars)
+        .map((v) => v.fm)
+        .join("\n");
 
       let row = typographyTableBody.createEl("tr");
 
@@ -718,15 +759,17 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.setAttr("cols", 30); // Adjust cols as needed
 
       // Find the description element and append details
-      const descriptionEl = typographySetting.settingEl.querySelector(".setting-item-description");
+      const descriptionEl = typographySetting.settingEl.querySelector(
+        ".setting-item-description",
+      );
       if (descriptionEl) {
         descriptionEl.appendChild(typographyDetails);
       }
     }
 
     const colorSetting = new obsidian_1.Setting(containerEl)
-      .setName("Color Abstraction")
-      .setDesc("Toggle the application of 'chisel-color' class to the body.")
+      .setName("Color")
+      .setDesc("")
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.enableColor)
@@ -752,37 +795,101 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       colorTableHeadRow.createEl("th", { text: "Frontmatter" });
       const colorTableBody = colorTable.createEl("tbody");
       const colorVars = {
-        "Light Foreground": { css: "--light-color-foreground", fm: "chisel-light-color-foreground" },
-        "Light Background": { css: "--light-color-background", fm: "chisel-light-color-background" },
+        "Light Foreground": {
+          css: "--light-color-foreground",
+          fm: "chisel-light-color-foreground",
+        },
+        "Light Background": {
+          css: "--light-color-background",
+          fm: "chisel-light-color-background",
+        },
         "Light Red": { css: "--light-color-red", fm: "chisel-light-color-red" },
-        "Light Orange": { css: "--light-color-orange", fm: "chisel-light-color-orange" },
-        "Light Yellow": { css: "--light-color-yellow", fm: "chisel-light-color-yellow" },
-        "Light Green": { css: "--light-color-green", fm: "chisel-light-color-green" },
-        "Light Cyan": { css: "--light-color-cyan", fm: "chisel-light-color-cyan" },
-        "Light Blue": { css: "--light-color-blue", fm: "chisel-light-color-blue" },
-        "Light Purple": { css: "--light-color-purple", fm: "chisel-light-color-purple" },
-        "Light Pink": { css: "--light-color-pink", fm: "chisel-light-color-pink" },
-        "Light Accent": { css: "--light-accent-color", fm: "chisel-light-accent-color" },
-        "Light Bold": { css: "--light-bold-color", fm: "chisel-light-bold-color" },
-        "Light Italic": { css: "--light-italic-color", fm: "chisel-light-italic-color" },
-        "Dark Foreground": { css: "--dark-color-foreground", fm: "chisel-dark-color-foreground" },
-        "Dark Background": { css: "--dark-color-background", fm: "chisel-dark-color-background" },
+        "Light Orange": {
+          css: "--light-color-orange",
+          fm: "chisel-light-color-orange",
+        },
+        "Light Yellow": {
+          css: "--light-color-yellow",
+          fm: "chisel-light-color-yellow",
+        },
+        "Light Green": {
+          css: "--light-color-green",
+          fm: "chisel-light-color-green",
+        },
+        "Light Cyan": {
+          css: "--light-color-cyan",
+          fm: "chisel-light-color-cyan",
+        },
+        "Light Blue": {
+          css: "--light-color-blue",
+          fm: "chisel-light-color-blue",
+        },
+        "Light Purple": {
+          css: "--light-color-purple",
+          fm: "chisel-light-color-purple",
+        },
+        "Light Pink": {
+          css: "--light-color-pink",
+          fm: "chisel-light-color-pink",
+        },
+        "Light Accent": {
+          css: "--light-accent-color",
+          fm: "chisel-light-accent-color",
+        },
+        "Light Bold": {
+          css: "--light-bold-color",
+          fm: "chisel-light-bold-color",
+        },
+        "Light Italic": {
+          css: "--light-italic-color",
+          fm: "chisel-light-italic-color",
+        },
+        "Dark Foreground": {
+          css: "--dark-color-foreground",
+          fm: "chisel-dark-color-foreground",
+        },
+        "Dark Background": {
+          css: "--dark-color-background",
+          fm: "chisel-dark-color-background",
+        },
         "Dark Red": { css: "--dark-color-red", fm: "chisel-dark-color-red" },
-        "Dark Orange": { css: "--dark-color-orange", fm: "chisel-dark-color-orange" },
-        "Dark Yellow": { css: "--dark-color-yellow", fm: "chisel-dark-color-yellow" },
-        "Dark Green": { css: "--dark-color-green", fm: "chisel-dark-color-green" },
+        "Dark Orange": {
+          css: "--dark-color-orange",
+          fm: "chisel-dark-color-orange",
+        },
+        "Dark Yellow": {
+          css: "--dark-color-yellow",
+          fm: "chisel-dark-color-yellow",
+        },
+        "Dark Green": {
+          css: "--dark-color-green",
+          fm: "chisel-dark-color-green",
+        },
         "Dark Cyan": { css: "--dark-color-cyan", fm: "chisel-dark-color-cyan" },
         "Dark Blue": { css: "--dark-color-blue", fm: "chisel-dark-color-blue" },
-        "Dark Purple": { css: "--dark-color-purple", fm: "chisel-dark-color-purple" },
+        "Dark Purple": {
+          css: "--dark-color-purple",
+          fm: "chisel-dark-color-purple",
+        },
         "Dark Pink": { css: "--dark-color-pink", fm: "chisel-dark-color-pink" },
-        "Dark Accent": { css: "--dark-accent-color", fm: "chisel-dark-accent-color" },
+        "Dark Accent": {
+          css: "--dark-accent-color",
+          fm: "chisel-dark-accent-color",
+        },
         "Dark Bold": { css: "--dark-bold-color", fm: "chisel-dark-bold-color" },
-        "Dark Italic": { css: "--dark-italic-color", fm: "chisel-dark-italic-color" },
+        "Dark Italic": {
+          css: "--dark-italic-color",
+          fm: "chisel-dark-italic-color",
+        },
       };
 
-      const allColorDescriptions = Object.keys(colorVars).join('\n');
-      const allColorCss = Object.values(colorVars).map(v => v.css).join('\n');
-      const allColorFm = Object.values(colorVars).map(v => v.fm).join('\n');
+      const allColorDescriptions = Object.keys(colorVars).join("\n");
+      const allColorCss = Object.values(colorVars)
+        .map((v) => v.css)
+        .join("\n");
+      const allColorFm = Object.values(colorVars)
+        .map((v) => v.fm)
+        .join("\n");
 
       let row = colorTableBody.createEl("tr");
 
@@ -809,15 +916,17 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.setAttr("cols", 30); // Adjust cols as needed
 
       // Find the description element and append details
-      const descriptionEl = colorSetting.settingEl.querySelector(".setting-item-description");
+      const descriptionEl = colorSetting.settingEl.querySelector(
+        ".setting-item-description",
+      );
       if (descriptionEl) {
         descriptionEl.appendChild(colorDetails);
       }
     }
 
     const rhythmSetting = new obsidian_1.Setting(containerEl)
-      .setName("Vertical Rhythm Abstraction")
-      .setDesc("Toggle the application of 'chisel-rhythm' class to the body.")
+      .setName("Vertical Rhythm")
+      .setDesc("")
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.enableRhythm)
@@ -843,13 +952,17 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       rhythmTableHeadRow.createEl("th", { text: "Frontmatter" });
       const rhythmTableBody = rhythmTable.createEl("tbody");
       const rhythmVars = {
-        "Single": { css: "--chisel-single", fm: "chisel-single" },
-        "Global": { css: "--chisel-global", fm: "chisel-global" },
+        Single: { css: "--chisel-single", fm: "chisel-single" },
+        Global: { css: "--chisel-global", fm: "chisel-global" },
       };
 
-      const allRhythmDescriptions = Object.keys(rhythmVars).join('\n');
-      const allRhythmCss = Object.values(rhythmVars).map(v => v.css).join('\n');
-      const allRhythmFm = Object.values(rhythmVars).map(v => v.fm).join('\n');
+      const allRhythmDescriptions = Object.keys(rhythmVars).join("\n");
+      const allRhythmCss = Object.values(rhythmVars)
+        .map((v) => v.css)
+        .join("\n");
+      const allRhythmFm = Object.values(rhythmVars)
+        .map((v) => v.fm)
+        .join("\n");
 
       let row = rhythmTableBody.createEl("tr");
 
@@ -876,30 +989,44 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.setAttr("cols", 30); // Adjust cols as needed
 
       // Find the description element and append details
-      const descriptionEl = rhythmSetting.settingEl.querySelector(".setting-item-description");
+      const descriptionEl = rhythmSetting.settingEl.querySelector(
+        ".setting-item-description",
+      );
       if (descriptionEl) {
         descriptionEl.appendChild(rhythmDetails);
       }
     }
 
-    // Snippets frontmatter key setting
+    containerEl.createEl("h2", { text: "Frontmatter" });
+
     new obsidian_1.Setting(containerEl)
-      .setName("Frontmatter key for snippets")
-      .setDesc(
-        "Change which frontmatter property lists CSS notes (default: 'cssclasses'). For example, 'snippets' or 'themes'.",
-      )
+      .setName("Global")
+      .setDesc("Key used to globally load snippets.")
+      .addText((text) =>
+        text
+          .setPlaceholder("chisel")
+          .setValue(this.plugin.settings.snippets_global)
+          .onChange(async (value) => {
+            this.plugin.settings.snippets_global = value;
+            await this.plugin.saveSettings();
+          }),
+      );
+
+    new obsidian_1.Setting(containerEl)
+      .setName("Local")
+      .setDesc("Key used to load locally snippets.")
       .addText((text) =>
         text
           .setPlaceholder("cssclasses")
-          .setValue(this.plugin.settings.frontmatterProperty)
+          .setValue(this.plugin.settings.snippets_local)
           .onChange(async (value) => {
             const v = (value || "").trim();
-            this.plugin.settings.frontmatterProperty = v;
+            this.plugin.settings.snippets_local = v;
             await this.plugin.saveSettings();
             this.plugin.updateBodyClasses();
           }),
       );
-
+    containerEl.createEl("h2", { text: "Documentation" });
     // Documentation Section
     const docEl = containerEl.createEl("div");
     const docContent = `
