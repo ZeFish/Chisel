@@ -21,8 +21,8 @@ body {
     --font-header-feature: "";
     --font-header-variation: "";
 
-    --font-mono-feature: "";
-    --font-mono-variation: "";
+    --font-monospace-feature: "";
+    --font-monospace-variation: "";
 }
 .chisel-typography {
     text-rendering: optimizeLegibility; /* kerning & ligatures */
@@ -170,8 +170,8 @@ body {
 
     .markdown-reading-view code,
     .markdown-reading-view pre {
-        font-feature-settings: var(--font-mono-feature);
-        font-variation-settings: var(--font-mono-variation);
+        font-feature-settings: var(--font-monospace-feature);
+        font-variation-settings: var(--font-monospace-variation);
     }
 
     .markdown-reading-view ol > li,

@@ -7,7 +7,7 @@ Chisel is an Obsidian plugin that allows you to customize the appearance of your
 
 - **CSS Themes:** Apply a CSS theme to a note by specifying the theme name in the `chisel` frontmatter property.
 - **Custom CSS Properties:** Define custom CSS variables directly in the frontmatter of your notes.
-- **CSS Snippets:** Automatically load CSS snippets from multiple notes that have the `chisel-autoload: true` frontmatter property. The snippets are loaded in alphabetical order.
+- **CSS Snippets:** Automatically load CSS snippets from multiple notes that have the `chisel: true` frontmatter property. The snippets are loaded in alphabetical order.
 - **Body Classes:** Chisel adds various CSS classes to the `<body>` element based on the context, allowing you to write more specific CSS rules.
 
 
@@ -36,7 +36,7 @@ Then, in any other note, you can apply this theme by adding the `chisel` frontma
 
 ```yaml
 ---
-chisel: my-theme
+snippets: my-theme
 ---
 
 This note will have a light gray background.
@@ -139,13 +139,13 @@ Chisel provides an abstract layer of CSS variables that you can customize in you
 
 CSS snippets are a way to automatically load CSS from multiple notes. This is useful for creating a library of reusable CSS snippets that you can use across your vault.
 
-To create a CSS snippet, create a new note with the `chisel-autoload: true` frontmatter property. The note must contain a CSS code block. You can have as many of these notes as you want.
+To create a CSS snippet, create a new note with the `chisel: true` frontmatter property. The note must contain a CSS code block. You can have as many of these notes as you want.
 
 For example:
 
 ````markdown
 ---
-chisel-autoload: true
+chisel: true
 ---
 
 ```css
@@ -155,7 +155,7 @@ chisel-autoload: true
 ```
 ````
 
-Chisel will automatically find all the notes with `chisel-autoload: true` and load their CSS content. The CSS from all the snippets is combined into a single block and loaded in alphabetical order of the note paths. This allows you to create a modular and maintainable CSS system for your vault.
+Chisel will automatically find all the notes with `chisel: true` and load their CSS content. The CSS from all the snippets is combined into a single block and loaded in alphabetical order of the note paths. This allows you to create a modular and maintainable CSS system for your vault.
 
 ### Body Classes
 
