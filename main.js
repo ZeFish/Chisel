@@ -655,7 +655,6 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableTypography) {
-      console.log("Typography enabled");
       const typographyDetails = containerEl.createEl("details");
       const typographySummary = typographyDetails.createEl("summary");
       typographySummary.setText("Variables");
@@ -729,11 +728,11 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
             this.plugin.settings.enableColor = value;
             await this.plugin.saveSettings();
             this.plugin.updateBodyClasses();
+            this.display();
           }),
       );
 
     if (this.plugin.settings.enableColor) {
-      console.log("Color enabled");
       const colorDetails = containerEl.createEl("details");
       const colorSummary = colorDetails.createEl("summary");
       colorSummary.setText("Variables");
@@ -814,11 +813,11 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
             this.plugin.settings.enableRhythm = value;
             await this.plugin.saveSettings();
             this.plugin.updateBodyClasses();
+            this.display();
           }),
       );
 
     if (this.plugin.settings.enableRhythm) {
-      console.log("Rhythm enabled");
       const rhythmDetails = containerEl.createEl("details");
       const rhythmSummary = rhythmDetails.createEl("summary");
       rhythmSummary.setText("Variables");
