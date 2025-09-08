@@ -959,9 +959,9 @@ body {
     margin-bottom: var(--margin);
   }
   .chisel-rhythm .markdown-reading-view ul,
-  .chisel-rhythm .markdown-reading-view ol,
-  .chisel-rhythm .markdown-reading-view .callout-content ul,
-  .chisel-rhythm .markdown-reading-view .callout-content ol {
+.chisel-rhythm .markdown-reading-view ol,
+.chisel-rhythm .markdown-reading-view .callout-content ul,
+.chisel-rhythm .markdown-reading-view .callout-content ol {
     padding: 0rlh 0rlh 0rlh 0 calc(var(--margin) * 5);
   }
   .chisel-rhythm .markdown-reading-view hr {
@@ -974,82 +974,6 @@ body {
   }
 }
 /* Preview mode (reading view) */
-.chisel-rhythm .markdown-reading-view h1 + h1,
-.chisel-rhythm .markdown-reading-view h1 + h2,
-.chisel-rhythm .markdown-reading-view h1 + h3,
-.chisel-rhythm .markdown-reading-view h1 + h4,
-.chisel-rhythm .markdown-reading-view h1 + h5,
-.chisel-rhythm .markdown-reading-view h1 + h6,
-.chisel-rhythm .markdown-reading-view h2 + h1,
-.chisel-rhythm .markdown-reading-view h2 + h2,
-.chisel-rhythm .markdown-reading-view h2 + h3,
-.chisel-rhythm .markdown-reading-view h2 + h4,
-.chisel-rhythm .markdown-reading-view h2 + h5,
-.chisel-rhythm .markdown-reading-view h2 + h6,
-.chisel-rhythm .markdown-reading-view h3 + h1,
-.chisel-rhythm .markdown-reading-view h3 + h2,
-.chisel-rhythm .markdown-reading-view h3 + h3,
-.chisel-rhythm .markdown-reading-view h3 + h4,
-.chisel-rhythm .markdown-reading-view h3 + h5,
-.chisel-rhythm .markdown-reading-view h3 + h6,
-.chisel-rhythm .markdown-reading-view h4 + h1,
-.chisel-rhythm .markdown-reading-view h4 + h2,
-.chisel-rhythm .markdown-reading-view h4 + h3,
-.chisel-rhythm .markdown-reading-view h4 + h4,
-.chisel-rhythm .markdown-reading-view h4 + h5,
-.chisel-rhythm .markdown-reading-view h4 + h6,
-.chisel-rhythm .markdown-reading-view h5 + h1,
-.chisel-rhythm .markdown-reading-view h5 + h2,
-.chisel-rhythm .markdown-reading-view h5 + h3,
-.chisel-rhythm .markdown-reading-view h5 + h4,
-.chisel-rhythm .markdown-reading-view h5 + h5,
-.chisel-rhythm .markdown-reading-view h5 + h6,
-.chisel-rhythm .markdown-reading-view h6 + h1,
-.chisel-rhythm .markdown-reading-view h6 + h2,
-.chisel-rhythm .markdown-reading-view h6 + h3,
-.chisel-rhythm .markdown-reading-view h6 + h4,
-.chisel-rhythm .markdown-reading-view h6 + h5,
-.chisel-rhythm .markdown-reading-view h6 + h6,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-6.cm-line {
-  margin-top: 0rlh;
-}
-
-/* Preview mode */
 .chisel-rhythm .markdown-reading-view h1 + h2,
 .chisel-rhythm .markdown-reading-view h1 + h3,
 .chisel-rhythm .markdown-reading-view h1 + h4,
@@ -1063,4 +987,7 @@ body {
   margin-top: calc(var(--margin) * 2);
 }
 
+.plugin-setting-tab details {
+  margin-top: 1em; /* Adjust as needed */
+}
 /*# sourceMappingURL=styles.css.map */
