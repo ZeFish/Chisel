@@ -638,7 +638,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
     containerEl.empty();
     containerEl.createEl("h1", { text: "Chisel" });
 
-    new obsidian_1.Setting(containerEl)
+    const typographySetting = new obsidian_1.Setting(containerEl)
       .setName("Typography Abstraction")
       .setDesc(
         "Toggle the application of 'chisel-typography' class to the body.",
@@ -655,8 +655,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableTypography) {
-      const typographySettingItem = containerEl.createEl("div", { cls: "setting-item" });
-      const typographyDetails = typographySettingItem.createEl("details");
+      const typographyDetails = typographySetting.settingEl.createEl("details");
       const typographySummary = typographyDetails.createEl("summary");
       typographySummary.setText("Variables");
       const typographyContent = typographyDetails.createEl("div");
@@ -719,7 +718,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.setAttr("cols", 30); // Adjust cols as needed
     }
 
-    new obsidian_1.Setting(containerEl)
+    const colorSetting = new obsidian_1.Setting(containerEl)
       .setName("Color Abstraction")
       .setDesc("Toggle the application of 'chisel-color' class to the body.")
       .addToggle((toggle) =>
@@ -734,8 +733,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableColor) {
-      const colorSettingItem = containerEl.createEl("div", { cls: "setting-item" });
-      const colorDetails = colorSettingItem.createEl("details");
+      const colorDetails = colorSetting.settingEl.createEl("details");
       const colorSummary = colorDetails.createEl("summary");
       colorSummary.setText("Variables");
       const colorContent = colorDetails.createEl("div");
@@ -805,7 +803,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.setAttr("cols", 30); // Adjust cols as needed
     }
 
-    new obsidian_1.Setting(containerEl)
+    const rhythmSetting = new obsidian_1.Setting(containerEl)
       .setName("Vertical Rhythm Abstraction")
       .setDesc("Toggle the application of 'chisel-rhythm' class to the body.")
       .addToggle((toggle) =>
@@ -820,8 +818,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableRhythm) {
-      const rhythmSettingItem = containerEl.createEl("div", { cls: "setting-item" });
-      const rhythmDetails = rhythmSettingItem.createEl("details");
+      const rhythmDetails = rhythmSetting.settingEl.createEl("details");
       const rhythmSummary = rhythmDetails.createEl("summary");
       rhythmSummary.setText("Variables");
       const rhythmContent = rhythmDetails.createEl("div");
