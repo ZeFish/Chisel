@@ -873,9 +873,9 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       .addText((text) =>
         text
           .setPlaceholder("cssclasses")
-          .setValue(this.plugin.settings.frontmatterProperty || "snippets")
+          .setValue(this.plugin.settings.frontmatterProperty)
           .onChange(async (value) => {
-            const v = (value || "").trim() || "cssclasses";
+            const v = (value || "").trim();
             this.plugin.settings.frontmatterProperty = v;
             await this.plugin.saveSettings();
             this.plugin.updateBodyClasses();
