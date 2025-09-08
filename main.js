@@ -650,6 +650,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
             this.plugin.settings.enableTypography = value;
             await this.plugin.saveSettings();
             this.plugin.updateBodyClasses();
+            this.display();
           }),
       );
 
@@ -658,50 +659,62 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       const typographySummary = typographyDetails.createEl("summary");
       typographySummary.setText("Variables");
       const typographyContent = typographyDetails.createEl("div");
-      const typographyCss = typographyContent.createEl("textarea");
-      typographyCss.value = `
---font-ratio: 1.333;
---font-density: 1.7;
---font-text: "Forrest";
---font-feature: "";
---font-variation: "wght" 400;
---font-weight: 400;
---bold-weight: 500;
---font-header: "Bright Morning";
---font-header-feature: "";
---font-header-variation: "wght" 500;
---font-header-letter-spacing: 0em;
---font-header-style: none;
---font-header-weight: 800;
---font-monospace: "MonoStein Pro Var";
---font-monospace-feature: "salt";
---font-monospace-variation: "";
---font-interface: "MonoStein Pro Var";
---font-interface-feature: "salt";
---font-interface-variation: "";
-      `;
-      const typographyFm = typographyContent.createEl("textarea");
-      typographyFm.value = `
-chisel-font-ratio: 1.333
-chisel-font-density: 1.7
-chisel-font-text: Forrest
-chisel-font-feature: ''
-chisel-font-variation: 'wght' 400
-chisel-font-weight: 400
-chisel-bold-weight: 500
-chisel-font-header: Bright Morning
-chisel-font-header-feature: ''
-chisel-font-header-variation: 'wght' 500
-chisel-font-header-letter-spacing: 0em
-chisel-font-header-style: none
-chisel-font-header-weight: 800
-chisel-font-monospace: MonoStein Pro Var
-chisel-font-monospace-feature: salt
-chisel-font-monospace-variation: ''
-chisel-font-interface: MonoStein Pro Var
-chisel-font-interface-feature: salt
-chisel-font-interface-variation: ''
-      `;
+      const typographyTable = typographyContent.createEl("table");
+      typographyTable.addClass("chisel-variables-table");
+      const typographyTableHead = typographyTable.createEl("thead");
+      const typographyTableHeadRow = typographyTableHead.createEl("tr");
+      typographyTableHeadRow.createEl("th", { text: "Description" });
+      typographyTableHeadRow.createEl("th", { text: "CSS" });
+      typographyTableHeadRow.createEl("th", { text: "Frontmatter" });
+      const typographyTableBody = typographyTable.createEl("tbody");
+      const typographyVars = {
+        "Font Ratio": { css: "--font-ratio", fm: "chisel-font-ratio" },
+        "Font Density": { css: "--font-density", fm: "chisel-font-density" },
+        "Font Text": { css: "--font-text", fm: "chisel-font-text" },
+        "Font Feature": { css: "--font-feature", fm: "chisel-font-feature" },
+        "Font Variation": { css: "--font-variation", fm: "chisel-font-variation" },
+        "Font Weight": { css: "--font-weight", fm: "chisel-font-weight" },
+        "Bold Weight": { css: "--bold-weight", fm: "chisel-bold-weight" },
+        "Font Header": { css: "--font-header", fm: "chisel-font-header" },
+        "Font Header Feature": { css: "--font-header-feature", fm: "chisel-font-header-feature" },
+        "Font Header Variation": { css: "--font-header-variation", fm: "chisel-font-header-variation" },
+        "Font Header Letter Spacing": { css: "--font-header-letter-spacing", fm: "chisel-font-header-letter-spacing" },
+        "Font Header Style": { css: "--font-header-style", fm: "chisel-font-header-style" },
+        "Font Header Weight": { css: "--font-header-weight", fm: "chisel-font-header-weight" },
+        "Font Monospace": { css: "--font-monospace", fm: "chisel-font-monospace" },
+        "Font Monospace Feature": { css: "--font-monospace-feature", fm: "chisel-font-monospace-feature" },
+        "Font Monospace Variation": { css: "--font-monospace-variation", fm: "chisel-font-monospace-variation" },
+        "Font Interface": { css: "--font-interface", fm: "chisel-font-interface" },
+        "Font Interface Feature": { css: "--font-interface-feature", fm: "chisel-font-interface-feature" },
+        "Font Interface Variation": { css: "--font-interface-variation", fm: "chisel-font-interface-variation" },
+      };
+
+      const allTypographyCss = Object.values(typographyVars).map(v => v.css).join('\n');
+      const allTypographyFm = Object.values(typographyVars).map(v => v.fm).join('\n');
+
+      let row = typographyTableBody.createEl("tr");
+      let descCell = row.createEl("td");
+      descCell.setText("All CSS Variables");
+      let cssCell = row.createEl("td");
+      let cssText = cssCell.createEl("textarea");
+      cssText.value = allTypographyCss;
+      cssText.setAttr("rows", 10); // Adjust rows as needed
+      cssText.setAttr("cols", 30); // Adjust cols as needed
+      let fmCell = row.createEl("td");
+      let fmText = fmCell.createEl("textarea");
+      fmText.value = ""; // No frontmatter for this row
+
+      row = typographyTableBody.createEl("tr");
+      descCell = row.createEl("td");
+      descCell.setText("All Frontmatter Properties");
+      cssCell = row.createEl("td");
+      cssText = cssCell.createEl("textarea");
+      cssText.value = ""; // No CSS for this row
+      fmCell = row.createEl("td");
+      fmText = fmCell.createEl("textarea");
+      fmText.value = allTypographyFm;
+      fmText.setAttr("rows", 10); // Adjust rows as needed
+      fmText.setAttr("cols", 30); // Adjust cols as needed
     }
 
     new obsidian_1.Setting(containerEl)
@@ -722,64 +735,69 @@ chisel-font-interface-variation: ''
       const colorSummary = colorDetails.createEl("summary");
       colorSummary.setText("Variables");
       const colorContent = colorDetails.createEl("div");
-      const colorCss = colorContent.createEl("textarea");
-      colorCss.value = `
---light-color-foreground:   #222;
---light-color-background:   #ffffff;
---light-color-red:           #b33a2a;
---light-color-orange:     #bc5215;
---light-color-yellow: #cc8815;
---light-color-green: #66800b;
---light-color-cyan: #82a1b2;
---light-color-blue: #438199;
---light-color-purple: #5e409d;
---light-color-pink: #a02f6f;
---light-accent-color: var(--color-yellow);
---light-bold-color: var(--color-red);
---light-italic-color: var(--color-blue);
---dark-color-foreground: oklch(0.7721 0.0228 96.47);
---dark-color-background: oklch(0.2308 0.0023 67.73);
---dark-color-red: #d14d41;
---dark-color-orange: #da702c;
---dark-color-yellow: #cc8815;
---dark-color-green: #879a39;
---dark-color-cyan: #3aa99f;
---dark-color-blue: #4385be;
---dark-color-purple: #9a462b;
---dark-color-pink: #a8431b;
---dark-accent-color: var(--color-yellow);
---dark-bold-color: var(--color-red);
---dark-italic-color: var(--color-blue);
-      `;
-      const colorFm = colorContent.createEl("textarea");
-      colorFm.value = `
-chisel-light-color-foreground:   #222
-chisel-light-color-background:   #ffffff
-chisel-light-color-red:           #b33a2a
-chisel-light-color-orange:     #bc5215
-chisel-light-color-yellow: #cc8815
-chisel-light-color-green: #66800b
-chisel-light-color-cyan: #82a1b2
-chisel-light-color-blue: #438199
-chisel-light-color-purple: #5e409d
-chisel-light-color-pink: #a02f6f
-chisel-light-accent-color: var(--color-yellow) 
-chisel-light-bold-color: var(--color-red) 
-chisel-light-italic-color: var(--color-blue) 
-chisel-dark-color-foreground: oklch(0.7721 0.0228 96.47)
-chisel-dark-color-background: oklch(0.2308 0.0023 67.73)
-chisel-dark-color-red: #d14d41
-chisel-dark-color-orange: #da702c
-chisel-dark-color-yellow: #cc8815
-chisel-dark-color-green: #879a39
-chisel-dark-color-cyan: #3aa99f
-chisel-dark-color-blue: #4385be
-chisel-dark-color-purple: #9a462b
-chisel-dark-color-pink: #a8431b
-chisel-dark-accent-color: var(--color-yellow)
-chisel-dark-bold-color: var(--color-red)
-chisel-dark-italic-color: var(--color-blue)
-      `;
+      const colorTable = colorContent.createEl("table");
+      colorTable.addClass("chisel-variables-table");
+      const colorTableHead = colorTable.createEl("thead");
+      const colorTableHeadRow = colorTableHead.createEl("tr");
+      colorTableHeadRow.createEl("th", { text: "Description" });
+      colorTableHeadRow.createEl("th", { text: "CSS" });
+      colorTableHeadRow.createEl("th", { text: "Frontmatter" });
+      const colorTableBody = colorTable.createEl("tbody");
+      const colorVars = {
+        "Light Foreground": { css: "--light-color-foreground", fm: "chisel-light-color-foreground" },
+        "Light Background": { css: "--light-color-background", fm: "chisel-light-color-background" },
+        "Light Red": { css: "--light-color-red", fm: "chisel-light-color-red" },
+        "Light Orange": { css: "--light-color-orange", fm: "chisel-light-color-orange" },
+        "Light Yellow": { css: "--light-color-yellow", fm: "chisel-light-color-yellow" },
+        "Light Green": { css: "--light-color-green", fm: "chisel-light-color-green" },
+        "Light Cyan": { css: "--light-color-cyan", fm: "chisel-light-color-cyan" },
+        "Light Blue": { css: "--light-color-blue", fm: "chisel-light-color-blue" },
+        "Light Purple": { css: "--light-color-purple", fm: "chisel-light-color-purple" },
+        "Light Pink": { css: "--light-color-pink", fm: "chisel-light-color-pink" },
+        "Light Accent": { css: "--light-accent-color", fm: "chisel-light-accent-color" },
+        "Light Bold": { css: "--light-bold-color", fm: "chisel-light-bold-color" },
+        "Light Italic": { css: "--light-italic-color", fm: "chisel-light-italic-color" },
+        "Dark Foreground": { css: "--dark-color-foreground", fm: "chisel-dark-color-foreground" },
+        "Dark Background": { css: "--dark-color-background", fm: "chisel-dark-color-background" },
+        "Dark Red": { css: "--dark-color-red", fm: "chisel-dark-color-red" },
+        "Dark Orange": { css: "--dark-color-orange", fm: "chisel-dark-color-orange" },
+        "Dark Yellow": { css: "--dark-color-yellow", fm: "chisel-dark-color-yellow" },
+        "Dark Green": { css: "--dark-color-green", fm: "chisel-dark-color-green" },
+        "Dark Cyan": { css: "--dark-color-cyan", fm: "chisel-dark-color-cyan" },
+        "Dark Blue": { css: "--dark-color-blue", fm: "chisel-dark-color-blue" },
+        "Dark Purple": { css: "--dark-color-purple", fm: "chisel-dark-color-purple" },
+        "Dark Pink": { css: "--dark-color-pink", fm: "chisel-dark-color-pink" },
+        "Dark Accent": { css: "--dark-accent-color", fm: "chisel-dark-accent-color" },
+        "Dark Bold": { css: "--dark-bold-color", fm: "chisel-dark-bold-color" },
+        "Dark Italic": { css: "--dark-italic-color", fm: "chisel-dark-italic-color" },
+      };
+
+      const allColorCss = Object.values(colorVars).map(v => v.css).join('\n');
+      const allColorFm = Object.values(colorVars).map(v => v.fm).join('\n');
+
+      let row = colorTableBody.createEl("tr");
+      let descCell = row.createEl("td");
+      descCell.setText("All CSS Variables");
+      let cssCell = row.createEl("td");
+      let cssText = cssCell.createEl("textarea");
+      cssText.value = allColorCss;
+      cssText.setAttr("rows", 10); // Adjust rows as needed
+      cssText.setAttr("cols", 30); // Adjust cols as needed
+      let fmCell = row.createEl("td");
+      let fmText = fmCell.createEl("textarea");
+      fmText.value = ""; // No frontmatter for this row
+
+      row = colorTableBody.createEl("tr");
+      descCell = row.createEl("td");
+      descCell.setText("All Frontmatter Properties");
+      cssCell = row.createEl("td");
+      cssText = cssCell.createEl("textarea");
+      cssText.value = ""; // No CSS for this row
+      fmCell = row.createEl("td");
+      fmText = fmCell.createEl("textarea");
+      fmText.value = allColorFm;
+      fmText.setAttr("rows", 10); // Adjust rows as needed
+      fmText.setAttr("cols", 30); // Adjust cols as needed
     }
 
     new obsidian_1.Setting(containerEl)
@@ -800,16 +818,45 @@ chisel-dark-italic-color: var(--color-blue)
       const rhythmSummary = rhythmDetails.createEl("summary");
       rhythmSummary.setText("Variables");
       const rhythmContent = rhythmDetails.createEl("div");
-      const rhythmCss = rhythmContent.createEl("textarea");
-      rhythmCss.value = `
---chisel-single: 2rlh
---chisel-global: 1rlh
-      `;
-      const rhythmFm = rhythmContent.createEl("textarea");
-      rhythmFm.value = `
-chisel-single: 2rlh
-chisel-global: 1rlh
-      `;
+      const rhythmTable = rhythmContent.createEl("table");
+      rhythmTable.addClass("chisel-variables-table");
+      const rhythmTableHead = rhythmTable.createEl("thead");
+      const rhythmTableHeadRow = rhythmTableHead.createEl("tr");
+      rhythmTableHeadRow.createEl("th", { text: "Description" });
+      rhythmTableHeadRow.createEl("th", { text: "CSS" });
+      rhythmTableHeadRow.createEl("th", { text: "Frontmatter" });
+      const rhythmTableBody = rhythmTable.createEl("tbody");
+      const rhythmVars = {
+        "Single": { css: "--chisel-single", fm: "chisel-single" },
+        "Global": { css: "--chisel-global", fm: "chisel-global" },
+      };
+
+      const allRhythmCss = Object.values(rhythmVars).map(v => v.css).join('\n');
+      const allRhythmFm = Object.values(rhythmVars).map(v => v.fm).join('\n');
+
+      let row = rhythmTableBody.createEl("tr");
+      let descCell = row.createEl("td");
+      descCell.setText("All CSS Variables");
+      let cssCell = row.createEl("td");
+      let cssText = cssCell.createEl("textarea");
+      cssText.value = allRhythmCss;
+      cssText.setAttr("rows", 5); // Adjust rows as needed
+      cssText.setAttr("cols", 30); // Adjust cols as needed
+      let fmCell = row.createEl("td");
+      let fmText = fmCell.createEl("textarea");
+      fmText.value = ""; // No frontmatter for this row
+
+      row = rhythmTableBody.createEl("tr");
+      descCell = row.createEl("td");
+      descCell.setText("All Frontmatter Properties");
+      cssCell = row.createEl("td");
+      cssText = cssCell.createEl("textarea");
+      cssText.value = ""; // No CSS for this row
+      fmCell = row.createEl("td");
+      fmText = fmCell.createEl("textarea");
+      fmText.value = allRhythmFm;
+      fmText.setAttr("rows", 5); // Adjust rows as needed
+      fmText.setAttr("cols", 30); // Adjust cols as needed
     }
 
     // Snippets frontmatter key setting
