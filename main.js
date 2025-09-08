@@ -655,7 +655,8 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableTypography) {
-      const typographyDetails = containerEl.createEl("details");
+      const typographySettingItem = containerEl.createEl("div", { cls: "setting-item" });
+      const typographyDetails = typographySettingItem.createEl("details");
       const typographySummary = typographyDetails.createEl("summary");
       typographySummary.setText("Variables");
       const typographyContent = typographyDetails.createEl("div");
@@ -733,7 +734,8 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableColor) {
-      const colorDetails = containerEl.createEl("details");
+      const colorSettingItem = containerEl.createEl("div", { cls: "setting-item" });
+      const colorDetails = colorSettingItem.createEl("details");
       const colorSummary = colorDetails.createEl("summary");
       colorSummary.setText("Variables");
       const colorContent = colorDetails.createEl("div");
@@ -818,7 +820,8 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableRhythm) {
-      const rhythmDetails = containerEl.createEl("details");
+      const rhythmSettingItem = containerEl.createEl("div", { cls: "setting-item" });
+      const rhythmDetails = rhythmSettingItem.createEl("details");
       const rhythmSummary = rhythmDetails.createEl("summary");
       rhythmSummary.setText("Variables");
       const rhythmContent = rhythmDetails.createEl("div");
