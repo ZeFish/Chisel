@@ -689,29 +689,30 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
         "Font Interface Variation": { css: "--font-interface-variation", fm: "chisel-font-interface-variation" },
       };
 
+      const allTypographyDescriptions = Object.keys(typographyVars).join('\n');
       const allTypographyCss = Object.values(typographyVars).map(v => v.css).join('\n');
       const allTypographyFm = Object.values(typographyVars).map(v => v.fm).join('\n');
 
       let row = typographyTableBody.createEl("tr");
+
+      // Description column
       let descCell = row.createEl("td");
-      descCell.setText("All CSS Variables");
+      let descText = descCell.createEl("textarea");
+      descText.value = allTypographyDescriptions;
+      descText.setAttr("rows", 10); // Adjust rows as needed
+      descText.setAttr("cols", 30); // Adjust cols as needed
+      descText.disabled = true; // Make it read-only
+
+      // CSS column
       let cssCell = row.createEl("td");
       let cssText = cssCell.createEl("textarea");
       cssText.value = allTypographyCss;
       cssText.setAttr("rows", 10); // Adjust rows as needed
       cssText.setAttr("cols", 30); // Adjust cols as needed
+
+      // Frontmatter column
       let fmCell = row.createEl("td");
       let fmText = fmCell.createEl("textarea");
-      fmText.value = ""; // No frontmatter for this row
-
-      row = typographyTableBody.createEl("tr");
-      descCell = row.createEl("td");
-      descCell.setText("All Frontmatter Properties");
-      cssCell = row.createEl("td");
-      cssText = cssCell.createEl("textarea");
-      cssText.value = ""; // No CSS for this row
-      fmCell = row.createEl("td");
-      fmText = fmCell.createEl("textarea");
       fmText.value = allTypographyFm;
       fmText.setAttr("rows", 10); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
@@ -772,29 +773,30 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
         "Dark Italic": { css: "--dark-italic-color", fm: "chisel-dark-italic-color" },
       };
 
+      const allColorDescriptions = Object.keys(colorVars).join('\n');
       const allColorCss = Object.values(colorVars).map(v => v.css).join('\n');
       const allColorFm = Object.values(colorVars).map(v => v.fm).join('\n');
 
       let row = colorTableBody.createEl("tr");
+
+      // Description column
       let descCell = row.createEl("td");
-      descCell.setText("All CSS Variables");
+      let descText = descCell.createEl("textarea");
+      descText.value = allColorDescriptions;
+      descText.setAttr("rows", 10); // Adjust rows as needed
+      descText.setAttr("cols", 30); // Adjust cols as needed
+      descText.disabled = true; // Make it read-only
+
+      // CSS column
       let cssCell = row.createEl("td");
       let cssText = cssCell.createEl("textarea");
       cssText.value = allColorCss;
       cssText.setAttr("rows", 10); // Adjust rows as needed
       cssText.setAttr("cols", 30); // Adjust cols as needed
+
+      // Frontmatter column
       let fmCell = row.createEl("td");
       let fmText = fmCell.createEl("textarea");
-      fmText.value = ""; // No frontmatter for this row
-
-      row = colorTableBody.createEl("tr");
-      descCell = row.createEl("td");
-      descCell.setText("All Frontmatter Properties");
-      cssCell = row.createEl("td");
-      cssText = cssCell.createEl("textarea");
-      cssText.value = ""; // No CSS for this row
-      fmCell = row.createEl("td");
-      fmText = fmCell.createEl("textarea");
       fmText.value = allColorFm;
       fmText.setAttr("rows", 10); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
@@ -831,29 +833,30 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
         "Global": { css: "--chisel-global", fm: "chisel-global" },
       };
 
+      const allRhythmDescriptions = Object.keys(rhythmVars).join('\n');
       const allRhythmCss = Object.values(rhythmVars).map(v => v.css).join('\n');
       const allRhythmFm = Object.values(rhythmVars).map(v => v.fm).join('\n');
 
       let row = rhythmTableBody.createEl("tr");
+
+      // Description column
       let descCell = row.createEl("td");
-      descCell.setText("All CSS Variables");
+      let descText = descCell.createEl("textarea");
+      descText.value = allRhythmDescriptions;
+      descText.setAttr("rows", 5); // Adjust rows as needed
+      descText.setAttr("cols", 30); // Adjust cols as needed
+      descText.disabled = true; // Make it read-only
+
+      // CSS column
       let cssCell = row.createEl("td");
       let cssText = cssCell.createEl("textarea");
       cssText.value = allRhythmCss;
       cssText.setAttr("rows", 5); // Adjust rows as needed
       cssText.setAttr("cols", 30); // Adjust cols as needed
+
+      // Frontmatter column
       let fmCell = row.createEl("td");
       let fmText = fmCell.createEl("textarea");
-      fmText.value = ""; // No frontmatter for this row
-
-      row = rhythmTableBody.createEl("tr");
-      descCell = row.createEl("td");
-      descCell.setText("All Frontmatter Properties");
-      cssCell = row.createEl("td");
-      cssText = cssCell.createEl("textarea");
-      cssText.value = ""; // No CSS for this row
-      fmCell = row.createEl("td");
-      fmText = fmCell.createEl("textarea");
       fmText.value = allRhythmFm;
       fmText.setAttr("rows", 5); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
