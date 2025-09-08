@@ -655,7 +655,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableTypography) {
-      const typographyDetails = typographySetting.settingEl.createEl("details");
+      const typographyDetails = containerEl.createEl("details"); // Temporarily create it here
       const typographySummary = typographyDetails.createEl("summary");
       typographySummary.setText("Variables");
       const typographyContent = typographyDetails.createEl("div");
@@ -716,6 +716,12 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.value = allTypographyFm;
       fmText.setAttr("rows", 10); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
+
+      // Find the description element and append details
+      const descriptionEl = typographySetting.settingEl.querySelector(".setting-item-description");
+      if (descriptionEl) {
+        descriptionEl.appendChild(typographyDetails);
+      }
     }
 
     const colorSetting = new obsidian_1.Setting(containerEl)
@@ -733,7 +739,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableColor) {
-      const colorDetails = colorSetting.settingEl.createEl("details");
+      const colorDetails = containerEl.createEl("details"); // Temporarily create it here
       const colorSummary = colorDetails.createEl("summary");
       colorSummary.setText("Variables");
       const colorContent = colorDetails.createEl("div");
@@ -801,6 +807,12 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.value = allColorFm;
       fmText.setAttr("rows", 26); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
+
+      // Find the description element and append details
+      const descriptionEl = colorSetting.settingEl.querySelector(".setting-item-description");
+      if (descriptionEl) {
+        descriptionEl.appendChild(colorDetails);
+      }
     }
 
     const rhythmSetting = new obsidian_1.Setting(containerEl)
@@ -818,7 +830,7 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       );
 
     if (this.plugin.settings.enableRhythm) {
-      const rhythmDetails = rhythmSetting.settingEl.createEl("details");
+      const rhythmDetails = containerEl.createEl("details"); // Temporarily create it here
       const rhythmSummary = rhythmDetails.createEl("summary");
       rhythmSummary.setText("Variables");
       const rhythmContent = rhythmDetails.createEl("div");
@@ -862,6 +874,12 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       fmText.value = allRhythmFm;
       fmText.setAttr("rows", 10); // Adjust rows as needed
       fmText.setAttr("cols", 30); // Adjust cols as needed
+
+      // Find the description element and append details
+      const descriptionEl = rhythmSetting.settingEl.querySelector(".setting-item-description");
+      if (descriptionEl) {
+        descriptionEl.appendChild(rhythmDetails);
+      }
     }
 
     // Snippets frontmatter key setting
