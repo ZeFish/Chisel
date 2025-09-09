@@ -1,3 +1,6 @@
 .gitattributes
 .gitignore
 styles.css.map
+/.zed
+.DS_Store
+data.json

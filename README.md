@@ -2,7 +2,10 @@
 
 > A **chisel** is a [wedged](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Wedge "Wedge") [hand tool](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Hand_tool "Hand tool") *or a snippet* with a characteristically shaped cutting edge of [blade](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Blade "Blade") on its end for [carving](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Carving "Carving") or cutting a hard material (e.g. [wood](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Woodworking "Woodworking"), [stone](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Lapidary "Lapidary"), or *[Obsidian](https://obsidian.md/)*)
 
-Get all your css snippets into editable markdown file in your vault. **The snippet css code is in the first code block of the note with type css.**
+
+## Snippets Manager
+
+Get all your css snippets into editable markdown file in your vault. **The snippet code is in the first css code block of the note.** Any note can be a snippet, to activate it, add `chisel: true` in frontmatter.
 
 ```md
 ---
@@ -14,32 +17,19 @@ body {
     text-shadow: 0px 0px 2px color-mix(in oklab, currentColor 12%, transparent);
     filter: blur(0.2px);
 }
-/```
+``\\`
 ```
 
-## Frontmatter use
+#### CSSClasses support
 
-```yml
-chisel: true # that snippet note is globally active
-snippets: [snippet, filename, list]
-# Snippets to load that are mirrored to cssclasses
+Hook on the allready available *“cssclasses”* frontmatter to load specific snippets for the active note. *Key can be changed in setting.*
 
-# Translate css variables
-chisel-light-background-color: red
-```
+## Helper class
 
-into
+Dynamic body class to help with the making of snippets.
 
 ```css
-body.chisel {
-  —-light-background-color: red !important;
-}
-```
-
-### CSS
-
-```css
-/* These classes are dynamically loaded */
+/* Dynamically loaded */
 body {
   .chisel-editing,
   .chisel-reading,
@@ -48,23 +38,30 @@ body {
   .chisel-canva,
   .chisel-webviewer
 }
-
 ```
 
-# Typography
+## Abstraction Layers
+
+Opionated simplified css management. Activated, layout will change, and those variables will be accessible.
+
+#### Typography
+
+Added font-header to pair font
 
 ```css
 body {
 	--font-ratio: 1.333;
-	--font-density: 1.7; /* Vertical rythm is based on that number */
+	--font-density: 1.7;
+	/* Vertical rythm is based on that number */
 
+	/* Support Google Fonts */
 	--font-text: "Forrest";
 	--font-feature: "";
 	--font-variation: "wght" 400;
-
 	--font-weight: 400;
-	--bold-weight: 500;
+	--font-bold-weight: 500;
 
+  /* Heading has their own font */
 	--font-header: "Bright Morning";
 	--font-header-feature: "";
 	--font-header-variation: "wght" 500;
@@ -82,15 +79,17 @@ body {
 }
 ```
 
-# Color
+#### Color
+
+**Everything** is optional
 
 ```css
 body {
-	--light-color-foreground:   #222;
-	--light-color-background:   #ffffff;
+	--light-color-foreground: #222;
+	--light-color-background: #ffffff;
 
-	--light-color-red:           #b33a2a;
-	--light-color-orange:     #bc5215;
+	--light-color-red: #b33a2a;
+	--light-color-orange: #bc5215;
 	--light-color-yellow: #cc8815;
 	--light-color-green: #66800b;
 	--light-color-cyan: #82a1b2;
@@ -121,12 +120,37 @@ body {
 }
 ```
 
-# Vertical rythm
+#### Vertical rythm
+
+```css
+body {
+  __chisel-single: 2rlh;
+  Chisel-global: 1rlh;
+}
+```
+
+#### Frontmatter override
+
+**Override** css variable in frontmatter with the suffix “chisel-“
 
 ```yml
-chisel-single: 2rlh
-Chisel-global: 1rlh
+chisel: true # that snippet note is globally active
+snippets: [snippet, filename, list]
+# Snippets to load that are mirrored to cssclasses
+
+# Translate css variables
+chisel-light-background-color: red
 ```
+
+into
+
+```css
+body.chisel {
+  —-light-background-color: red !important;
+}
+```
+
+## Example
 
 # Text-Generator
 
