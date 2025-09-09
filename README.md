@@ -1,6 +1,6 @@
 # Chisel
 
-![[src/screenshot.gif]]
+![ScreenShot](src/screenshot.gif)
 
 > A **chisel** is a [wedged](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Wedge "Wedge") [hand tool](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Hand_tool "Hand tool") *or a snippet* with a characteristically shaped cutting edge of [blade](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Blade "Blade") on its end for [carving](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Carving "Carving") or cutting a hard material (e.g. [wood](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Woodworking "Woodworking"), [stone](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Lapidary "Lapidary"), or *[Obsidian](https://obsidian.md/)*)
 
@@ -180,4 +180,4 @@ body {
 ```
 
 ## Since snippets are now note, you can manage them in base view.
-![[src/base-management.png]]
+![Base Manegement](src/base-management.png])
