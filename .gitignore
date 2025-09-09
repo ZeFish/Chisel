@@ -1,25 +1,3 @@
-# Dependencies
-/node_modules
-
-# macOS
-.DS_Store
-
-# Generated files
-chisel.css
-chisel.css.map
-
-# Environment variables
-.env
-
-# VSCode
-.vscode/
-
-data.json
-
-.git*
+.gitattributes
 .gitignore
-
-.zed/
-
-style.css
-style.css.map
+styles.css.map
