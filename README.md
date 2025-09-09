@@ -109,8 +109,8 @@ Opionated simplified css management. Activated, layout will change, and those va
 
 | Description | CSS Variable | Frontmatter Key | Example |
 | --- | --- | --- | --- |
-| Single | `--chisel-single` | `chisel-single` | `1.5rem` |
-| Global | `--chisel-global` | `chisel-global` | `1.2` |
+| Margein | `--margin` | `chisel-margin` | `1rlh` |
+| Margin Block | `--margin-block` | `chisel-margin-block` | `2` |
 
 ## Frontmatter override
 

@@ -746,11 +746,12 @@ body {
 /* Vertical Flow */
 /* ============================================= */
 body {
-  --margin: 1rlh;
-  --margin-block: calc(var(--margin) * 2);
+  --margin: 1rlh; /* single unit */
+  --margin-block: 2; /* block separation */
+  --margin-block-calculated: calc(var(--margin) * var(--margin-block));
 }
 
-.chisel-rhythm {
+.chisel-vertical-rhythm {
   --tag-border-width: 1px;
   --tag-radius: calc(var(--margin) * 0.25);
   --tag-padding-x: calc(var(--margin) * 0.25);
@@ -758,36 +759,6 @@ body {
   --table-margin: auto;
   --table-cell-padding: 0 calc(var(--margin) * 5) 0 calc(var(--margin) * 5);
   --table-edge-cell-padding-first: 0 calc(var(--margin) * 5);
-  /*
-      .markdown-source-view .cm-callout .callout {
-          margin: 0;
-      }
-
-      .view-content:not(:has(callout-content))
-          .markdown-source-view
-          > div:has(.image-embed)
-          > p,
-      .view-content:not(:has(callout-content))
-          .markdown-source-view
-          p:has(> .image-embed ~ .image-embed) {
-          margin-top:  calc(var(--margin) * 2);
-          margin-bottom:  calc(var(--margin) * 2);
-      }
-
-      .view-content:not(:has(callout-content))
-          .markdown-source-view
-          > div:has(.image-embed)
-          + div:has(.image-embed)
-          > p {
-          margin-top: calc(- calc(var(--margin) * 2) + var(--img-grid-gap));
-      }
-  */
-  /*
-   .markdown-reading-view,  .markdown-source-view {
-   padding:0 !important;
-   margin: calc(var(--margin) * 2);
-  }
-  */
   /*
       .mod-cm6 .HyperMD-list-line.cm-line {
           margin-bottom: 0. calc(var(--margin) * 5) !important;
@@ -806,89 +777,89 @@ body {
   /*  .HyperMD-header-5.cm-line */
   /*  .HyperMD-header-6.cm-line  */
 }
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) table {
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) table {
   margin-left: var(--table-margin);
   margin-right: var(--table-margin);
 }
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) p,
-.chisel-rhythm .cm-line {
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) p,
+.chisel-vertical-rhythm .cm-line {
   line-height: var(--line-height-normal);
   margin-top: 0rlh;
-  margin-bottom: var(--margin-block);
+  margin-bottom: var(--margin-block-calculated);
   padding: 0;
   margin-block-start: 0;
 }
-.chisel-rhythm .markdown-preview-section > div.el-p:has(.image-embed) {
-  margin: var(--margin-block) 0;
+.chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) {
+  margin: var(--margin-block-calculated) 0;
 }
-.chisel-rhythm .markdown-preview-section > div.el-p:has(.image-embed) + div.el-p:has(.image-embed) {
-  margin-top: -1.7 calc(var(--margin) * 5);
+.chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) + div.el-p:has(.image-embed) {
+  margin-top: calc(var(--margin) * -1.7) calc(var(--margin) * 5);
 }
-.chisel-rhythm .markdown-reading-view .callout,
-.chisel-rhythm .markdown-reading-view.mod-cm6 .callout,
-.chisel-rhythm .markdown-reading-view blockquote,
-.chisel-rhythm .markdown-reading-view pre {
+.chisel-vertical-rhythm .markdown-reading-view .callout,
+.chisel-vertical-rhythm .markdown-reading-view.mod-cm6 .callout,
+.chisel-vertical-rhythm .markdown-reading-view blockquote,
+.chisel-vertical-rhythm .markdown-reading-view pre {
   margin: calc(var(--margin) * 1.5) var(--margin);
 }
-.chisel-rhythm .markdown-reading-view blockquote p:last-of-type {
+.chisel-vertical-rhythm .markdown-reading-view blockquote p:last-of-type {
   margin-bottom: 0;
 }
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content,
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) blockquote {
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content,
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) blockquote {
   font-size: var(--font-small);
   line-height: var(--line-height-tight);
 }
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > p:last-of-type {
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > p:last-of-type {
   margin: 0;
 }
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
   margin: 0rlh 0 0 0;
   padding: 0 0 0 var(--margin);
 }
-.chisel-rhythm .markdown-reading-view hr {
+.chisel-vertical-rhythm .markdown-reading-view hr {
   margin: calc(var(--margin) * 5) calc(var(--margin) * 8) calc(var(--margin) * 6) calc(var(--margin) * 8);
 }
-.chisel-rhythm .markdown-source-view hr {
+.chisel-vertical-rhythm .markdown-source-view hr {
   margin: 0 25%;
 }
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .popover .markdown-embed-content,
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-content,
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .popover .markdown-embed-title,
-.chisel-rhythm :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-title {
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .popover .markdown-embed-content,
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-content,
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .popover .markdown-embed-title,
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-title {
   padding: var(--margin) !important;
 }
-.chisel-rhythm .markdown-preview-view ul,
-.chisel-rhythm .markdown-preview-view ol {
+.chisel-vertical-rhythm .markdown-preview-view ul,
+.chisel-vertical-rhythm .markdown-preview-view ol {
   padding: 0rlh calc(var(--margin) * 2);
   margin: calc(var(--margin) / 2) 0rlh;
 }
-.chisel-rhythm .el-h1 + .el-ul ul,
-.chisel-rhythm .el-h2 + .el-ul ul,
-.chisel-rhythm .el-h3 + .el-ul ul,
-.chisel-rhythm .el-h4 + .el-ul ul,
-.chisel-rhythm .el-h5 + .el-ul ul,
-.chisel-rhythm .el-h6 + .el-ul ul,
-.chisel-rhythm .el-h1 + .el-ol ol,
-.chisel-rhythm .el-h2 + .el-ol ol,
-.chisel-rhythm .el-h3 + .el-ol ol,
-.chisel-rhythm .el-h4 + .el-ol ol,
-.chisel-rhythm .el-h5 + .el-ol ol,
-.chisel-rhythm .el-h6 + .el-ol ol {
-  margin-top: 0.2 calc(var(--margin) * 5);
+.chisel-vertical-rhythm .el-h1 + .el-ul ul,
+.chisel-vertical-rhythm .el-h2 + .el-ul ul,
+.chisel-vertical-rhythm .el-h3 + .el-ul ul,
+.chisel-vertical-rhythm .el-h4 + .el-ul ul,
+.chisel-vertical-rhythm .el-h5 + .el-ul ul,
+.chisel-vertical-rhythm .el-h6 + .el-ul ul,
+.chisel-vertical-rhythm .el-h1 + .el-ol ol,
+.chisel-vertical-rhythm .el-h2 + .el-ol ol,
+.chisel-vertical-rhythm .el-h3 + .el-ol ol,
+.chisel-vertical-rhythm .el-h4 + .el-ol ol,
+.chisel-vertical-rhythm .el-h5 + .el-ol ol,
+.chisel-vertical-rhythm .el-h6 + .el-ol ol {
+  margin-top: calc(var(--margin) * 0.2) calc(var(--margin) * 5);
 }
-.chisel-rhythm .markdown-preview-view ol > li,
-.chisel-rhythm .markdown-preview-view ul > li,
-.chisel-rhythm .markdown-source-view ol > li,
-.chisel-rhythm .markdown-source-view ul > li {
+.chisel-vertical-rhythm .markdown-preview-view ol > li,
+.chisel-vertical-rhythm .markdown-preview-view ul > li,
+.chisel-vertical-rhythm .markdown-source-view ol > li,
+.chisel-vertical-rhythm .markdown-source-view ul > li {
   margin: 0rlh;
 }
-.chisel-rhythm .markdown-preview-view ol > li:not(:first-child),
-.chisel-rhythm .markdown-preview-view ul > li:not(:first-child),
-.chisel-rhythm .markdown-source-view ol > li:not(:first-child),
-.chisel-rhythm .markdown-source-view ul > li:not(:first-child) {
+.chisel-vertical-rhythm .markdown-preview-view ol > li:not(:first-child),
+.chisel-vertical-rhythm .markdown-preview-view ul > li:not(:first-child),
+.chisel-vertical-rhythm .markdown-source-view ol > li:not(:first-child),
+.chisel-vertical-rhythm .markdown-source-view ul > li:not(:first-child) {
   margin-top: 0 calc(var(--margin) * 5);
 }
-.chisel-rhythm .markdown-reading-view .inline-title {
+.chisel-vertical-rhythm .markdown-reading-view .inline-title {
   margin-top: calc(var(--margin) * 4);
   margin-bottom: calc(var(--margin) * 4);
   padding: 0;
@@ -899,93 +870,174 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
-.chisel-rhythm .markdown-reading-view div div h1 {
+.chisel-vertical-rhythm .markdown-reading-view div div h1 {
   margin-top: calc(var(--margin) * 8);
   margin-bottom: calc(var(--margin) * 4);
   padding: 0;
 }
-.chisel-rhythm .markdown-reading-view div div h2 {
+.chisel-vertical-rhythm .markdown-reading-view div div h2 {
   margin-top: calc(var(--margin) * 6);
   margin-bottom: calc(var(--margin) * 2);
   padding: 0;
 }
-.chisel-rhythm .markdown-reading-view div div h3 {
+.chisel-vertical-rhythm .markdown-reading-view div div h3 {
   margin-top: calc(var(--margin) * 4);
   margin-bottom: calc(var(--margin) * 2);
   padding: 0;
 }
-.chisel-rhythm .markdown-reading-view div.el-h1 + div.el-h2 h2 {
+.chisel-vertical-rhythm .markdown-reading-view div.el-h1 + div.el-h2 h2 {
   margin-top: var(--margin);
 }
-.chisel-rhythm .markdown-reading-view div.el-h2 + div.el-h3 h3 {
+.chisel-vertical-rhythm .markdown-reading-view div.el-h2 + div.el-h3 h3 {
   margin-top: calc(var(--margin) * 4);
 }
-.chisel-rhythm .markdown-reading-view div.el-h3 + div.el-h4 h4 {
+.chisel-vertical-rhythm .markdown-reading-view div.el-h3 + div.el-h4 h4 {
   margin-top: 0rlh;
 }
-.chisel-rhythm .markdown-reading-view div div h4 {
+.chisel-vertical-rhythm .markdown-reading-view div div h4 {
   margin-top: calc(var(--margin) * 4);
   margin-bottom: var(--margin);
   padding: 0;
 }
-.chisel-rhythm .markdown-reading-view div.el-h4 + div.el-h5 h5 {
+.chisel-vertical-rhythm .markdown-reading-view div.el-h4 + div.el-h5 h5 {
   margin-top: 0rlh;
 }
-.chisel-rhythm .markdown-reading-view div div h5 {
+.chisel-vertical-rhythm .markdown-reading-view div div h5 {
   margin-top: calc(var(--margin) * 2);
   margin-bottom: var(--margin);
   padding: 0;
 }
-.chisel-rhythm .markdown-reading-view div div h6 {
+.chisel-vertical-rhythm .markdown-reading-view div div h6 {
   margin-top: calc(var(--margin) * 2);
   margin-bottom: 0rlh;
   padding: 0;
 }
-.chisel-rhythm .markdown-reading-view div.el-h6 + div blockquote {
+.chisel-vertical-rhythm .markdown-reading-view div.el-h6 + div blockquote {
   margin-top: var(--margin);
 }
 
 @media only screen and (max-width: 600px) {
-  .chisel-rhythm .markdown-reading-view .callout,
-  .chisel-rhythm .markdown-reading-view blockquote,
-  .chisel-rhythm .markdown-reading-view pre {
+  .chisel-vertical-rhythm .markdown-reading-view .callout,
+  .chisel-vertical-rhythm .markdown-reading-view blockquote,
+  .chisel-vertical-rhythm .markdown-reading-view pre {
     margin: calc(var(--margin) * 2) 0rlh !important;
   }
-  .chisel-rhythm .inline-title {
+  .chisel-vertical-rhythm .inline-title {
     margin-bottom: calc(var(--margin) * 3);
     margin-top: var(--margin);
   }
-  .chisel-rhythm .markdown-source-view .inline-title {
+  .chisel-vertical-rhythm .markdown-source-view .inline-title {
     margin-bottom: var(--margin);
   }
-  .chisel-rhythm .markdown-reading-view ul,
-.chisel-rhythm .markdown-reading-view ol,
-.chisel-rhythm .markdown-reading-view .callout-content ul,
-.chisel-rhythm .markdown-reading-view .callout-content ol {
+  .chisel-vertical-rhythm .markdown-reading-view ul,
+  .chisel-vertical-rhythm .markdown-reading-view ol,
+  .chisel-vertical-rhythm .markdown-reading-view .callout-content ul,
+  .chisel-vertical-rhythm .markdown-reading-view .callout-content ol {
     padding: 0rlh 0rlh 0rlh 0 calc(var(--margin) * 5);
   }
-  .chisel-rhythm .markdown-reading-view hr {
+  .chisel-vertical-rhythm .markdown-reading-view hr {
     margin: calc(var(--margin) * 4) 25% !important;
   }
 }
 @media only screen and (min-width: 900px) {
-  .chisel-rhythm .inline-title {
+  .chisel-vertical-rhythm .inline-title {
     margin-top: calc(var(--margin) * 4);
   }
 }
 /* Preview mode (reading view) */
-.chisel-rhythm .markdown-reading-view h1 + h2,
-.chisel-rhythm .markdown-reading-view h1 + h3,
-.chisel-rhythm .markdown-reading-view h1 + h4,
-.chisel-rhythm .markdown-reading-view h1 + h5,
-.chisel-rhythm .markdown-reading-view h1 + h6,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line {
+.chisel-vertical-rhythm .markdown-reading-view h1 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h6,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-6.cm-line {
+  margin-top: 0rlh;
+}
+
+/* Preview mode */
+.chisel-vertical-rhythm .markdown-reading-view h1 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h6,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line {
   margin-top: calc(var(--margin) * 2);
 }
 
+.plugin-setting-tab details {
+  margin-bottom: 1em;
+  display: block;
+  flex-basis: 100%;
+}
 
 /*# sourceMappingURL=styles.css.map */

@@ -2,17 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const obsidian_1 = require("obsidian");
 
-// Simple debounce function
-function debounce(func, wait) {
-  let timeout;
-  return function(...args) {
-    const context = this;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(context, args), wait);
-  };
-}
-
-
 // Settings interface
 const DEFAULT_SETTINGS = {
   snippets_local: "cssclasses",
@@ -36,7 +25,6 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.chiselNoteStyleElement = null;
     this.autoloadedSnippets = new Map();
     this.concatenatedAutoloadCss = "";
-    this.debouncedUpdateAutoloadedSnippets = debounce(this.updateAutoloadedSnippets, 500);
   }
 
   async onload() {
@@ -63,7 +51,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
           this.autoloadedSnippets.has(file.path) ||
           this.hasAutoloadFlag(fm)
         ) {
-          this.debouncedUpdateAutoloadedSnippets();
+          this.updateAutoloadedSnippets();
         }
       }),
     );
@@ -74,7 +62,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
         if (activeFile && file === activeFile) {
           this.updateBodyClasses();
         }
-        this.debouncedUpdateAutoloadedSnippets();
+        this.updateAutoloadedSnippets();
         // Try applying startup snapshot if still idle and not yet applied
         if (!this.hasAppliedStartupSnapshot) this.applyStartupSnapshotIfIdle();
       }),
@@ -88,6 +76,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.updateModeClasses();
     setTimeout(() => this.updateBodyClasses(), 100);
     // If no file is open on startup, apply last saved snapshot of classes/snippets
+    setTimeout(() => this.applyStartupSnapshotIfIdle(), 100);
     // Also attempt once the workspace layout is ready
     // (ensures vault files are available)
     if (this.app?.workspace?.onLayoutReady) {
@@ -504,12 +493,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       if (!this.chiselNoteStyleElement) {
         this.chiselNoteStyleElement = document.createElement("style");
         this.chiselNoteStyleElement.id = "chisel-note-style";
-        const autoloadStyleEl = document.getElementById("chisel-autoload-styles");
-        if (autoloadStyleEl) {
-          autoloadStyleEl.after(this.chiselNoteStyleElement);
-        } else {
-          document.head.appendChild(this.chiselNoteStyleElement);
-        }
+        document.head.appendChild(this.chiselNoteStyleElement);
       }
       this.chiselNoteStyleElement.textContent = allCssContent;
     }
@@ -532,13 +516,6 @@ class ChiselPlugin extends obsidian_1.Plugin {
   async updateAutoloadedSnippets() {
     const autoloadStyleId = "chisel-autoload-styles";
     let autoloadStyleEl = document.getElementById(autoloadStyleId);
-
-    // Ensure the style element exists
-    if (!autoloadStyleEl) {
-      autoloadStyleEl = document.createElement("style");
-      autoloadStyleEl.id = autoloadStyleId;
-      document.head.appendChild(autoloadStyleEl);
-    }
 
     const files = this.app.vault.getMarkdownFiles();
     const autoloadFiles = files

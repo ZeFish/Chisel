@@ -2,11 +2,12 @@
 /* Vertical Flow */
 /* ============================================= */
 body {
-    --margin: 1rlh;
-    --margin-block: calc(var(--margin) * 2);
+    --margin: 1rlh; /* single unit */
+    --margin-block: 2; /* block separation */
+    --margin-block-calculated: calc(var(--margin) * var(--margin-block));
 }
 
-.chisel-rhythm {
+.chisel-vertical-rhythm {
     --tag-border-width: 1px;
     --tag-radius: calc(var(--margin) * 0.25);
     --tag-padding-x: calc(var(--margin) * 0.25);
@@ -24,19 +25,19 @@ body {
     .cm-line {
         line-height: var(--line-height-normal);
         margin-top: 0rlh;
-        margin-bottom: var(--margin-block);
+        margin-bottom: var(--margin-block-calculated);
         padding: 0;
         margin-block-start: 0;
     }
 
     .markdown-preview-section > div.el-p:has(.image-embed) {
-        margin: var(--margin-block) 0;
+        margin: var(--margin-block-calculated) 0;
     }
 
     .markdown-preview-section
         > div.el-p:has(.image-embed)
         + div.el-p:has(.image-embed) {
-        margin-top: -1.7 calc(var(--margin) * 5);
+        margin-top: calc(var(--margin) * -1.7) calc(var(--margin) * 5);
     }
 
     .markdown-reading-view .callout,
@@ -49,30 +50,6 @@ body {
     .markdown-reading-view blockquote p:last-of-type {
         margin-bottom: 0;
     }
-    /*
-    .markdown-source-view .cm-callout .callout {
-        margin: 0;
-    }
-
-    .view-content:not(:has(callout-content))
-        .markdown-source-view
-        > div:has(.image-embed)
-        > p,
-    .view-content:not(:has(callout-content))
-        .markdown-source-view
-        p:has(> .image-embed ~ .image-embed) {
-        margin-top:  calc(var(--margin) * 2);
-        margin-bottom:  calc(var(--margin) * 2);
-    }
-
-    .view-content:not(:has(callout-content))
-        .markdown-source-view
-        > div:has(.image-embed)
-        + div:has(.image-embed)
-        > p {
-        margin-top: calc(- calc(var(--margin) * 2) + var(--img-grid-gap));
-    }
-*/
 
     :is(.markdown-source-view, .markdown-reading-view) .callout-content,
     :is(.markdown-source-view, .markdown-reading-view) blockquote {
@@ -107,13 +84,6 @@ body {
         padding: var(--margin) !important;
     }
 
-    /*
-   .markdown-reading-view,  .markdown-source-view {
-	  padding:0 !important;
-	  margin: calc(var(--margin) * 2);
-  }
-  */
-
     .markdown-preview-view ul,
     .markdown-preview-view ol {
         padding: 0rlh calc(var(--margin) * 2);
@@ -131,7 +101,7 @@ body {
     .el-h4 + .el-ol ol,
     .el-h5 + .el-ol ol,
     .el-h6 + .el-ol ol {
-        margin-top: 0.2 calc(var(--margin) * 5);
+        margin-top: calc(var(--margin) * 0.2) calc(var(--margin) * 5);
     }
 
     .markdown-preview-view ol > li,
@@ -232,125 +202,125 @@ is commented because is bugged the ability to select text
 }
 
 @media only screen and (max-width: 600px) {
-    .chisel-rhythm .markdown-reading-view .callout,
-    .chisel-rhythm .markdown-reading-view blockquote,
-    .chisel-rhythm .markdown-reading-view pre {
+    .chisel-vertical-rhythm .markdown-reading-view .callout,
+    .chisel-vertical-rhythm .markdown-reading-view blockquote,
+    .chisel-vertical-rhythm .markdown-reading-view pre {
         margin: calc(var(--margin) * 2) 0rlh !important;
     }
-    .chisel-rhythm .inline-title {
+    .chisel-vertical-rhythm .inline-title {
         margin-bottom: calc(var(--margin) * 3);
         margin-top: var(--margin);
     }
-    .chisel-rhythm .markdown-source-view .inline-title {
+    .chisel-vertical-rhythm .markdown-source-view .inline-title {
         margin-bottom: var(--margin);
     }
-    .chisel-rhythm .markdown-reading-view ul,
-    .chisel-rhythm .markdown-reading-view ol,
-    .chisel-rhythm .markdown-reading-view .callout-content ul,
-    .chisel-rhythm .markdown-reading-view .callout-content ol {
+    .chisel-vertical-rhythm .markdown-reading-view ul,
+    .chisel-vertical-rhythm .markdown-reading-view ol,
+    .chisel-vertical-rhythm .markdown-reading-view .callout-content ul,
+    .chisel-vertical-rhythm .markdown-reading-view .callout-content ol {
         padding: 0rlh 0rlh 0rlh 0 calc(var(--margin) * 5);
     }
-    .chisel-rhythm .markdown-reading-view hr {
+    .chisel-vertical-rhythm .markdown-reading-view hr {
         margin: calc(var(--margin) * 4) 25% !important;
     }
 }
 
 @media only screen and (min-width: 900px) {
-    .chisel-rhythm .inline-title {
+    .chisel-vertical-rhythm .inline-title {
         margin-top: calc(var(--margin) * 4);
     }
 }
 
 /* Preview mode (reading view) */
-.chisel-rhythm .markdown-reading-view h1 + h1,
-.chisel-rhythm .markdown-reading-view h1 + h2,
-.chisel-rhythm .markdown-reading-view h1 + h3,
-.chisel-rhythm .markdown-reading-view h1 + h4,
-.chisel-rhythm .markdown-reading-view h1 + h5,
-.chisel-rhythm .markdown-reading-view h1 + h6,
-.chisel-rhythm .markdown-reading-view h2 + h1,
-.chisel-rhythm .markdown-reading-view h2 + h2,
-.chisel-rhythm .markdown-reading-view h2 + h3,
-.chisel-rhythm .markdown-reading-view h2 + h4,
-.chisel-rhythm .markdown-reading-view h2 + h5,
-.chisel-rhythm .markdown-reading-view h2 + h6,
-.chisel-rhythm .markdown-reading-view h3 + h1,
-.chisel-rhythm .markdown-reading-view h3 + h2,
-.chisel-rhythm .markdown-reading-view h3 + h3,
-.chisel-rhythm .markdown-reading-view h3 + h4,
-.chisel-rhythm .markdown-reading-view h3 + h5,
-.chisel-rhythm .markdown-reading-view h3 + h6,
-.chisel-rhythm .markdown-reading-view h4 + h1,
-.chisel-rhythm .markdown-reading-view h4 + h2,
-.chisel-rhythm .markdown-reading-view h4 + h3,
-.chisel-rhythm .markdown-reading-view h4 + h4,
-.chisel-rhythm .markdown-reading-view h4 + h5,
-.chisel-rhythm .markdown-reading-view h4 + h6,
-.chisel-rhythm .markdown-reading-view h5 + h1,
-.chisel-rhythm .markdown-reading-view h5 + h2,
-.chisel-rhythm .markdown-reading-view h5 + h3,
-.chisel-rhythm .markdown-reading-view h5 + h4,
-.chisel-rhythm .markdown-reading-view h5 + h5,
-.chisel-rhythm .markdown-reading-view h5 + h6,
-.chisel-rhythm .markdown-reading-view h6 + h1,
-.chisel-rhythm .markdown-reading-view h6 + h2,
-.chisel-rhythm .markdown-reading-view h6 + h3,
-.chisel-rhythm .markdown-reading-view h6 + h4,
-.chisel-rhythm .markdown-reading-view h6 + h5,
-.chisel-rhythm .markdown-reading-view h6 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h2 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h3 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h4 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h5 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h1,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h6 + h6,
 
 /* Editor mode */
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-6.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-1.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-6.cm-line {
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-6.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-1.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-6.cm-line {
     margin-top: 0rlh;
 }
 
 /* Preview mode */
-.chisel-rhythm .markdown-reading-view h1 + h2,
-.chisel-rhythm .markdown-reading-view h1 + h3,
-.chisel-rhythm .markdown-reading-view h1 + h4,
-.chisel-rhythm .markdown-reading-view h1 + h5,
-.chisel-rhythm .markdown-reading-view h1 + h6,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h2,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h3,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h4,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h5,
+.chisel-vertical-rhythm .markdown-reading-view h1 + h6,
 
 /* Editor mode */
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
-.chisel-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line {
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
+.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line {
     margin-top: calc(var(--margin) * 2);
 }
