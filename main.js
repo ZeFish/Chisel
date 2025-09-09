@@ -28,6 +28,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.lastAppliedCustomCss = "";
     this.lastAppliedChiselNoteCss = "";
     this.chiselGlobalElement = null; // New property for chisel-global
+    this.frontmatterUpdateTimeout = null; // Timeout for debouncing frontmatter updates
   }
 
   async onload() {
@@ -118,10 +119,38 @@ class ChiselPlugin extends obsidian_1.Plugin {
       }),
     );
 
+    // Add more immediate response to editor changes
+    this.registerEvent(
+      this.app.workspace.on("editor-change", (editor, info) => {
+        const activeFile = this.app.workspace.getActiveFile();
+        if (activeFile && info.file === activeFile) {
+          // Debounce the update to avoid excessive calls
+          clearTimeout(this.frontmatterUpdateTimeout);
+          this.frontmatterUpdateTimeout = setTimeout(() => {
+            this.updateBodyClasses();
+          }, 50);
+        }
+      }),
+    );
+
+    // Listen for file modifications (immediate response)
+    this.registerEvent(
+      this.app.vault.on("modify", (file) => {
+        const activeFile = this.app.workspace.getActiveFile();
+        if (activeFile && file === activeFile) {
+          // Immediate response for file modifications
+          clearTimeout(this.frontmatterUpdateTimeout);
+          this.frontmatterUpdateTimeout = setTimeout(() => {
+            this.updateBodyClasses();
+          }, 25);
+        }
+      }),
+    );
+
     this.updateModeClasses();
-    setTimeout(() => this.updateBodyClasses(), 100);
+    this.updateBodyClasses();
     // If no file is open on startup, apply last saved snapshot of classes/snippets
-    setTimeout(() => this.applyStartupSnapshotIfIdle(), 100);
+    this.applyStartupSnapshotIfIdle();
     // Also attempt once the workspace layout is ready
     // (ensures vault files are available)
     if (this.app?.workspace?.onLayoutReady) {
@@ -146,6 +175,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
   }
 
   onunload() {
+    // Clear any pending timeout
+    if (this.frontmatterUpdateTimeout) {
+      clearTimeout(this.frontmatterUpdateTimeout);
+    }
     document.body.classList.remove("chisel");
     this.cleanup();
     this.clearModeClasses();
@@ -167,10 +200,97 @@ class ChiselPlugin extends obsidian_1.Plugin {
     await this.saveData(this.settings);
   }
 
+  // Helper method to parse frontmatter directly from editor content
+  async parseCurrentFrontmatter(file) {
+    try {
+      // Try to get content from active editor first (most up-to-date)
+      const activeView = this.app.workspace.getActiveViewOfType(obsidian_1.MarkdownView);
+      let content;
+      
+      if (activeView && activeView.file === file) {
+        // Get content from editor (immediate, no cache delay)
+        content = activeView.editor.getValue();
+      } else {
+        // Fallback to file read
+        content = await this.app.vault.read(file);
+      }
+      
+      // Simple frontmatter parsing
+      const frontmatterMatch = content.match(/^---\s*([\s\S]*?)\n---/);
+      if (frontmatterMatch) {
+        const frontmatterText = frontmatterMatch[1];
+        const result = {};
+        
+        // Parse cssclasses (both cssclasses and cssClasses)
+        const cssclassesMatch = frontmatterText.match(/^cssclasses?:\s*(.*)$/m);
+        if (cssclassesMatch) {
+          const value = cssclassesMatch[1].trim();
+          let cssclasses;
+          
+          // Handle different formats: [item1, item2] or "item" or item
+          if (value.startsWith('[') && value.endsWith(']')) {
+            // Array format
+            cssclasses = value
+              .slice(1, -1)
+              .split(',')
+              .map(item => item.trim().replace(/["']/g, ''))
+              .filter(Boolean);
+          } else if (value) {
+            // Single value format
+            cssclasses = value.replace(/["']/g, '');
+          }
+          
+          if (cssclasses) {
+            result.cssclasses = cssclasses;
+          }
+        }
+        
+        // Parse chisel properties (for snippets)
+        const chiselMatch = frontmatterText.match(/^chisel:\s*(.*)$/m);
+        if (chiselMatch) {
+          const value = chiselMatch[1].trim();
+          let chisel;
+          
+          if (value.startsWith('[') && value.endsWith(']')) {
+            chisel = value
+              .slice(1, -1)
+              .split(',')
+              .map(item => item.trim().replace(/["']/g, ''))
+              .filter(Boolean);
+          } else if (value) {
+            chisel = value.replace(/["']/g, '');
+          }
+          
+          if (chisel) {
+            result.chisel = chisel;
+          }
+        }
+        
+        // Parse any chisel- properties
+        const chiselPropMatches = frontmatterText.matchAll(/^(chisel-[^:]+):\s*(.*)$/gm);
+        for (const match of chiselPropMatches) {
+          const propName = match[1];
+          const propValue = match[2].trim().replace(/["']/g, '');
+          if (propValue) {
+            result[propName] = propValue;
+          }
+        }
+        
+        return Object.keys(result).length > 0 ? result : null;
+      }
+    } catch (error) {
+      // Silently fail and return null to use cache
+      console.log('Frontmatter parsing error:', error);
+    }
+    
+    return null;
+  }
+
   async updateBodyClasses() {
     const activeFile = this.app.workspace.getActiveFile();
 
     const newClasses = new Set();
+    let frontmatter = null;
 
     // Global settings classes
     if (this.settings.enableTypography) newClasses.add("chisel-typography");
@@ -178,11 +298,20 @@ class ChiselPlugin extends obsidian_1.Plugin {
     if (this.settings.enableRhythm) newClasses.add("chisel-vertical-rhythm");
 
     if (activeFile) {
-      // Frontmatter classes
-      const meta = this.app.metadataCache.getFileCache(activeFile);
-      if (meta?.frontmatter) {
+      // Always try direct parsing first for immediate response, then fallback to cache
+      frontmatter = await this.parseCurrentFrontmatter(activeFile);
+      
+      // Fallback to cache if direct parsing failed
+      if (!frontmatter) {
+        const meta = this.app.metadataCache.getFileCache(activeFile);
+        if (meta?.frontmatter) {
+          frontmatter = meta.frontmatter;
+        }
+      }
+      
+      if (frontmatter) {
         const cssclasses =
-          meta.frontmatter.cssclasses || meta.frontmatter.cssClasses;
+          frontmatter.cssclasses || frontmatter.cssClasses;
         if (cssclasses) {
           const classList = Array.isArray(cssclasses)
             ? cssclasses
@@ -209,9 +338,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     this.appliedClasses = newClasses;
 
-    if (activeFile) {
-      // Handle snippets and other properties
-      const meta = this.app.metadataCache.getFileCache(activeFile);
+    if (activeFile && frontmatter) {
+      // Handle snippets and other properties using the direct frontmatter
+      const meta = { frontmatter };
       this.updateSnippetsAndProperties(meta);
     }
   }
@@ -301,7 +430,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       this.clearChiselNote();
     }
     this.clearFrontmatterProperties();
-    this.applyCustomProperties(meta.frontmatter);
+    this.applyFrontmatter(meta.frontmatter);
   }
 
   clearAllClasses() {
@@ -356,7 +485,8 @@ class ChiselPlugin extends obsidian_1.Plugin {
     // Wait until vault files are available
     const files = this.app.vault.getMarkdownFiles();
     if (!files || files.length === 0) {
-      setTimeout(() => this.applyStartupSnapshotIfIdle(), 100);
+      // Use a shorter delay for better responsiveness
+      setTimeout(() => this.applyStartupSnapshotIfIdle(), 10);
       return;
     }
 
@@ -418,7 +548,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     });
   }
 
-  applyCustomProperties(frontmatter) {
+  applyFrontmatter(frontmatter) {
     const chiselProps = {};
     const fontProperties = new Set();
 
@@ -442,6 +572,17 @@ class ChiselPlugin extends obsidian_1.Plugin {
     }
 
     if (Object.keys(chiselProps).length > 0) {
+      // Ensure the element exists
+      if (!this.chiselFrontmatterElement || !document.getElementById("chisel-frontmatter")) {
+        this.chiselFrontmatterElement = document.createElement("style");
+        this.chiselFrontmatterElement.id = "chisel-frontmatter";
+        // Insert after chiselNoteElement if it exists, otherwise append to head
+        if (this.chiselNoteElement && document.contains(this.chiselNoteElement)) {
+          this.chiselNoteElement.after(this.chiselFrontmatterElement);
+        } else {
+          document.head.appendChild(this.chiselFrontmatterElement);
+        }
+      }
       let chiselFrontmatterElement = this.chiselFrontmatterElement;
       const googleFontsImports = Array.from(fontProperties)
         .map((font) => {
@@ -472,11 +613,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
   }
 
   clearFrontmatterProperties() {
-    const styleElement = document.getElementById("chisel-frontmatter");
-    if (styleElement) {
-      styleElement.remove();
+    if (this.chiselFrontmatterElement) {
+      this.chiselFrontmatterElement.textContent = "";
+      this.lastAppliedCustomCss = "";
     }
-    this.chiselFrontmatterElement = null;
   }
 
   async applyChiselNote(chiselNoteName) {
@@ -541,6 +681,17 @@ class ChiselPlugin extends obsidian_1.Plugin {
     }
 
     if (allCssContent) {
+      // Ensure the element exists
+      if (!this.chiselNoteElement || !document.getElementById("chisel-note")) {
+        this.chiselNoteElement = document.createElement("style");
+        this.chiselNoteElement.id = "chisel-note";
+        // Insert after chiselGlobalElement if it exists, otherwise append to head
+        if (this.chiselGlobalElement && document.contains(this.chiselGlobalElement)) {
+          this.chiselGlobalElement.after(this.chiselNoteElement);
+        } else {
+          document.head.appendChild(this.chiselNoteElement);
+        }
+      }
       this.chiselNoteElement.textContent = allCssContent;
       this.lastAppliedChiselNoteCss = allCssContent;
     } else {
@@ -550,11 +701,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
   }
 
   clearChiselNote() {
-    const styleElement = document.getElementById("chisel-note");
-    if (styleElement) {
-      styleElement.remove();
+    if (this.chiselNoteElement) {
+      this.chiselNoteElement.textContent = "";
+      this.lastAppliedChiselNoteCss = "";
     }
-    this.chiselNoteElement = null;
   }
 
   hasAutoloadFlag(frontmatter) {
@@ -584,86 +734,73 @@ class ChiselPlugin extends obsidian_1.Plugin {
     }
 
     let allCssContent = "";
-    let index = 0;
 
-    const processNextAutoloadFile = async () => {
-      if (index >= autoloadFiles.length) {
-        // All files processed
-        if (allCssContent === this.concatenatedAutoloadCss) {
-          return; // No change, so no DOM update needed
-        }
-
-        this.concatenatedAutoloadCss = allCssContent;
-        chiselGlobalElement.textContent = allCssContent;
-        return;
-      }
-
-      const file = autoloadFiles[index];
+    // Process all files directly without artificial delays
+    for (const file of autoloadFiles) {
       const noteContent = await this.app.vault.cachedRead(file);
-      const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)`/gi;
+      const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)```/gi;
       const matches = [...noteContent.matchAll(codeBlockRegex)];
       const cssContent = matches.map((match) => match[1]).join("\n");
       if (cssContent && cssContent.trim().length > 0) {
         allCssContent += cssContent + "\n";
         this.autoloadedSnippets.set(file.path, cssContent);
       }
+    }
 
-      index++;
-      setTimeout(processNextAutoloadFile, 0); // Yield control
-    };
-
-    processNextAutoloadFile();
+    // Only update if content changed
+    if (allCssContent !== this.concatenatedAutoloadCss) {
+      this.concatenatedAutoloadCss = allCssContent;
+      chiselGlobalElement.textContent = allCssContent;
+    }
   }
 
   updateModeClasses() {
-    setTimeout(() => {
-      const body = document.body;
-      this.clearModeClasses();
-      this.clearModeViewClasses();
-      const leafContentEl = document.querySelector(
-        ".mod-root .workspace-leaf.mod-active .workspace-leaf-content",
-      );
-      if (!leafContentEl) return;
+    const body = document.body;
+    this.clearModeClasses();
+    this.clearModeViewClasses();
+    const leafContentEl = document.querySelector(
+      ".mod-root .workspace-leaf.mod-active .workspace-leaf-content",
+    );
+    if (!leafContentEl) return;
 
-      let newMode = null;
-      const dataType = leafContentEl.getAttribute("data-type");
-      switch (dataType) {
-        case "markdown":
-          body.classList.add("chisel-note");
-          this.addClassToViews("chisel-note");
-          const dataMode = leafContentEl.getAttribute("data-mode");
-          if (dataMode === "preview") {
-            newMode = "reading";
-            body.classList.add("chisel-reading");
-            this.addClassToViews("chisel-reading");
-          } else if (dataMode === "source") {
-            newMode = "editing";
-            body.classList.add("chisel-editing");
-            this.addClassToViews("chisel-editing");
-          }
-          break;
-        case "canvas":
-          newMode = "canvas";
-          body.classList.add("chisel-canvas");
-          this.addClassToViews("chisel-canvas");
-          break;
-        case "empty":
-          newMode = "empty";
-          body.classList.add("chisel-empty");
-          this.addClassToViews("chisel-empty");
-          break;
-        case "webviewer":
-          newMode = "webviewer";
-          body.classList.add("chisel-webviewer");
-          this.addClassToViews("chisel-webviewer");
-          break;
-        case "bases":
-          newMode = "base";
-          body.classList.add("chisel-base");
-          this.addClassToViews("chisel-base");
-          break;
-      }
-    }, 100);
+    let newMode = null;
+    const dataType = leafContentEl.getAttribute("data-type");
+    switch (dataType) {
+      case "markdown":
+        body.classList.add("chisel-note");
+        this.addClassToViews("chisel-note");
+        const dataMode = leafContentEl.getAttribute("data-mode");
+        if (dataMode === "preview") {
+          newMode = "reading";
+          body.classList.add("chisel-reading");
+          this.addClassToViews("chisel-reading");
+        } else if (dataMode === "source") {
+          newMode = "editing";
+          body.classList.add("chisel-editing");
+          this.addClassToViews("chisel-editing");
+        }
+        break;
+      case "canvas":
+        newMode = "canvas";
+        body.classList.add("chisel-canvas");
+        this.addClassToViews("chisel-canvas");
+        break;
+      case "empty":
+        newMode = "empty";
+        body.classList.add("chisel-empty");
+        this.addClassToViews("chisel-empty");
+        break;
+      case "webviewer":
+        newMode = "webviewer";
+        body.classList.add("chisel-webviewer");
+        this.addClassToViews("chisel-webviewer");
+        break;
+      case "bases":
+        newMode = "base";
+        body.classList.add("chisel-base");
+        this.addClassToViews("chisel-base");
+        break;
+    }
   }
 
   clearModeClasses() {
