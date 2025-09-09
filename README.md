@@ -1,30 +1,31 @@
 # Chisel
 
+![[src/screenshot.gif]]
+
 > A **chisel** is a [wedged](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Wedge "Wedge") [hand tool](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Hand_tool "Hand tool") *or a snippet* with a characteristically shaped cutting edge of [blade](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Blade "Blade") on its end for [carving](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Carving "Carving") or cutting a hard material (e.g. [wood](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Woodworking "Woodworking"), [stone](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Lapidary "Lapidary"), or *[Obsidian](https://obsidian.md/)*)
 
 ## Snippets Manager
 
-Get all your css snippets into editable markdown file in your vault. **The snippet code is in the first css code block of the note.** Any note can be a snippet, to activate it, add `chisel: true` in frontmatter.
+Get all your css snippets into editable markdown file in your vault. **The snippet code is in the first css code block of the note.** Any note can be a snippet.
 
 ```md
 ---
-chisel: true
+chisel: true # that make it globally active
 ---
 
 ```css
 body {
-    text-shadow: 0px 0px 2px color-mix(in oklab, currentColor 12%, transparent);
-    filter: blur(0.2px);
+    color: red !important;
 }
 ````
 
-#### CSSClasses support
+### CSSClasses support
 
 Hook on the allready available *“cssclasses”* frontmatter to load specific snippets for the active note. *Key can be changed in setting.*
 
 ## Helper class
 
-Dynamic body class to help with the making of snippets.
+Chisel manage additional body class to help with the making of snippets.
 
 ```css
 /* Dynamically loaded */
@@ -40,7 +41,7 @@ body {
 
 ## Abstraction Layers
 
-Opionated simplified css management. Activated, layout will change, and those variables will be accessible.
+Opionated simplified css management. Activated, layout will change, and those variables will then be accessible for you snippets or directly in frontmatter.
 
 ### Typography
 
@@ -116,19 +117,18 @@ Opionated simplified css management. Activated, layout will change, and those va
 **Override** css variable in frontmatter with the suffix “chisel-“
 
 ```yml
-chisel: true # that snippet note is globally active
-snippets: [snippet, filename, list]
-# Snippets to load that are mirrored to cssclasses
+# Snippets to load like we are used to.
+cssclasses: [snippet, filename, list]
 
 # Translate css variables
 chisel-light-background-color: red
 ```
 
-into
+will translate into
 
 ```css
 body.chisel {
-  —-light-background-color: red !important;
+  --light-background-color: red !important;
 }
 ```
 
@@ -178,3 +178,6 @@ body {
     filter: blur(0.2px);
 }
 ```
+
+## Since snippets are now note, you can manage them in base view.
+![[src/base-management.png]]
