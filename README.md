@@ -21,7 +21,7 @@ body {
 
 ### CSSClasses support
 
-Hook on the allready available *“cssclasses”* frontmatter to load specific snippets for the active note. *Key can be changed in setting.*
+Hook on the already available *“cssclasses”* frontmatter to load specific snippets for the active note. *Key can be changed in setting.*
 
 ## Helper class
 
@@ -180,4 +180,4 @@ body {
 ```
 
 ## Since snippets are now note, you can manage them in base view.
-![Base Manegement](src/base-management.png])
+![Base Manegement](src/base-management.png)
