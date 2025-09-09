@@ -1,7 +1,6 @@
 # Chisel
 
-> A **chisel** is a [wedged](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Wedge "Wedge") [hand tool](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Hand_tool "Hand tool") *or a snippet* with a characteristically shaped cutting edge of [blade](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Blade "Blade") on its end for [carving](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Carving "Carving") or cutting a hard material (e.g. [wood](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Woodworking "Woodworking"), [stone](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Lapidary "Lapidary"), or *[Obsidian](https://obsidian.md/)*)
-
+> A **chisel** is a [wedged](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Wedge "Wedge") [hand tool](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Hand_tool "Hand tool") *or a snippet* with a characteristically shaped cutting edge of [blade](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Blade "Blade") on its end for [carving](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Carving "Carving") or cutting a hard material (e.g. [wood](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Woodworking "Woodworking"), [stone](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Lapidary "Lapidary"), or *[Obsidian](https://obsidian.md/)*)
 
 ## Snippets Manager
 
@@ -17,8 +16,7 @@ body {
     text-shadow: 0px 0px 2px color-mix(in oklab, currentColor 12%, transparent);
     filter: blur(0.2px);
 }
-``\\`
-```
+````
 
 #### CSSClasses support
 
@@ -44,92 +42,76 @@ body {
 
 Opionated simplified css management. Activated, layout will change, and those variables will be accessible.
 
-#### Typography
+### Typography
 
-Added font-header to pair font
+| Description | CSS Variable | Frontmatter Key | Example |
+| --- | --- | --- | --- |
+| Font Ratio | `--font-ratio` | `chisel-font-ratio` | `1.25` |
+| Font Density | `--font-density` | `chisel-font-density` | `1.2` |
+| Font Text | `--font-text` | `chisel-font-text` | `'Inter', sans-serif` |
+| Font Feature | `--font-feature` | `chisel-font-feature` | `'liga', 'kern'` |
+| Font Variation | `--font-variation` | `chisel-font-variation` | `'wght' 400` |
+| Font Weight | `--font-weight` | `chisel-font-weight` | `400` |
+| Bold Weight | `--bold-weight` | `chisel-bold-weight` | `700` |
+| Font Header | `--font-header` | `chisel-font-header` | `'Merriweather', serif` |
+| Font Header Feature | `--font-header-feature` | `chisel-font-header-feature` | `'liga'` |
+| Font Header Variation | `--font-header-variation` | `chisel-font-header-variation` | `'wght' 600` |
+| Font Header Letter Spacing | `--font-header-letter-spacing` | `chisel-font-header-letter-spacing` | `-0.02em` |
+| Font Header Style | `--font-header-style` | `chisel-font-header-style` | `normal` |
+| Font Header Weight | `--font-header-weight` | `chisel-font-header-weight` | `600` |
+| Font Monospace | `--font-monospace` | `chisel-font-monospace` | `'Fira Code', monospace` |
+| Font Monospace Feature | `--font-monospace-feature` | `chisel-font-monospace-feature` | `'liga'` |
+| Font Monospace Variation | `--font-monospace-variation` | `chisel-font-monospace-variation` | `'wght' 400` |
+| Font Interface | `--font-interface` | `chisel-font-interface` | `'System-UI', sans-serif` |
+| Font Interface Feature | `--font-interface-feature` | `chisel-font-interface-feature` | `'liga'` |
+| Font Interface Variation | `--font-interface-variation` | `chisel-font-interface-variation` | `'wght' 400` |
 
-```css
-body {
-	--font-ratio: 1.333;
-	--font-density: 1.7;
-	/* Vertical rythm is based on that number */
+### Color
 
-	/* Support Google Fonts */
-	--font-text: "Forrest";
-	--font-feature: "";
-	--font-variation: "wght" 400;
-	--font-weight: 400;
-	--font-bold-weight: 500;
+#### Light Theme
 
-  /* Heading has their own font */
-	--font-header: "Bright Morning";
-	--font-header-feature: "";
-	--font-header-variation: "wght" 500;
-	--font-header-letter-spacing: 0em;
-	--font-header-style: none;
-	--font-header-weight: 800;
+| Description | CSS Variable | Frontmatter Key | Example |
+| --- | --- | --- | --- |
+| Light Foreground | `--light-color-foreground` | `chisel-light-color-foreground` | `#1a1a1a` |
+| Light Background | `--light-color-background` | `chisel-light-color-background` | `#ffffff` |
+| Light Red | `--light-color-red` | `chisel-light-color-red` | `#dc3545` |
+| Light Orange | `--light-color-orange` | `chisel-light-color-orange` | `#fd7e14` |
+| Light Yellow | `--light-color-yellow` | `chisel-light-color-yellow` | `#ffc107` |
+| Light Green | `--light-color-green` | `chisel-light-color-green` | `#28a745` |
+| Light Cyan | `--light-color-cyan` | `chisel-light-color-cyan` | `#17a2b8` |
+| Light Blue | `--light-color-blue` | `chisel-light-color-blue` | `#007bff` |
+| Light Purple | `--light-color-purple` | `chisel-light-color-purple` | `#6f42c1` |
+| Light Pink | `--light-color-pink` | `chisel-light-color-pink` | `#e83e8c` |
+| Light Accent | `--light-accent-color` | `chisel-light-accent-color` | `#007bff` |
+| Light Bold | `--light-bold-color` | `chisel-light-bold-color` | `#000000` |
+| Light Italic | `--light-italic-color` | `chisel-light-italic-color` | `#495057` |
 
-	--font-monospace: "MonoStein Pro Var";
-	--font-monospace-feature: "salt";
-	--font-monospace-variation: "";
+#### Dark Theme
 
-	--font-interface: "MonoStein Pro Var";
-	--font-interface-feature: "salt";
-	--font-interface-variation: "";
-}
-```
+| Description | CSS Variable | Frontmatter Key | Example |
+| --- | --- | --- | --- |
+| Dark Foreground | `--dark-color-foreground` | `chisel-dark-color-foreground` | `#ffffff` |
+| Dark Background | `--dark-color-background` | `chisel-dark-color-background` | `#1a1a1a` |
+| Dark Red | `--dark-color-red` | `chisel-dark-color-red` | `#ff6b6b` |
+| Dark Orange | `--dark-color-orange` | `chisel-dark-color-orange` | `#ffa726` |
+| Dark Yellow | `--dark-color-yellow` | `chisel-dark-color-yellow` | `#ffeb3b` |
+| Dark Green | `--dark-color-green` | `chisel-dark-color-green` | `#66bb6a` |
+| Dark Cyan | `--dark-color-cyan` | `chisel-dark-color-cyan` | `#4dd0e1` |
+| Dark Blue | `--dark-color-blue` | `chisel-dark-color-blue` | `#42a5f5` |
+| Dark Purple | `--dark-color-purple` | `chisel-dark-color-purple` | `#ab47bc` |
+| Dark Pink | `--dark-color-pink` | `chisel-dark-color-pink` | `#ec407a` |
+| Dark Accent | `--dark-accent-color` | `chisel-dark-accent-color` | `#42a5f5` |
+| Dark Bold | `--dark-bold-color` | `chisel-dark-bold-color` | `#ffffff` |
+| Dark Italic | `--dark-italic-color` | `chisel-dark-italic-color` | `#adb5bd` |
 
-#### Color
+### Vertical Rhythm
 
-**Everything** is optional
+| Description | CSS Variable | Frontmatter Key | Example |
+| --- | --- | --- | --- |
+| Single | `--chisel-single` | `chisel-single` | `1.5rem` |
+| Global | `--chisel-global` | `chisel-global` | `1.2` |
 
-```css
-body {
-	--light-color-foreground: #222;
-	--light-color-background: #ffffff;
-
-	--light-color-red: #b33a2a;
-	--light-color-orange: #bc5215;
-	--light-color-yellow: #cc8815;
-	--light-color-green: #66800b;
-	--light-color-cyan: #82a1b2;
-	--light-color-blue: #438199;
-	--light-color-purple: #5e409d;
-	--light-color-pink: #a02f6f;
-
-	--light-accent-color: var(--color-yellow);
-	--light-bold-color: var(--color-red);
-	--light-italic-color: var(--color-blue);
-
-	/* Dark */
-	--dark-color-foreground: oklch(0.7721 0.0228 96.47);
-	--dark-color-background: oklch(0.2308 0.0023 67.73);
-
-	--dark-color-red: #d14d41;
-	--dark-color-orange: #da702c;
-	--dark-color-yellow: #cc8815;
-	--dark-color-green: #879a39;
-	--dark-color-cyan: #3aa99f;
-	--dark-color-blue: #4385be;
-	--dark-color-purple: #9a462b;
-	--dark-color-pink: #a8431b;
-
-	--dark-accent-color: var(--color-yellow);
-	--dark-bold-color: var(--color-red);
-	--dark-italic-color: var(--color-blue);
-}
-```
-
-#### Vertical rythm
-
-```css
-body {
-  __chisel-single: 2rlh;
-  Chisel-global: 1rlh;
-}
-```
-
-#### Frontmatter override
+## Frontmatter override
 
 **Override** css variable in frontmatter with the suffix “chisel-“
 
@@ -151,13 +133,48 @@ body.chisel {
 ```
 
 ## Example
+### Mono inspired theme
+```css
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body {
+    --light-color-foreground: #100f0f;
+    --light-color-background: #fffcf0;
+    --light-color-red: #af3029;
+    --light-color-orange: #bc5215;
+    --light-color-yellow: #ad8301;
+    --light-color-green: #66800b;
+    --light-color-cyan: #142625;
+    --light-color-blue: #205ea6;
+    --light-color-purple: #5e409d;
+    --light-color-pink: #a02f6f;
+    /* Dark */
+    --dark-color-foreground: #fffcf0;
+    --dark-color-background: #100f0f;
 
-# Text-Generator
+    --color-accent: var(--color-foreground);
+    --font-monospace: var(--color-foreground);
+    --bold-color: var(--color-foreground);
+    --italic-color: var(--color-foreground);
 
-```yml
-It is a long established fact
-that a reader will be distracted
-by the readable content of a page
-when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+    --font-text: "Space Mono";
+    --font-header: "Inter";
+    --font-monospace: "Space Mono";
+    --font-interface: "Space Mono";
 
+    --font-density: 1.5;
+    --bold-weight: 700;
+    --font-header-feature: "liga", "calt", "case", "kern";
+    --font-header-variation: "";
+    --font-header-weight: 900;
+    --font-header-line-height: 1em;
+    --font-header-letter-spacing: -0.07em;
+}
+```
+
+### Basic Ink blurry text for being easy on the eyes
+```css
+body {
+    text-shadow: 0px 0px 2px color-mix(in oklab, currentColor 12%, transparent);
+    filter: blur(0.2px);
+}
 ```
