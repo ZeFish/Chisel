@@ -126,7 +126,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     // Global settings classes
     if (this.settings.enableTypography) newClasses.add("chisel-typography");
     if (this.settings.enableColor) newClasses.add("chisel-color");
-    if (this.settings.enableRhythm) newClasses.add("chisel-rhythm");
+    if (this.settings.enableRhythm) newClasses.add("chisel-vertical-rhythm");
 
     if (activeFile) {
       // Frontmatter classes
@@ -339,8 +339,8 @@ class ChiselPlugin extends obsidian_1.Plugin {
       this.appliedClasses.add("chisel-color");
     }
     if (this.settings.enableRhythm) {
-      document.body.classList.add("chisel-rhythm");
-      this.appliedClasses.add("chisel-rhythm");
+      document.body.classList.add("chisel-vertical-rhythm");
+      this.appliedClasses.add("chisel-vertical-rhythm");
     }
   }
 
