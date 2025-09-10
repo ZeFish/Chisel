@@ -29,50 +29,21 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.lastAppliedChiselNoteCss = "";
     this.chiselGlobalElement = null; // New property for chisel-global
     this.frontmatterUpdateTimeout = null; // Timeout for debouncing frontmatter updates
+    
+    // Performance optimization caches
+    this.fileCache = new Map(); // Cache file metadata
+    this.autoloadFileCache = new Map(); // Cache autoloaded files
+    this.lastVaultScan = 0; // Timestamp of last vault scan
+    this.autoloadedSnippetsInitialized = false; // Track if autoloaded snippets have been processed
+    this.startupRetryCount = 0; // Track startup snapshot retry attempts
   }
 
   async onload() {
     document.body.classList.add("chisel");
     await this.loadSettings();
 
-    // Ensure chisel-global is created first
-    let chiselGlobalElement = document.getElementById("chisel-global"); // Renamed ID
-    if (!chiselGlobalElement) {
-      chiselGlobalElement = document.createElement("style");
-      chiselGlobalElement.id = "chisel-global"; // Renamed ID
-      document.head.appendChild(chiselGlobalElement);
-    }
-    this.chiselGlobalElement = chiselGlobalElement; // Renamed property
-
-    // Ensure chisel-note is created second
-    let chiselNoteElement = document.getElementById("chisel-note"); // Renamed ID
-    if (!chiselNoteElement) {
-      chiselNoteElement = document.createElement("style");
-      chiselNoteElement.id = "chisel-note"; // Renamed ID
-      // Insert after chiselGlobalElement if it exists, otherwise append to head
-      if (this.chiselGlobalElement) {
-        // Renamed property
-        this.chiselGlobalElement.after(chiselNoteElement);
-      } else {
-        document.head.appendChild(chiselNoteElement);
-      }
-    }
-    this.chiselNoteElement = chiselNoteElement; // Renamed property
-
-    // Ensure chisel-frontmatter is created third
-    let chiselFrontmatterElement =
-      document.getElementById("chisel-frontmatter"); // New ID
-    if (!chiselFrontmatterElement) {
-      chiselFrontmatterElement = document.createElement("style");
-      chiselFrontmatterElement.id = "chisel-frontmatter"; // New ID
-      // Insert after chiselNoteElement if it exists, otherwise append to head
-      if (this.chiselNoteElement) {
-        this.chiselNoteElement.after(chiselFrontmatterElement);
-      } else {
-        document.head.appendChild(chiselFrontmatterElement);
-      }
-    }
-    this.chiselFrontmatterElement = chiselFrontmatterElement; // New property
+    // Create style elements efficiently in a single batch
+    this.createStyleElements();
 
     // Add settings tab
     this.addSettingTab(new ChiselSettingTab(this.app, this));
@@ -91,10 +62,19 @@ class ChiselPlugin extends obsidian_1.Plugin {
           this.updateBodyClasses();
         }
         const fm = this.app.metadataCache.getFileCache(file)?.frontmatter;
+        
+        // Invalidate cache for this file
+        const cacheKey = `${file.path}-${file.stat.mtime}`;
+        if (this.autoloadFileCache.has(cacheKey)) {
+          this.autoloadFileCache.delete(cacheKey);
+        }
+        
         if (
           this.autoloadedSnippets.has(file.path) ||
           this.hasAutoloadFlag(fm)
         ) {
+          // Reset initialization flag to trigger refresh
+          this.autoloadedSnippetsInitialized = false;
           this.updateAutoloadedSnippets();
         }
       }),
@@ -149,20 +129,20 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     this.updateModeClasses();
     this.updateBodyClasses();
-    // If no file is open on startup, apply last saved snapshot of classes/snippets
-    this.applyStartupSnapshotIfIdle();
+    
+    // Defer heavy operations with lazy loading
+    this.scheduleHeavyOperations();
+    
     // Also attempt once the workspace layout is ready
     // (ensures vault files are available)
     if (this.app?.workspace?.onLayoutReady) {
       this.app.workspace.onLayoutReady(() => {
-        this.applyStartupSnapshotIfIdle();
-        this.updateAutoloadedSnippets();
+        this.onWorkspaceReady();
       });
     } else {
       // Fallback for older Obsidian versions
       this.app.workspace.on("layout-ready", () => {
-        this.applyStartupSnapshotIfIdle();
-        this.updateAutoloadedSnippets();
+        this.onWorkspaceReady();
       });
     }
     this.addCommand({
@@ -175,13 +155,82 @@ class ChiselPlugin extends obsidian_1.Plugin {
   }
 
   onunload() {
-    // Clear any pending timeout
+    // Clear any pending timeouts
     if (this.frontmatterUpdateTimeout) {
       clearTimeout(this.frontmatterUpdateTimeout);
+    }
+    if (this.heavyOperationsTimeout) {
+      clearTimeout(this.heavyOperationsTimeout);
+    }
+    if (this.workspaceReadyTimeout) {
+      clearTimeout(this.workspaceReadyTimeout);
     }
     document.body.classList.remove("chisel");
     this.cleanup();
     this.clearModeClasses();
+  }
+
+  scheduleHeavyOperations() {
+    // Schedule heavy operations with progressive delays
+    // This allows the UI to remain responsive during startup
+    
+    // Quick startup snapshot first (if no file is open)
+    this.applyStartupSnapshotIfIdle();
+    
+    // Then schedule autoloaded snippets after a small delay
+    this.heavyOperationsTimeout = setTimeout(() => {
+      this.updateAutoloadedSnippets();
+    }, 100); // 100ms delay allows UI to settle
+  }
+  
+  onWorkspaceReady() {
+    // This runs when the workspace is fully loaded
+    // Apply startup snapshot again in case files are now available
+    this.workspaceReadyTimeout = setTimeout(() => {
+      this.applyStartupSnapshotIfIdle();
+      // Update autoloaded snippets if not already done
+      if (!this.autoloadedSnippetsInitialized) {
+        this.updateAutoloadedSnippets();
+      }
+    }, 50);
+  }
+  
+  createStyleElements() {
+    // Batch DOM operations for style element creation
+    const fragment = document.createDocumentFragment();
+    const elementsToCreate = [
+      { id: "chisel-global", prop: "chiselGlobalElement" },
+      { id: "chisel-note", prop: "chiselNoteElement" },
+      { id: "chisel-frontmatter", prop: "chiselFrontmatterElement" }
+    ];
+    
+    let needsAppend = false;
+    
+    elementsToCreate.forEach(({ id, prop }) => {
+      let element = document.getElementById(id);
+      if (!element) {
+        element = document.createElement("style");
+        element.id = id;
+        fragment.appendChild(element);
+        needsAppend = true;
+      }
+      this[prop] = element;
+    });
+    
+    // Single DOM append operation
+    if (needsAppend) {
+      document.head.appendChild(fragment);
+    }
+  }
+  
+  // Async utility methods for consistent patterns
+  async delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
+  async scheduleTask(task, delayMs = 0) {
+    await this.delay(delayMs);
+    return await task();
   }
 
   cleanup() {
@@ -325,7 +374,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       }
     }
 
-    // Diff and update classes
+    // Batch DOM updates for better performance
     const classesToAdd = [...newClasses].filter(
       (cls) => !this.appliedClasses.has(cls),
     );
@@ -333,8 +382,13 @@ class ChiselPlugin extends obsidian_1.Plugin {
       (cls) => !newClasses.has(cls),
     );
 
-    classesToAdd.forEach((cls) => document.body.classList.add(cls));
-    classesToRemove.forEach((cls) => document.body.classList.remove(cls));
+    // Only update DOM if there are changes
+    if (classesToAdd.length > 0 || classesToRemove.length > 0) {
+      // Batch DOM operations
+      const bodyClassList = document.body.classList;
+      classesToAdd.forEach((cls) => bodyClassList.add(cls));
+      classesToRemove.forEach((cls) => bodyClassList.remove(cls));
+    }
 
     this.appliedClasses = newClasses;
 
@@ -401,27 +455,56 @@ class ChiselPlugin extends obsidian_1.Plugin {
       await this.saveSettings();
     } catch (e) {}
 
-    this.clearSnippetViewClasses();
+    // Batch snippet view class updates
+    const newSnippetClasses = new Set();
+    
     if (snippetNames.length > 0) {
+      snippetNames.forEach((name) => {
+        const slug = name
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9_\-\s]/g, "")
+          .replace(/\s+/g, "-");
+        if (slug.length > 0) {
+          newSnippetClasses.add(slug);
+        }
+      });
+    }
+    
+    // Only update DOM if classes have changed
+    const oldClasses = this.appliedSnippetViewClasses || new Set();
+    const classesChanged = newSnippetClasses.size !== oldClasses.size || 
+      [...newSnippetClasses].some(cls => !oldClasses.has(cls)) ||
+      [...oldClasses].some(cls => !newSnippetClasses.has(cls));
+    
+    if (classesChanged) {
       const activeLeaf = document.querySelector(
         ".mod-root .workspace-leaf.mod-active .workspace-leaf-content",
       );
+      
       if (activeLeaf) {
         const viewEls = activeLeaf.querySelectorAll(
           ".markdown-source-view, .markdown-preview-view",
         );
-        snippetNames.forEach((name) => {
-          const slug = name
-            .trim()
-            .toLowerCase()
-            .replace(/[^a-z0-9_\-\s]/g, "")
-            .replace(/\s+/g, "-");
-          if (slug.length > 0) {
-            viewEls.forEach((el) => el.classList.add(slug));
-            this.appliedSnippetViewClasses.add(slug);
-          }
-        });
+        
+        if (viewEls.length > 0) {
+          // Remove old classes
+          oldClasses.forEach((cls) => {
+            if (!newSnippetClasses.has(cls)) {
+              viewEls.forEach((el) => el.classList.remove(cls));
+            }
+          });
+          
+          // Add new classes
+          newSnippetClasses.forEach((cls) => {
+            if (!oldClasses.has(cls)) {
+              viewEls.forEach((el) => el.classList.add(cls));
+            }
+          });
+        }
       }
+      
+      this.appliedSnippetViewClasses = newSnippetClasses;
     }
 
     if (snippetNames.length > 0) {
@@ -480,47 +563,73 @@ class ChiselPlugin extends obsidian_1.Plugin {
     if (this.hasAppliedStartupSnapshot) return;
 
     const snap = this.settings?.startupSnapshot;
-    if (!snap) return;
-
-    // Wait until vault files are available
-    const files = this.app.vault.getMarkdownFiles();
-    if (!files || files.length === 0) {
-      // Use a shorter delay for better responsiveness
-      setTimeout(() => this.applyStartupSnapshotIfIdle(), 10);
+    if (!snap) {
+      this.hasAppliedStartupSnapshot = true;
       return;
     }
 
-    // Apply saved cssclasses to body
+    // Check if vault is ready without polling
+    const files = this.app.vault.getMarkdownFiles();
+    if (!files || files.length === 0) {
+      // Use exponential backoff instead of fixed delay
+      const delay = Math.min(100, (this.startupRetryCount || 0) * 20 + 20);
+      this.startupRetryCount = (this.startupRetryCount || 0) + 1;
+      
+      // Don't retry forever
+      if (this.startupRetryCount < 10) {
+        setTimeout(() => this.applyStartupSnapshotIfIdle(), delay);
+      } else {
+        this.hasAppliedStartupSnapshot = true;
+      }
+      return;
+    }
+
+    // Batch all DOM operations
+    const classesToAdd = new Set(this.appliedClasses);
+    
+    // Apply saved cssclasses
     if (Array.isArray(snap.cssClasses)) {
       snap.cssClasses.forEach((cls) => {
         if (typeof cls === "string" && cls.trim().length > 0) {
           const className = "cssclass-" + cls.trim();
-          document.body.classList.add(className);
-          this.appliedClasses.add(className);
+          classesToAdd.add(className);
         }
       });
     }
+    
+    // Apply global settings classes
+    if (this.settings.enableTypography) {
+      classesToAdd.add("chisel-typography");
+    }
+    if (this.settings.enableColor) {
+      classesToAdd.add("chisel-color");
+    }
+    if (this.settings.enableRhythm) {
+      classesToAdd.add("chisel-vertical-rhythm");
+    }
+    
+    // Single DOM update for all classes
+    const bodyClassList = document.body.classList;
+    classesToAdd.forEach(cls => {
+      if (!this.appliedClasses.has(cls)) {
+        bodyClassList.add(cls);
+      }
+    });
+    this.appliedClasses = classesToAdd;
 
-    // Apply saved snippets by reloading their CSS
+    // Apply saved snippets (non-blocking)
     if (Array.isArray(snap.snippetNames) && snap.snippetNames.length > 0) {
-      await this.applyChiselNote(snap.snippetNames);
+      // Use setTimeout to make this non-blocking
+      setTimeout(async () => {
+        try {
+          await this.applyChiselNote(snap.snippetNames);
+        } catch (error) {
+          console.warn('Chisel: Error applying startup snippets:', error);
+        }
+      }, 10);
     }
 
     this.hasAppliedStartupSnapshot = true;
-
-    // Apply global settings classes
-    if (this.settings.enableTypography) {
-      document.body.classList.add("chisel-typography");
-      this.appliedClasses.add("chisel-typography");
-    }
-    if (this.settings.enableColor) {
-      document.body.classList.add("chisel-color");
-      this.appliedClasses.add("chisel-color");
-    }
-    if (this.settings.enableRhythm) {
-      document.body.classList.add("chisel-vertical-rhythm");
-      this.appliedClasses.add("chisel-vertical-rhythm");
-    }
   }
 
   clearModeViewClasses() {
@@ -715,35 +824,94 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
   async updateAutoloadedSnippets() {
     let chiselGlobalElement = this.chiselGlobalElement;
+    const now = Date.now();
+
+    // Use cached results if available and recent (less than 5 seconds old)
+    if (this.autoloadedSnippetsInitialized && now - this.lastVaultScan < 5000) {
+      return;
+    }
 
     const files = this.app.vault.getMarkdownFiles();
-    const autoloadFiles = files
-      .filter((file) => {
-        const meta = this.app.metadataCache.getFileCache(file);
-        return this.hasAutoloadFlag(meta?.frontmatter);
-      })
-      .sort((a, b) => a.path.localeCompare(b.path));
+    const autoloadFiles = [];
+    
+    // Use incremental scanning with cache
+    for (const file of files) {
+      const cacheKey = `${file.path}-${file.stat.mtime}`;
+      
+      // Check cache first
+      if (this.autoloadFileCache.has(cacheKey)) {
+        const cached = this.autoloadFileCache.get(cacheKey);
+        if (cached.hasAutoload) {
+          autoloadFiles.push(file);
+        }
+        continue;
+      }
+      
+      // Not in cache, check metadata
+      const meta = this.app.metadataCache.getFileCache(file);
+      const hasAutoload = this.hasAutoloadFlag(meta?.frontmatter);
+      
+      // Cache the result
+      this.autoloadFileCache.set(cacheKey, { hasAutoload });
+      
+      if (hasAutoload) {
+        autoloadFiles.push(file);
+      }
+    }
+    
+    // Clean up old cache entries (keep cache size reasonable)
+    if (this.autoloadFileCache.size > files.length * 2) {
+      const validKeys = new Set(files.map(f => `${f.path}-${f.stat.mtime}`));
+      for (const key of this.autoloadFileCache.keys()) {
+        if (!validKeys.has(key)) {
+          this.autoloadFileCache.delete(key);
+        }
+      }
+    }
+
+    autoloadFiles.sort((a, b) => a.path.localeCompare(b.path));
 
     if (autoloadFiles.length === 0) {
       if (chiselGlobalElement) {
-        chiselGlobalElement.remove();
+        chiselGlobalElement.textContent = "";
       }
       this.autoloadedSnippets.clear();
       this.concatenatedAutoloadCss = "";
+      this.lastVaultScan = now;
+      this.autoloadedSnippetsInitialized = true;
       return;
     }
 
     let allCssContent = "";
+    const processedFiles = new Set();
 
-    // Process all files directly without artificial delays
-    for (const file of autoloadFiles) {
-      const noteContent = await this.app.vault.cachedRead(file);
-      const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)```/gi;
-      const matches = [...noteContent.matchAll(codeBlockRegex)];
-      const cssContent = matches.map((match) => match[1]).join("\n");
-      if (cssContent && cssContent.trim().length > 0) {
-        allCssContent += cssContent + "\n";
-        this.autoloadedSnippets.set(file.path, cssContent);
+    // Process files in batches to avoid blocking
+    for (let i = 0; i < autoloadFiles.length; i += 5) {
+      const batch = autoloadFiles.slice(i, i + 5);
+      
+      // Process batch
+      await Promise.all(batch.map(async (file) => {
+        if (processedFiles.has(file.path)) return;
+        processedFiles.add(file.path);
+        
+        try {
+          const noteContent = await this.app.vault.cachedRead(file);
+          const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)```/gi;
+          const matches = [...noteContent.matchAll(codeBlockRegex)];
+          const cssContent = matches.map((match) => match[1]).join("\n");
+          
+          if (cssContent && cssContent.trim().length > 0) {
+            allCssContent += cssContent + "\n";
+            this.autoloadedSnippets.set(file.path, cssContent);
+          }
+        } catch (error) {
+          console.warn(`Chisel: Error reading file ${file.path}:`, error);
+        }
+      }));
+      
+      // Small delay between batches to keep UI responsive
+      if (i + 5 < autoloadFiles.length) {
+        await new Promise(resolve => setTimeout(resolve, 10));
       }
     }
 
@@ -752,6 +920,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
       this.concatenatedAutoloadCss = allCssContent;
       chiselGlobalElement.textContent = allCssContent;
     }
+    
+    this.lastVaultScan = now;
+    this.autoloadedSnippetsInitialized = true;
   }
 
   updateModeClasses() {
