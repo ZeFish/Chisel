@@ -178,9 +178,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.applyStartupSnapshotIfIdle();
     
     // Then schedule autoloaded snippets after a small delay
-    this.heavyOperationsTimeout = setTimeout(() => {
-      this.updateAutoloadedSnippets();
-    }, 100); // 100ms delay allows UI to settle
+    // this.heavyOperationsTimeout = setTimeout(() => {
+    //   this.updateAutoloadedSnippets();
+    // }, 100); // 100ms delay allows UI to settle
   }
   
   onWorkspaceReady() {
@@ -188,10 +188,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
     // Apply startup snapshot again in case files are now available
     this.workspaceReadyTimeout = setTimeout(() => {
       this.applyStartupSnapshotIfIdle();
-      // Update autoloaded snippets if not already done
-      if (!this.autoloadedSnippetsInitialized) {
-        this.updateAutoloadedSnippets();
-      }
+      // Ensure a fresh scan for autoloaded snippets on workspace ready
+      this.autoloadedSnippetsInitialized = false;
+      this.updateAutoloadedSnippets();
     }, 50);
   }
   
