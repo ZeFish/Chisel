@@ -1,40 +1,3 @@
-.chisel-colorssss {
-    /* Light */
-    --light-color-foreground: #222;
-    --light-color-background: #ffffff;
-
-    --light-color-red: #b33a2a;
-    --light-color-orange: #bc5215;
-    --light-color-yellow: #cc8815;
-    --light-color-green: #66800b;
-    --light-color-cyan: #82a1b2;
-    --light-color-blue: #438199;
-    --light-color-purple: #5e409d;
-    --light-color-pink: #a02f6f;
-
-    --light-accent-color: var(--color-yellow);
-    --light-bold-color: var(--color-red);
-    --light-italic-color: var(--color-blue);
-
-    /* Dark */
-    --dark-color-foreground: oklch(0.7721 0.0228 96.47);
-    --dark-color-background: oklch(0.2308 0.0023 67.73);
-
-    --dark-color-red: #d14d41;
-    --dark-color-orange: #da702c;
-    --dark-color-yellow: #cc8815;
-    --dark-color-green: #879a39;
-    --dark-color-cyan: #3aa99f;
-    --dark-color-blue: #4385be;
-    --dark-color-purple: #9a462b;
-    --dark-color-pink: #a8431b;
-
-    --dark-accent-color: var(--color-yellow);
-    --dark-bold-color: var(--color-red);
-    --dark-italic-color: var(--color-blue);
-
-    --bold-weight: 400;
-}
 .chisel-color.theme-light,
 .chisel-color.theme-dark {
     /* --color-background:						var(--color-background); */
@@ -100,18 +63,38 @@
     );
     --background-secondary-alt: var(--color-background);
 
-    --accent-color: var(--color-yellow);
-    --bold-color: var(--color-orange);
-    --italic-color: var(--color-blue);
+    /*--color-accent-default: var(--color-accent);*/
+    --color-accent-obsidian: hsl(
+        var(--accent-h) var(--accent-s) var(--accent-l)
+    );
+    --color-bold-default: var(--color-foreground);
+    --color-italic-default: var(--color-foreground);
 
-    --h1-color: var(--color-foreground);
-    --h2-color: var(--color-foreground);
-    --h3-color: var(--color-foreground);
-    --h4-color: var(--color-foreground);
-    --h5-color: var(--color-foreground);
-    --h6-color: var(--color-foreground);
+    --color-interactive: color-mix(
+        in oklab,
+        var(--color-accent) 25%,
+        transparent
+    );
+    --color-interactive-hover: color-mix(
+        in oklab,
+        var(--color-accent) 50%,
+        transparent
+    );
+    --color-interactive-hover-backgound: color-mix(
+        in oklab,
+        var(--color-accent) 10%,
+        transparent
+    );
+    --color-icon: var(--text-faint);
 
-    --background-modifier-hover: var(--background-secondary);
+    --color-h1: var(--color-foreground);
+    --color-h2: var(--color-foreground);
+    --color-h3: var(--color-foreground);
+    --color-h4: var(--color-foreground);
+    --color-h5: var(--color-foreground);
+    --color-h6: var(--color-foreground);
+
+    --background-modifier-hover: var(--color-interactive-hover-backgound);
     --background-modifier-active-hover: var(--background-secondary);
     --background-modifier-border: var(--background-secondary);
     --background-modifier-border-hover: var(--color-base-20);
@@ -150,40 +133,54 @@
 
     /*--background-modifier-border: var(--border-color);*/
 
-    --interactive-normal: var(--color-base-05);
-    --interactive-hover: color-mix(
-        in oklab,
-        var(--accent-color) 66%,
-        transparent
-    );
-    --interactive-accent: color-mix(
-        in oklab,
-        var(--accent-color) 33%,
-        transparent
-    );
+    --interactive-normal: var(--color-base-10);
+    --interactive-hover: var(--color-interactive-hover);
+    --interactive-accent: var(--color-interactive);
     --interactive-accent-hsl: 0, 0, 50;
-    --interactive-accent-hover: color-mix(
-        in oklab,
-        var(--accent-color) 66%,
-        transparent
-    );
+    --interactive-accent-hover: var(--color-interactive-hover);
 
-    &.is-mobile {
-        --interactive-accent: var(--text-muted);
-        --interactive-accent-hover: var(--text-normal);
-        --interactive-normal: var(--background-primary);
+    /*
+    .mod-settings .vertical-tab-content > .setting-item:nth-child(2) {
+        opacity: 0.5;
     }
+    .mod-settings
+        .vertical-tab-content
+        > .setting-item:nth-child(2)
+        .clickable-icon[aria-label="Restore default"] {
+        display: none;
+    }
+    .mod-settings
+        .vertical-tab-content
+        > .setting-item:nth-child(2)
+        > .setting-item-control
+        > input[type="color"] {
+        visibility: hidden;
+        width: 300px;
+        text-align: right;
+        padding-top: 1rlh;
+    }
+    .mod-settings
+        .vertical-tab-content
+        > .setting-item:nth-child(2)
+        > .setting-item-control
+        > input[type="color"]::before {
+        visibility: visible;
+        content: "Chisel plugin override the accent color";
+        color: var(--text-error);
+        font-family: var(--font-interface);
+        font-size: var(--font-ui-smaller);
+    }
+    */
 
-    --foreground-color: var(--color-foreground);
     --text-normal: var(--color-foreground);
     --text-muted: var(--color-base-70);
     --text-faint: var(--color-base-50);
     --text-on-accent: var(--color-background);
     --text-on-accent-inverted: var(--color-foreground);
-    --text-success: var(--color-foreground);
+    --text-success: var(--color-green);
     --text-warning: var(--color-red);
     --text-error: var(--color-red);
-    --text-accent: var(--accent-color);
+    --text-accent: var(--color-accent);
     --text-accent-hover: var(--color-foreground);
     --text-selection: color-mix(
         in oklab,
@@ -191,13 +188,18 @@
         var(--color-background)
     );
 
+    .notice,
+    .notice-cta {
+        color: var(--text-muted) !important;
+    }
+
     --link-external-color: var(--color-green);
     --link-external-color-hover: color-mix(
         in oklab,
         var(--color-foreground) 25%,
         var(--color-background)
     );
-    --link-color: var(--accent-color);
+    --link-color: var(--color-accent);
     --link-color-hover: color-mix(
         in oklab,
         var(--link-color) 25%,
@@ -208,11 +210,24 @@
     --tag-border: var(--border-color);
     --tag-color: var(--text-muted);
 
-    --icon-color-active: var(--text-normal);
-    --icon-color-focused: var(--text-normal);
-    --icon-color-hover: var(--text-faint);
-    --icon-color: var(--text-faint);
+    --icon-color: var(--color-icon);
     --icon-hex: var(--mono0);
+    --icon-opacity-hover: 1;
+    --icon-color-active: var(--color-red);
+    --icon-color-focused: var(--color-foreground);
+    --icon-color-hover: var(--color-accent) !important;
+
+    .clickable-icon:hover,
+    .nav-buttons-container:hover,
+    .sidebar-toggle-button:hover,
+    .view-action:hover {
+        color: var(--color-accent) !important;
+        --icon-color-hover: var(--color-accent) !important;
+    }
+
+    .side-dock-actions {
+        color: var(--icon-color);
+    }
 
     --nav-item-color: var(--text-muted);
     --nav-item-color-active: var(--text-normal);
@@ -232,29 +247,21 @@
         var(--text-normal) 10%,
         transparent
     );
-    --nav-item-background-hover: color-mix(
-        in oklab,
-        var(--foreground-color) 5%,
-        transparent
-    );
-    --nav-item-background-active: color-mix(
-        in oklab,
-        var(--accent-color) 10%,
-        transparent
-    );
-    --nav-item-color-highlighted: var(--foreground-color);
+    --nav-item-background-hover: var(--color-interactive-hover-backgound);
+    --nav-item-background-active: var(--color-interactive-hover-backgound);
+    --nav-item-color-highlighted: var(--color-foreground);
 
     .nav-folder.is-being-dragged-over {
         background: color-mix(
             in oklab,
-            var(--accent-color) 5%,
+            var(--color-accent) 5%,
             transparent
         ) !important;
     }
+
     :not(.sidebar-color) .mod-right-split {
         --background-secondary: unset !important;
     }
-
     --ribbon-background: var(--background-secondary);
     --ribbon-background-collapsed: var(--background-secondary);
 
@@ -354,13 +361,13 @@
         --color-white: var(--color-background);
         --color-black: var(--color-foreground);
 
-        --accent-color: var(--light-accent-color, var(--color-yellow));
-        --bold-color: var(--light-bold-color, var(--color-red));
-        --italic-color: var(--light-italic-color, var(--color-blue));
-
+        --color-accent: var(--light-color-accent, var(--color-accent-obsidian));
+        --color-bold: var(--light-bold-color, var(--color-bold-default));
+        --color-italic: var(--light-italic-color, var(--color-italic-default));
+        /*
         --color-white: var(--color-background);
         --color-black: var(--color-foreground);
-        /*
+
         --color-red: var(--light-color-red, #df453a);
         --color-orange: var(--light-color-orange, #ea702e);
         --color-yellow: var(--light-color-yellow, #e4ae25) !important;
@@ -369,7 +376,7 @@
         --color-blue: var(--light-color-blue, #2882c3) !important;
         --color-purple: var(--light-color-purple, #8d6fb3) !important;
         --color-pink: var(--light-color-pink, #da58b5) !important;
-        */
+
         --color-red: var(--light-color-red, #af3029);
         --color-orange: var(--light-color-orange, #bc5215);
         --color-yellow: var(--light-color-yellow, #ad8301);
@@ -377,7 +384,7 @@
         --color-cyan: var(--light-color-cyan, #24837b);
         --color-blue: var(--light-color-blue, #205ea6);
         --color-purple: var(--light-color-purple, #5e409d);
-        --color-pink: var(--light-color-pink, #a02f6f);
+        --color-pink: var(--light-color-pink, #a02f6f); */
     }
 
     .markdown-source-view.mod-cm6 hr {
@@ -400,11 +407,11 @@
 
         --border-color: color-mix(in oklab, black 13%, var(--color-background));
 
-        --accent-color: var(--dark-accent-color, var(--color-yellow));
-        --bold-color: var(--dark-bold-color, var(--color-red));
-        --italic-color: var(--dark-italic-color, var(--color-blue));
-
+        --color-accent: var(--dark-color-accent, var(--color-accent-obsidian));
+        --color-bold: var(--dark-bold-color, var(--color-bold-default));
+        --color-italic: var(--dark-italic-color, var(--color-italic-default));
         /*
+
         --color-red: var(--dark-color-red, #bf3f36);
         --color-orange: var(--dark-color-orange, #ce6325);
         --color-yellow: var(--dark-color-yellow, #d69a00) !important;
@@ -413,7 +420,7 @@
         --color-blue: var(--dark-color-blue, #256ea2) !important;
         --color-purple: var(--dark-color-purple, #8e6ac7) !important;
         --color-pink: var(--dark-color-pink, #dd78db) !important;
-        */
+
 
         --color-red: var(--dark-color-red, #d14d41);
         --color-orange: var(--dark-color-orange, #da702c);
@@ -423,27 +430,27 @@
         --color-blue: var(--dark-color-blue, #4385be);
         --color-purple: var(--dark-color-purple, #8b7ec8);
         --color-pink: var(--dark-color-pink, #ce5d97);
-
+*/
         --blockquote-border-color: var(--text-faint);
 
-        --h1-color: color-mix(
+        --color-h1: color-mix(
             in oklab,
             var(--color-foreground) 85%,
             var(--color-background)
         );
-        --h2-color: color-mix(
+        --color-h2: color-mix(
             in oklab,
             var(--color-foreground) 90%,
             var(--color-background)
         );
-        --h3-color: color-mix(
+        --color-h3: color-mix(
             in oklab,
             var(--color-foreground) 95%,
             var(--color-background)
         );
-        --h4-color: var(--color-foreground);
-        --h5-color: var(--color-foreground);
-        --h6-color: var(--color-foreground);
+        --color-h4: var(--color-foreground);
+        --color-h5: var(--color-foreground);
+        --color-h6: var(--color-foreground);
 
         --background-primary: var(--color-base-05);
         --background-primary: color-mix(
@@ -549,6 +556,12 @@
                 var(--background-modifier-error) 20%,
                 transparent
             );
+        }
+    }
+    @media (hover: hover) {
+        .view-header-title-parent .view-header-breadcrumb:hover {
+            background-color: var(--color-interactive-hover-backgound);
+            color: var(--color-accent);
         }
     }
     @media (hover: hover) {

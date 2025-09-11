@@ -153,8 +153,8 @@ body {
 
     --color-accent: var(--color-foreground);
     --font-monospace: var(--color-foreground);
-    --bold-color: var(--color-foreground);
-    --italic-color: var(--color-foreground);
+    --color-bold: var(--color-foreground);
+    --color-italic: var(--color-foreground);
 
     --font-text: "Space Mono";
     --font-header: "Inter";

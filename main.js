@@ -366,7 +366,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
             : [cssclasses];
           classList.forEach((cls) => {
             if (typeof cls === "string" && cls.trim().length > 0) {
-              newClasses.add("cssclass-" + cls.trim());
+              const sanitizedClass = cls.trim().replace(/\s+/g, "-");
+              if (sanitizedClass) {
+                newClasses.add("cssclass-" + sanitizedClass);
+              }
             }
           });
         }
@@ -385,7 +388,17 @@ class ChiselPlugin extends obsidian_1.Plugin {
     if (classesToAdd.length > 0 || classesToRemove.length > 0) {
       // Batch DOM operations
       const bodyClassList = document.body.classList;
-      classesToAdd.forEach((cls) => bodyClassList.add(cls));
+      classesToAdd.forEach((cls) => {
+        try {
+          bodyClassList.add(cls);
+        } catch (e) {
+          if (e instanceof DOMException) {
+            new obsidian_1.Notice(`Chisel: Invalid CSS class found: "${cls}". Check your frontmatter for classes with spaces or special characters.`);
+          } else {
+            throw e;
+          }
+        }
+      });
       classesToRemove.forEach((cls) => bodyClassList.remove(cls));
     }
 
