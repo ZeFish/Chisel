@@ -29,7 +29,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     this.lastAppliedChiselNoteCss = "";
     this.chiselGlobalElement = null; // New property for chisel-global
     this.frontmatterUpdateTimeout = null; // Timeout for debouncing frontmatter updates
-    
+
     // Performance optimization caches
     this.fileCache = new Map(); // Cache file metadata
     this.autoloadFileCache = new Map(); // Cache autoloaded files
@@ -62,13 +62,13 @@ class ChiselPlugin extends obsidian_1.Plugin {
           this.updateBodyClasses();
         }
         const fm = this.app.metadataCache.getFileCache(file)?.frontmatter;
-        
+
         // Invalidate cache for this file
         const cacheKey = `${file.path}-${file.stat.mtime}`;
         if (this.autoloadFileCache.has(cacheKey)) {
           this.autoloadFileCache.delete(cacheKey);
         }
-        
+
         if (
           this.autoloadedSnippets.has(file.path) ||
           this.hasAutoloadFlag(fm)
@@ -129,10 +129,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     this.updateModeClasses();
     this.updateBodyClasses();
-    
+
     // Defer heavy operations with lazy loading
     this.scheduleHeavyOperations();
-    
+
     // Also attempt once the workspace layout is ready
     // (ensures vault files are available)
     if (this.app?.workspace?.onLayoutReady) {
@@ -173,16 +173,16 @@ class ChiselPlugin extends obsidian_1.Plugin {
   scheduleHeavyOperations() {
     // Schedule heavy operations with progressive delays
     // This allows the UI to remain responsive during startup
-    
+
     // Quick startup snapshot first (if no file is open)
     this.applyStartupSnapshotIfIdle();
-    
+
     // Then schedule autoloaded snippets after a small delay
     // this.heavyOperationsTimeout = setTimeout(() => {
     //   this.updateAutoloadedSnippets();
     // }, 100); // 100ms delay allows UI to settle
   }
-  
+
   onWorkspaceReady() {
     // This runs when the workspace is fully loaded
     // Apply startup snapshot again in case files are now available
@@ -193,18 +193,18 @@ class ChiselPlugin extends obsidian_1.Plugin {
       this.updateAutoloadedSnippets();
     }, 50);
   }
-  
+
   createStyleElements() {
     // Batch DOM operations for style element creation
     const fragment = document.createDocumentFragment();
     const elementsToCreate = [
       { id: "chisel-global", prop: "chiselGlobalElement" },
       { id: "chisel-note", prop: "chiselNoteElement" },
-      { id: "chisel-frontmatter", prop: "chiselFrontmatterElement" }
+      { id: "chisel-frontmatter", prop: "chiselFrontmatterElement" },
     ];
-    
+
     let needsAppend = false;
-    
+
     elementsToCreate.forEach(({ id, prop }) => {
       let element = document.getElementById(id);
       if (!element) {
@@ -215,18 +215,18 @@ class ChiselPlugin extends obsidian_1.Plugin {
       }
       this[prop] = element;
     });
-    
+
     // Single DOM append operation
     if (needsAppend) {
       document.head.appendChild(fragment);
     }
   }
-  
+
   // Async utility methods for consistent patterns
   async delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
-  
+
   async scheduleTask(task, delayMs = 0) {
     await this.delay(delayMs);
     return await task();
@@ -252,9 +252,11 @@ class ChiselPlugin extends obsidian_1.Plugin {
   async parseCurrentFrontmatter(file) {
     try {
       // Try to get content from active editor first (most up-to-date)
-      const activeView = this.app.workspace.getActiveViewOfType(obsidian_1.MarkdownView);
+      const activeView = this.app.workspace.getActiveViewOfType(
+        obsidian_1.MarkdownView,
+      );
       let content;
-      
+
       if (activeView && activeView.file === file) {
         // Get content from editor (immediate, no cache delay)
         content = activeView.editor.getValue();
@@ -262,75 +264,77 @@ class ChiselPlugin extends obsidian_1.Plugin {
         // Fallback to file read
         content = await this.app.vault.read(file);
       }
-      
+
       // Simple frontmatter parsing
       const frontmatterMatch = content.match(/^---\s*([\s\S]*?)\n---/);
       if (frontmatterMatch) {
         const frontmatterText = frontmatterMatch[1];
         const result = {};
-        
+
         // Parse cssclasses (both cssclasses and cssClasses)
         const cssclassesMatch = frontmatterText.match(/^cssclasses?:\s*(.*)$/m);
         if (cssclassesMatch) {
           const value = cssclassesMatch[1].trim();
           let cssclasses;
-          
+
           // Handle different formats: [item1, item2] or "item" or item
-          if (value.startsWith('[') && value.endsWith(']')) {
+          if (value.startsWith("[") && value.endsWith("]")) {
             // Array format
             cssclasses = value
               .slice(1, -1)
-              .split(',')
-              .map(item => item.trim().replace(/["']/g, ''))
+              .split(",")
+              .map((item) => item.trim().replace(/["']/g, ""))
               .filter(Boolean);
           } else if (value) {
             // Single value format
-            cssclasses = value.replace(/["']/g, '');
+            cssclasses = value.replace(/["']/g, "");
           }
-          
+
           if (cssclasses) {
             result.cssclasses = cssclasses;
           }
         }
-        
+
         // Parse chisel properties (for snippets)
         const chiselMatch = frontmatterText.match(/^chisel:\s*(.*)$/m);
         if (chiselMatch) {
           const value = chiselMatch[1].trim();
           let chisel;
-          
-          if (value.startsWith('[') && value.endsWith(']')) {
+
+          if (value.startsWith("[") && value.endsWith("]")) {
             chisel = value
               .slice(1, -1)
-              .split(',')
-              .map(item => item.trim().replace(/["']/g, ''))
+              .split(",")
+              .map((item) => item.trim().replace(/["']/g, ""))
               .filter(Boolean);
           } else if (value) {
-            chisel = value.replace(/["']/g, '');
+            chisel = value.replace(/["']/g, "");
           }
-          
+
           if (chisel) {
             result.chisel = chisel;
           }
         }
-        
+
         // Parse any chisel- properties
-        const chiselPropMatches = frontmatterText.matchAll(/^(chisel-[^:]+):\s*(.*)$/gm);
+        const chiselPropMatches = frontmatterText.matchAll(
+          /^(chisel-[^:]+):\s*(.*)$/gm,
+        );
         for (const match of chiselPropMatches) {
           const propName = match[1];
-          const propValue = match[2].trim().replace(/["']/g, '');
+          const propValue = match[2].trim().replace(/["']/g, "");
           if (propValue) {
             result[propName] = propValue;
           }
         }
-        
+
         return Object.keys(result).length > 0 ? result : null;
       }
     } catch (error) {
       // Silently fail and return null to use cache
-      console.log('Frontmatter parsing error:', error);
+      console.log("Frontmatter parsing error:", error);
     }
-    
+
     return null;
   }
 
@@ -348,7 +352,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
     if (activeFile) {
       // Always try direct parsing first for immediate response, then fallback to cache
       frontmatter = await this.parseCurrentFrontmatter(activeFile);
-      
+
       // Fallback to cache if direct parsing failed
       if (!frontmatter) {
         const meta = this.app.metadataCache.getFileCache(activeFile);
@@ -356,10 +360,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
           frontmatter = meta.frontmatter;
         }
       }
-      
+
       if (frontmatter) {
-        const cssclasses =
-          frontmatter.cssclasses || frontmatter.cssClasses;
+        const cssclasses = frontmatter.cssclasses || frontmatter.cssClasses;
         if (cssclasses) {
           const classList = Array.isArray(cssclasses)
             ? cssclasses
@@ -393,7 +396,9 @@ class ChiselPlugin extends obsidian_1.Plugin {
           bodyClassList.add(cls);
         } catch (e) {
           if (e instanceof DOMException) {
-            new obsidian_1.Notice(`Chisel: Invalid CSS class found: "${cls}". Check your frontmatter for classes with spaces or special characters.`);
+            new obsidian_1.Notice(
+              `Chisel: Invalid CSS class found: "${cls}". Check your frontmatter for classes with spaces or special characters.`,
+            );
           } else {
             throw e;
           }
@@ -469,7 +474,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     // Batch snippet view class updates
     const newSnippetClasses = new Set();
-    
+
     if (snippetNames.length > 0) {
       snippetNames.forEach((name) => {
         const slug = name
@@ -482,23 +487,24 @@ class ChiselPlugin extends obsidian_1.Plugin {
         }
       });
     }
-    
+
     // Only update DOM if classes have changed
     const oldClasses = this.appliedSnippetViewClasses || new Set();
-    const classesChanged = newSnippetClasses.size !== oldClasses.size || 
-      [...newSnippetClasses].some(cls => !oldClasses.has(cls)) ||
-      [...oldClasses].some(cls => !newSnippetClasses.has(cls));
-    
+    const classesChanged =
+      newSnippetClasses.size !== oldClasses.size ||
+      [...newSnippetClasses].some((cls) => !oldClasses.has(cls)) ||
+      [...oldClasses].some((cls) => !newSnippetClasses.has(cls));
+
     if (classesChanged) {
       const activeLeaf = document.querySelector(
         ".mod-root .workspace-leaf.mod-active .workspace-leaf-content",
       );
-      
+
       if (activeLeaf) {
         const viewEls = activeLeaf.querySelectorAll(
           ".markdown-source-view, .markdown-preview-view",
         );
-        
+
         if (viewEls.length > 0) {
           // Remove old classes
           oldClasses.forEach((cls) => {
@@ -506,7 +512,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
               viewEls.forEach((el) => el.classList.remove(cls));
             }
           });
-          
+
           // Add new classes
           newSnippetClasses.forEach((cls) => {
             if (!oldClasses.has(cls)) {
@@ -515,7 +521,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
           });
         }
       }
-      
+
       this.appliedSnippetViewClasses = newSnippetClasses;
     }
 
@@ -586,7 +592,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       // Use exponential backoff instead of fixed delay
       const delay = Math.min(100, (this.startupRetryCount || 0) * 20 + 20);
       this.startupRetryCount = (this.startupRetryCount || 0) + 1;
-      
+
       // Don't retry forever
       if (this.startupRetryCount < 10) {
         setTimeout(() => this.applyStartupSnapshotIfIdle(), delay);
@@ -598,7 +604,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     // Batch all DOM operations
     const classesToAdd = new Set(this.appliedClasses);
-    
+
     // Apply saved cssclasses
     if (Array.isArray(snap.cssClasses)) {
       snap.cssClasses.forEach((cls) => {
@@ -608,7 +614,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
         }
       });
     }
-    
+
     // Apply global settings classes
     if (this.settings.enableTypography) {
       classesToAdd.add("chisel-typography");
@@ -619,10 +625,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
     if (this.settings.enableRhythm) {
       classesToAdd.add("chisel-vertical-rhythm");
     }
-    
+
     // Single DOM update for all classes
     const bodyClassList = document.body.classList;
-    classesToAdd.forEach(cls => {
+    classesToAdd.forEach((cls) => {
       if (!this.appliedClasses.has(cls)) {
         bodyClassList.add(cls);
       }
@@ -636,7 +642,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
         try {
           await this.applyChiselNote(snap.snippetNames);
         } catch (error) {
-          console.warn('Chisel: Error applying startup snippets:', error);
+          console.warn("Chisel: Error applying startup snippets:", error);
         }
       }, 10);
     }
@@ -694,11 +700,17 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     if (Object.keys(chiselProps).length > 0) {
       // Ensure the element exists
-      if (!this.chiselFrontmatterElement || !document.getElementById("chisel-frontmatter")) {
+      if (
+        !this.chiselFrontmatterElement ||
+        !document.getElementById("chisel-frontmatter")
+      ) {
         this.chiselFrontmatterElement = document.createElement("style");
         this.chiselFrontmatterElement.id = "chisel-frontmatter";
         // Insert after chiselNoteElement if it exists, otherwise append to head
-        if (this.chiselNoteElement && document.contains(this.chiselNoteElement)) {
+        if (
+          this.chiselNoteElement &&
+          document.contains(this.chiselNoteElement)
+        ) {
           this.chiselNoteElement.after(this.chiselFrontmatterElement);
         } else {
           document.head.appendChild(this.chiselFrontmatterElement);
@@ -807,7 +819,10 @@ class ChiselPlugin extends obsidian_1.Plugin {
         this.chiselNoteElement = document.createElement("style");
         this.chiselNoteElement.id = "chisel-note";
         // Insert after chiselGlobalElement if it exists, otherwise append to head
-        if (this.chiselGlobalElement && document.contains(this.chiselGlobalElement)) {
+        if (
+          this.chiselGlobalElement &&
+          document.contains(this.chiselGlobalElement)
+        ) {
           this.chiselGlobalElement.after(this.chiselNoteElement);
         } else {
           document.head.appendChild(this.chiselNoteElement);
@@ -845,11 +860,11 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
     const files = this.app.vault.getMarkdownFiles();
     const autoloadFiles = [];
-    
+
     // Use incremental scanning with cache
     for (const file of files) {
       const cacheKey = `${file.path}-${file.stat.mtime}`;
-      
+
       // Check cache first
       if (this.autoloadFileCache.has(cacheKey)) {
         const cached = this.autoloadFileCache.get(cacheKey);
@@ -858,22 +873,22 @@ class ChiselPlugin extends obsidian_1.Plugin {
         }
         continue;
       }
-      
+
       // Not in cache, check metadata
       const meta = this.app.metadataCache.getFileCache(file);
       const hasAutoload = this.hasAutoloadFlag(meta?.frontmatter);
-      
+
       // Cache the result
       this.autoloadFileCache.set(cacheKey, { hasAutoload });
-      
+
       if (hasAutoload) {
         autoloadFiles.push(file);
       }
     }
-    
+
     // Clean up old cache entries (keep cache size reasonable)
     if (this.autoloadFileCache.size > files.length * 2) {
-      const validKeys = new Set(files.map(f => `${f.path}-${f.stat.mtime}`));
+      const validKeys = new Set(files.map((f) => `${f.path}-${f.stat.mtime}`));
       for (const key of this.autoloadFileCache.keys()) {
         if (!validKeys.has(key)) {
           this.autoloadFileCache.delete(key);
@@ -900,30 +915,32 @@ class ChiselPlugin extends obsidian_1.Plugin {
     // Process files in batches to avoid blocking
     for (let i = 0; i < autoloadFiles.length; i += 5) {
       const batch = autoloadFiles.slice(i, i + 5);
-      
+
       // Process batch
-      await Promise.all(batch.map(async (file) => {
-        if (processedFiles.has(file.path)) return;
-        processedFiles.add(file.path);
-        
-        try {
-          const noteContent = await this.app.vault.cachedRead(file);
-          const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)```/gi;
-          const matches = [...noteContent.matchAll(codeBlockRegex)];
-          const cssContent = matches.map((match) => match[1]).join("\n");
-          
-          if (cssContent && cssContent.trim().length > 0) {
-            allCssContent += cssContent + "\n";
-            this.autoloadedSnippets.set(file.path, cssContent);
+      await Promise.all(
+        batch.map(async (file) => {
+          if (processedFiles.has(file.path)) return;
+          processedFiles.add(file.path);
+
+          try {
+            const noteContent = await this.app.vault.cachedRead(file);
+            const codeBlockRegex = /```css\b[^\n]*\n([\s\S]*?)```/gi;
+            const matches = [...noteContent.matchAll(codeBlockRegex)];
+            const cssContent = matches.map((match) => match[1]).join("\n");
+
+            if (cssContent && cssContent.trim().length > 0) {
+              allCssContent += cssContent + "\n";
+              this.autoloadedSnippets.set(file.path, cssContent);
+            }
+          } catch (error) {
+            console.warn(`Chisel: Error reading file ${file.path}:`, error);
           }
-        } catch (error) {
-          console.warn(`Chisel: Error reading file ${file.path}:`, error);
-        }
-      }));
-      
+        }),
+      );
+
       // Small delay between batches to keep UI responsive
       if (i + 5 < autoloadFiles.length) {
-        await new Promise(resolve => setTimeout(resolve, 10));
+        await new Promise((resolve) => setTimeout(resolve, 10));
       }
     }
 
@@ -932,7 +949,7 @@ class ChiselPlugin extends obsidian_1.Plugin {
       this.concatenatedAutoloadCss = allCssContent;
       chiselGlobalElement.textContent = allCssContent;
     }
-    
+
     this.lastVaultScan = now;
     this.autoloadedSnippetsInitialized = true;
   }
@@ -1245,8 +1262,8 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       },
       {
         desc: "Bold Weight",
-        css: "--bold-weight",
-        fm: "chisel-bold-weight",
+        css: "--font-bold-weight",
+        fm: "chisel-font-bold-weight",
         example: "700",
         explanation:
           "Weight used for bold text. Should be heavier than font-weight for proper contrast.",
@@ -1463,15 +1480,15 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       },
       {
         desc: "Light Bold",
-        css: "--light-bold-color",
-        fm: "chisel-light-bold-color",
+        css: "--light-color-bold",
+        fm: "chisel-light-color-bold",
         example: "#000000",
         explanation: "Color for bold text in light theme.",
       },
       {
         desc: "Light Italic",
-        css: "--light-italic-color",
-        fm: "chisel-light-italic-color",
+        css: "--light-color-italic",
+        fm: "chisel-light-color-italic",
         example: "#495057",
         explanation: "Color for italic text in light theme.",
       },
@@ -1549,23 +1566,23 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
       },
       {
         desc: "Dark Accent",
-        css: "--dark-accent-color",
-        fm: "chisel-dark-accent-color",
+        css: "--dark-color-accent",
+        fm: "chisel-dark-color-accent",
         example: "#42a5f5",
         explanation:
           "Primary accent color for interactive elements in dark theme.",
       },
       {
         desc: "Dark Bold",
-        css: "--dark-bold-color",
-        fm: "chisel-dark-bold-color",
+        css: "--dark-color-bold",
+        fm: "chisel-dark-color-bold",
         example: "#ffffff",
         explanation: "Color for bold text in dark theme.",
       },
       {
         desc: "Dark Italic",
-        css: "--dark-italic-color",
-        fm: "chisel-dark-italic-color",
+        css: "--dark-color-italic",
+        fm: "chisel-dark-color-italic",
         example: "#adb5bd",
         explanation: "Color for italic text in dark theme.",
       },
@@ -1624,19 +1641,18 @@ class ChiselSettingTab extends obsidian_1.PluginSettingTab {
     const rhythmVars = [
       {
         desc: "Single",
-        css: "--chisel-single",
-        fm: "chisel-single",
-        example: "1.5rem",
+        css: "--chisel-margin",
+        fm: "chisel-margin",
+        example: "1rlh",
         explanation:
           "Base spacing unit for vertical rhythm. Used as the foundation for all spacing calculations (margins, padding, line heights).",
       },
       {
         desc: "Global",
-        css: "--chisel-global",
-        fm: "chisel-global",
-        example: "1.2",
-        explanation:
-          "Global rhythm multiplier that scales all spacing proportionally. Works with font-density to maintain consistent vertical rhythm.",
+        css: "--chisel-margin-block",
+        fm: "chisel-margin-block",
+        example: "2",
+        explanation: "The number of margin to put after a block of text",
       },
     ];
 
@@ -1698,63 +1714,63 @@ class ChiselCheatsheetModal extends obsidian_1.Modal {
     codeExample.style.cursor = "text";
     codeExample.textContent = `---
 # SNIPPETS
-cssclasses: [my-snippet, another-snippet]           # Local snippets (adds CSS classes)
-chisel: [global-snippet, base-styles]               # Global snippets (auto-loaded CSS)
+cssclasses: [my-snippet, another-snippet]            # Local snippets (adds CSS classes)
+chisel: [global-snippet, base-styles]                # Global snippets (auto-loaded CSS)
 
 # TYPOGRAPHY
-chisel-font-ratio: 1.25                             # Scale ratio between text sizes
-chisel-font-density: 1.2                            # Line height multiplier, affects vertical rhythm
-chisel-font-text: "'Inter', sans-serif"               # Body text font
-chisel-font-header: "'Merriweather', serif"           # Headings font (H1-H6)
-chisel-font-monospace: "'Fira Code', mono"            # Code blocks and inline code font
+chisel-font-ratio: 1.25                              # Scale ratio between text sizes
+chisel-font-density: 1.2                             # Line height multiplier, affects vertical rhythm
+chisel-font-text: "'Inter', sans-serif"              # Body text font
+chisel-font-header: "'Merriweather', serif"          # Headings font (H1-H6)
+chisel-font-monospace: "'Fira Code', mono"           # Code blocks and inline code font
 chisel-font-interface: "'System-UI', sans"           # Obsidian UI font
-chisel-font-feature: "'liga', 'kern'"                 # OpenType features for body text
+chisel-font-feature: "'liga', 'kern'"                # OpenType features for body text
 chisel-font-variation: "'wght' 400"                  # Variable font settings for body text
 chisel-font-weight: 400                              # Default weight for body text
-chisel-bold-weight: 700                              # Weight for bold text
-chisel-font-header-feature: "'liga'"                  # OpenType features for headings
+chisel-font-bold-weight: 700                         # Weight for bold text
+chisel-font-header-feature: "'liga'"                 # OpenType features for headings
 chisel-font-header-variation: "'wght' 600"           # Variable font settings for headings
 chisel-font-header-letter-spacing: "-0.02em"         # Letter spacing for headings
 chisel-font-header-style: normal                     # Style for headings (normal, italic)
 chisel-font-header-weight: 600                       # Weight for headings
-chisel-font-monospace-feature: "'liga'"               # Code font features (enables ligatures)
+chisel-font-monospace-feature: "'liga'"              # Code font features (enables ligatures)
 chisel-font-monospace-variation: "'wght' 400"        # Variable font settings for code
-chisel-font-interface-feature: "'liga'"               # OpenType features for UI text
-chisel-font-interface-variation: "'wght' 400"         # Variable font settings for UI
+chisel-font-interface-feature: "'liga'"              # OpenType features for UI text
+chisel-font-interface-variation: "'wght' 400"        # Variable font settings for UI
 
 # COLORS - LIGHT THEME
 chisel-light-color-foreground: "#1a1a1a"             # Main text color
 chisel-light-color-background: "#ffffff"             # Main background color
-chisel-light-color-red: "#dc3545"                   # Red accent (errors, warnings)
-chisel-light-color-orange: "#fd7e14"                # Orange accent
-chisel-light-color-yellow: "#ffc107"                # Yellow accent (highlights, tags)
-chisel-light-color-green: "#28a745"                 # Green accent (success)
-chisel-light-color-cyan: "#17a2b8"                  # Cyan accent
-chisel-light-color-blue: "#007bff"                  # Blue accent (links, info)
-chisel-light-color-purple: "#6f42c1"                # Purple accent
-chisel-light-color-pink: "#e83e8c"                  # Pink accent
-chisel-light-accent-color: "#007bff"                # Primary accent for interactive elements
-chisel-light-bold-color: "#000000"                  # Bold text color
-chisel-light-italic-color: "#495057"                # Italic text color
+chisel-light-color-red: "#dc3545"                    # Red accent (errors, warnings)
+chisel-light-color-orange: "#fd7e14"                 # Orange accent
+chisel-light-color-yellow: "#ffc107"                 # Yellow accent (highlights, tags)
+chisel-light-color-green: "#28a745"                  # Green accent (success)
+chisel-light-color-cyan: "#17a2b8"                   # Cyan accent
+chisel-light-color-blue: "#007bff"                   # Blue accent (links, info)
+chisel-light-color-purple: "#6f42c1"                 # Purple accent
+chisel-light-color-pink: "#e83e8c"                   # Pink accent
+chisel-light-color-accent: "#007bff"                 # Primary accent for interactive elements
+chisel-light-color-bold: "#000000"                   # Bold text color
+chisel-light-color-italic: "#495057"                 # Italic text color
 
 # COLORS - DARK THEME
 chisel-dark-color-foreground: "#ffffff"              # Main text color
 chisel-dark-color-background: "#1a1a1a"              # Main background color
-chisel-dark-color-red: "#ff6b6b"                    # Red accent (errors, warnings)
-chisel-dark-color-orange: "#ffa726"                 # Orange accent
-chisel-dark-color-yellow: "#ffeb3b"                 # Yellow accent (highlights, tags)
-chisel-dark-color-green: "#66bb6a"                  # Green accent (success)
-chisel-dark-color-cyan: "#4dd0e1"                   # Cyan accent
-chisel-dark-color-blue: "#42a5f5"                   # Blue accent (links, info)
-chisel-dark-color-purple: "#ab47bc"                 # Purple accent
-chisel-dark-color-pink: "#ec407a"                   # Pink accent
-chisel-dark-accent-color: "#42a5f5"                 # Primary accent for interactive elements
-chisel-dark-bold-color: "#ffffff"                   # Bold text color
-chisel-dark-italic-color: "#adb5bd"                 # Italic text color
+chisel-dark-color-red: "#ff6b6b"                     # Red accent (errors, warnings)
+chisel-dark-color-orange: "#ffa726"                  # Orange accent
+chisel-dark-color-yellow: "#ffeb3b"                  # Yellow accent (highlights, tags)
+chisel-dark-color-green: "#66bb6a"                   # Green accent (success)
+chisel-dark-color-cyan: "#4dd0e1"                    # Cyan accent
+chisel-dark-color-blue: "#42a5f5"                    # Blue accent (links, info)
+chisel-dark-color-purple: "#ab47bc"                  # Purple accent
+chisel-dark-color-pink: "#ec407a"                    # Pink accent
+chisel-dark-color-accent: "#42a5f5"                  # Primary accent for interactive elements
+chisel-dark-color-bold: "#ffffff"                    # Bold text color
+chisel-dark-color-italic: "#adb5bd"                  # Italic text color
 
 # VERTICAL RHYTHM
 chisel-single: "1.5rem"                              # Base spacing unit for vertical rhythm
-chisel-global: 1.2                                  # Global rhythm multiplier
+chisel-global: 1.2                                   # Global rhythm multiplier
 
 # CUSTOM VARIABLES
 # Any property starting with 'chisel-' becomes a CSS variable
