@@ -137,10 +137,16 @@ body {
 }
 .chisel-typography .markdown-reading-view b,
 .chisel-typography .markdown-reading-view strong,
+.chisel-typography span.cm-strong,
 .chisel-typography .cm-strong {
   font-weight: var(--bold-weight);
   font-variation-settings: "wght" var(--bold-weight);
   color: var(--color-bold);
+}
+.chisel-typography .markdown-reading-view em,
+.chisel-typography span.cm-em,
+.chisel-typography .cm-em {
+  color: var(--color-italic);
 }
 .chisel-typography .markdown-reading-view h5,
 .chisel-typography .HyperMD-header-5 {
@@ -160,6 +166,14 @@ body {
 .chisel-typography .markdown-reading-view ul > li,
 .chisel-typography .mod-cm6 .HyperMD-list-line.cm-line {
   line-height: max(var(--line-height-normal) * 0.75, var(--line-height-tight));
+}
+
+body {
+  --color-accent-default: hsl(
+      var(--accent-h) var(--accent-s) var(--accent-l)
+  );
+  --color-bold-default: var(--color-foreground);
+  --color-italic-default: var(--color-foreground);
 }
 
 .chisel-color.theme-light,
@@ -225,11 +239,9 @@ body {
   );
   --background-secondary-alt: var(--color-background);
   /*--color-accent-default: var(--color-accent);*/
-  --color-accent-obsidian: hsl(
+  --color-accent-default: hsl(
       var(--accent-h) var(--accent-s) var(--accent-l)
   );
-  --color-bold-default: var(--color-foreground);
-  --color-italic-default: var(--color-foreground);
   --color-interactive: color-mix(
       in oklab,
       var(--color-accent) 25%,
@@ -246,6 +258,8 @@ body {
       transparent
   );
   --color-icon: var(--text-faint);
+  --bold-color: var(--color-bold);
+  --italic-color: var(--color-italic);
   --color-h1: var(--color-foreground);
   --color-h2: var(--color-foreground);
   --color-h3: var(--color-foreground);
@@ -504,30 +518,9 @@ body {
   --color-background: var(--light-color-background, var(--color-base-00));
   --color-white: var(--color-background);
   --color-black: var(--color-foreground);
-  --color-accent: var(--light-color-accent, var(--color-accent-obsidian));
-  --color-bold: var(--light-bold-color, var(--color-bold-default));
-  --color-italic: var(--light-italic-color, var(--color-italic-default));
-  /*
-  --color-white: var(--color-background);
-  --color-black: var(--color-foreground);
-
-  --color-red: var(--light-color-red, #df453a);
-  --color-orange: var(--light-color-orange, #ea702e);
-  --color-yellow: var(--light-color-yellow, #e4ae25) !important;
-  --color-green: var(--light-color-green, #1e9316) !important;
-  --color-cyan: var(--light-color-cyan, #23a5a7) !important;
-  --color-blue: var(--light-color-blue, #2882c3) !important;
-  --color-purple: var(--light-color-purple, #8d6fb3) !important;
-  --color-pink: var(--light-color-pink, #da58b5) !important;
-
-  --color-red: var(--light-color-red, #af3029);
-  --color-orange: var(--light-color-orange, #bc5215);
-  --color-yellow: var(--light-color-yellow, #ad8301);
-  --color-green: var(--light-color-green, #66800b);
-  --color-cyan: var(--light-color-cyan, #24837b);
-  --color-blue: var(--light-color-blue, #205ea6);
-  --color-purple: var(--light-color-purple, #5e409d);
-  --color-pink: var(--light-color-pink, #a02f6f); */
+  --color-accent: var(--light-color-accent, var(--color-accent-default));
+  --color-bold: var(--light-color-bold, var(--color-bold-default));
+  --color-italic: var(--light-color-italic, var(--color-italic-default));
 }
 .chisel-color.theme-light .markdown-source-view.mod-cm6 hr,
 .chisel-color.theme-dark .markdown-source-view.mod-cm6 hr {
@@ -547,30 +540,9 @@ body {
   --color-white: var(--color-foreground);
   --color-black: var(--color-background);
   --border-color: color-mix(in oklab, black 13%, var(--color-background));
-  --color-accent: var(--dark-color-accent, var(--color-accent-obsidian));
-  --color-bold: var(--dark-bold-color, var(--color-bold-default));
-  --color-italic: var(--dark-italic-color, var(--color-italic-default));
-  /*
-
-          --color-red: var(--dark-color-red, #bf3f36);
-          --color-orange: var(--dark-color-orange, #ce6325);
-          --color-yellow: var(--dark-color-yellow, #d69a00) !important;
-          --color-green: var(--dark-color-green, #2e9066) !important;
-          --color-cyan: var(--dark-color-cyan, #4dadd5) !important;
-          --color-blue: var(--dark-color-blue, #256ea2) !important;
-          --color-purple: var(--dark-color-purple, #8e6ac7) !important;
-          --color-pink: var(--dark-color-pink, #dd78db) !important;
-
-
-          --color-red: var(--dark-color-red, #d14d41);
-          --color-orange: var(--dark-color-orange, #da702c);
-          --color-yellow: var(--dark-color-yellow, #ad8301);
-          --color-green: var(--dark-color-green, #879a39);
-          --color-cyan: var(--dark-color-cyan, #3aa99f);
-          --color-blue: var(--dark-color-blue, #4385be);
-          --color-purple: var(--dark-color-purple, #8b7ec8);
-          --color-pink: var(--dark-color-pink, #ce5d97);
-  */
+  --color-accent: var(--dark-color-accent, var(--color-accent-default));
+  --color-bold: var(--dark-color-bold, var(--color-bold-default));
+  --color-italic: var(--dark-color-italic, var(--color-italic-default));
   --blockquote-border-color: var(--text-faint);
   --color-h1: color-mix(
       in oklab,
