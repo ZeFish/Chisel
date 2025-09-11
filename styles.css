@@ -790,16 +790,16 @@ body {
   margin-block-start: 0;
 }
 .chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) {
-  margin: var(--margin-block-calculated) 0;
+  margin: calc(var(--margin-block-calculated) * 1.5) 0;
 }
 .chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) + div.el-p:has(.image-embed) {
-  margin-top: calc(var(--margin) * -1.7) calc(var(--margin) * 5);
+  margin-top: calc(var(--margin) * -1.75);
 }
 .chisel-vertical-rhythm .markdown-reading-view .callout,
 .chisel-vertical-rhythm .markdown-reading-view.mod-cm6 .callout,
 .chisel-vertical-rhythm .markdown-reading-view blockquote,
 .chisel-vertical-rhythm .markdown-reading-view pre {
-  margin: calc(var(--margin) * 1.5) var(--margin);
+  margin: calc(var(--margin-block-calculated) * 1.5) var(--margin);
 }
 .chisel-vertical-rhythm .markdown-reading-view blockquote p:last-of-type {
   margin-bottom: 0;
@@ -861,7 +861,7 @@ body {
 }
 .chisel-vertical-rhythm .markdown-reading-view .inline-title {
   margin-top: calc(var(--margin) * 4);
-  margin-bottom: calc(var(--margin) * 4);
+  margin-bottom: calc(var(--margin) * 3);
   padding: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -872,7 +872,7 @@ body {
 }
 .chisel-vertical-rhythm .markdown-reading-view div div h1 {
   margin-top: calc(var(--margin) * 8);
-  margin-bottom: calc(var(--margin) * 4);
+  margin-bottom: calc(var(--margin) * 3);
   padding: 0;
 }
 .chisel-vertical-rhythm .markdown-reading-view div div h2 {
