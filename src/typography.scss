@@ -75,7 +75,7 @@ body {
     .vertical-tab-header-group-title,
     .setting-item-heading .setting-item-name {
         font-family: var(--font-header);
-        font-size: var(--font-ui-large);
+        /*font-size: var(--font-ui-large);*/
     }
     .markdown-preview-view,
     .markdown-reading-view {
@@ -155,12 +155,6 @@ body {
     .cm-strong {
         font-weight: var(--bold-weight);
         font-variation-settings: "wght" var(--bold-weight);
-        color: var(--color-bold);
-    }
-    .markdown-reading-view em,
-    span.cm-em,
-    .cm-em {
-        color: var(--color-italic);
     }
 
     .markdown-reading-view h5,

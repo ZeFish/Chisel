@@ -184,8 +184,8 @@ body {
     --text-normal: var(--color-foreground);
     --text-muted: var(--color-base-70);
     --text-faint: var(--color-base-50);
-    --text-on-accent: var(--color-background);
-    --text-on-accent-inverted: var(--color-foreground);
+    --text-on-accent: var(--color-foreground);
+    --text-on-accent-inverted: var(--color-background);
     --text-success: var(--color-green);
     --text-warning: var(--color-red);
     --text-error: var(--color-red);
@@ -350,6 +350,22 @@ body {
     --alternating-color-3: var(--color-blue);
     --inline-title-color: var(--text-normal);
 
+    .markdown-reading-view b,
+    .markdown-reading-view strong,
+    span.cm-strong,
+    .cm-strong {
+        color: var(--color-bold);
+    }
+    .markdown-reading-view em,
+    span.cm-em,
+    .cm-em {
+        color: var(--color-italic);
+    }
+
+    .checkbox-container.is-enabled {
+        background-color: var(--color-interactive-hover);
+    }
+
     &.hider-tabs .workspace:not(.is-left-sidedock-open) {
         --bg1: var(--background-primary) !important;
         --titlebar-background: var(--background-primary) !important;
@@ -358,6 +374,7 @@ body {
 
     &.is-mobile {
         --mobile-sidebar-background: var(--background-secondary);
+        --color-interactive: var(--text-faint);
     }
 
     &.theme-light {

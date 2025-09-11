@@ -68,7 +68,7 @@ body {
 .chisel-typography .vertical-tab-header-group-title,
 .chisel-typography .setting-item-heading .setting-item-name {
   font-family: var(--font-header);
-  font-size: var(--font-ui-large);
+  /*font-size: var(--font-ui-large);*/
 }
 .chisel-typography .markdown-preview-view,
 .chisel-typography .markdown-reading-view {
@@ -141,12 +141,6 @@ body {
 .chisel-typography .cm-strong {
   font-weight: var(--bold-weight);
   font-variation-settings: "wght" var(--bold-weight);
-  color: var(--color-bold);
-}
-.chisel-typography .markdown-reading-view em,
-.chisel-typography span.cm-em,
-.chisel-typography .cm-em {
-  color: var(--color-italic);
 }
 .chisel-typography .markdown-reading-view h5,
 .chisel-typography .HyperMD-header-5 {
@@ -340,8 +334,8 @@ body {
   --text-normal: var(--color-foreground);
   --text-muted: var(--color-base-70);
   --text-faint: var(--color-base-50);
-  --text-on-accent: var(--color-background);
-  --text-on-accent-inverted: var(--color-foreground);
+  --text-on-accent: var(--color-foreground);
+  --text-on-accent-inverted: var(--color-background);
   --text-success: var(--color-green);
   --text-warning: var(--color-red);
   --text-error: var(--color-red);
@@ -499,6 +493,28 @@ body {
 .chisel-color.theme-dark :not(.sidebar-color) .mod-right-split {
   --background-secondary: unset !important;
 }
+.chisel-color.theme-light .markdown-reading-view b,
+.chisel-color.theme-light .markdown-reading-view strong,
+.chisel-color.theme-light span.cm-strong,
+.chisel-color.theme-light .cm-strong,
+.chisel-color.theme-dark .markdown-reading-view b,
+.chisel-color.theme-dark .markdown-reading-view strong,
+.chisel-color.theme-dark span.cm-strong,
+.chisel-color.theme-dark .cm-strong {
+  color: var(--color-bold);
+}
+.chisel-color.theme-light .markdown-reading-view em,
+.chisel-color.theme-light span.cm-em,
+.chisel-color.theme-light .cm-em,
+.chisel-color.theme-dark .markdown-reading-view em,
+.chisel-color.theme-dark span.cm-em,
+.chisel-color.theme-dark .cm-em {
+  color: var(--color-italic);
+}
+.chisel-color.theme-light .checkbox-container.is-enabled,
+.chisel-color.theme-dark .checkbox-container.is-enabled {
+  background-color: var(--color-interactive-hover);
+}
 .chisel-color.theme-light.hider-tabs .workspace:not(.is-left-sidedock-open),
 .chisel-color.theme-dark.hider-tabs .workspace:not(.is-left-sidedock-open) {
   --bg1: var(--background-primary) !important;
@@ -508,6 +524,7 @@ body {
 .chisel-color.theme-light.is-mobile,
 .chisel-color.theme-dark.is-mobile {
   --mobile-sidebar-background: var(--background-secondary);
+  --color-interactive: var(--text-faint);
 }
 .chisel-color.theme-light.theme-light,
 .chisel-color.theme-dark.theme-light {
