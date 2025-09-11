@@ -1,1 +1,10 @@
-{"id":"chisel","name":"Chisel","version":"0.1.3","minAppVersion":"1.6.0","description":"Snippets manager - Aditionnal body CSS Helper - Abstraction layer for customizaiton","author":"Francis","authorUrl":"https://","isDesktopOnly":false}
+{
+  "id": "chisel",
+  "name": "Chisel",
+  "version": "0.1.4",
+  "minAppVersion": "1.6.0",
+  "description": "Snippets manager - Aditionnal body CSS Helper - Abstraction layer for customizaiton",
+  "author": "Francis",
+  "authorUrl": "https://github.com/ZeFish",
+  "isDesktopOnly": false
+}
