@@ -379,17 +379,17 @@ body {
 
     &.theme-light {
         --color-foreground: var(
-            --light-color-foreground,
+            --color-light-foreground,
             var(--color-base-100)
         );
-        --color-background: var(--light-color-background, var(--color-base-00));
+        --color-background: var(--color-light-background, var(--color-base-00));
 
         --color-white: var(--color-background);
         --color-black: var(--color-foreground);
 
-        --color-accent: var(--light-color-accent, var(--color-accent-default));
-        --color-bold: var(--light-color-bold, var(--color-bold-default));
-        --color-italic: var(--light-color-italic, var(--color-italic-default));
+        --color-accent: var(--color-light-accent, var(--color-accent-default));
+        --color-bold: var(--color-light-bold, var(--color-bold-default));
+        --color-italic: var(--color-light-italic, var(--color-italic-default));
     }
 
     .markdown-source-view.mod-cm6 hr {
@@ -404,17 +404,17 @@ body {
 
     &.theme-dark,
     &.is-mobile.theme-dark {
-        --color-foreground: var(--dark-color-foreground, var(--color-base-100));
-        --color-background: var(--dark-color-background, var(--color-base-00));
+        --color-foreground: var(--color-dark-foreground, var(--color-base-100));
+        --color-background: var(--color-dark-background, var(--color-base-00));
 
         --color-white: var(--color-foreground);
         --color-black: var(--color-background);
 
         --border-color: color-mix(in oklab, black 13%, var(--color-background));
 
-        --color-accent: var(--dark-color-accent, var(--color-accent-default));
-        --color-bold: var(--dark-color-bold, var(--color-bold-default));
-        --color-italic: var(--dark-color-italic, var(--color-italic-default));
+        --color-accent: var(--color-dark-accent, var(--color-accent-default));
+        --color-bold: var(--color-dark-bold, var(--color-bold-default));
+        --color-italic: var(--color-dark-italic, var(--color-italic-default));
         --blockquote-border-color: var(--text-faint);
 
         --color-h1: color-mix(

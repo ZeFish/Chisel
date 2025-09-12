@@ -73,16 +73,16 @@ Opionated simplified css management. Activated, layout will change, and those va
 
 | Description | CSS Variable | Frontmatter Key | Example |
 | --- | --- | --- | --- |
-| Light Foreground | `--light-color-foreground` | `chisel-light-color-foreground` | `#1a1a1a` |
-| Light Background | `--light-color-background` | `chisel-light-color-background` | `#ffffff` |
-| Light Red | `--light-color-red` | `chisel-light-color-red` | `#dc3545` |
-| Light Orange | `--light-color-orange` | `chisel-light-color-orange` | `#fd7e14` |
-| Light Yellow | `--light-color-yellow` | `chisel-light-color-yellow` | `#ffc107` |
-| Light Green | `--light-color-green` | `chisel-light-color-green` | `#28a745` |
-| Light Cyan | `--light-color-cyan` | `chisel-light-color-cyan` | `#17a2b8` |
-| Light Blue | `--light-color-blue` | `chisel-light-color-blue` | `#007bff` |
-| Light Purple | `--light-color-purple` | `chisel-light-color-purple` | `#6f42c1` |
-| Light Pink | `--light-color-pink` | `chisel-light-color-pink` | `#e83e8c` |
+| Light Foreground | `--color-light-foreground` | `chisel-light-color-foreground` | `#1a1a1a` |
+| Light Background | `--color-light-background` | `chisel-light-color-background` | `#ffffff` |
+| Light Red | `--color-light-red` | `chisel-light-color-red` | `#dc3545` |
+| Light Orange | `--color-light-orange` | `chisel-light-color-orange` | `#fd7e14` |
+| Light Yellow | `--color-light-yellow` | `chisel-light-color-yellow` | `#ffc107` |
+| Light Green | `--color-light-green` | `chisel-light-color-green` | `#28a745` |
+| Light Cyan | `--color-light-cyan` | `chisel-light-color-cyan` | `#17a2b8` |
+| Light Blue | `--color-light-blue` | `chisel-light-color-blue` | `#007bff` |
+| Light Purple | `--color-light-purple` | `chisel-light-color-purple` | `#6f42c1` |
+| Light Pink | `--color-light-pink` | `chisel-light-color-pink` | `#e83e8c` |
 | Light Accent | `--light-accent-color` | `chisel-light-accent-color` | `#007bff` |
 | Light Bold | `--light-bold-color` | `chisel-light-bold-color` | `#000000` |
 | Light Italic | `--light-italic-color` | `chisel-light-italic-color` | `#495057` |
@@ -91,16 +91,16 @@ Opionated simplified css management. Activated, layout will change, and those va
 
 | Description | CSS Variable | Frontmatter Key | Example |
 | --- | --- | --- | --- |
-| Dark Foreground | `--dark-color-foreground` | `chisel-dark-color-foreground` | `#ffffff` |
-| Dark Background | `--dark-color-background` | `chisel-dark-color-background` | `#1a1a1a` |
-| Dark Red | `--dark-color-red` | `chisel-dark-color-red` | `#ff6b6b` |
-| Dark Orange | `--dark-color-orange` | `chisel-dark-color-orange` | `#ffa726` |
-| Dark Yellow | `--dark-color-yellow` | `chisel-dark-color-yellow` | `#ffeb3b` |
-| Dark Green | `--dark-color-green` | `chisel-dark-color-green` | `#66bb6a` |
-| Dark Cyan | `--dark-color-cyan` | `chisel-dark-color-cyan` | `#4dd0e1` |
-| Dark Blue | `--dark-color-blue` | `chisel-dark-color-blue` | `#42a5f5` |
-| Dark Purple | `--dark-color-purple` | `chisel-dark-color-purple` | `#ab47bc` |
-| Dark Pink | `--dark-color-pink` | `chisel-dark-color-pink` | `#ec407a` |
+| Dark Foreground | `--color-dark-foreground` | `chisel-dark-color-foreground` | `#ffffff` |
+| Dark Background | `--color-dark-background` | `chisel-dark-color-background` | `#1a1a1a` |
+| Dark Red | `--color-dark-red` | `chisel-dark-color-red` | `#ff6b6b` |
+| Dark Orange | `--color-dark-orange` | `chisel-dark-color-orange` | `#ffa726` |
+| Dark Yellow | `--color-dark-yellow` | `chisel-dark-color-yellow` | `#ffeb3b` |
+| Dark Green | `--color-dark-green` | `chisel-dark-color-green` | `#66bb6a` |
+| Dark Cyan | `--color-dark-cyan` | `chisel-dark-color-cyan` | `#4dd0e1` |
+| Dark Blue | `--color-dark-blue` | `chisel-dark-color-blue` | `#42a5f5` |
+| Dark Purple | `--color-dark-purple` | `chisel-dark-color-purple` | `#ab47bc` |
+| Dark Pink | `--color-dark-pink` | `chisel-dark-color-pink` | `#ec407a` |
 | Dark Accent | `--dark-accent-color` | `chisel-dark-accent-color` | `#42a5f5` |
 | Dark Bold | `--dark-bold-color` | `chisel-dark-bold-color` | `#ffffff` |
 | Dark Italic | `--dark-italic-color` | `chisel-dark-italic-color` | `#adb5bd` |
@@ -137,19 +137,19 @@ body.chisel {
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 body {
-    --light-color-foreground: #100f0f;
-    --light-color-background: #fffcf0;
-    --light-color-red: #af3029;
-    --light-color-orange: #bc5215;
-    --light-color-yellow: #ad8301;
-    --light-color-green: #66800b;
-    --light-color-cyan: #142625;
-    --light-color-blue: #205ea6;
-    --light-color-purple: #5e409d;
-    --light-color-pink: #a02f6f;
+    --color-light-foreground: #100f0f;
+    --color-light-background: #fffcf0;
+    --color-light-red: #af3029;
+    --color-light-orange: #bc5215;
+    --color-light-yellow: #ad8301;
+    --color-light-green: #66800b;
+    --color-light-cyan: #142625;
+    --color-light-blue: #205ea6;
+    --color-light-purple: #5e409d;
+    --color-light-pink: #a02f6f;
     /* Dark */
-    --dark-color-foreground: #fffcf0;
-    --dark-color-background: #100f0f;
+    --color-dark-foreground: #fffcf0;
+    --color-dark-background: #100f0f;
 
     --color-accent: var(--color-foreground);
     --font-monospace: var(--color-foreground);
