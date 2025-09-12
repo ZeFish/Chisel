@@ -1,7 +1,7 @@
 {
   "id": "chisel",
   "name": "Chisel",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "minAppVersion": "1.6.0",
   "description": "Snippets manager - Aditionnal body CSS Helper - Abstraction layer for customizaiton",
   "author": "Francis",
