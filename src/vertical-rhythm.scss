@@ -2,20 +2,22 @@
 /* Vertical Flow */
 /* ============================================= */
 body {
-    --margin: 1rlh; /* single unit */
-    --margin-block: 2; /* block separation */
-    --margin-block-calculated: calc(var(--margin) * var(--margin-block));
+    --marge: 1rlh; /* single unit */
+    --marge-block: 2; /* block separation */
+    --marge-block-calculated: calc(var(--marge) * var(--marge-block));
+    --marge-block-special: var(--marge-block-calculated);
 }
 
 .chisel-vertical-rhythm {
     --tag-border-width: 1px;
-    --tag-radius: calc(var(--margin) * 0.25);
-    --tag-padding-x: calc(var(--margin) * 0.25);
-    --tag-padding-y: calc(var(--margin) * 0.25);
+    --tag-radius: calc(var(--marge) * 0.25);
+    --tag-padding-x: calc(var(--marge) * 0.25);
+    --tag-padding-y: calc(var(--marge) * 0.25);
 
     --table-margin: auto;
-    --table-cell-padding: 0 calc(var(--margin) * 5) 0 calc(var(--margin) * 5);
-    --table-edge-cell-padding-first: 0 calc(var(--margin) * 5);
+    --table-cell-padding: 0 calc(var(--marge) * 5) 0 calc(var(--marge) * 5);
+    --table-edge-cell-padding-first: 0 calc(var(--marge) * 5);
+    --file-margins: var(--marge);
 
     :is(.markdown-source-view, .markdown-reading-view) table {
         margin-left: var(--table-margin);
@@ -25,26 +27,27 @@ body {
     .cm-line {
         line-height: var(--line-height-normal);
         margin-top: 0rlh;
-        margin-bottom: var(--margin-block-calculated);
+        margin-bottom: var(--marge-block-calculated);
         padding: 0;
         margin-block-start: 0;
     }
 
     .markdown-preview-section > div.el-p:has(.image-embed) {
-        margin: calc(var(--margin-block-calculated) * 1.5) 0;
+        margin: var(--marge-block-calculated) 0;
     }
 
     .markdown-preview-section
         > div.el-p:has(.image-embed)
         + div.el-p:has(.image-embed) {
-        margin-top: calc(var(--margin) * -1.75);
+        margin-top: calc(var(--marge) * -1.75);
     }
 
+    .markdown-preview-section p:has(.image-embed),
     .markdown-reading-view .callout,
     .markdown-reading-view.mod-cm6 .callout,
     .markdown-reading-view blockquote,
     .markdown-reading-view pre {
-        margin: calc(var(--margin-block-calculated) * 1.5) var(--margin);
+        margin: var(--marge-block-special);
     }
 
     .markdown-reading-view blockquote p:last-of-type {
@@ -63,12 +66,12 @@ body {
     }
     :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
         margin: 0rlh 0 0 0;
-        padding: 0 0 0 var(--margin);
+        padding: 0 0 0 var(--marge);
     }
 
     .markdown-reading-view hr {
-        margin: calc(var(--margin) * 5) calc(var(--margin) * 8)
-            calc(var(--margin) * 6) calc(var(--margin) * 8);
+        margin: calc(var(--marge) * 5) calc(var(--marge) * 8)
+            calc(var(--marge) * 6) calc(var(--marge) * 8);
     }
     .markdown-source-view hr {
         margin: 0 25%;
@@ -81,13 +84,18 @@ body {
         .popover
         .markdown-embed-title,
     :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-title {
-        padding: var(--margin) !important;
+        padding: var(--marge) !important;
     }
 
     .markdown-preview-view ul,
     .markdown-preview-view ol {
-        padding: 0rlh calc(var(--margin) * 2);
-        margin: calc(var(--margin) / 2) 0rlh;
+        padding: 0rlh calc(var(--marge) * 2);
+        margin: calc(var(--marge) * -0.75) 0rlh
+            calc(var(--marge-block-calculated) * 1) 0rlh;
+    }
+    .markdown-preview-view ul ul,
+    .markdown-preview-view ol ul {
+        margin-top: 0;
     }
     .el-h1 + .el-ul ul,
     .el-h2 + .el-ul ul,
@@ -101,7 +109,7 @@ body {
     .el-h4 + .el-ol ol,
     .el-h5 + .el-ol ol,
     .el-h6 + .el-ol ol {
-        margin-top: calc(var(--margin) * 0.2) calc(var(--margin) * 5);
+        margin-top: calc(var(--marge) * 0.5);
     }
 
     .markdown-preview-view ol > li,
@@ -115,17 +123,17 @@ body {
     .markdown-preview-view ul > li:not(:first-child),
     .markdown-source-view ol > li:not(:first-child),
     .markdown-source-view ul > li:not(:first-child) {
-        margin-top: 0 calc(var(--margin) * 5);
+        margin-top: calc(var(--marge) * 0.5);
     }
 
     /*
     .mod-cm6 .HyperMD-list-line.cm-line {
-        margin-bottom: 0. calc(var(--margin) * 5) !important;
+        margin-bottom: 0. calc(var(--marge) * 5) !important;
     }
 */
     .markdown-reading-view .inline-title {
-        margin-top: calc(var(--margin) * 4);
-        margin-bottom: calc(var(--margin) * 3);
+        margin-top: calc(var(--marge) * 4);
+        margin-bottom: calc(var(--marge) * 3);
         padding: 0;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -137,32 +145,32 @@ body {
 
     /*  .HyperMD-header-1.cm-line */
     .markdown-reading-view div div h1 {
-        margin-top: calc(var(--margin) * 8);
-        margin-bottom: calc(var(--margin) * 3);
+        margin-top: calc(var(--marge) * 8);
+        margin-bottom: calc(var(--marge) * 3);
         padding: 0;
     }
 
     /*  .HyperMD-header-2.cm-line  */
     .markdown-reading-view div div h2 {
-        margin-top: calc(var(--margin) * 6);
-        margin-bottom: calc(var(--margin) * 2);
+        margin-top: calc(var(--marge) * 6);
+        margin-bottom: calc(var(--marge) * 2);
         padding: 0;
     }
     /*  .HyperMD-header-3.cm-line
 is commented because is bugged the ability to select text
 */
     .markdown-reading-view div div h3 {
-        margin-top: calc(var(--margin) * 4);
-        margin-bottom: calc(var(--margin) * 2);
+        margin-top: calc(var(--marge) * 4);
+        margin-bottom: calc(var(--marge) * 2);
         padding: 0;
     }
     /*  .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line */
     .markdown-reading-view div.el-h1 + div.el-h2 h2 {
-        margin-top: var(--margin);
+        margin-top: var(--marge);
     }
     /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
     .markdown-reading-view div.el-h2 + div.el-h3 h3 {
-        margin-top: calc(var(--margin) * 4);
+        margin-top: calc(var(--marge) * 2);
     }
 
     /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
@@ -172,8 +180,8 @@ is commented because is bugged the ability to select text
 
     /*  .HyperMD-header-4.cm-line */
     .markdown-reading-view div div h4 {
-        margin-top: calc(var(--margin) * 4);
-        margin-bottom: var(--margin);
+        margin-top: calc(var(--marge) * 4);
+        margin-bottom: var(--marge);
         padding: 0;
     }
 
@@ -184,53 +192,48 @@ is commented because is bugged the ability to select text
 
     /*  .HyperMD-header-5.cm-line */
     .markdown-reading-view div div h5 {
-        margin-top: calc(var(--margin) * 2);
-        margin-bottom: var(--margin);
+        margin-top: calc(var(--marge) * 2);
+        margin-bottom: var(--marge);
         padding: 0;
     }
 
     /*  .HyperMD-header-6.cm-line  */
     .markdown-reading-view div div h6 {
-        margin-top: calc(var(--margin) * 2);
+        margin-top: calc(var(--marge) * 2);
         margin-bottom: 0rlh;
         padding: 0;
     }
 
     .markdown-reading-view div.el-h6 + div blockquote {
-        margin-top: var(--margin);
+        margin-top: var(--marge);
+    }
+
+    @media only screen and (max-width: 600px) {
+        --marge-block-special: var(--marge-block-calculated) 0;
+        .inline-title {
+            margin-bottom: calc(var(--marge) * 3);
+            margin-top: var(--marge);
+        }
+        .markdown-source-view .inline-title {
+            margin-bottom: var(--marge);
+        }
+        .markdown-reading-view ul,
+        .markdown-reading-view ol,
+        .markdown-reading-view .callout-content ul,
+        .markdown-reading-view .callout-content ol {
+            padding: 0 0 0 var(--marge);
+        }
+        .markdown-reading-view hr {
+            margin: calc(var(--marge) * 4) 25% !important;
+        }
+    }
+
+    @media only screen and (min-width: 900px) {
+        .inline-title {
+            margin-top: calc(var(--marge) * 4);
+        }
     }
 }
-
-@media only screen and (max-width: 600px) {
-    .chisel-vertical-rhythm .markdown-reading-view .callout,
-    .chisel-vertical-rhythm .markdown-reading-view blockquote,
-    .chisel-vertical-rhythm .markdown-reading-view pre {
-        margin: calc(var(--margin) * 2) 0rlh !important;
-    }
-    .chisel-vertical-rhythm .inline-title {
-        margin-bottom: calc(var(--margin) * 3);
-        margin-top: var(--margin);
-    }
-    .chisel-vertical-rhythm .markdown-source-view .inline-title {
-        margin-bottom: var(--margin);
-    }
-    .chisel-vertical-rhythm .markdown-reading-view ul,
-    .chisel-vertical-rhythm .markdown-reading-view ol,
-    .chisel-vertical-rhythm .markdown-reading-view .callout-content ul,
-    .chisel-vertical-rhythm .markdown-reading-view .callout-content ol {
-        padding: 0rlh 0rlh 0rlh 0 calc(var(--margin) * 5);
-    }
-    .chisel-vertical-rhythm .markdown-reading-view hr {
-        margin: calc(var(--margin) * 4) 25% !important;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    .chisel-vertical-rhythm .inline-title {
-        margin-top: calc(var(--margin) * 4);
-    }
-}
-
 /* Preview mode (reading view) */
 .chisel-vertical-rhythm .markdown-reading-view h1 + h1,
 .chisel-vertical-rhythm .markdown-reading-view h1 + h2,
@@ -322,5 +325,5 @@ is commented because is bugged the ability to select text
 .chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
 .chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
 .chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line {
-    margin-top: calc(var(--margin) * 2);
+    margin-top: calc(var(--marge) * 2);
 }
