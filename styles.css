@@ -260,7 +260,7 @@ body {
   --color-h4: var(--color-foreground);
   --color-h5: var(--color-foreground);
   --color-h6: var(--color-foreground);
-  --background-modifier-hover: var(--color-interactive-hover-backgound);
+  --background-modifier-hover: var(--color-base-05);
   --background-modifier-active-hover: var(--background-secondary);
   --background-modifier-border: var(--background-secondary);
   --background-modifier-border-hover: var(--color-base-20);
@@ -369,7 +369,7 @@ body {
   --icon-color-hover: var(--color-accent) !important;
   --nav-item-color: var(--text-muted);
   --nav-item-color-active: var(--text-normal);
-  --nav-item-color-hover: var(--text-normal);
+  --nav-item-color-hover: var(--color-accent);
   --nav-collapse-icon-color: color-mix(
       in oklab,
       var(--text-normal) 25%,
@@ -386,7 +386,7 @@ body {
       transparent
   );
   --nav-item-background-hover: var(--color-interactive-hover-backgound);
-  --nav-item-background-active: var(--color-interactive-hover-backgound);
+  --nav-item-background-active: var(--color-base-10);
   --nav-item-color-highlighted: var(--color-foreground);
   --ribbon-background: var(--background-secondary);
   --ribbon-background-collapsed: var(--background-secondary);
@@ -677,7 +677,7 @@ body {
 @media (hover: hover) {
   .chisel-color.theme-light .view-header-title-parent .view-header-breadcrumb:hover,
   .chisel-color.theme-dark .view-header-title-parent .view-header-breadcrumb:hover {
-    background-color: var(--color-interactive-hover-backgound);
+    /*background-color: var(--color-interactive-hover-backgound);*/
     color: var(--color-accent);
   }
 }
