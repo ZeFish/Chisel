@@ -71,6 +71,15 @@ body {
     );
     --background-secondary-alt: var(--color-background);
 
+    --color-red: var(--color-light-red);
+    --color-orange: var(--color-light-orange);
+    --color-yellow: var(--color-light-yellow);
+    --color-green: var(--color-light-green);
+    --color-cyan: var(--color-light-cyan);
+    --color-blue: var(--color-light-blue);
+    --color-purple: var(--color-light-purple);
+    --color-pink: var(--color-light-pink);
+
     /*--color-accent-default: var(--color-accent);*/
     --color-accent-default: hsl(
         var(--accent-h) var(--accent-s) var(--accent-l)
@@ -406,6 +415,15 @@ body {
     &.is-mobile.theme-dark {
         --color-foreground: var(--color-dark-foreground, var(--color-base-100));
         --color-background: var(--color-dark-background, var(--color-base-00));
+
+        --color-red: var(--color-dark-red);
+        --color-orange: var(--color-dark-orange);
+        --color-yellow: var(--color-dark-yellow);
+        --color-green: var(--color-dark-green);
+        --color-cyan: var(--color-dark-cyan);
+        --color-blue: var(--color-dark-blue);
+        --color-purple: var(--color-dark-purple);
+        --color-pink: var(--color-dark-pink);
 
         --color-white: var(--color-foreground);
         --color-black: var(--color-background);

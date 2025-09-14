@@ -127,13 +127,15 @@ body {
 .chisel-typography .inline-title:not([data-level]) {
   font-feature-settings: var(--font-header-feature);
   font-variation-settings: var(--font-header-variation);
-  overflow-wrap: normal;
   letter-spacing: var(--font-header-letter-spacing, normal);
   line-height: var(--font-header-line-height, 1em); /*0.50em;*/
   text-wrap: balance;
   font-style: var(--font-header-style, normal);
   font-weight: var(--font-header-weight);
   font-family: var(--font-header);
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .chisel-typography .markdown-reading-view b,
 .chisel-typography .markdown-reading-view strong,
@@ -232,6 +234,14 @@ body {
       var(--background-primary)
   );
   --background-secondary-alt: var(--color-background);
+  --color-red: var(--color-light-red);
+  --color-orange: var(--color-light-orange);
+  --color-yellow: var(--color-light-yellow);
+  --color-green: var(--color-light-green);
+  --color-cyan: var(--color-light-cyan);
+  --color-blue: var(--color-light-blue);
+  --color-purple: var(--color-light-purple);
+  --color-pink: var(--color-light-pink);
   /*--color-accent-default: var(--color-accent);*/
   --color-accent-default: hsl(
       var(--accent-h) var(--accent-s) var(--accent-l)
@@ -554,6 +564,14 @@ body {
 .chisel-color.theme-dark.is-mobile.theme-dark {
   --color-foreground: var(--color-dark-foreground, var(--color-base-100));
   --color-background: var(--color-dark-background, var(--color-base-00));
+  --color-red: var(--color-dark-red);
+  --color-orange: var(--color-dark-orange);
+  --color-yellow: var(--color-dark-yellow);
+  --color-green: var(--color-dark-green);
+  --color-cyan: var(--color-dark-cyan);
+  --color-blue: var(--color-dark-blue);
+  --color-purple: var(--color-dark-purple);
+  --color-pink: var(--color-dark-pink);
   --color-white: var(--color-foreground);
   --color-black: var(--color-background);
   --border-color: color-mix(in oklab, black 13%, var(--color-background));
@@ -774,7 +792,6 @@ body {
   --table-margin: auto;
   --table-cell-padding: 0 calc(var(--marge) * 5) 0 calc(var(--marge) * 5);
   --table-edge-cell-padding-first: 0 calc(var(--marge) * 5);
-  --file-margins: var(--marge);
   /*
       .mod-cm6 .HyperMD-list-line.cm-line {
           margin-bottom: 0. calc(var(--marge) * 5) !important;
@@ -884,10 +901,6 @@ body {
   margin-top: calc(var(--marge) * 4);
   margin-bottom: calc(var(--marge) * 3);
   padding: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  overflow-wrap: break-word;
-  hyphens: auto;
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
@@ -939,6 +952,7 @@ body {
 @media only screen and (max-width: 600px) {
   .chisel-vertical-rhythm {
     --marge-block-special: var(--marge-block-calculated) 0;
+    --file-margins: var(--marge);
   }
   .chisel-vertical-rhythm .inline-title {
     margin-bottom: calc(var(--marge) * 3);

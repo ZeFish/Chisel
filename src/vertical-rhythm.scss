@@ -17,7 +17,6 @@ body {
     --table-margin: auto;
     --table-cell-padding: 0 calc(var(--marge) * 5) 0 calc(var(--marge) * 5);
     --table-edge-cell-padding-first: 0 calc(var(--marge) * 5);
-    --file-margins: var(--marge);
 
     :is(.markdown-source-view, .markdown-reading-view) table {
         margin-left: var(--table-margin);
@@ -135,10 +134,7 @@ body {
         margin-top: calc(var(--marge) * 4);
         margin-bottom: calc(var(--marge) * 3);
         padding: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        overflow-wrap: break-word;
-        hyphens: auto;
+
         display: -webkit-box;
         -webkit-box-orient: vertical;
     }
@@ -210,6 +206,7 @@ is commented because is bugged the ability to select text
 
     @media only screen and (max-width: 600px) {
         --marge-block-special: var(--marge-block-calculated) 0;
+        --file-margins: var(--marge);
         .inline-title {
             margin-bottom: calc(var(--marge) * 3);
             margin-top: var(--marge);

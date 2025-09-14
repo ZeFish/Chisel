@@ -140,15 +140,17 @@ body {
     .inline-title:not([data-level]) {
         font-feature-settings: var(--font-header-feature);
         font-variation-settings: var(--font-header-variation);
-        overflow-wrap: normal;
         letter-spacing: var(--font-header-letter-spacing, normal);
         line-height: var(--font-header-line-height, 1em); /*0.50em;*/
         text-wrap: balance;
         font-style: var(--font-header-style, normal);
         font-weight: var(--font-header-weight);
         font-family: var(--font-header);
-    }
 
+        text-overflow: ellipsis;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
     .markdown-reading-view b,
     .markdown-reading-view strong,
     span.cm-strong,
