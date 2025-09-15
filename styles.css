@@ -500,6 +500,10 @@ body.chisel-color.theme-dark .view-action:hover {
   color: var(--color-accent) !important;
   --icon-color-hover: var(--color-accent) !important;
 }
+body.chisel-color.theme-light.folder-note-underline-path .has-folder-note.view-header-breadcrumb:hover,
+body.chisel-color.theme-dark.folder-note-underline-path .has-folder-note.view-header-breadcrumb:hover {
+  text-decoration-color: var(--color-accent);
+}
 body.chisel-color.theme-light .side-dock-actions,
 body.chisel-color.theme-dark .side-dock-actions {
   color: var(--icon-color);
@@ -890,11 +894,17 @@ body {
 .chisel-vertical-rhythm .markdown-preview-view ul,
 .chisel-vertical-rhythm .markdown-preview-view ol {
   padding: 0rlh calc(var(--marge) * 2);
-  margin: calc(var(--marge) * -0.75) 0rlh calc(var(--marge-block-calculated) * 1) 0rlh;
+  margin: 0 0 var(--marge-block-calculated) 0;
 }
-.chisel-vertical-rhythm .markdown-preview-view ul ul,
-.chisel-vertical-rhythm .markdown-preview-view ol ul {
-  margin-top: 0;
+.chisel-vertical-rhythm .markdown-preview-view .el-p + .el-ol {
+  margin-top: calc(var(--marge) * -1.5);
+}
+.chisel-vertical-rhythm .markdown-rendered ul ul,
+.chisel-vertical-rhythm .markdown-rendered ol ul,
+.chisel-vertical-rhythm .markdown-rendered ul ol,
+.chisel-vertical-rhythm .markdown-rendered ol ol {
+  margin: 0;
+  padding: 0rlh calc(var(--marge) * 1);
 }
 .chisel-vertical-rhythm .el-h1 + .el-ul ul,
 .chisel-vertical-rhythm .el-h2 + .el-ul ul,
@@ -914,13 +924,7 @@ body {
 .chisel-vertical-rhythm .markdown-preview-view ul > li,
 .chisel-vertical-rhythm .markdown-source-view ol > li,
 .chisel-vertical-rhythm .markdown-source-view ul > li {
-  margin: 0rlh;
-}
-.chisel-vertical-rhythm .markdown-preview-view ol > li:not(:first-child),
-.chisel-vertical-rhythm .markdown-preview-view ul > li:not(:first-child),
-.chisel-vertical-rhythm .markdown-source-view ol > li:not(:first-child),
-.chisel-vertical-rhythm .markdown-source-view ul > li:not(:first-child) {
-  margin-top: calc(var(--marge) * 0.5);
+  margin: calc(var(--marge) * 0.25) 0 0 0;
 }
 .chisel-vertical-rhythm .markdown-reading-view .inline-title {
   margin-top: calc(var(--marge) * 4);

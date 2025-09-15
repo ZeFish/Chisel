@@ -243,6 +243,10 @@ body.chisel-color.theme-dark {
         --icon-color-hover: var(--color-accent) !important;
     }
 
+    &.folder-note-underline-path .has-folder-note.view-header-breadcrumb:hover {
+        text-decoration-color: var(--color-accent);
+    }
+
     .side-dock-actions {
         color: var(--icon-color);
     }

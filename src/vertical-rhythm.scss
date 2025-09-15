@@ -89,12 +89,18 @@ body {
     .markdown-preview-view ul,
     .markdown-preview-view ol {
         padding: 0rlh calc(var(--marge) * 2);
-        margin: calc(var(--marge) * -0.75) 0rlh
-            calc(var(--marge-block-calculated) * 1) 0rlh;
+        margin: 0 0 var(--marge-block-calculated) 0;
     }
-    .markdown-preview-view ul ul,
-    .markdown-preview-view ol ul {
-        margin-top: 0;
+
+    .markdown-preview-view .el-p + .el-ol {
+        margin-top: calc(var(--marge) * -1.5);
+    }
+    .markdown-rendered ul ul,
+    .markdown-rendered ol ul,
+    .markdown-rendered ul ol,
+    .markdown-rendered ol ol {
+        margin: 0;
+        padding: 0rlh calc(var(--marge) * 1);
     }
     .el-h1 + .el-ul ul,
     .el-h2 + .el-ul ul,
@@ -115,14 +121,7 @@ body {
     .markdown-preview-view ul > li,
     .markdown-source-view ol > li,
     .markdown-source-view ul > li {
-        margin: 0rlh;
-    }
-
-    .markdown-preview-view ol > li:not(:first-child),
-    .markdown-preview-view ul > li:not(:first-child),
-    .markdown-source-view ol > li:not(:first-child),
-    .markdown-source-view ul > li:not(:first-child) {
-        margin-top: calc(var(--marge) * 0.5);
+        margin: calc(var(--marge) * 0.25) 0 0 0;
     }
 
     /*
