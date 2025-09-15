@@ -97,7 +97,7 @@ body.chisel-color.theme-dark {
     );
     --color-interactive-hover-backgound: color-mix(
         in oklab,
-        var(--color-accent) 7%,
+        var(--color-accent) 15%,
         transparent
     );
     --color-icon: var(--text-faint);
@@ -247,8 +247,8 @@ body.chisel-color.theme-dark {
         color: var(--icon-color);
     }
 
-    --nav-item-color: var(--text-faint);
-    --nav-item-color-active: var(--text-faint);
+    --nav-item-color: var(--text-muted);
+    --nav-item-color-active: var(--text-muted);
     --nav-item-color-hover: var(--color-accent);
     --nav-collapse-icon-color: color-mix(
         in oklab,
@@ -367,7 +367,7 @@ body.chisel-color.theme-dark {
     .tree-item-self:hover {
         --nav-collapse-icon-color: color-mix(
             in oklab,
-            var(--color-accent) 25%,
+            var(--color-accent) 50%,
             transparent
         );
     }

@@ -956,12 +956,13 @@ class ChiselPlugin extends obsidian_1.Plugin {
 
   updateModeClasses() {
     const body = document.body;
-    this.clearModeClasses();
-    this.clearModeViewClasses();
     const leafContentEl = document.querySelector(
       ".mod-root .workspace-leaf.mod-active .workspace-leaf-content",
     );
     if (!leafContentEl) return;
+
+    this.clearModeClasses();
+    this.clearModeViewClasses();
 
     let newMode = null;
     const dataType = leafContentEl.getAttribute("data-type");
