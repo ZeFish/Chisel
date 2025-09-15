@@ -298,6 +298,7 @@ body.chisel-color.theme-dark {
   --tab-outline-width: var(--border-width);
   --tab-outline-color: var(--border-color);
   --tab-outline-width: var(--border-width);
+  --tab-text-color-focused-active-current: var(--color-accent);
   --prompt-border-color: var(--border-color);
   --prompt-border-width: var(--border-width);
   --table-border-color: var(--border-color);
@@ -396,12 +397,12 @@ body.chisel-color.theme-dark {
   );
   --nav-collapse-icon-color-collapsed: color-mix(
       in oklab,
-      var(--text-normal) 250%,
+      var(--text-normal) 100%,
       transparent
   );
   --nav-indentation-guide-color: color-mix(
       in oklab,
-      var(--text-normal) 10%,
+      var(--text-normal) 5%,
       transparent
   );
   --nav-item-background-hover: var(--color-interactive-hover-backgound);
@@ -520,7 +521,7 @@ body.chisel-color.theme-light .tree-item-self:hover,
 body.chisel-color.theme-dark .tree-item-self:hover {
   --nav-collapse-icon-color: color-mix(
       in oklab,
-      var(--color-accent) 50%,
+      var(--color-accent) 75%,
       transparent
   );
 }
