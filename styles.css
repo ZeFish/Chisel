@@ -20,6 +20,8 @@ body {
   --font-header-variation: "";
   --font-monospace-feature: "";
   --font-monospace-variation: "";
+  --font-interface-feature: "";
+  --font-interface-variation: "";
 }
 
 .chisel-typography {
@@ -64,6 +66,8 @@ body {
   --h4-font: var(--font-header);
   --h5-font: var(--font-header);
   --h6-font: var(--font-header);
+  font-feature-settings: var(--font-interface-feature);
+  font-variation-settings: var(--font-interface-variation);
 }
 .chisel-typography .vertical-tab-header-group-title,
 .chisel-typography .setting-item-heading .setting-item-name {
@@ -172,8 +176,8 @@ body {
   --color-italic-default: var(--color-foreground);
 }
 
-.chisel-color.theme-light,
-.chisel-color.theme-dark {
+body.chisel-color.theme-light,
+body.chisel-color.theme-dark {
   /* --color-background:						var(--color-background); */
   --color-base-05: color-mix(
       in oklab,
@@ -258,7 +262,7 @@ body {
   );
   --color-interactive-hover-backgound: color-mix(
       in oklab,
-      var(--color-accent) 10%,
+      var(--color-accent) 7%,
       transparent
   );
   --color-icon: var(--text-faint);
@@ -270,7 +274,7 @@ body {
   --color-h4: var(--color-foreground);
   --color-h5: var(--color-foreground);
   --color-h6: var(--color-foreground);
-  --background-modifier-hover: var(--color-base-05);
+  --background-modifier-hover: var(--color-interactive-hover-backgound);
   --background-modifier-active-hover: var(--background-secondary);
   --background-modifier-border: var(--background-secondary);
   --background-modifier-border-hover: var(--color-base-20);
@@ -368,7 +372,7 @@ body {
       var(--link-color) 25%,
       var(--color-foreground)
   );
-  --tag-background: var(--background-secondary);
+  --tag-background: color-mix(in oklab, black 2%, transparent);
   --tag-border: var(--border-color);
   --tag-color: var(--text-muted);
   --icon-color: var(--color-icon);
@@ -377,17 +381,22 @@ body {
   --icon-color-active: var(--color-foreground);
   --icon-color-focused: var(--color-foreground);
   --icon-color-hover: var(--color-accent) !important;
-  --nav-item-color: var(--text-muted);
-  --nav-item-color-active: var(--text-normal);
+  --nav-item-color: var(--text-faint);
+  --nav-item-color-active: var(--text-faint);
   --nav-item-color-hover: var(--color-accent);
   --nav-collapse-icon-color: color-mix(
       in oklab,
       var(--text-normal) 25%,
       transparent
   );
+  --nav-collapse-icon-color-hover: color-mix(
+      in oklab,
+      var(--text-normal) 100%,
+      transparent
+  );
   --nav-collapse-icon-color-collapsed: color-mix(
       in oklab,
-      var(--text-normal) 25%,
+      var(--text-normal) 250%,
       transparent
   );
   --nav-indentation-guide-color: color-mix(
@@ -396,7 +405,7 @@ body {
       transparent
   );
   --nav-item-background-hover: var(--color-interactive-hover-backgound);
-  --nav-item-background-active: var(--color-base-10);
+  --nav-item-background-active: var(--color-interactive-hover-backgound);
   --nav-item-color-highlighted: var(--color-foreground);
   --ribbon-background: var(--background-secondary);
   --ribbon-background-collapsed: var(--background-secondary);
@@ -474,70 +483,86 @@ body {
   --alternating-color-3: var(--color-blue);
   --inline-title-color: var(--text-normal);
 }
-.chisel-color.theme-light .notice,
-.chisel-color.theme-light .notice-cta,
-.chisel-color.theme-dark .notice,
-.chisel-color.theme-dark .notice-cta {
+body.chisel-color.theme-light .notice,
+body.chisel-color.theme-light .notice-cta,
+body.chisel-color.theme-dark .notice,
+body.chisel-color.theme-dark .notice-cta {
   color: var(--text-muted) !important;
 }
-.chisel-color.theme-light .clickable-icon:hover,
-.chisel-color.theme-light .nav-buttons-container:hover,
-.chisel-color.theme-light .sidebar-toggle-button:hover,
-.chisel-color.theme-light .view-action:hover,
-.chisel-color.theme-dark .clickable-icon:hover,
-.chisel-color.theme-dark .nav-buttons-container:hover,
-.chisel-color.theme-dark .sidebar-toggle-button:hover,
-.chisel-color.theme-dark .view-action:hover {
+body.chisel-color.theme-light .clickable-icon:hover,
+body.chisel-color.theme-light .nav-buttons-container:hover,
+body.chisel-color.theme-light .sidebar-toggle-button:hover,
+body.chisel-color.theme-light .view-action:hover,
+body.chisel-color.theme-dark .clickable-icon:hover,
+body.chisel-color.theme-dark .nav-buttons-container:hover,
+body.chisel-color.theme-dark .sidebar-toggle-button:hover,
+body.chisel-color.theme-dark .view-action:hover {
   color: var(--color-accent) !important;
   --icon-color-hover: var(--color-accent) !important;
 }
-.chisel-color.theme-light .side-dock-actions,
-.chisel-color.theme-dark .side-dock-actions {
+body.chisel-color.theme-light .side-dock-actions,
+body.chisel-color.theme-dark .side-dock-actions {
   color: var(--icon-color);
 }
-.chisel-color.theme-light .nav-folder.is-being-dragged-over,
-.chisel-color.theme-dark .nav-folder.is-being-dragged-over {
+body.chisel-color.theme-light .nav-folder.is-being-dragged-over,
+body.chisel-color.theme-dark .nav-folder.is-being-dragged-over {
   background: color-mix(in oklab, var(--color-accent) 5%, transparent) !important;
 }
-.chisel-color.theme-light :not(.sidebar-color) .mod-right-split,
-.chisel-color.theme-dark :not(.sidebar-color) .mod-right-split {
+body.chisel-color.theme-light :not(.sidebar-color) .mod-right-split,
+body.chisel-color.theme-dark :not(.sidebar-color) .mod-right-split {
   --background-secondary: unset !important;
 }
-.chisel-color.theme-light .markdown-reading-view b,
-.chisel-color.theme-light .markdown-reading-view strong,
-.chisel-color.theme-light span.cm-strong,
-.chisel-color.theme-light .cm-strong,
-.chisel-color.theme-dark .markdown-reading-view b,
-.chisel-color.theme-dark .markdown-reading-view strong,
-.chisel-color.theme-dark span.cm-strong,
-.chisel-color.theme-dark .cm-strong {
+body.chisel-color.theme-light .tree-item-self:hover,
+body.chisel-color.theme-dark .tree-item-self:hover {
+  --nav-collapse-icon-color: color-mix(
+      in oklab,
+      var(--color-accent) 25%,
+      transparent
+  );
+}
+body.chisel-color.theme-light.folder-note-underline .has-folder-note:hover .nav-folder-title-content,
+body.chisel-color.theme-dark.folder-note-underline .has-folder-note:hover .nav-folder-title-content {
+  text-decoration-color: color-mix(in oklab, var(--color-accent) 25%, transparent);
+}
+body.chisel-color.theme-light .markdown-reading-view b,
+body.chisel-color.theme-light .markdown-reading-view strong,
+body.chisel-color.theme-light span.cm-strong,
+body.chisel-color.theme-light .cm-strong,
+body.chisel-color.theme-dark .markdown-reading-view b,
+body.chisel-color.theme-dark .markdown-reading-view strong,
+body.chisel-color.theme-dark span.cm-strong,
+body.chisel-color.theme-dark .cm-strong {
   color: var(--color-bold);
 }
-.chisel-color.theme-light .markdown-reading-view em,
-.chisel-color.theme-light span.cm-em,
-.chisel-color.theme-light .cm-em,
-.chisel-color.theme-dark .markdown-reading-view em,
-.chisel-color.theme-dark span.cm-em,
-.chisel-color.theme-dark .cm-em {
+body.chisel-color.theme-light .markdown-reading-view em,
+body.chisel-color.theme-light span.cm-em,
+body.chisel-color.theme-light .cm-em,
+body.chisel-color.theme-dark .markdown-reading-view em,
+body.chisel-color.theme-dark span.cm-em,
+body.chisel-color.theme-dark .cm-em {
   color: var(--color-italic);
 }
-.chisel-color.theme-light .checkbox-container.is-enabled,
-.chisel-color.theme-dark .checkbox-container.is-enabled {
+body.chisel-color.theme-light .checkbox-container.is-enabled,
+body.chisel-color.theme-dark .checkbox-container.is-enabled {
   background-color: var(--color-interactive-hover);
 }
-.chisel-color.theme-light.hider-tabs .workspace:not(.is-left-sidedock-open),
-.chisel-color.theme-dark.hider-tabs .workspace:not(.is-left-sidedock-open) {
+body.chisel-color.theme-light input[type=checkbox][data-indeterminate=true]:not(:checked):after,
+body.chisel-color.theme-dark input[type=checkbox][data-indeterminate=true]:not(:checked):after {
+  background-color: var(--text-faint);
+}
+body.chisel-color.theme-light.hider-tabs .workspace:not(.is-left-sidedock-open),
+body.chisel-color.theme-dark.hider-tabs .workspace:not(.is-left-sidedock-open) {
   --bg1: var(--background-primary) !important;
   --titlebar-background: var(--background-primary) !important;
   --titlebar-background-focused: var(--background-primary) !important;
 }
-.chisel-color.theme-light.is-mobile,
-.chisel-color.theme-dark.is-mobile {
+body.chisel-color.theme-light.is-mobile,
+body.chisel-color.theme-dark.is-mobile {
   --mobile-sidebar-background: var(--background-secondary);
   --color-interactive: var(--text-faint);
 }
-.chisel-color.theme-light.theme-light,
-.chisel-color.theme-dark.theme-light {
+body.chisel-color.theme-light.theme-light,
+body.chisel-color.theme-dark.theme-light {
   --color-foreground: var(
       --color-light-foreground,
       var(--color-base-100)
@@ -549,19 +574,19 @@ body {
   --color-bold: var(--color-light-bold, var(--color-bold-default));
   --color-italic: var(--color-light-italic, var(--color-italic-default));
 }
-.chisel-color.theme-light .markdown-source-view.mod-cm6 hr,
-.chisel-color.theme-dark .markdown-source-view.mod-cm6 hr {
+body.chisel-color.theme-light .markdown-source-view.mod-cm6 hr,
+body.chisel-color.theme-dark .markdown-source-view.mod-cm6 hr {
   border-width: var(--hr-thickness);
 }
 @media only screen and (max-width: 600px) {
-  .chisel-color.theme-light.is-mobile .workspace-split.mod-root,
-  .chisel-color.theme-dark.is-mobile .workspace-split.mod-root {
+  body.chisel-color.theme-light.is-mobile .workspace-split.mod-root,
+  body.chisel-color.theme-dark.is-mobile .workspace-split.mod-root {
     background-color: var(--background-primary);
   }
 }
-.chisel-color.theme-light.theme-dark, .chisel-color.theme-light.is-mobile.theme-dark,
-.chisel-color.theme-dark.theme-dark,
-.chisel-color.theme-dark.is-mobile.theme-dark {
+body.chisel-color.theme-light.theme-dark, body.chisel-color.theme-light.is-mobile.theme-dark,
+body.chisel-color.theme-dark.theme-dark,
+body.chisel-color.theme-dark.is-mobile.theme-dark {
   --color-foreground: var(--color-dark-foreground, var(--color-base-100));
   --color-background: var(--color-dark-background, var(--color-base-00));
   --color-red: var(--color-dark-red);
@@ -612,45 +637,45 @@ body {
       transparent
   );
 }
-.chisel-color.theme-light pre,
-.chisel-color.theme-dark pre {
+body.chisel-color.theme-light pre,
+body.chisel-color.theme-dark pre {
   color: var(--color-base-70);
 }
-.chisel-color.theme-light .markdown-rendered mark,
-.chisel-color.theme-light .cm-s-obsidian span.cm-highlight,
-.chisel-color.theme-dark .markdown-rendered mark,
-.chisel-color.theme-dark .cm-s-obsidian span.cm-highlight {
+body.chisel-color.theme-light .markdown-rendered mark,
+body.chisel-color.theme-light .cm-s-obsidian span.cm-highlight,
+body.chisel-color.theme-dark .markdown-rendered mark,
+body.chisel-color.theme-dark .cm-s-obsidian span.cm-highlight {
   background-color: var(--text-highlight-bg);
   color: currentColor;
 }
-.chisel-color.theme-light a.footnote-link,
-.chisel-color.theme-dark a.footnote-link {
+body.chisel-color.theme-light a.footnote-link,
+body.chisel-color.theme-dark a.footnote-link {
   color: var(--text-faint);
 }
-.chisel-color.theme-light .sidebar-toggle-button.mod-right,
-.chisel-color.theme-dark .sidebar-toggle-button.mod-right {
+body.chisel-color.theme-light .sidebar-toggle-button.mod-right,
+body.chisel-color.theme-dark .sidebar-toggle-button.mod-right {
   background: none !important;
 }
-.chisel-color.theme-light .workspace-drawer-inner,
-.chisel-color.theme-light .workspace-split.mod-root,
-.chisel-color.theme-light .mod-root .workspace-tabs .workspace-leaf,
-.chisel-color.theme-dark .workspace-drawer-inner,
-.chisel-color.theme-dark .workspace-split.mod-root,
-.chisel-color.theme-dark .mod-root .workspace-tabs .workspace-leaf {
+body.chisel-color.theme-light .workspace-drawer-inner,
+body.chisel-color.theme-light .workspace-split.mod-root,
+body.chisel-color.theme-light .mod-root .workspace-tabs .workspace-leaf,
+body.chisel-color.theme-dark .workspace-drawer-inner,
+body.chisel-color.theme-dark .workspace-split.mod-root,
+body.chisel-color.theme-dark .mod-root .workspace-tabs .workspace-leaf {
   background: var(--background-secondary);
 }
-.chisel-color.theme-light .workspace-leaf-content,
-.chisel-color.theme-dark .workspace-leaf-content {
+body.chisel-color.theme-light .workspace-leaf-content,
+body.chisel-color.theme-dark .workspace-leaf-content {
   border-radius: var(--radius-m);
 }
-.chisel-color.theme-light .notice,
-.chisel-color.theme-light .tooltip,
-.chisel-color.theme-dark .notice,
-.chisel-color.theme-dark .tooltip {
+body.chisel-color.theme-light .notice,
+body.chisel-color.theme-light .tooltip,
+body.chisel-color.theme-dark .notice,
+body.chisel-color.theme-dark .tooltip {
   color: color-mix(in oklab, var(--text-normal) 50%, transparent);
 }
-.chisel-color.theme-light .is-translucent:not(.is-fullscreen),
-.chisel-color.theme-dark .is-translucent:not(.is-fullscreen) {
+body.chisel-color.theme-light .is-translucent:not(.is-fullscreen),
+body.chisel-color.theme-dark .is-translucent:not(.is-fullscreen) {
   --nav-collapse-icon-color: color-mix(
       in oklab,
       var(--mono-100) 30%,
@@ -662,51 +687,51 @@ body {
       transparent
   );
 }
-.chisel-color.theme-light .diff-line.mod-left,
-.chisel-color.theme-dark .diff-line.mod-left {
+body.chisel-color.theme-light .diff-line.mod-left,
+body.chisel-color.theme-dark .diff-line.mod-left {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
-.chisel-color.theme-light .diff-line.mod-left .diff-changed,
-.chisel-color.theme-dark .diff-line.mod-left .diff-changed {
+body.chisel-color.theme-light .diff-line.mod-left .diff-changed,
+body.chisel-color.theme-dark .diff-line.mod-left .diff-changed {
   background-color: color-mix(in oklab, var(--background-modifier-error) 40%, transparent);
 }
-.chisel-color.theme-light .diff-line.mod-right,
-.chisel-color.theme-dark .diff-line.mod-right {
+body.chisel-color.theme-light .diff-line.mod-right,
+body.chisel-color.theme-dark .diff-line.mod-right {
   background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
 }
-.chisel-color.theme-light .diff-line.mod-right .diff-changed,
-.chisel-color.theme-dark .diff-line.mod-right .diff-changed {
+body.chisel-color.theme-light .diff-line.mod-right .diff-changed,
+body.chisel-color.theme-dark .diff-line.mod-right .diff-changed {
   background-color: color-mix(in oklab, var(--background-modifier-success) 40%, transparent);
 }
-.chisel-color.theme-light input.document-search-input.mod-no-match,
-.chisel-color.theme-light input.document-replace-input.mod-no-match,
-.chisel-color.theme-dark input.document-search-input.mod-no-match,
-.chisel-color.theme-dark input.document-replace-input.mod-no-match {
+body.chisel-color.theme-light input.document-search-input.mod-no-match,
+body.chisel-color.theme-light input.document-replace-input.mod-no-match,
+body.chisel-color.theme-dark input.document-search-input.mod-no-match,
+body.chisel-color.theme-dark input.document-replace-input.mod-no-match {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
 @media (hover: hover) {
-  .chisel-color.theme-light input.document-search-input.mod-no-match:hover,
-  .chisel-color.theme-light input.document-replace-input.mod-no-match:hover,
-  .chisel-color.theme-dark input.document-search-input.mod-no-match:hover,
-  .chisel-color.theme-dark input.document-replace-input.mod-no-match:hover {
+  body.chisel-color.theme-light input.document-search-input.mod-no-match:hover,
+  body.chisel-color.theme-light input.document-replace-input.mod-no-match:hover,
+  body.chisel-color.theme-dark input.document-search-input.mod-no-match:hover,
+  body.chisel-color.theme-dark input.document-replace-input.mod-no-match:hover {
     background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
   }
 }
 @media (hover: hover) {
-  .chisel-color.theme-light .view-header-title-parent .view-header-breadcrumb:hover,
-  .chisel-color.theme-dark .view-header-title-parent .view-header-breadcrumb:hover {
-    /*background-color: var(--color-interactive-hover-backgound);*/
+  body.chisel-color.theme-light .view-header-title-parent .view-header-breadcrumb:hover,
+  body.chisel-color.theme-dark .view-header-title-parent .view-header-breadcrumb:hover {
+    background-color: var(--color-interactive-hover-backgound);
     color: var(--color-accent);
   }
 }
 @media (hover: hover) {
-  .chisel-color.theme-light input[type=color]::-webkit-color-swatch:hover,
-  .chisel-color.theme-dark input[type=color]::-webkit-color-swatch:hover {
+  body.chisel-color.theme-light input[type=color]::-webkit-color-swatch:hover,
+  body.chisel-color.theme-dark input[type=color]::-webkit-color-swatch:hover {
     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--mono-100) 20%, transparent), 0 0 0 3px var(--background-modifier-border-hover);
   }
 }
-.chisel-color.theme-light .pdf-findbar .mod-not-found,
-.chisel-color.theme-dark .pdf-findbar .mod-not-found {
+body.chisel-color.theme-light .pdf-findbar .mod-not-found,
+body.chisel-color.theme-dark .pdf-findbar .mod-not-found {
   --background-modifier-form-field: color-mix(
       in oklab,
       var(--background-modifier-error) 10%,
@@ -719,58 +744,58 @@ body {
   );
 }
 @media (hover: hover) {
-  .chisel-color.theme-light .metadata-property-warning-icon:hover,
-  .chisel-color.theme-dark .metadata-property-warning-icon:hover {
+  body.chisel-color.theme-light .metadata-property-warning-icon:hover,
+  body.chisel-color.theme-dark .metadata-property-warning-icon:hover {
     background-color: color-mix(in oklab, var(--color-orange) 15%, transparent);
   }
 }
-.chisel-color.theme-light .file-tree .mod-new.is-selected,
-.chisel-color.theme-dark .file-tree .mod-new.is-selected {
+body.chisel-color.theme-light .file-tree .mod-new.is-selected,
+body.chisel-color.theme-dark .file-tree .mod-new.is-selected {
   background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
 }
-.chisel-color.theme-light .file-tree .mod-deleted.is-selected,
-.chisel-color.theme-light .file-tree .mod-to-delete.is-selected,
-.chisel-color.theme-dark .file-tree .mod-deleted.is-selected,
-.chisel-color.theme-dark .file-tree .mod-to-delete.is-selected {
+body.chisel-color.theme-light .file-tree .mod-deleted.is-selected,
+body.chisel-color.theme-light .file-tree .mod-to-delete.is-selected,
+body.chisel-color.theme-dark .file-tree .mod-deleted.is-selected,
+body.chisel-color.theme-dark .file-tree .mod-to-delete.is-selected {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
-.chisel-color.theme-light .publish-upload-item:before,
-.chisel-color.theme-dark .publish-upload-item:before {
+body.chisel-color.theme-light .publish-upload-item:before,
+body.chisel-color.theme-dark .publish-upload-item:before {
   background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
 }
-.chisel-color.theme-light .publish-upload-item.mod-failed:before,
-.chisel-color.theme-dark .publish-upload-item.mod-failed:before {
+body.chisel-color.theme-light .publish-upload-item.mod-failed:before,
+body.chisel-color.theme-dark .publish-upload-item.mod-failed:before {
   background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
 }
-.chisel-color.theme-light .sync-history-list-item-header .sync-history-list-item-avatar,
-.chisel-color.theme-dark .sync-history-list-item-header .sync-history-list-item-avatar {
+body.chisel-color.theme-light .sync-history-list-item-header .sync-history-list-item-avatar,
+body.chisel-color.theme-dark .sync-history-list-item-header .sync-history-list-item-avatar {
   border: 1px solid color-mix(in oklab, var(--mono-100) 20%, transparent);
 }
-.chisel-color.theme-light .canvas-node-placeholder::after,
-.chisel-color.theme-dark .canvas-node-placeholder::after {
+body.chisel-color.theme-light .canvas-node-placeholder::after,
+body.chisel-color.theme-dark .canvas-node-placeholder::after {
   background-color: color-mix(in oklab, var(--canvas-color) 10%, transparent);
 }
-.chisel-color.theme-light .canvas-node.is-themed .canvas-node-container,
-.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-container {
+body.chisel-color.theme-light .canvas-node.is-themed .canvas-node-container,
+body.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-container {
   border-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--canvas-color) 70%, transparent), var(--shadow-stationary);
 }
-.chisel-color.theme-light .canvas-node-group .canvas-node-content,
-.chisel-color.theme-dark .canvas-node-group .canvas-node-content {
+body.chisel-color.theme-light .canvas-node-group .canvas-node-content,
+body.chisel-color.theme-dark .canvas-node-group .canvas-node-content {
   background-color: color-mix(in oklab, var(--canvas-color) 7%, transparent);
 }
-.chisel-color.theme-light .canvas-group-label,
-.chisel-color.theme-dark .canvas-group-label {
+body.chisel-color.theme-light .canvas-group-label,
+body.chisel-color.theme-dark .canvas-group-label {
   background-color: color-mix(in oklab, var(--canvas-color) 1%, transparent);
 }
-.chisel-color.theme-light .canvas-node.is-themed .canvas-node-content,
-.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-content {
+body.chisel-color.theme-light .canvas-node.is-themed .canvas-node-content,
+body.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-content {
   background-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
 }
-.chisel-color.theme-light .canvas-edges g.is-focused path.canvas-interaction-path,
-.chisel-color.theme-light .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path,
-.chisel-color.theme-dark .canvas-edges g.is-focused path.canvas-interaction-path,
-.chisel-color.theme-dark .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
+body.chisel-color.theme-light .canvas-edges g.is-focused path.canvas-interaction-path,
+body.chisel-color.theme-light .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path,
+body.chisel-color.theme-dark .canvas-edges g.is-focused path.canvas-interaction-path,
+body.chisel-color.theme-dark .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
   stroke: color-mix(in oklab, var(--canvas-color) 10%, transparent);
 }
 

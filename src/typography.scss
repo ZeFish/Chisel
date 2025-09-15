@@ -23,6 +23,9 @@ body {
 
     --font-monospace-feature: "";
     --font-monospace-variation: "";
+
+    --font-interface-feature: "";
+    --font-interface-variation: "";
 }
 .chisel-typography {
     text-rendering: optimizeLegibility; /* kerning & ligatures */
@@ -71,6 +74,9 @@ body {
     --h4-font: var(--font-header);
     --h5-font: var(--font-header);
     --h6-font: var(--font-header);
+
+    font-feature-settings: var(--font-interface-feature);
+    font-variation-settings: var(--font-interface-variation);
 
     .vertical-tab-header-group-title,
     .setting-item-heading .setting-item-name {

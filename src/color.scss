@@ -6,8 +6,8 @@ body {
     --color-italic-default: var(--color-foreground);
 }
 
-.chisel-color.theme-light,
-.chisel-color.theme-dark {
+body.chisel-color.theme-light,
+body.chisel-color.theme-dark {
     /* --color-background:						var(--color-background); */
     --color-base-05: color-mix(
         in oklab,
@@ -97,7 +97,7 @@ body {
     );
     --color-interactive-hover-backgound: color-mix(
         in oklab,
-        var(--color-accent) 10%,
+        var(--color-accent) 7%,
         transparent
     );
     --color-icon: var(--text-faint);
@@ -112,7 +112,7 @@ body {
     --color-h5: var(--color-foreground);
     --color-h6: var(--color-foreground);
 
-    --background-modifier-hover: var(--color-base-05);
+    --background-modifier-hover: var(--color-interactive-hover-backgound);
     --background-modifier-active-hover: var(--background-secondary);
     --background-modifier-border: var(--background-secondary);
     --background-modifier-border-hover: var(--color-base-20);
@@ -224,7 +224,7 @@ body {
         var(--color-foreground)
     );
 
-    --tag-background: var(--background-secondary);
+    --tag-background: color-mix(in oklab, black 2%, transparent);
     --tag-border: var(--border-color);
     --tag-color: var(--text-muted);
 
@@ -247,17 +247,22 @@ body {
         color: var(--icon-color);
     }
 
-    --nav-item-color: var(--text-muted);
-    --nav-item-color-active: var(--text-normal);
+    --nav-item-color: var(--text-faint);
+    --nav-item-color-active: var(--text-faint);
     --nav-item-color-hover: var(--color-accent);
     --nav-collapse-icon-color: color-mix(
         in oklab,
         var(--text-normal) 25%,
         transparent
     );
+    --nav-collapse-icon-color-hover: color-mix(
+        in oklab,
+        var(--text-normal) 100%,
+        transparent
+    );
     --nav-collapse-icon-color-collapsed: color-mix(
         in oklab,
-        var(--text-normal) 25%,
+        var(--text-normal) 250%,
         transparent
     );
     --nav-indentation-guide-color: color-mix(
@@ -266,7 +271,7 @@ body {
         transparent
     );
     --nav-item-background-hover: var(--color-interactive-hover-backgound);
-    --nav-item-background-active: var(--color-base-10);
+    --nav-item-background-active: var(--color-interactive-hover-backgound);
     --nav-item-color-highlighted: var(--color-foreground);
 
     .nav-folder.is-being-dragged-over {
@@ -359,6 +364,22 @@ body {
     --alternating-color-3: var(--color-blue);
     --inline-title-color: var(--text-normal);
 
+    .tree-item-self:hover {
+        --nav-collapse-icon-color: color-mix(
+            in oklab,
+            var(--color-accent) 25%,
+            transparent
+        );
+    }
+
+    &.folder-note-underline .has-folder-note:hover .nav-folder-title-content {
+        text-decoration-color: color-mix(
+            in oklab,
+            var(--color-accent) 25%,
+            transparent
+        );
+    }
+
     .markdown-reading-view b,
     .markdown-reading-view strong,
     span.cm-strong,
@@ -373,6 +394,10 @@ body {
 
     .checkbox-container.is-enabled {
         background-color: var(--color-interactive-hover);
+    }
+
+    input[type="checkbox"][data-indeterminate="true"]:not(:checked):after {
+        background-color: var(--text-faint);
     }
 
     &.hider-tabs .workspace:not(.is-left-sidedock-open) {
@@ -562,7 +587,7 @@ body {
     }
     @media (hover: hover) {
         .view-header-title-parent .view-header-breadcrumb:hover {
-            /*background-color: var(--color-interactive-hover-backgound);*/
+            background-color: var(--color-interactive-hover-backgound);
             color: var(--color-accent);
         }
     }
