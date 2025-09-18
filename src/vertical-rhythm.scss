@@ -49,7 +49,7 @@ body {
         margin: var(--marge-block-special);
     }
 
-    .markdown-reading-view blockquote p:last-of-type {
+    .markdown-reading-view blockquote *:last-of-type {
         margin-bottom: 0;
     }
 
@@ -60,7 +60,7 @@ body {
     }
     :is(.markdown-source-view, .markdown-reading-view)
         .callout-content
-        > p:last-of-type {
+        > *:last-of-type {
         margin: 0;
     }
     :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
