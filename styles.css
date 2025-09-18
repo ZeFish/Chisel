@@ -877,7 +877,7 @@ body {
   margin: 0;
 }
 .chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
-  margin: 0rlh 0 0 0;
+  margin: calc(var(--marge-block-calculated) * -0.75) 0 calc(var(--marge) * 0.5) 0;
   padding: 0 0 0 var(--marge);
 }
 .chisel-vertical-rhythm .markdown-reading-view hr {
