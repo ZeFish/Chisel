@@ -298,7 +298,7 @@ body.chisel-color.theme-dark {
   --tab-outline-width: var(--border-width);
   --tab-outline-color: var(--border-color);
   --tab-outline-width: var(--border-width);
-  --tab-text-color-focused-active-current: var(--color-accent);
+  --tab-text-color-focused-active-current: var(--foreground-color);
   --prompt-border-color: var(--border-color);
   --prompt-border-width: var(--border-width);
   --table-border-color: var(--border-color);
@@ -721,6 +721,10 @@ body.chisel-color.theme-dark input.document-replace-input.mod-no-match {
   body.chisel-color.theme-dark input.document-replace-input.mod-no-match:hover {
     background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
   }
+  body.chisel-color.theme-light .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover,
+  body.chisel-color.theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+    color: var(--color-accent);
+  }
 }
 @media (hover: hover) {
   body.chisel-color.theme-light .view-header-title-parent .view-header-breadcrumb:hover,
@@ -823,9 +827,10 @@ body {
   --table-cell-padding: 0 calc(var(--marge) * 5) 0 calc(var(--marge) * 5);
   --table-edge-cell-padding-first: 0 calc(var(--marge) * 5);
   /*
-      .mod-cm6 .HyperMD-list-line.cm-line {
-          margin-bottom: 0. calc(var(--marge) * 5) !important;
-      }
+      CALLOUT
+  */
+  /*
+      HR
   */
   /*  .HyperMD-header-1.cm-line */
   /*  .HyperMD-header-2.cm-line  */
@@ -840,10 +845,6 @@ body {
   /*  .HyperMD-header-5.cm-line */
   /*  .HyperMD-header-6.cm-line  */
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) table {
-  margin-left: var(--table-margin);
-  margin-right: var(--table-margin);
-}
 .chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) p,
 .chisel-vertical-rhythm .cm-line {
   line-height: var(--line-height-normal);
@@ -851,6 +852,9 @@ body {
   margin-bottom: var(--marge-block-calculated);
   padding: 0;
   margin-block-start: 0;
+}
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) *:last-child {
+  margin-bottom: 0;
 }
 .chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) {
   margin: var(--marge-block-calculated) 0;
@@ -865,20 +869,23 @@ body {
 .chisel-vertical-rhythm .markdown-reading-view pre {
   margin: var(--marge-block-special);
 }
-.chisel-vertical-rhythm .markdown-reading-view blockquote p:last-of-type {
-  margin-bottom: 0;
-}
 .chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content,
 .chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) blockquote {
   font-size: var(--font-small);
   line-height: var(--line-height-tight);
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > p:last-of-type {
-  margin: 0;
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content {
+  --marge-block-calculated: calc(
+      var(--marge) * calc(var(--marge-block) * 0.5)
+  );
 }
 .chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
   margin: calc(var(--marge-block-calculated) * -0.75) 0 calc(var(--marge) * 0.5) 0;
   padding: 0 0 0 var(--marge);
+}
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) table {
+  margin-left: var(--table-margin);
+  margin-right: var(--table-margin);
 }
 .chisel-vertical-rhythm .markdown-reading-view hr {
   margin: calc(var(--marge) * 5) calc(var(--marge) * 8) calc(var(--marge) * 6) calc(var(--marge) * 8);

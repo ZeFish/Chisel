@@ -138,7 +138,7 @@ body.chisel-color.theme-dark {
     --tab-outline-width: var(--border-width);
     --tab-outline-color: var(--border-color);
     --tab-outline-width: var(--border-width);
-    --tab-text-color-focused-active-current: var(--color-accent);
+    --tab-text-color-focused-active-current: var(--foreground-color);
     --prompt-border-color: var(--border-color);
     --prompt-border-width: var(--border-width);
     --table-border-color: var(--border-color);
@@ -588,6 +588,10 @@ body.chisel-color.theme-dark {
                 var(--background-modifier-error) 20%,
                 transparent
             );
+        }
+        .workspace-tab-header.is-active
+            .workspace-tab-header-inner-close-button:hover {
+            color: var(--color-accent);
         }
     }
     @media (hover: hover) {

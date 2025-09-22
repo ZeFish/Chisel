@@ -18,10 +18,6 @@ body {
     --table-cell-padding: 0 calc(var(--marge) * 5) 0 calc(var(--marge) * 5);
     --table-edge-cell-padding-first: 0 calc(var(--marge) * 5);
 
-    :is(.markdown-source-view, .markdown-reading-view) table {
-        margin-left: var(--table-margin);
-        margin-right: var(--table-margin);
-    }
     :is(.markdown-source-view, .markdown-reading-view) p,
     .cm-line {
         line-height: var(--line-height-normal);
@@ -29,6 +25,10 @@ body {
         margin-bottom: var(--marge-block-calculated);
         padding: 0;
         margin-block-start: 0;
+    }
+
+    :is(.markdown-source-view, .markdown-reading-view) *:last-child {
+        margin-bottom: 0;
     }
 
     .markdown-preview-section > div.el-p:has(.image-embed) {
@@ -49,25 +49,34 @@ body {
         margin: var(--marge-block-special);
     }
 
-    .markdown-reading-view blockquote *:last-of-type {
-        margin-bottom: 0;
-    }
-
     :is(.markdown-source-view, .markdown-reading-view) .callout-content,
     :is(.markdown-source-view, .markdown-reading-view) blockquote {
         font-size: var(--font-small);
         line-height: var(--line-height-tight);
     }
-    :is(.markdown-source-view, .markdown-reading-view)
-        .callout-content
-        > *:last-of-type {
-        margin: 0;
+
+    /*
+        CALLOUT
+    */
+
+    :is(.markdown-source-view, .markdown-reading-view) .callout-content {
+        --marge-block-calculated: calc(
+            var(--marge) * calc(var(--marge-block) * 0.5)
+        );
+        > ul {
+            margin: calc(var(--marge-block-calculated) * -0.75) 0
+                calc(var(--marge) * 0.5) 0;
+            padding: 0 0 0 var(--marge);
+        }
     }
-    :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
-        margin: calc(var(--marge-block-calculated) * -0.75) 0
-            calc(var(--marge) * 0.5) 0;
-        padding: 0 0 0 var(--marge);
+
+    :is(.markdown-source-view, .markdown-reading-view) table {
+        margin-left: var(--table-margin);
+        margin-right: var(--table-margin);
     }
+    /*
+        HR
+    */
 
     .markdown-reading-view hr {
         margin: calc(var(--marge) * 5) calc(var(--marge) * 8)
@@ -125,11 +134,6 @@ body {
         margin: calc(var(--marge) * 0.25) 0 0 0;
     }
 
-    /*
-    .mod-cm6 .HyperMD-list-line.cm-line {
-        margin-bottom: 0. calc(var(--marge) * 5) !important;
-    }
-*/
     .markdown-reading-view .inline-title {
         margin-top: calc(var(--marge) * 4);
         margin-bottom: calc(var(--marge) * 3);
