@@ -853,7 +853,7 @@ body {
   padding: 0;
   margin-block-start: 0;
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) *:last-child {
+.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) :is(blockquote, .callout) *:last-child {
   margin-bottom: 0;
 }
 .chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) {
