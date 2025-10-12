@@ -100,7 +100,7 @@ body.chisel-color.theme-dark {
         var(--color-accent) 15%,
         transparent
     );
-    --color-icon: var(--text-faint);
+    --color-icon: var(--text-muted);
 
     --bold-color: var(--color-bold);
     --italic-color: var(--color-italic);
@@ -206,6 +206,7 @@ body.chisel-color.theme-dark {
         var(--color-yellow) 25%,
         var(--color-background)
     );
+    --metadata-label-text-color: var(--color-icon);
 
     .notice,
     .notice-cta {
@@ -252,8 +253,8 @@ body.chisel-color.theme-dark {
         color: var(--icon-color);
     }
 
-    --nav-item-color: var(--text-muted);
-    --nav-item-color-active: var(--text-muted);
+    --nav-item-color: var(--color-foreground);
+    --nav-item-color-active: var(--color-foreground);
     --nav-item-color-hover: var(--color-accent);
     --nav-collapse-icon-color: color-mix(
         in oklab,
@@ -500,6 +501,14 @@ body.chisel-color.theme-dark {
             var(--color-yellow) 20%,
             transparent
         );
+
+        --nav-item-color: var(--text-muted);
+        --nav-item-color-active: var(--text-muted);
+        --color-icon: var(--text-faint);
+
+        --metadata-label-text-color: var(--color-icon);
+        --metadata-input-text-color: var(--text-muted);
+        --input-placeholder-color: var(--color-icon);
     }
 
     pre {
