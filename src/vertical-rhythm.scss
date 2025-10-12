@@ -33,6 +33,11 @@ body {
         margin-bottom: 0;
     }
 
+    .markdown-reading-view .inline-embed p {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
     .markdown-preview-section > div.el-p:has(.image-embed) {
         margin: var(--marge-block-calculated) 0;
     }
@@ -87,16 +92,6 @@ body {
     .markdown-source-view hr {
         margin: 0 25%;
     }
-    :is(.markdown-source-view, .markdown-reading-view)
-        .popover
-        .markdown-embed-content,
-    :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-content,
-    :is(.markdown-source-view, .markdown-reading-view)
-        .popover
-        .markdown-embed-title,
-    :is(.markdown-source-view, .markdown-reading-view) .markdown-embed-title {
-        padding: var(--marge) !important;
-    }
 
     .markdown-preview-view ul,
     .markdown-preview-view ol {
@@ -104,8 +99,9 @@ body {
         margin: 0 0 var(--marge-block-calculated) 0;
     }
 
-    .markdown-preview-view .el-p + .el-ol {
-        margin-top: calc(var(--marge) * -1.5);
+    .markdown-preview-view .el-p + .el-ol,
+    .markdown-preview-view .el-p + .el-ul {
+        margin-top: calc(var(--marge) * -1.25);
     }
     .markdown-rendered ul ul,
     .markdown-rendered ol ul,
