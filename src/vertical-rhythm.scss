@@ -101,7 +101,7 @@ body {
 
     .markdown-preview-view .el-p + .el-ol,
     .markdown-preview-view .el-p + .el-ul {
-        margin-top: calc(var(--marge) * -1.25);
+        margin-top: calc(var(--marge) * -1);
     }
     .markdown-rendered ul ul,
     .markdown-rendered ol ul,

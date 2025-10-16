@@ -911,7 +911,7 @@ body {
 }
 .chisel-vertical-rhythm .markdown-preview-view .el-p + .el-ol,
 .chisel-vertical-rhythm .markdown-preview-view .el-p + .el-ul {
-  margin-top: calc(var(--marge) * -1.25);
+  margin-top: calc(var(--marge) * -1);
 }
 .chisel-vertical-rhythm .markdown-rendered ul ul,
 .chisel-vertical-rhythm .markdown-rendered ol ul,
