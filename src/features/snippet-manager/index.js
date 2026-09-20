@@ -153,14 +153,16 @@ class SnippetManagerFeature {
 
     if (css && this.globalElement) {
       const fontDir = `${this.getPluginDir()}/fonts`;
-      const fontDirExists = await adapter.exists(fontDir);
+      try {
+        if (!(await adapter.exists(fontDir))) {
+          await adapter.mkdir(fontDir);
+        }
+      } catch (e) {}
+
       const resolvedCss = css.replace(
         /STND_FONT_URL:([\w.-]+)/g,
         (match, fileName) => {
-          if (fontDirExists) {
-            return adapter.getResourcePath(`${fontDir}/${fileName}`);
-          }
-          return "";
+          return adapter.getResourcePath(`${fontDir}/${fileName}`);
         },
       );
       this.globalElement.textContent = resolvedCss;
@@ -261,14 +263,16 @@ class SnippetManagerFeature {
       // Résoudre les placeholders pour application immédiate sur desktop
       const adapter = this.app.vault.adapter;
       const fontDir = `${this.getPluginDir()}/fonts`;
-      const fontDirExists = await adapter.exists(fontDir);
+      try {
+        if (!(await adapter.exists(fontDir))) {
+          await adapter.mkdir(fontDir);
+        }
+      } catch (e) {}
+
       const resolvedCss = allCss.replace(
         /STND_FONT_URL:([\w.-]+)/g,
         (match, fileName) => {
-          if (fontDirExists) {
-            return adapter.getResourcePath(`${fontDir}/${fileName}`);
-          }
-          return "";
+          return adapter.getResourcePath(`${fontDir}/${fileName}`);
         },
       );
 

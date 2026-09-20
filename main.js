@@ -2715,14 +2715,16 @@ var require_snippet_manager = __commonJS({
         }
         if (css && this.globalElement) {
           const fontDir = `${this.getPluginDir()}/fonts`;
-          const fontDirExists = await adapter.exists(fontDir);
+          try {
+            if (!await adapter.exists(fontDir)) {
+              await adapter.mkdir(fontDir);
+            }
+          } catch (e) {
+          }
           const resolvedCss = css.replace(
             /STND_FONT_URL:([\w.-]+)/g,
             (match, fileName) => {
-              if (fontDirExists) {
-                return adapter.getResourcePath(`${fontDir}/${fileName}`);
-              }
-              return "";
+              return adapter.getResourcePath(`${fontDir}/${fileName}`);
             }
           );
           this.globalElement.textContent = resolvedCss;
@@ -2796,14 +2798,16 @@ var require_snippet_manager = __commonJS({
           this.settings.globalCache = allCss;
           const adapter = this.app.vault.adapter;
           const fontDir = `${this.getPluginDir()}/fonts`;
-          const fontDirExists = await adapter.exists(fontDir);
+          try {
+            if (!await adapter.exists(fontDir)) {
+              await adapter.mkdir(fontDir);
+            }
+          } catch (e) {
+          }
           const resolvedCss = allCss.replace(
             /STND_FONT_URL:([\w.-]+)/g,
             (match, fileName) => {
-              if (fontDirExists) {
-                return adapter.getResourcePath(`${fontDir}/${fileName}`);
-              }
-              return "";
+              return adapter.getResourcePath(`${fontDir}/${fileName}`);
             }
           );
           if (this.globalElement) this.globalElement.textContent = resolvedCss;
@@ -4169,7 +4173,6 @@ var require_interface_manager = __commonJS({
 // src/features/base64-fold/index.js
 var require_base64_fold = __commonJS({
   "src/features/base64-fold/index.js"(exports2, module2) {
-    "use strict";
     var { Decoration, ViewPlugin, WidgetType } = require("@codemirror/view");
     var { PluginSettingTab: PluginSettingTab2, Setting } = require("obsidian");
     var { descWithLinks } = require_constants();

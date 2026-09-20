@@ -89,6 +89,10 @@ esbuild
       const tray = path.join(__dirname, "trayTemplate.png");
       if (fs.existsSync(tray)) fs.copyFileSync(tray, path.join(dest, "trayTemplate.png"));
       fs.copyFileSync(path.join(__dirname, "manifest.json"), path.join(dest, "manifest.json"));
+
+      const destFonts = path.join(dest, "fonts");
+      if (!fs.existsSync(destFonts)) fs.mkdirSync(destFonts, { recursive: true });
+
       console.log(`Deployed to vault: ${dest}`);
     } else {
       console.log("Vault not found — skipped deploy (set VAULT_PLUGINS to enable).");
