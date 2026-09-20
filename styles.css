@@ -1,1119 +1,555 @@
-body {
-  /*
-  --font-text: "Inter Variable", "Fern Variable", "Graveur Variable", Bookerly;
-  --font-interface: var(--font-text);
-  --font-monospace: "Monaspace Xenon Var";
-  */
-  --font-header: var(--font-text);
-  --font-density: 1.7;
-  --font-ratio: 1.333;
-  --font-line-width: 35rlh;
-  --font-weight: 400;
-  --font-feature: "";
-  --font-variation: "";
-  --font-size: var(--font-text-size);
-  --bold-weight: 600;
-  --font-header-weight: 400;
-  --font-header-letter-spacing: -0.025em;
-  --font-header-line-height: 1.3em;
-  --font-header-feature: "";
-  --font-header-variation: "";
-  --font-monospace-feature: "";
-  --font-monospace-variation: "";
-  --font-interface-feature: "";
-  --font-interface-variation: "";
+/* --- Feature: base64-fold --- */
+.atelier-base64-fold {
+  color: var(--text-muted);
+  background-color: var(--background-modifier-border);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: var(--font-monospace);
+  cursor: pointer;
 }
 
-.chisel-typography {
-  text-rendering: optimizeLegibility; /* kerning & ligatures */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-optical-sizing: auto;
-  --normal-weight: var(--font-weight);
-  --font-feature-settings: var(--font-feature);
-  --font-variation-settings: var(--font-variation);
-  --line-height-normal: var(--font-density);
-  --heading-spacing: var(--line-height-normal);
-  --inline-title-font: var(--font-header);
-  --file-line-width: var(--font-line-width);
-  --line-width: var(--font-line-width);
-  --nav-item-weight: 400;
-  --inline-title-size: calc(var(--font-size) * pow(var(--font-ratio), 4));
-  --h1-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
-  --h2-size: calc(var(--font-size) * pow(var(--font-ratio), 3));
-  --h3-size: calc(var(--font-size) * pow(var(--font-ratio), 2));
-  --h4-size: calc(var(--font-size) * pow(var(--font-ratio), 1));
-  --h5-size: calc(var(--font-size) * pow(var(--font-ratio), 0.5));
-  --h6-size: calc(var(--font-size) * pow(var(--font-ratio), 0.5));
-  --font-smallest: calc(var(--font-size) * pow(var(--font-ratio), -1.5));
-  --font-smaller: calc(var(--font-size) * pow(var(--font-ratio), -1));
-  --font-small: calc(var(--font-size) * pow(var(--font-ratio), -0.5));
-  --tag-size: var(--font-smaller);
-  --code-size: var(--font-small);
-  --metadata-input-font-size: calc(
-      var(--font-size) * pow(var(--font-ratio), 0)
-  );
-  --inline-title-weight: var(--font-header-weight);
-  --h1-weight: var(--font-header-weight);
-  --h2-weight: calc(var(--font-header-weight) * 1);
-  --h3-weight: calc(var(--font-header-weight) * 1);
-  --h4-weight: calc(var(--font-header-weight) * 1);
-  --h5-weight: calc(var(--font-header-weight) * 1);
-  --h6-weight: calc(var(--font-header-weight) * 1);
-  --h1-font: var(--font-header);
-  --h2-font: var(--font-header);
-  --h3-font: var(--font-header);
-  --h4-font: var(--font-header);
-  --h5-font: var(--font-header);
-  --h6-font: var(--font-header);
-  font-feature-settings: var(--font-interface-feature);
-  font-variation-settings: var(--font-interface-variation);
-}
-.chisel-typography .vertical-tab-header-group-title,
-.chisel-typography .setting-item-heading .setting-item-name {
-  font-family: var(--font-header);
-  /*font-size: var(--font-ui-large);*/
-}
-.chisel-typography .markdown-preview-view,
-.chisel-typography .markdown-reading-view {
-  --h1-font: var(--font-header);
-  --h2-font: var(--font-header);
-  --h3-font: var(--font-header);
-  --h4-font: var(--font-header);
-  --h5-font: var(--font-header);
-  --h6-font: var(--font-header);
-}
-.chisel-typography .markdown-preview-view,
-.chisel-typography .markdown-reading-view,
-.chisel-typography .markdown-source-view {
-  font-weight: var(--normal-weight);
-  font-feature-settings: var(--font-feature);
-  font-variation-settings: var(--font-variation);
-  --font-text-size: var(--font-size);
-  /*letter-spacing: 0.01rem;*/
-}
-.chisel-typography .markdown-reading-view code,
-.chisel-typography .HyperMD-codeblock {
-  font-weight: 400;
-  line-height: 1.5 !important;
-}
-.chisel-typography .cm-comment.cm-strong {
-  color: color-mix(in oklab, inherit 50%, transparent);
-}
-.chisel-typography .nav-file-tag {
-  line-height: inherit;
-}
-.chisel-typography .markdown-reading-view sup {
-  line-height: 0;
-  font-feature-settings: "sups" on;
-}
-@media only screen and (max-width: 600px) {
-  .chisel-typography {
-    --font-ratio: 1.3 !important;
-  }
-}
-.chisel-typography .inline-title:not([data-level]) {
-  letter-spacing: var(--font-header-letter-spacing, normal);
-}
-.chisel-typography .markdown-reading-view h1,
-.chisel-typography .markdown-reading-view h2,
-.chisel-typography .markdown-reading-view h3,
-.chisel-typography .markdown-reading-view h4,
-.chisel-typography .markdown-reading-view h5,
-.chisel-typography .markdown-reading-view h6,
-.chisel-typography .HyperMD-header-1,
-.chisel-typography .HyperMD-header-2,
-.chisel-typography .HyperMD-header-3,
-.chisel-typography .HyperMD-header-4,
-.chisel-typography .HyperMD-header-5,
-.chisel-typography .HyperMD-header-6,
-.chisel-typography .inline-title,
-.chisel-typography .inline-title:not([data-level]) {
-  font-feature-settings: var(--font-header-feature);
-  font-variation-settings: var(--font-header-variation);
-  letter-spacing: var(--font-header-letter-spacing, normal);
-  line-height: var(--font-header-line-height, 1em); /*0.50em;*/
-  text-wrap: balance;
-  font-style: var(--font-header-style, normal);
-  font-weight: var(--font-header-weight);
-  font-family: var(--font-header);
-  text-overflow: ellipsis;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-.chisel-typography .markdown-reading-view b,
-.chisel-typography .markdown-reading-view strong,
-.chisel-typography span.cm-strong,
-.chisel-typography .cm-strong {
-  font-weight: var(--bold-weight);
-  font-variation-settings: "wght" var(--bold-weight);
-}
-.chisel-typography .markdown-reading-view h5,
-.chisel-typography .HyperMD-header-5 {
-  letter-spacing: 0.005em !important;
-  font-weight: var(--h5-weight);
-}
-.chisel-typography .markdown-reading-view h6,
-.chisel-typography .HyperMD-header-6 {
-  letter-spacing: 0.005em !important;
-}
-.chisel-typography .markdown-reading-view code,
-.chisel-typography .markdown-reading-view pre {
-  font-feature-settings: var(--font-monospace-feature);
-  font-variation-settings: var(--font-monospace-variation);
-}
-.chisel-typography .markdown-reading-view ol > li,
-.chisel-typography .markdown-reading-view ul > li,
-.chisel-typography .mod-cm6 .HyperMD-list-line.cm-line {
-  line-height: max(var(--line-height-normal) * 0.75, var(--line-height-tight));
+
+/* --- Feature: daily-nav --- */
+/* --- Feature: daily-nav --- */
+
+.stnd-daily-nav-container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  pointer-events: none;
+  animation: stnd-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-body {
-  --color-accent-default: hsl(
-      var(--accent-h) var(--accent-s) var(--accent-l)
-  );
-  --color-bold-default: var(--color-foreground);
-  --color-italic-default: var(--color-foreground);
+.stnd-daily-nav-pill {
+  display: flex;
+  align-items: center;
+  background: var(--background-secondary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: auto;
+  overflow: hidden;
+  opacity: 0.94;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-body.chisel-color.theme-light,
-body.chisel-color.theme-dark {
-  /* --color-background:						var(--color-background); */
-  --color-base-05: color-mix(
-      in oklab,
-      var(--color-foreground) 5%,
-      var(--color-background)
-  );
-  --color-base-10: color-mix(
-      in oklab,
-      var(--color-foreground) 10%,
-      var(--color-background)
-  );
-  --color-base-20: color-mix(
-      in oklab,
-      var(--color-foreground) 20%,
-      var(--color-background)
-  );
-  --color-base-25: color-mix(
-      in oklab,
-      var(--color-foreground) 25%,
-      var(--color-background)
-  );
-  --color-base-30: color-mix(
-      in oklab,
-      var(--color-foreground) 30%,
-      var(--color-background)
-  );
-  --color-base-35: color-mix(
-      in oklab,
-      var(--color-foreground) 35%,
-      var(--color-background)
-  );
-  --color-base-40: color-mix(
-      in oklab,
-      var(--color-foreground) 40%,
-      var(--color-background)
-  );
-  --color-base-50: color-mix(
-      in oklab,
-      var(--color-foreground) 50%,
-      var(--color-background)
-  );
-  --color-base-60: color-mix(
-      in oklab,
-      var(--color-foreground) 60%,
-      var(--color-background)
-  );
-  --color-base-70: color-mix(
-      in oklab,
-      var(--color-foreground) 70%,
-      var(--color-background)
-  );
-  --background-primary: var(--color-background);
-  --background-primary-alt: var(--color-base-05);
-  --background-secondary: var(--color-base-05);
-  --background-secondary: color-mix(
-      in oklab,
-      var(--color-foreground) 2.5%,
-      var(--background-primary)
-  );
-  --background-secondary-alt: var(--color-background);
-  --color-red: var(--color-light-red);
-  --color-orange: var(--color-light-orange);
-  --color-yellow: var(--color-light-yellow);
-  --color-green: var(--color-light-green);
-  --color-cyan: var(--color-light-cyan);
-  --color-blue: var(--color-light-blue);
-  --color-purple: var(--color-light-purple);
-  --color-pink: var(--color-light-pink);
-  /*--color-accent-default: var(--color-accent);*/
-  --color-accent-default: hsl(
-      var(--accent-h) var(--accent-s) var(--accent-l)
-  );
-  --color-interactive: color-mix(
-      in oklab,
-      var(--color-accent) 25%,
-      transparent
-  );
-  --color-interactive-hover: color-mix(
-      in oklab,
-      var(--color-accent) 50%,
-      transparent
-  );
-  --color-interactive-hover-backgound: color-mix(
-      in oklab,
-      var(--color-accent) 15%,
-      transparent
-  );
-  --color-icon: var(--text-muted);
-  --bold-color: var(--color-bold);
-  --italic-color: var(--color-italic);
-  --color-h1: var(--color-foreground);
-  --color-h2: var(--color-foreground);
-  --color-h3: var(--color-foreground);
-  --color-h4: var(--color-foreground);
-  --color-h5: var(--color-foreground);
-  --color-h6: var(--color-foreground);
-  --background-modifier-hover: var(--color-interactive-hover-backgound);
-  --background-modifier-active-hover: var(--background-secondary);
-  --background-modifier-border: var(--background-secondary);
-  --background-modifier-border-hover: var(--color-base-20);
-  --background-modifier-border-focus: var(--color-base-70);
-  --background-modifier-error: var(--color-base-05);
-  --background-modifier-error-hover: var(--color-base-05);
-  --background-modifier-success: var(--color-base-05);
-  --background-modifier-message: var(--color-base-05);
-  --background-modifier-form-field: var(--color-base-05);
-  --border-color: color-mix(in oklab, black 10%, var(--background-primary));
-  --border-width: 1px;
-  --divider-color: var(--border-color);
-  --divider-width: var(--border-width);
-  --hr-color: color-mix(
-      in oklab,
-      var(--text-normal) 25%,
-      var(--background-primary)
-  );
-  --hr-thickness: 1px;
-  --tab-outline-color: var(--border-color);
-  --tab-outline-width: var(--border-width);
-  --tab-outline-color: var(--border-color);
-  --tab-outline-width: var(--border-width);
-  --tab-text-color-focused-active-current: var(--foreground-color);
-  --prompt-border-color: var(--border-color);
-  --prompt-border-width: var(--border-width);
-  --table-border-color: var(--border-color);
-  --modal-border-color: var(--border-color);
-  --status-bar-border-width: var(--border-width);
-  --status-bar-border-color: var(--border-color);
-  --status-bar-border-width: 0;
-  --blockquote-border-thickness: 2px;
-  --blockquote-border-color: var(--border-color);
-  /*--background-modifier-border: var(--border-color);*/
-  --interactive-normal: var(--color-base-10);
-  --interactive-hover: var(--color-interactive-hover);
-  --interactive-accent: var(--color-interactive);
-  --interactive-accent-hsl: 0, 0, 50;
-  --interactive-accent-hover: var(--color-interactive-hover);
-  /*
-  .mod-settings .vertical-tab-content > .setting-item:nth-child(2) {
-      opacity: 0.5;
-  }
-  .mod-settings
-      .vertical-tab-content
-      > .setting-item:nth-child(2)
-      .clickable-icon[aria-label="Restore default"] {
-      display: none;
-  }
-  .mod-settings
-      .vertical-tab-content
-      > .setting-item:nth-child(2)
-      > .setting-item-control
-      > input[type="color"] {
-      visibility: hidden;
-      width: 300px;
-      text-align: right;
-      padding-top: 1rlh;
-  }
-  .mod-settings
-      .vertical-tab-content
-      > .setting-item:nth-child(2)
-      > .setting-item-control
-      > input[type="color"]::before {
-      visibility: visible;
-      content: "Chisel plugin override the accent color";
-      color: var(--text-error);
-      font-family: var(--font-interface);
-      font-size: var(--font-ui-smaller);
-  }
-  */
-  --text-normal: var(--color-foreground);
-  --text-muted: var(--color-base-70);
-  --text-faint: var(--color-base-50);
-  --text-on-accent: var(--color-foreground);
-  --text-on-accent-inverted: var(--color-background);
-  --text-success: var(--color-green);
-  --text-warning: var(--color-red);
-  --text-error: var(--color-red);
-  --text-accent: var(--color-accent);
-  --text-accent-hover: var(--color-foreground);
-  --text-selection: color-mix(
-      in oklab,
-      var(--color-yellow) 25%,
-      var(--color-background)
-  );
-  --metadata-label-text-color: var(--color-icon);
-  --link-external-color: var(--color-green);
-  --link-external-color-hover: color-mix(
-      in oklab,
-      var(--color-foreground) 25%,
-      var(--color-background)
-  );
-  --link-color: var(--color-accent);
-  --link-color-hover: color-mix(
-      in oklab,
-      var(--link-color) 25%,
-      var(--color-foreground)
-  );
-  --tag-background: color-mix(in oklab, black 2%, transparent);
-  --tag-border: var(--border-color);
-  --tag-color: var(--text-muted);
-  --icon-color: var(--color-icon);
-  --icon-hex: var(--mono0);
-  --icon-opacity-hover: 1;
-  --icon-color-active: var(--color-foreground);
-  --icon-color-focused: var(--color-foreground);
-  --icon-color-hover: var(--color-accent) !important;
-  --nav-item-color: var(--color-foreground);
-  --nav-item-color-active: var(--color-foreground);
-  --nav-item-color-hover: var(--color-accent);
-  --nav-collapse-icon-color: color-mix(
-      in oklab,
-      var(--text-normal) 25%,
-      transparent
-  );
-  --nav-collapse-icon-color-hover: color-mix(
-      in oklab,
-      var(--text-normal) 100%,
-      transparent
-  );
-  --nav-collapse-icon-color-collapsed: color-mix(
-      in oklab,
-      var(--text-normal) 100%,
-      transparent
-  );
-  --nav-indentation-guide-color: color-mix(
-      in oklab,
-      var(--text-normal) 5%,
-      transparent
-  );
-  --nav-item-background-hover: var(--color-interactive-hover-backgound);
-  --nav-item-background-active: var(--color-interactive-hover-backgound);
-  --nav-item-color-highlighted: var(--color-foreground);
-  --ribbon-background: var(--background-secondary);
-  --ribbon-background-collapsed: var(--background-secondary);
-  --titlebar-background: var(--background-secondary) !important;
-  --titlebar-background-focused: var(--background-secondary) !important;
-  --titlebar-text-color-focused: var(--text-normal) !important;
-  --tab-container-background: var(--background-secondary) !important;
-  --indentation-guide-color: color-mix(
-      in oklab,
-      var(--color-foreground) 12%,
-      transparent
-  );
-  --indentation-guide-color-active: color-mix(
-      in oklab,
-      var(--color-foreground) 3%,
-      transparent
-  );
-  --scrollbar-active-thumb-bg: color-mix(
-      in oklab,
-      var(---color-foreground) 20%,
-      transparent
-  );
-  --scrollbar-bg: color-mix(
-      in oklab,
-      var(--color-foreground) 5%,
-      transparent
-  );
-  --scrollbar-thumb-bg: color-mix(
-      in oklab,
-      var(--color-foreground) 1%,
-      transparent
-  );
-  --swatch-shadow: inset 0 0 0 1px
-      color-mix(in oklab, var(--color-foreground) 1%, transparent);
-  --workspace-background-translucent: color-mix(
-      in oklab,
-      var(--color-foreground) 40%,
-      transparent
-  );
-  --text-highlight-bg: color-mix(
-      in oklab,
-      var(--color-yellow) 15%,
-      transparent
-  );
-  --callout-default: var(--color-blue);
-  --callout-content-padding: 0;
-  --callout-content-background: transparent;
-  --callout-bug: var(--color-red);
-  --callout-error: var(--color-red);
-  --callout-example: var(--color-purple);
-  --callout-fail: var(--color-red);
-  --callout-important: var(--color-cyan);
-  --callout-info: var(--color-blue);
-  --callout-question: var(--color-orange);
-  --callout-success: var(--color-green);
-  --callout-summary: var(--color-cyan);
-  --callout-tip: var(--color-cyan);
-  --callout-todo: var(--color-blue);
-  --callout-warning: var(--color-orange);
-  --callout-quote: var(--color-cyan);
-  /*
-  Theme specific
-  */
-  --tx1: var(--text-normal) !important;
-  --tx2: var(--text-muted) !important;
-  --tx3: var(--text-faint) !important;
-  --ui1: var(--divider-color) !important;
-  --ui2: var(--divider-color) !important;
-  --ui3: var(--divider-color) !important;
-  --bg1: var(--background-secondary) !important;
-  --bg2: var(--background-secondary) !important;
-  --bg3: var(--interactive-accent) !important;
-  --alternating-color-1: var(--color-yellow);
-  --alternating-color-2: var(--color-red);
-  --alternating-color-3: var(--color-blue);
-  --inline-title-color: var(--text-normal);
+.stnd-daily-nav-pill:hover {
+  opacity: 1;
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.08);
 }
-body.chisel-color.theme-light .notice,
-body.chisel-color.theme-light .notice-cta,
-body.chisel-color.theme-dark .notice,
-body.chisel-color.theme-dark .notice-cta {
-  color: var(--text-muted) !important;
+
+.stnd-daily-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: background 0.15s ease, color 0.15s ease;
 }
-body.chisel-color.theme-light .clickable-icon:hover,
-body.chisel-color.theme-light .nav-buttons-container:hover,
-body.chisel-color.theme-light .sidebar-toggle-button:hover,
-body.chisel-color.theme-light .view-action:hover,
-body.chisel-color.theme-dark .clickable-icon:hover,
-body.chisel-color.theme-dark .nav-buttons-container:hover,
-body.chisel-color.theme-dark .sidebar-toggle-button:hover,
-body.chisel-color.theme-dark .view-action:hover {
-  color: var(--color-accent) !important;
-  --icon-color-hover: var(--color-accent) !important;
+
+.stnd-daily-nav-btn:hover {
+  color: var(--text-normal);
+  background: rgba(var(--mono-rgb-100), 0.04);
 }
-body.chisel-color.theme-light.folder-note-underline-path .has-folder-note.view-header-breadcrumb:hover,
-body.chisel-color.theme-dark.folder-note-underline-path .has-folder-note.view-header-breadcrumb:hover {
-  text-decoration-color: var(--color-accent);
+
+.stnd-daily-nav-btn:active {
+  background: rgba(var(--mono-rgb-100), 0.08);
 }
-body.chisel-color.theme-light .side-dock-actions,
-body.chisel-color.theme-dark .side-dock-actions {
-  color: var(--icon-color);
-}
-body.chisel-color.theme-light .nav-folder.is-being-dragged-over,
-body.chisel-color.theme-dark .nav-folder.is-being-dragged-over {
-  background: color-mix(in oklab, var(--color-accent) 5%, transparent) !important;
-}
-body.chisel-color.theme-light :not(.sidebar-color) .mod-right-split,
-body.chisel-color.theme-dark :not(.sidebar-color) .mod-right-split {
-  --background-secondary: unset !important;
-}
-body.chisel-color.theme-light .tree-item-self:hover,
-body.chisel-color.theme-dark .tree-item-self:hover {
-  --nav-collapse-icon-color: color-mix(
-      in oklab,
-      var(--color-accent) 75%,
-      transparent
-  );
-}
-body.chisel-color.theme-light.folder-note-underline .has-folder-note:hover .nav-folder-title-content,
-body.chisel-color.theme-dark.folder-note-underline .has-folder-note:hover .nav-folder-title-content {
-  text-decoration-color: color-mix(in oklab, var(--color-accent) 25%, transparent);
-}
-body.chisel-color.theme-light .markdown-reading-view b,
-body.chisel-color.theme-light .markdown-reading-view strong,
-body.chisel-color.theme-light span.cm-strong,
-body.chisel-color.theme-light .cm-strong,
-body.chisel-color.theme-dark .markdown-reading-view b,
-body.chisel-color.theme-dark .markdown-reading-view strong,
-body.chisel-color.theme-dark span.cm-strong,
-body.chisel-color.theme-dark .cm-strong {
-  color: var(--color-bold);
-}
-body.chisel-color.theme-light .markdown-reading-view em,
-body.chisel-color.theme-light span.cm-em,
-body.chisel-color.theme-light .cm-em,
-body.chisel-color.theme-dark .markdown-reading-view em,
-body.chisel-color.theme-dark span.cm-em,
-body.chisel-color.theme-dark .cm-em {
-  color: var(--color-italic);
-}
-body.chisel-color.theme-light .checkbox-container.is-enabled,
-body.chisel-color.theme-dark .checkbox-container.is-enabled {
-  background-color: var(--color-interactive-hover);
-}
-body.chisel-color.theme-light input[type=checkbox][data-indeterminate=true]:not(:checked):after,
-body.chisel-color.theme-dark input[type=checkbox][data-indeterminate=true]:not(:checked):after {
-  background-color: var(--text-faint);
-}
-body.chisel-color.theme-light.hider-tabs .workspace:not(.is-left-sidedock-open),
-body.chisel-color.theme-dark.hider-tabs .workspace:not(.is-left-sidedock-open) {
-  --bg1: var(--background-primary) !important;
-  --titlebar-background: var(--background-primary) !important;
-  --titlebar-background-focused: var(--background-primary) !important;
-}
-body.chisel-color.theme-light.is-mobile,
-body.chisel-color.theme-dark.is-mobile {
-  --mobile-sidebar-background: var(--background-secondary);
-  --color-interactive: var(--text-faint);
-}
-body.chisel-color.theme-light.theme-light,
-body.chisel-color.theme-dark.theme-light {
-  --color-foreground: var(
-      --color-light-foreground,
-      var(--color-base-100)
-  );
-  --color-background: var(--color-light-background, var(--color-base-00));
-  --color-white: var(--color-background);
-  --color-black: var(--color-foreground);
-  --color-accent: var(--color-light-accent, var(--color-accent-default));
-  --color-bold: var(--color-light-bold, var(--color-bold-default));
-  --color-italic: var(--color-light-italic, var(--color-italic-default));
-}
-body.chisel-color.theme-light .markdown-source-view.mod-cm6 hr,
-body.chisel-color.theme-dark .markdown-source-view.mod-cm6 hr {
-  border-width: var(--hr-thickness);
-}
-@media only screen and (max-width: 600px) {
-  body.chisel-color.theme-light.is-mobile .workspace-split.mod-root,
-  body.chisel-color.theme-dark.is-mobile .workspace-split.mod-root {
-    background-color: var(--background-primary);
-  }
-}
-body.chisel-color.theme-light.theme-dark, body.chisel-color.theme-light.is-mobile.theme-dark,
-body.chisel-color.theme-dark.theme-dark,
-body.chisel-color.theme-dark.is-mobile.theme-dark {
-  --color-foreground: var(--color-dark-foreground, var(--color-base-100));
-  --color-background: var(--color-dark-background, var(--color-base-00));
-  --color-red: var(--color-dark-red);
-  --color-orange: var(--color-dark-orange);
-  --color-yellow: var(--color-dark-yellow);
-  --color-green: var(--color-dark-green);
-  --color-cyan: var(--color-dark-cyan);
-  --color-blue: var(--color-dark-blue);
-  --color-purple: var(--color-dark-purple);
-  --color-pink: var(--color-dark-pink);
-  --color-white: var(--color-foreground);
-  --color-black: var(--color-background);
-  --border-color: color-mix(in oklab, black 13%, var(--color-background));
-  --color-accent: var(--color-dark-accent, var(--color-accent-default));
-  --color-bold: var(--color-dark-bold, var(--color-bold-default));
-  --color-italic: var(--color-dark-italic, var(--color-italic-default));
-  --blockquote-border-color: var(--text-faint);
-  --color-h1: color-mix(
-      in oklab,
-      var(--color-foreground) 85%,
-      var(--color-background)
-  );
-  --color-h2: color-mix(
-      in oklab,
-      var(--color-foreground) 90%,
-      var(--color-background)
-  );
-  --color-h3: color-mix(
-      in oklab,
-      var(--color-foreground) 95%,
-      var(--color-background)
-  );
-  --color-h4: var(--color-foreground);
-  --color-h5: var(--color-foreground);
-  --color-h6: var(--color-foreground);
-  --background-primary: var(--color-base-05);
-  --background-primary: color-mix(
-      in oklab,
-      var(--color-foreground) 2%,
-      var(--color-background)
-  );
-  --background-primary-alt: var(--color-background);
-  --background-secondary: var(--color-background);
-  --background-secondary-alt: var(--color-base-05);
-  --text-highlight-bg: color-mix(
-      in oklab,
-      var(--color-yellow) 20%,
-      transparent
-  );
-  --nav-item-color: var(--text-muted);
-  --nav-item-color-active: var(--text-muted);
-  --color-icon: var(--text-faint);
-  --metadata-label-text-color: var(--color-icon);
-  --metadata-input-text-color: var(--text-muted);
-  --input-placeholder-color: var(--color-icon);
-}
-body.chisel-color.theme-light pre,
-body.chisel-color.theme-dark pre {
-  color: var(--color-base-70);
-}
-body.chisel-color.theme-light .markdown-rendered mark,
-body.chisel-color.theme-light .cm-s-obsidian span.cm-highlight,
-body.chisel-color.theme-dark .markdown-rendered mark,
-body.chisel-color.theme-dark .cm-s-obsidian span.cm-highlight {
-  background-color: var(--text-highlight-bg);
-  color: currentColor;
-}
-body.chisel-color.theme-light a.footnote-link,
-body.chisel-color.theme-dark a.footnote-link {
+
+.stnd-daily-nav-btn.stnd-create {
   color: var(--text-faint);
+  font-style: italic;
 }
-body.chisel-color.theme-light .sidebar-toggle-button.mod-right,
-body.chisel-color.theme-dark .sidebar-toggle-button.mod-right {
-  background: none !important;
+
+.stnd-daily-nav-btn.stnd-create:hover {
+  color: var(--text-muted);
 }
-body.chisel-color.theme-light .workspace-drawer-inner,
-body.chisel-color.theme-light .workspace-split.mod-root,
-body.chisel-color.theme-light .mod-root .workspace-tabs .workspace-leaf,
-body.chisel-color.theme-dark .workspace-drawer-inner,
-body.chisel-color.theme-dark .workspace-split.mod-root,
-body.chisel-color.theme-dark .mod-root .workspace-tabs .workspace-leaf {
-  background: var(--background-secondary);
+
+.stnd-daily-nav-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--background-modifier-border);
+  align-self: center;
 }
-body.chisel-color.theme-light .workspace-leaf-content,
-body.chisel-color.theme-dark .workspace-leaf-content {
-  border-radius: var(--radius-m);
-}
-body.chisel-color.theme-light .notice,
-body.chisel-color.theme-light .tooltip,
-body.chisel-color.theme-dark .notice,
-body.chisel-color.theme-dark .tooltip {
-  color: color-mix(in oklab, var(--text-normal) 50%, transparent);
-}
-body.chisel-color.theme-light .is-translucent:not(.is-fullscreen),
-body.chisel-color.theme-dark .is-translucent:not(.is-fullscreen) {
-  --nav-collapse-icon-color: color-mix(
-      in oklab,
-      var(--mono-100) 30%,
-      transparent
-  );
-  --nav-collapse-icon-color-collapsed: color-mix(
-      in oklab,
-      var(--mono-100) 30%,
-      transparent
-  );
-}
-body.chisel-color.theme-light .diff-line.mod-left,
-body.chisel-color.theme-dark .diff-line.mod-left {
-  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
-}
-body.chisel-color.theme-light .diff-line.mod-left .diff-changed,
-body.chisel-color.theme-dark .diff-line.mod-left .diff-changed {
-  background-color: color-mix(in oklab, var(--background-modifier-error) 40%, transparent);
-}
-body.chisel-color.theme-light .diff-line.mod-right,
-body.chisel-color.theme-dark .diff-line.mod-right {
-  background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
-}
-body.chisel-color.theme-light .diff-line.mod-right .diff-changed,
-body.chisel-color.theme-dark .diff-line.mod-right .diff-changed {
-  background-color: color-mix(in oklab, var(--background-modifier-success) 40%, transparent);
-}
-body.chisel-color.theme-light input.document-search-input.mod-no-match,
-body.chisel-color.theme-light input.document-replace-input.mod-no-match,
-body.chisel-color.theme-dark input.document-search-input.mod-no-match,
-body.chisel-color.theme-dark input.document-replace-input.mod-no-match {
-  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
-}
-@media (hover: hover) {
-  body.chisel-color.theme-light input.document-search-input.mod-no-match:hover,
-  body.chisel-color.theme-light input.document-replace-input.mod-no-match:hover,
-  body.chisel-color.theme-dark input.document-search-input.mod-no-match:hover,
-  body.chisel-color.theme-dark input.document-replace-input.mod-no-match:hover {
-    background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+
+@keyframes stnd-slide-up {
+  from {
+    transform: translate(-50%, 15px);
+    opacity: 0;
   }
-  body.chisel-color.theme-light .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover,
-  body.chisel-color.theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
-    color: var(--color-accent);
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
   }
 }
-@media (hover: hover) {
-  body.chisel-color.theme-light .view-header-title-parent .view-header-breadcrumb:hover,
-  body.chisel-color.theme-dark .view-header-title-parent .view-header-breadcrumb:hover {
-    background-color: var(--color-interactive-hover-backgound);
-    color: var(--color-accent);
-  }
+
+/* Adjustments for mobile view */
+body.is-mobile .stnd-daily-nav-container {
+  bottom: 16px;
 }
-@media (hover: hover) {
-  body.chisel-color.theme-light input[type=color]::-webkit-color-swatch:hover,
-  body.chisel-color.theme-dark input[type=color]::-webkit-color-swatch:hover {
-    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--mono-100) 20%, transparent), 0 0 0 3px var(--background-modifier-border-hover);
-  }
+
+
+/* --- Feature: eink --- */
+/* @settings
+
+name: eInk
+id: eInk
+settings:
+	-
+		id: garden_eink_font_face
+		title: forest & Futura Font face
+		description:
+		type: class-toggle
+		default: true
+	-
+		id: garden_eink_font_weight
+		title: Font weight
+		description: Change the viewing font weight
+		type: class-select
+		allowEmpty: false
+		default: Normal
+		options:
+			-
+				label: Light
+				value: garden_eink_font_weight_light
+			-
+				label: Normal
+				value: garden_eink_font_weight_normal
+            -
+				label: Medium
+				value: garden_eink_font_weight_medium
+			-
+				label: Bold
+				value: garden_eink_font_weight_bold
+	-
+		id: garden_eink_book
+		title: Book mode
+		description: Justify and add hyphenation to text in preview mode
+		type: class-toggle
+		default: true
+*/
+
+body.stnd-eink-active::before,
+body.stnd-eink-active::after {
+    display: none !important;
 }
-body.chisel-color.theme-light .pdf-findbar .mod-not-found,
-body.chisel-color.theme-dark .pdf-findbar .mod-not-found {
-  --background-modifier-form-field: color-mix(
-      in oklab,
-      var(--background-modifier-error) 10%,
-      transparent
-  );
-  --background-modifier-border-focus: color-mix(
-      in oklab,
-      var(--background-modifier-error) 60%,
-      transparent
-  );
+body.stnd-eink-active * {
+    text-shadow: none !important;
+    background-blend-mode: normal !important;
+    filter: none !important;
 }
-@media (hover: hover) {
-  body.chisel-color.theme-light .metadata-property-warning-icon:hover,
-  body.chisel-color.theme-dark .metadata-property-warning-icon:hover {
-    background-color: color-mix(in oklab, var(--color-orange) 15%, transparent);
-  }
+
+body.stnd-eink-active,
+body.stnd-eink-active .markdown-preview-view,
+body.stnd-eink-active .cm-scroller {
+    scroll-behavior: auto !important;
 }
-body.chisel-color.theme-light .file-tree .mod-new.is-selected,
-body.chisel-color.theme-dark .file-tree .mod-new.is-selected {
-  background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
+
+body.stnd-eink-active * {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" !important;
+    font-optical-sizing: auto;
+
+    --line-width: 40rem;
+    --file-line-width: 40rem;
+    --font-line-width: 40rem;
+
+    --bold-weight: 600;
 }
-body.chisel-color.theme-light .file-tree .mod-deleted.is-selected,
-body.chisel-color.theme-light .file-tree .mod-to-delete.is-selected,
-body.chisel-color.theme-dark .file-tree .mod-deleted.is-selected,
-body.chisel-color.theme-dark .file-tree .mod-to-delete.is-selected {
-  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+body.stnd-eink-active .chisel-color.is-mobile {
+    --border-width: 2px;
 }
-body.chisel-color.theme-light .publish-upload-item:before,
-body.chisel-color.theme-dark .publish-upload-item:before {
-  background-color: color-mix(in oklab, var(--background-modifier-success) 20%, transparent);
+
+/* Stop caret blinking */
+body.stnd-eink-active .cm-cursor {
+    /*animation-play-state: paused !important;*/
+    animation: none !important; /* disables blinking animation */
+    background-color: var(--text-accent) !important; /* optional: keeps caret visible */
 }
-body.chisel-color.theme-light .publish-upload-item.mod-failed:before,
-body.chisel-color.theme-dark .publish-upload-item.mod-failed:before {
-  background-color: color-mix(in oklab, var(--background-modifier-error) 20%, transparent);
+
+body.stnd-eink-active * {
+    /*animation-play-state: paused !important;*/
+    animation: none !important;
 }
-body.chisel-color.theme-light .sync-history-list-item-header .sync-history-list-item-avatar,
-body.chisel-color.theme-dark .sync-history-list-item-header .sync-history-list-item-avatar {
-  border: 1px solid color-mix(in oklab, var(--mono-100) 20%, transparent);
-}
-body.chisel-color.theme-light .canvas-node-placeholder::after,
-body.chisel-color.theme-dark .canvas-node-placeholder::after {
-  background-color: color-mix(in oklab, var(--canvas-color) 10%, transparent);
-}
-body.chisel-color.theme-light .canvas-node.is-themed .canvas-node-container,
-body.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-container {
-  border-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--canvas-color) 70%, transparent), var(--shadow-stationary);
-}
-body.chisel-color.theme-light .canvas-node-group .canvas-node-content,
-body.chisel-color.theme-dark .canvas-node-group .canvas-node-content {
-  background-color: color-mix(in oklab, var(--canvas-color) 7%, transparent);
-}
-body.chisel-color.theme-light .canvas-group-label,
-body.chisel-color.theme-dark .canvas-group-label {
-  background-color: color-mix(in oklab, var(--canvas-color) 1%, transparent);
-}
-body.chisel-color.theme-light .canvas-node.is-themed .canvas-node-content,
-body.chisel-color.theme-dark .canvas-node.is-themed .canvas-node-content {
-  background-color: color-mix(in oklab, var(--canvas-color) 70%, transparent);
-}
-body.chisel-color.theme-light .canvas-edges g.is-focused path.canvas-interaction-path,
-body.chisel-color.theme-light .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path,
-body.chisel-color.theme-dark .canvas-edges g.is-focused path.canvas-interaction-path,
-body.chisel-color.theme-dark .canvas:not(.is-connecting) .canvas-edges g:hover path.canvas-interaction-path {
-  stroke: color-mix(in oklab, var(--canvas-color) 10%, transparent);
+body.stnd-eink-active a,
+body.stnd-eink-active .link-decoration-off .markdown-reading-view a {
+    text-decoration: underline !important;
 }
 
 /* ============================================= */
-/* Vertical Flow */
+/* Geometric Precision Text Rendering */
 /* ============================================= */
-body {
-  --marge: 1rlh; /* single unit */
-  --marge-block: 2; /* block separation */
-  --marge-block-calculated: calc(var(--marge) * var(--marge-block));
-  --marge-block-special: var(--marge-block-calculated);
+.garden_eink_font_face {
+    --font-text: "Fraunces" !important;
+    --font-header: var(--font-text) !important;
+    --font-interface: "Futura Now Var" !important;
+    --font-mono: "MonoLisa" !important;
+
+    --font-variation: "wght" 400, "SOFT" 100, "WONK" 0 !important;
+    --font-feature: "liga" !important;
+
+    --font-header-variation: "wght" 500, "SOFT" 75, "WONK" 100 !important;
+    --font-header-feature: var(--font-feature) !important;
+}
+.garden_eink_font_face strong {
+    font-variation-settings:
+        "wght" 650,
+        "SOFT" 100,
+        "WONK" 100 !important;
 }
 
-.chisel-vertical-rhythm {
-  --tag-border-width: 1px;
-  --tag-radius: calc(var(--marge) * 0.25);
-  --tag-padding-x: calc(var(--marge) * 0.25);
-  --tag-padding-y: calc(var(--marge) * 0.25);
-  --table-margin: auto;
-  --table-cell-padding: 0 calc(var(--marge) * 5) 0 calc(var(--marge) * 5);
-  --table-edge-cell-padding-first: 0 calc(var(--marge) * 5);
-  /*
-      CALLOUT
-  */
-  /*
-      HR
-  */
-  /*  .HyperMD-header-1.cm-line */
-  /*  .HyperMD-header-2.cm-line  */
-  /*  .HyperMD-header-3.cm-line
-  is commented because is bugged the ability to select text
-  */
-  /*  .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line */
-  /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
-  /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
-  /*  .HyperMD-header-4.cm-line */
-  /*  .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line  */
-  /*  .HyperMD-header-5.cm-line */
-  /*  .HyperMD-header-6.cm-line  */
+/* ============================================= */
+/* Font weight selection */
+/* ============================================= */
+.garden_eink_font_weight_light .markdown-preview-view,
+.garden_eink_font_weight_light .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-light) !important;
+    /*--font-header-weight: var(--font-light) !important;*/
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) p,
-.chisel-vertical-rhythm .cm-line {
-  line-height: var(--line-height-normal);
-  margin-top: 0rlh;
-  margin-bottom: var(--marge-block-calculated);
-  padding: 0;
-  margin-block-start: 0;
+.garden_eink_font_weight_light {
+    /*--font-header-weight: var(--font-light) !important;*/
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) :is(blockquote, .callout) *:last-child {
-  margin-bottom: 0;
+.garden_eink_font_weight_normal .markdown-preview-view,
+.garden_eink_font_weight_normal .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-normal) !important;
 }
-.chisel-vertical-rhythm .markdown-reading-view .inline-embed p {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+.garden_eink_font_weight_normal {
+    /*--font-header-weight: var(--font-normal) !important;*/
 }
-.chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) {
-  margin: var(--marge-block-calculated) 0;
+.garden_eink_font_weight_medium .markdown-preview-view,
+.garden_eink_font_weight_medium .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-medium) !important;
 }
-.chisel-vertical-rhythm .markdown-preview-section > div.el-p:has(.image-embed) + div.el-p:has(.image-embed) {
-  margin-top: calc(var(--marge) * -1.75);
+.garden_eink_font_weight_medium {
+    /*--font-header-weight: var(--font-medium) !important;*/
 }
-.chisel-vertical-rhythm .markdown-preview-section p:has(.image-embed),
-.chisel-vertical-rhythm .markdown-reading-view .callout,
-.chisel-vertical-rhythm .markdown-reading-view.mod-cm6 .callout,
-.chisel-vertical-rhythm .markdown-reading-view blockquote,
-.chisel-vertical-rhythm .markdown-reading-view pre {
-  margin: var(--marge-block-special);
+.garden_eink_font_weight_bold .markdown-preview-view,
+.garden_eink_font_weight_bold .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-bold) !important;
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content,
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) blockquote {
-  font-size: var(--font-small);
-  line-height: var(--line-height-tight);
+.garden_eink_font_weight_bold {
+    /* --font-header-weight: var(--font-bold) !important;*/
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content {
-  --marge-block-calculated: calc(
-      var(--marge) * calc(var(--marge-block) * 0.5)
-  );
+/* ============================================= */
+/* Book Mode Part */
+/* ============================================= */
+.garden_eink_book .markdown-reading-view .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-video) {
+    text-align: justify;
+    text-align-last: left;
+    text-wrap: pretty;
+    hyphens: auto;
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) .callout-content > ul {
-  margin: calc(var(--marge-block-calculated) * -0.75) 0 calc(var(--marge) * 0.5) 0;
-  padding: 0 0 0 var(--marge);
+.garden_eink_book .markdown-reading-view .el-h4 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page),
+.garden_eink_book .markdown-reading-view .el-h5 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page),
+.garden_eink_book .markdown-reading-view .el-h6 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page),
+.garden_eink_book .markdown-reading-view .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) {
+    margin-top: calc(1rlh * -1) !important;
 }
-.chisel-vertical-rhythm :is(.markdown-source-view, .markdown-reading-view) table {
-  margin-left: var(--table-margin);
-  margin-right: var(--table-margin);
+.garden_eink_book .markdown-reading-view .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) {
+    margin-top: calc(1rlh * -1) !important;
+    text-indent: 1rlh !important;
 }
-.chisel-vertical-rhythm .markdown-reading-view hr {
-  margin: calc(var(--marge) * 5) calc(var(--marge) * 8) calc(var(--marge) * 6) calc(var(--marge) * 8);
-}
-.chisel-vertical-rhythm .markdown-source-view hr {
-  margin: 0 25%;
-}
-.chisel-vertical-rhythm .markdown-preview-view ul,
-.chisel-vertical-rhythm .markdown-preview-view ol {
-  padding: 0rlh calc(var(--marge) * 2);
-  margin: 0 0 var(--marge-block-calculated) 0;
-}
-.chisel-vertical-rhythm .markdown-preview-view .el-p + .el-ol,
-.chisel-vertical-rhythm .markdown-preview-view .el-p + .el-ul {
-  margin-top: calc(var(--marge) * -1);
-}
-.chisel-vertical-rhythm .markdown-rendered ul ul,
-.chisel-vertical-rhythm .markdown-rendered ol ul,
-.chisel-vertical-rhythm .markdown-rendered ul ol,
-.chisel-vertical-rhythm .markdown-rendered ol ol {
-  margin: 0;
-  padding: 0rlh calc(var(--marge) * 1);
-}
-.chisel-vertical-rhythm .el-h1 + .el-ul ul,
-.chisel-vertical-rhythm .el-h2 + .el-ul ul,
-.chisel-vertical-rhythm .el-h3 + .el-ul ul,
-.chisel-vertical-rhythm .el-h4 + .el-ul ul,
-.chisel-vertical-rhythm .el-h5 + .el-ul ul,
-.chisel-vertical-rhythm .el-h6 + .el-ul ul,
-.chisel-vertical-rhythm .el-h1 + .el-ol ol,
-.chisel-vertical-rhythm .el-h2 + .el-ol ol,
-.chisel-vertical-rhythm .el-h3 + .el-ol ol,
-.chisel-vertical-rhythm .el-h4 + .el-ol ol,
-.chisel-vertical-rhythm .el-h5 + .el-ol ol,
-.chisel-vertical-rhythm .el-h6 + .el-ol ol {
-  margin-top: calc(var(--marge) * 0.5);
-}
-.chisel-vertical-rhythm .markdown-preview-view ol > li,
-.chisel-vertical-rhythm .markdown-preview-view ul > li,
-.chisel-vertical-rhythm .markdown-source-view ol > li,
-.chisel-vertical-rhythm .markdown-source-view ul > li {
-  margin: calc(var(--marge) * 0.25) 0 0 0;
-}
-.chisel-vertical-rhythm .markdown-reading-view .inline-title {
-  margin-top: calc(var(--marge) * 4);
-  margin-bottom: calc(var(--marge) * 3);
-  padding: 0;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-.chisel-vertical-rhythm .markdown-reading-view div div h1 {
-  margin-top: calc(var(--marge) * 8);
-  margin-bottom: calc(var(--marge) * 3);
-  padding: 0;
-}
-.chisel-vertical-rhythm .markdown-reading-view div div h2 {
-  margin-top: calc(var(--marge) * 6);
-  margin-bottom: calc(var(--marge) * 2);
-  padding: 0;
-}
-.chisel-vertical-rhythm .markdown-reading-view div div h3 {
-  margin-top: calc(var(--marge) * 4);
-  margin-bottom: calc(var(--marge) * 2);
-  padding: 0;
-}
-.chisel-vertical-rhythm .markdown-reading-view div.el-h1 + div.el-h2 h2 {
-  margin-top: var(--marge);
-}
-.chisel-vertical-rhythm .markdown-reading-view div.el-h2 + div.el-h3 h3 {
-  margin-top: calc(var(--marge) * 2);
-}
-.chisel-vertical-rhythm .markdown-reading-view div.el-h3 + div.el-h4 h4 {
-  margin-top: 0rlh;
-}
-.chisel-vertical-rhythm .markdown-reading-view div div h4 {
-  margin-top: calc(var(--marge) * 4);
-  margin-bottom: var(--marge);
-  padding: 0;
-}
-.chisel-vertical-rhythm .markdown-reading-view div.el-h4 + div.el-h5 h5 {
-  margin-top: 0rlh;
-}
-.chisel-vertical-rhythm .markdown-reading-view div div h5 {
-  margin-top: calc(var(--marge) * 2);
-  margin-bottom: var(--marge);
-  padding: 0;
-}
-.chisel-vertical-rhythm .markdown-reading-view div div h6 {
-  margin-top: calc(var(--marge) * 2);
-  margin-bottom: 0rlh;
-  padding: 0;
-}
-.chisel-vertical-rhythm .markdown-reading-view div.el-h6 + div blockquote {
-  margin-top: var(--marge);
-}
-@media only screen and (max-width: 600px) {
-  .chisel-vertical-rhythm {
-    --marge-block-special: var(--marge-block-calculated) 0;
-    --file-margins: var(--marge);
-  }
-  .chisel-vertical-rhythm .inline-title {
-    margin-bottom: calc(var(--marge) * 3);
-    margin-top: var(--marge);
-  }
-  .chisel-vertical-rhythm .markdown-source-view .inline-title {
-    margin-bottom: var(--marge);
-  }
-  .chisel-vertical-rhythm .markdown-reading-view ul,
-  .chisel-vertical-rhythm .markdown-reading-view ol,
-  .chisel-vertical-rhythm .markdown-reading-view .callout-content ul,
-  .chisel-vertical-rhythm .markdown-reading-view .callout-content ol {
-    padding: 0 0 0 var(--marge);
-  }
-  .chisel-vertical-rhythm .markdown-reading-view hr {
-    margin: calc(var(--marge) * 4) 25% !important;
-  }
-}
-@media only screen and (min-width: 900px) {
-  .chisel-vertical-rhythm .inline-title {
-    margin-top: calc(var(--marge) * 4);
-  }
+.garden_eink_book .markdown-reading-view br + br + br {
+    display: none;
 }
 
-/* Preview mode (reading view) */
-.chisel-vertical-rhythm .markdown-reading-view h1 + h1,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h2,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h3,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h4,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h5,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h6,
-.chisel-vertical-rhythm .markdown-reading-view h2 + h1,
-.chisel-vertical-rhythm .markdown-reading-view h2 + h2,
-.chisel-vertical-rhythm .markdown-reading-view h2 + h3,
-.chisel-vertical-rhythm .markdown-reading-view h2 + h4,
-.chisel-vertical-rhythm .markdown-reading-view h2 + h5,
-.chisel-vertical-rhythm .markdown-reading-view h2 + h6,
-.chisel-vertical-rhythm .markdown-reading-view h3 + h1,
-.chisel-vertical-rhythm .markdown-reading-view h3 + h2,
-.chisel-vertical-rhythm .markdown-reading-view h3 + h3,
-.chisel-vertical-rhythm .markdown-reading-view h3 + h4,
-.chisel-vertical-rhythm .markdown-reading-view h3 + h5,
-.chisel-vertical-rhythm .markdown-reading-view h3 + h6,
-.chisel-vertical-rhythm .markdown-reading-view h4 + h1,
-.chisel-vertical-rhythm .markdown-reading-view h4 + h2,
-.chisel-vertical-rhythm .markdown-reading-view h4 + h3,
-.chisel-vertical-rhythm .markdown-reading-view h4 + h4,
-.chisel-vertical-rhythm .markdown-reading-view h4 + h5,
-.chisel-vertical-rhythm .markdown-reading-view h4 + h6,
-.chisel-vertical-rhythm .markdown-reading-view h5 + h1,
-.chisel-vertical-rhythm .markdown-reading-view h5 + h2,
-.chisel-vertical-rhythm .markdown-reading-view h5 + h3,
-.chisel-vertical-rhythm .markdown-reading-view h5 + h4,
-.chisel-vertical-rhythm .markdown-reading-view h5 + h5,
-.chisel-vertical-rhythm .markdown-reading-view h5 + h6,
-.chisel-vertical-rhythm .markdown-reading-view h6 + h1,
-.chisel-vertical-rhythm .markdown-reading-view h6 + h2,
-.chisel-vertical-rhythm .markdown-reading-view h6 + h3,
-.chisel-vertical-rhythm .markdown-reading-view h6 + h4,
-.chisel-vertical-rhythm .markdown-reading-view h6 + h5,
-.chisel-vertical-rhythm .markdown-reading-view h6 + h6,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-1.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-1.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-2.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-3.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-4.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-5.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-2.cm-line + .HyperMD-header-6.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-1.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-2.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-3.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-4.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-5.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-3.cm-line + .HyperMD-header-6.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-1.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-2.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-3.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-4.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-5.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-4.cm-line + .HyperMD-header-6.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-1.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-2.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-3.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-4.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-5.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-5.cm-line + .HyperMD-header-6.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-1.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-2.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-3.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-4.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-5.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-6.cm-line + .HyperMD-header-6.cm-line {
-  margin-top: 0rlh;
+body.stnd-adapter.stnd-eink-active.theme-dark,
+body.stnd-adapter.stnd-eink-active.theme-light {
+    --color-base-00: white !important;
+    --color-base-05: color-mix(in srgb, var(--color-base-100) 0%, var(--color-base-00)) !important;
+    --color-base-10: color-mix(in srgb, var(--color-base-100) 10%, var(--color-base-00)) !important;
+    --color-base-20: color-mix(in srgb, var(--color-base-100) 25%, var(--color-base-00)) !important;
+    --color-base-25: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-30: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-35: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-40: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-50: color-mix(in srgb, var(--color-base-100) 75%, var(--color-base-00)) !important;
+    --color-base-60: color-mix(in srgb, var(--color-base-100) 75%, var(--color-base-00)) !important;
+    --color-base-70: color-mix(in srgb, var(--color-base-100) 75%, var(--color-base-00)) !important;
+    --color-base-100: black !important;
+
+    --background-primary: var(--color-base-00) !important;
+    --background-primary-alt: var(--color-base-00) !important;
+
+    --background-secondary: var(--color-base-00) !important;
+    --background-secondary-alt: var(--color-base-00) !important;
+
+    --ribbon-background: var(--color-base-00) !important;
+    --titlebar-background-focused: var(--color-base-00) !important;
+    --titlebar-background: var(--color-base-00) !important;
+    --tab-container-background: var(--color-base-00) !important;
+
+    --bg1: var(--color-base-00) !important;
+    --bg2: var(--color-base-00) !important;
+    --bg3: var(--color-base-00) !important;
+    --ui1: var(--color-base-25) !important;
+    --ui2: var(--color-base-25) !important;
+    --ui3: var(--color-base-25) !important;
+    --tx1: var(--color-base-100) !important;
+    --tx2: var(--color-base-100) !important;
+    --tx3: var(--color-base-100) !important;
+
+    --icon-color: var(--color-base-100) !important;
+
+    --background-modifier-hover: var(--color-base-10);
+    --background-modifier-active-hover: var(--color-base-25);
+    --background-modifier-border: var(--color-base-25);
+    --background-modifier-border-hover: var(--color-base-20) !important;
+    --background-modifier-border-focus: var(--color-base-70) !important;
+    --background-modifier-error-rgb: var(--mono-rgb-0) !important;
+    --background-modifier-error: var(--color-base-00) !important;
+    --background-modifier-error-hover: var(--color-base-00) !important;
+    --background-modifier-success-rgb: var(--mono-rgb-0) !important;
+    --background-modifier-success: var(--color-base-00) !important;
+    --background-modifier-message: var(--color-base-00) !important;
+    --background-modifier-form-field: var(--color-base-00) !important;
+
+    --color-interactive-background: var(--color-base-10) !important;
+    --color-interactive-backgound: var(--color-base-10) !important;
+    --color-interactive-hover-background: var(--color-base-10) !important;
+    --color-interactive-hover-backgound: var(--color-base-10) !important;
+
+    --accent-h: 0 !important;
+    --accent-s: 0 !important;
+    --accent-l: 75% !important;
+
+    --text-normal: var(--color-base-100) !important;
+    --text-muted: var(--color-base-70) !important;
+    --text-faint: var(--color-base-50) !important;
+    --color-muted: var(--color-base-70) !important;
+    --color-faint: var(--color-base-50) !important;
+    --text-on-accent: var(--color-base-00) !important;
+    --text-on-accent-inverted: var(--text-normal0) !important;
+    --text-success: var(--color-base-100) !important;
+    --text-warning: var(--color-base-100) !important;
+    --text-error: var(--color-base-100) !important;
+    --text-accent: var(--color-base-100) !important;
+    --text-accent-hover: var(--color-base-100) !important;
+    --callout-color: var(--color-base-100) !important;
+    --callout-title-color: var(--color-base-100) !important;
+
+    --text-highlight-bg: color-mix(in srgb, var(--color-base-100) 25%, var(--color-base-00)) !important;
+
+    --nav-item-color: var(--text-normal) !important;
+    --nav-item-color-hover: var(--text-normal) !important;
+    --nav-item-color-active: var(--text-normal) !important;
+    --nav-item-color-selected: var(--text-normal) !important;
+    --nav-item-color-highlighted: var(--text-accent-hover) !important;
+    --nav-item-background-hover: var(--color-base-10) !important;
+    --nav-item-background-active: var(--color-base-10) !important;
+    --nav-item-background-selected: hsla(var(--color-accent-hsl), 0.15) !important;
+    --nav-indentation-guide-width: var(--indentation-guide-width) !important;
+    --nav-indentation-guide-color: var(--indentation-guide-color) !important;
+    --nav-collapse-icon-color: var(--border-color) !important;
+    --nav-collapse-icon-color-collapsed: var(--border-color) !important;
+    --nav-heading-color: var(--text-normal) !important;
+    --nav-heading-color-hover: var(--text-normal) !important;
+    --nav-heading-color-collapsed: var(--text-normal) !important;
+    --nav-heading-color-collapsed-hover: var(--text-normal) !important;
+    --nav-heading-weight: var(--font-medium) !important;
+    --nav-heading-weight-hover: var(--font-medium) !important;
+
+    --collapse-icon-color: var(--text-normal) !important;
+    --collapse-icon-color-collapsed: var(--text-accent) !important;
+
+    --icon-color: var(--color-base-100) !important;
+    --icon-color-hover: var(--color-base-100) !important;
+    --icon-color-active: var(--color-base-100) !important;
+    --icon-color-focused: var(--color-base-100) !important;
+    --icon-opacity: 0.75 !important;
+    --icon-opacity-hover: 1 !important;
+    --icon-opacity-active: 1 !important;
+
+    --indentation-guide-color: var(--border-color) !important;
+
+    --interactive-accent: var(--color-base-100) !important;
+    --interactive-normal: var(--border-color) !important;
+    --interactive-hover: var(--color-base-100) !important;
+    --interactive-accent: var(--color-base-100) !important;
+    --interactive-accent-hsl: 0, 0, 50 !important;
+    --interactive-accent-hover: var(--color-base-70) !important;
+
+    --toggle-thumb-color: var(--color-base-00) !important;
+
+    --list-marker-color: var(--text-faint) !important;
+    --list-marker-color-hover: var(--text-muted) !important;
+    --list-marker-color-collapsed: var(--text-accent) !important;
+
+    --link-color: var(--text-normal) !important;
+    --link-color-hover: var(--text-normal) !important;
+    --link-decoration: underline;
+    --link-decoration-hover: underline;
+    --link-decoration-thickness: auto;
+    --link-external-color: var(--text-normal) !important;
+    --link-external-color-hover: var(--text-normal) !important;
+    --link-external-decoration: underline;
+    --link-external-decoration-hover: underline;
+    --link-external-filter: none;
+    --link-unresolved-color: var(--text-normal) !important;
+    --link-unresolved-opacity: 0.9;
+    --link-unresolved-filter: none;
+    --link-unresolved-decoration-style: solid;
+    --link-unresolved-decoration-color: var(--text-normal) !important;
+
+    --color-red: var(--color-base-100) !important;
+    --color-orange: var(--color-base-100) !important;
+    --color-yellow: var(--color-base-100) !important;
+    --color-green: var(--color-base-100) !important;
+    --color-cyan: var(--color-base-100) !important;
+    --color-blue: var(--color-base-100) !important;
+    --color-purple: var(--color-base-100) !important;
+    --color-pink: var(--color-base-100) !important;
+    --color-red-rgb: 0, 0, 0 !important;
+    --color-orange-rgb: 0, 0, 0 !important;
+    --color-yellow-rgb: 0, 0, 0 !important;
+    --color-green-rgb: 0, 0, 0 !important;
+    --color-cyan-rgb: 0, 0, 0 !important;
+    --color-blue-rgb: 0, 0, 0 !important;
+    --color-purple-rgb: 0, 0, 0 !important;
+    --color-pink-rgb: 0, 0, 0 !important;
+
+    --color-accent: var(--color-base-100) !important;
+    --code-normal: var(--color-base-100) !important;
+    --color-bold: var(--color-base-100) !important;
+    --color-italic: var(--color-base-100) !important;
+
+    --border-color: var(--color-base-10) !important;
+    --blockquote-color: var(--text-normal) !important;
+    --blockquote-border-color: var(--text-normal) !important;
+    --background-modifier-border: var(--border-color) !important;
+    --tab-outline-color: var(--border-color) !important;
+}
+body.stnd-eink-active .checkbox-container.is-enabled {
+    background-color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .workspace-leaf-resize-handle {
+    border-color: var(--border-color) !important;
+}
+body.stnd-eink-active.theme-dark {
+    --color-base-100: white !important;
+    --color-base-00: black !important;
+}
+body.stnd-eink-active .workspace-ribbon {
+    color: var(--text-normal) !important;
 }
 
-/* Preview mode */
-.chisel-vertical-rhythm .markdown-reading-view h1 + h2,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h3,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h4,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h5,
-.chisel-vertical-rhythm .markdown-reading-view h1 + h6,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-2.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-3.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-4.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-5.cm-line,
-.chisel-vertical-rhythm .HyperMD-header-1.cm-line + .HyperMD-header-6.cm-line {
-  margin-top: calc(var(--marge) * 2);
+body.stnd-eink-active .tooltip {
+    color: var(--text-normal) !important;
+    font-weight: 400;
 }
 
-.plugin-setting-tab details {
-  margin-bottom: 1em;
-  display: block;
-  flex-basis: 100%;
+body.stnd-eink-active .callout,
+body.stnd-eink-active .markdown-preview-view pre {
+    background: var(--color-base-00);
 }
 
-/*# sourceMappingURL=styles.css.map */
+body.stnd-eink-active h1,
+body.stnd-eink-active h2,
+body.stnd-eink-active h3,
+body.stnd-eink-active h4,
+body.stnd-eink-active h5,
+body.stnd-eink-active h6,
+body.stnd-eink-active .markdown-rendered h1,
+body.stnd-eink-active .markdown-rendered h2,
+body.stnd-eink-active .markdown-rendered h3,
+body.stnd-eink-active .markdown-rendered h4,
+body.stnd-eink-active .markdown-rendered h5,
+body.stnd-eink-active .markdown-rendered h6,
+body.stnd-eink-active .HyperMD-header-1,
+body.stnd-eink-active .HyperMD-header-2,
+body.stnd-eink-active .HyperMD-header-3,
+body.stnd-eink-active .HyperMD-header-4,
+body.stnd-eink-active .HyperMD-header-5,
+body.stnd-eink-active .HyperMD-header-6,
+body.stnd-eink-active .inline-title {
+    color: var(--text-normal) !important;
+}
+
+body.stnd-eink-active .workspace-leaf-content[data-mode="preview"] .view-header,
+body.stnd-eink-active.is-focused .workspace-leaf-content[data-mode="preview"] .view-header {
+    background: transparent;
+    border-color: transparent;
+    height: var(--header-height);
+    margin-bottom: calc(var(--header-height) * -1);
+}
+body.stnd-eink-active .workspace-leaf-content[data-mode="preview"] .view-header .view-header-title,
+body.stnd-eink-active .workspace-leaf-content[data-mode="preview"] .view-header-left,
+body.stnd-eink-active.is-focused .workspace-leaf-content[data-mode="preview"] .view-header .view-header-title,
+body.stnd-eink-active.is-focused .workspace-leaf-content[data-mode="preview"] .view-header-left {
+    display: none;
+}
+body.stnd-eink-active.is-mobile:not(.floating-button-off):not(.advanced-toolbar) .view-action:nth-last-of-type(2) {
+    color: var(--color-base-100);
+    background-color: transparent;
+    backdrop-filter: blur(1px);
+    opacity: 1;
+    top: calc(90vh - 110px);
+    display: flex;
+    padding: 5px;
+    position: fixed;
+    left: 86vw;
+    transform: translate(-40%, 5%);
+    justify-content: center;
+    align-items: center;
+    width: 53px;
+    height: 53px;
+    border-radius: 50% !important;
+}
+
+body.stnd-eink-active .modal-close-button:hover,
+body.stnd-eink-active .setting-item-control button,
+body.stnd-eink-active:not(.colorful-active) .horizontal-tab-nav-item.is-active,
+body.stnd-eink-active:not(.colorful-active) .horizontal-tab-nav-item:hover,
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item.is-active,
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item:hover {
+    color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .suggestion-item.mod-complex.is-selected {
+    color: var(--color-base-00);
+}
+body.stnd-eink-active .markdown-source-view .image-embed img {
+    mix-blend-mode: normal !important;
+    opacity: 1;
+    filter: none;
+}
+body.stnd-eink-active blockquote {
+    background-color: var(--color-base-00) !important;
+    border-color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .callout {
+    background-color: var(--color-base-00) !important;
+    border-color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .callout-content {
+    background-color: var(--color-base-00) !important;
+    border-color: var(--color-base-100) !important;
+    box-shadow: none !important;
+}
+body.stnd-eink-active hr {
+    border-color: var(--color-base-100) !important;
+}
+
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item.is-active,
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item:hover {
+    color: var(--color-base-100) !important;
+}
+
+

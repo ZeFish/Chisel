@@ -1,6 +1,5 @@
-.gitattributes
-.gitignore
-styles.css.map
-/.zed
+node_modules/
+main.js
+styles.css
+dist/
 .DS_Store
-data.json

@@ -1,183 +1,106 @@
-# Chisel
+# Chisel — Artisan Toolkit for Obsidian
 
-![ScreenShot](src/screenshot.gif)
+[![Release](https://img.shields.io/github/v/release/ZeFish/Chisel?include_prereleases&style=flat-square)](https://github.com/ZeFish/Chisel/releases)
+[![Obsidian](https://img.shields.io/badge/Obsidian-v1.6.0+-blue?style=flat-square)](https://obsidian.md)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPLv3-yellow.svg?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0)
 
-> A **chisel** is a [wedged](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Wedge "Wedge") [hand tool](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Hand_tool "Hand tool") *or a snippet* with a characteristically shaped cutting edge of [blade](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Blade "Blade") on its end for [carving](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Carving "Carving") or cutting a hard material (e.g. [wood](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Woodworking "Woodworking"), [stone](https://en.wikipedia.org/api/rest_v1/page/mobile-html/Lapidary "Lapidary"), or *[Obsidian](https://obsidian.md/)*)
+Chisel is an artisan companion plugin for Obsidian designed for thoughtful knowledge crafters. It unifies intelligent media handling, font and snippet styling, Zen distraction-free editing, and e-ink display optimizations into a cohesive, modular experience.
 
-## Snippets Manager
-
-Get all your css snippets into editable markdown file in your vault. **The snippet code is in the first css code block of the note.** Any note can be a snippet.
-
-```md
----
-chisel: true # that make it globally active
 ---
 
-```css
-body {
-    color: red !important;
-}
-````
+## ✨ Features
 
-### CSSClasses support
+### 🖼️ Intelligent Media Manager
+Stop cluttering your vault with randomly dumped screenshots and attachments.
+- **Rule-Based Routing**: Route incoming media automatically to dedicated asset folders relative to each note or at a global vault root.
+- **Clean Naming & Slugification**: Transform clumsy filenames like `CleanShot 2026-09-20 at 11.23.45.png` into clean, human-readable slugs.
+- **Deduplication**: Automatically detects duplicate attachments using content hashes to prevent storage bloat.
+- **Mobile & Sync Friendly**: Carefully guarded against sync conflicts and mobile file-system lag.
 
-Hook on the already available *“cssclasses”* frontmatter to load specific snippets for the active note. *Key can be changed in setting.*
+### 🎨 Snippets & Typography Engine
+Refine your vault's visual identity note by note.
+- **Note-Scoped Styling**: Dynamically apply styling rules and CSS snippets driven by frontmatter metadata (`cssclasses`, `theme`, or custom tags).
+- **Custom Font Offloader**: Embed and manage high-quality web fonts directly inside your vault with an optimized, lightweight base64 engine.
+- **Global CSS Cache**: Precompiles and persists stylesheets to `data.json` for lightning-fast startup on both desktop and mobile without recomputing heavy fonts.
 
-## Helper class
+### 🧘 Zen Interface Manager
+Create a calm writing sanctuary whenever you need deep focus.
+- **Distraction-Free Canvas**: Instantly collapse sidebars, ribbon buttons, tab headers, and status bars with a single toggle or hotkey.
+- **Custom Chrome Rules**: Selectively show or hide individual Obsidian interface elements to tailor your ideal writing environment.
 
-Chisel manage additional body class to help with the making of snippets.
+### 📖 E-ink & Reader Optimization
+Built from experience for e-ink tablets (Onyx Boox, Supernote, Kindle Scribe, reMarkable).
+- **High-Contrast Reader**: Crisp monochromatic typography and ultra-sharp line rendering tuned specifically for grayscale e-ink displays.
+- **Zero-Latency Layouts**: Disables unnecessary visual animations and heavy blur effects to maximize responsiveness on e-paper screens.
 
-```css
-/* Dynamically loaded */
-body {
-  .chisel-editing,
-  .chisel-reading,
-  .chisel-note,
-  .chisel-base,
-  .chisel-canva,
-  .chisel-webviewer
-}
+### 🧭 Navigation & Workflow Essentials
+- **Daily Navigation**: Fast keyboard shortcuts to navigate back and forth through daily journal entries.
+- **Scroll Position Memory**: Preserves exact scroll states across pane switches and workspace reloads.
+- **Base64 Fold**: Neatly collapses long base64 embedded data in the editor so your markdown stays clean and readable.
+
+---
+
+## 📦 Installation
+
+### Option 1: Obsidian Community Plugins (Recommended)
+1. Open **Settings** > **Community plugins** in Obsidian.
+2. Ensure **Restricted mode** is turned **off**.
+3. Click **Browse** and search for **Chisel**.
+4. Click **Install**, then **Enable**.
+
+*(Note: Currently submitted to the community directory. In the meantime, use Option 2 or 3.)*
+
+### Option 2: Via Obsidian BRAT (Beta Reviewers Auto-update Tester)
+1. Install and enable the **BRAT** plugin from Community Plugins.
+2. In Obsidian, run the command `BRAT: Add a beta plugin for testing`.
+3. Enter `ZeFish/Chisel` and confirm.
+
+### Option 3: Manual Installation
+1. Download `main.js`, `manifest.json`, and `styles.css` from the latest release on the [Releases page](https://github.com/ZeFish/Chisel/releases).
+2. Create a folder named `chisel` in your vault's plugins folder: `<vault>/.obsidian/plugins/chisel/`.
+3. Copy the downloaded files into that folder.
+4. Reload Obsidian and enable **Chisel** in **Settings** > **Community plugins**.
+
+---
+
+## ⚙️ Configuration
+
+Chisel features a dedicated tabbed settings interface:
+- **Media**: Set attachment target paths (e.g. `./assets`, `attachments/{note}`), file rename patterns, and mobile safety preferences.
+- **Snippets**: Manage loaded theme snippets, custom font embedding, and view global cache status.
+- **Zen**: Configure focus mode behaviors and interface elements to hide.
+- **E-ink**: Toggle e-ink high contrast mode and grayscale rendering.
+- **Daily Nav**: Customize daily note formats and navigation commands.
+
+---
+
+## 🛠️ Development
+
+```bash
+# Clone the repository
+git clone https://github.com/ZeFish/Chisel.git
+cd Chisel
+
+# Install dependencies
+pnpm install
+
+# Build the bundle (produces main.js and styles.css)
+pnpm run build
+
+# Watch mode during development
+pnpm run dev
 ```
 
-## Abstraction Layers
+To automatically copy build artifacts to your Obsidian vault during development, define `VAULT_PLUGINS`:
 
-Opionated simplified css management. Activated, layout will change, and those variables will then be accessible for you snippets or directly in frontmatter.
-
-### Typography
-
-| Description | CSS Variable | Frontmatter Key | Example |
-| --- | --- | --- | --- |
-| Font Ratio | `--font-ratio` | `chisel-font-ratio` | `1.25` |
-| Font Density | `--font-density` | `chisel-font-density` | `1.2` |
-| Font Text | `--font-text` | `chisel-font-text` | `'Inter', sans-serif` |
-| Font Feature | `--font-feature` | `chisel-font-feature` | `'liga', 'kern'` |
-| Font Variation | `--font-variation` | `chisel-font-variation` | `'wght' 400` |
-| Font Weight | `--font-weight` | `chisel-font-weight` | `400` |
-| Bold Weight | `--bold-weight` | `chisel-bold-weight` | `700` |
-| Font Header | `--font-header` | `chisel-font-header` | `'Merriweather', serif` |
-| Font Header Feature | `--font-header-feature` | `chisel-font-header-feature` | `'liga'` |
-| Font Header Variation | `--font-header-variation` | `chisel-font-header-variation` | `'wght' 600` |
-| Font Header Letter Spacing | `--font-header-letter-spacing` | `chisel-font-header-letter-spacing` | `-0.02em` |
-| Font Header Style | `--font-header-style` | `chisel-font-header-style` | `normal` |
-| Font Header Weight | `--font-header-weight` | `chisel-font-header-weight` | `600` |
-| Font Monospace | `--font-monospace` | `chisel-font-monospace` | `'Fira Code', monospace` |
-| Font Monospace Feature | `--font-monospace-feature` | `chisel-font-monospace-feature` | `'liga'` |
-| Font Monospace Variation | `--font-monospace-variation` | `chisel-font-monospace-variation` | `'wght' 400` |
-| Font Interface | `--font-interface` | `chisel-font-interface` | `'System-UI', sans-serif` |
-| Font Interface Feature | `--font-interface-feature` | `chisel-font-interface-feature` | `'liga'` |
-| Font Interface Variation | `--font-interface-variation` | `chisel-font-interface-variation` | `'wght' 400` |
-
-### Color
-
-#### Light Theme
-
-| Description | CSS Variable | Frontmatter Key | Example |
-| --- | --- | --- | --- |
-| Light Foreground | `--color-light-foreground` | `chisel-light-color-foreground` | `#1a1a1a` |
-| Light Background | `--color-light-background` | `chisel-light-color-background` | `#ffffff` |
-| Light Red | `--color-light-red` | `chisel-light-color-red` | `#dc3545` |
-| Light Orange | `--color-light-orange` | `chisel-light-color-orange` | `#fd7e14` |
-| Light Yellow | `--color-light-yellow` | `chisel-light-color-yellow` | `#ffc107` |
-| Light Green | `--color-light-green` | `chisel-light-color-green` | `#28a745` |
-| Light Cyan | `--color-light-cyan` | `chisel-light-color-cyan` | `#17a2b8` |
-| Light Blue | `--color-light-blue` | `chisel-light-color-blue` | `#007bff` |
-| Light Purple | `--color-light-purple` | `chisel-light-color-purple` | `#6f42c1` |
-| Light Pink | `--color-light-pink` | `chisel-light-color-pink` | `#e83e8c` |
-| Light Accent | `--light-accent-color` | `chisel-light-accent-color` | `#007bff` |
-| Light Bold | `--light-bold-color` | `chisel-light-bold-color` | `#000000` |
-| Light Italic | `--light-italic-color` | `chisel-light-italic-color` | `#495057` |
-
-#### Dark Theme
-
-| Description | CSS Variable | Frontmatter Key | Example |
-| --- | --- | --- | --- |
-| Dark Foreground | `--color-dark-foreground` | `chisel-dark-color-foreground` | `#ffffff` |
-| Dark Background | `--color-dark-background` | `chisel-dark-color-background` | `#1a1a1a` |
-| Dark Red | `--color-dark-red` | `chisel-dark-color-red` | `#ff6b6b` |
-| Dark Orange | `--color-dark-orange` | `chisel-dark-color-orange` | `#ffa726` |
-| Dark Yellow | `--color-dark-yellow` | `chisel-dark-color-yellow` | `#ffeb3b` |
-| Dark Green | `--color-dark-green` | `chisel-dark-color-green` | `#66bb6a` |
-| Dark Cyan | `--color-dark-cyan` | `chisel-dark-color-cyan` | `#4dd0e1` |
-| Dark Blue | `--color-dark-blue` | `chisel-dark-color-blue` | `#42a5f5` |
-| Dark Purple | `--color-dark-purple` | `chisel-dark-color-purple` | `#ab47bc` |
-| Dark Pink | `--color-dark-pink` | `chisel-dark-color-pink` | `#ec407a` |
-| Dark Accent | `--dark-accent-color` | `chisel-dark-accent-color` | `#42a5f5` |
-| Dark Bold | `--dark-bold-color` | `chisel-dark-bold-color` | `#ffffff` |
-| Dark Italic | `--dark-italic-color` | `chisel-dark-italic-color` | `#adb5bd` |
-
-### Vertical Rhythm
-
-| Description | CSS Variable | Frontmatter Key | Example |
-| --- | --- | --- | --- |
-| Margein | `--marge` | `chisel-margin` | `1rlh` |
-| Margin Block | `--marge-block` | `chisel-margin-block` | `2` |
-
-## Frontmatter override
-
-**Override** css variable in frontmatter with the suffix “chisel-“
-
-```yml
-# Snippets to load like we are used to.
-cssclasses: [snippet, filename, list]
-
-# Translate css variables
-chisel-light-background-color: red
+```bash
+export VAULT_PLUGINS="/path/to/your/vault/.obsidian/plugins"
+pnpm run build
 ```
 
-will translate into
+---
 
-```css
-body.chisel {
-  --light-background-color: red !important;
-}
-```
+## 📄 License
 
-## Example
-### Mono inspired theme
-```css
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-body {
-    --color-light-foreground: #100f0f;
-    --color-light-background: #fffcf0;
-    --color-light-red: #af3029;
-    --color-light-orange: #bc5215;
-    --color-light-yellow: #ad8301;
-    --color-light-green: #66800b;
-    --color-light-cyan: #142625;
-    --color-light-blue: #205ea6;
-    --color-light-purple: #5e409d;
-    --color-light-pink: #a02f6f;
-    /* Dark */
-    --color-dark-foreground: #fffcf0;
-    --color-dark-background: #100f0f;
-
-    --color-accent: var(--color-foreground);
-    --font-monospace: var(--color-foreground);
-    --color-bold: var(--color-foreground);
-    --color-italic: var(--color-foreground);
-
-    --font-text: "Space Mono";
-    --font-header: "Inter";
-    --font-monospace: "Space Mono";
-    --font-interface: "Space Mono";
-
-    --font-density: 1.5;
-    --bold-weight: 700;
-    --font-header-feature: "liga", "calt", "case", "kern";
-    --font-header-variation: "";
-    --font-header-weight: 900;
-    --font-header-line-height: 1em;
-    --font-header-letter-spacing: -0.07em;
-}
-```
-
-### Basic Ink blurry text for being easy on the eyes
-```css
-body {
-    text-shadow: 0px 0px 2px color-mix(in oklab, currentColor 12%, transparent);
-    filter: blur(0.2px);
-}
-```
-
-## Since snippets are now note, you can manage them in base view.
-![Base Manegement](src/base-management.png)
+Chisel is licensed under the [GNU General Public License v3.0](LICENSE).
+Built with craftsmanship by [Francis Fontaine](https://github.com/ZeFish).
