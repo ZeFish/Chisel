@@ -1,0 +1,447 @@
+/* @settings
+
+name: eInk
+id: eInk
+settings:
+	-
+		id: garden_eink_font_face
+		title: forest & Futura Font face
+		description:
+		type: class-toggle
+		default: true
+	-
+		id: garden_eink_font_weight
+		title: Font weight
+		description: Change the viewing font weight
+		type: class-select
+		allowEmpty: false
+		default: Normal
+		options:
+			-
+				label: Light
+				value: garden_eink_font_weight_light
+			-
+				label: Normal
+				value: garden_eink_font_weight_normal
+            -
+				label: Medium
+				value: garden_eink_font_weight_medium
+			-
+				label: Bold
+				value: garden_eink_font_weight_bold
+	-
+		id: garden_eink_book
+		title: Book mode
+		description: Justify and add hyphenation to text in preview mode
+		type: class-toggle
+		default: true
+*/
+
+body.stnd-eink-active::before,
+body.stnd-eink-active::after {
+    display: none !important;
+}
+body.stnd-eink-active * {
+    text-shadow: none !important;
+    background-blend-mode: normal !important;
+    filter: none !important;
+}
+
+body.stnd-eink-active,
+body.stnd-eink-active .markdown-preview-view,
+body.stnd-eink-active .cm-scroller {
+    scroll-behavior: auto !important;
+}
+
+body.stnd-eink-active * {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" !important;
+    font-optical-sizing: auto;
+
+    --line-width: 40rem;
+    --file-line-width: 40rem;
+    --font-line-width: 40rem;
+
+    --bold-weight: 600;
+}
+body.stnd-eink-active .chisel-color.is-mobile {
+    --border-width: 2px;
+}
+
+/* Stop caret blinking */
+body.stnd-eink-active .cm-cursor {
+    /*animation-play-state: paused !important;*/
+    animation: none !important; /* disables blinking animation */
+    background-color: var(--text-accent) !important; /* optional: keeps caret visible */
+}
+
+body.stnd-eink-active * {
+    /*animation-play-state: paused !important;*/
+    animation: none !important;
+}
+body.stnd-eink-active a,
+body.stnd-eink-active .link-decoration-off .markdown-reading-view a {
+    text-decoration: underline !important;
+}
+
+/* ============================================= */
+/* Geometric Precision Text Rendering */
+/* ============================================= */
+.garden_eink_font_face {
+    --font-text: "Fraunces" !important;
+    --font-header: var(--font-text) !important;
+    --font-interface: "Futura Now Var" !important;
+    --font-mono: "MonoLisa" !important;
+
+    --font-variation: "wght" 400, "SOFT" 100, "WONK" 0 !important;
+    --font-feature: "liga" !important;
+
+    --font-header-variation: "wght" 500, "SOFT" 75, "WONK" 100 !important;
+    --font-header-feature: var(--font-feature) !important;
+}
+.garden_eink_font_face strong {
+    font-variation-settings:
+        "wght" 650,
+        "SOFT" 100,
+        "WONK" 100 !important;
+}
+
+/* ============================================= */
+/* Font weight selection */
+/* ============================================= */
+.garden_eink_font_weight_light .markdown-preview-view,
+.garden_eink_font_weight_light .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-light) !important;
+    /*--font-header-weight: var(--font-light) !important;*/
+}
+.garden_eink_font_weight_light {
+    /*--font-header-weight: var(--font-light) !important;*/
+}
+.garden_eink_font_weight_normal .markdown-preview-view,
+.garden_eink_font_weight_normal .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-normal) !important;
+}
+.garden_eink_font_weight_normal {
+    /*--font-header-weight: var(--font-normal) !important;*/
+}
+.garden_eink_font_weight_medium .markdown-preview-view,
+.garden_eink_font_weight_medium .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-medium) !important;
+}
+.garden_eink_font_weight_medium {
+    /*--font-header-weight: var(--font-medium) !important;*/
+}
+.garden_eink_font_weight_bold .markdown-preview-view,
+.garden_eink_font_weight_bold .view-content > .cm-s-obsidian,
+.view-content > .markdown-source-view.mod-cm6.is-live-preview > .cm-scroller {
+    font-weight: var(--font-bold) !important;
+}
+.garden_eink_font_weight_bold {
+    /* --font-header-weight: var(--font-bold) !important;*/
+}
+/* ============================================= */
+/* Book Mode Part */
+/* ============================================= */
+.garden_eink_book .markdown-reading-view .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-video) {
+    text-align: justify;
+    text-align-last: left;
+    text-wrap: pretty;
+    hyphens: auto;
+}
+.garden_eink_book .markdown-reading-view .el-h4 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page),
+.garden_eink_book .markdown-reading-view .el-h5 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page),
+.garden_eink_book .markdown-reading-view .el-h6 + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page),
+.garden_eink_book .markdown-reading-view .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) {
+    margin-top: calc(1rlh * -1) !important;
+}
+.garden_eink_book .markdown-reading-view .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) + .el-p:not(.el-embed-image):not(.el-embed-audio):not(.el-embed-page) {
+    margin-top: calc(1rlh * -1) !important;
+    text-indent: 1rlh !important;
+}
+.garden_eink_book .markdown-reading-view br + br + br {
+    display: none;
+}
+
+body.stnd-adapter.stnd-eink-active.theme-dark,
+body.stnd-adapter.stnd-eink-active.theme-light {
+    --color-base-00: white !important;
+    --color-base-05: color-mix(in srgb, var(--color-base-100) 0%, var(--color-base-00)) !important;
+    --color-base-10: color-mix(in srgb, var(--color-base-100) 10%, var(--color-base-00)) !important;
+    --color-base-20: color-mix(in srgb, var(--color-base-100) 25%, var(--color-base-00)) !important;
+    --color-base-25: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-30: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-35: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-40: color-mix(in srgb, var(--color-base-100) 50%, var(--color-base-00)) !important;
+    --color-base-50: color-mix(in srgb, var(--color-base-100) 75%, var(--color-base-00)) !important;
+    --color-base-60: color-mix(in srgb, var(--color-base-100) 75%, var(--color-base-00)) !important;
+    --color-base-70: color-mix(in srgb, var(--color-base-100) 75%, var(--color-base-00)) !important;
+    --color-base-100: black !important;
+
+    --background-primary: var(--color-base-00) !important;
+    --background-primary-alt: var(--color-base-00) !important;
+
+    --background-secondary: var(--color-base-00) !important;
+    --background-secondary-alt: var(--color-base-00) !important;
+
+    --ribbon-background: var(--color-base-00) !important;
+    --titlebar-background-focused: var(--color-base-00) !important;
+    --titlebar-background: var(--color-base-00) !important;
+    --tab-container-background: var(--color-base-00) !important;
+
+    --bg1: var(--color-base-00) !important;
+    --bg2: var(--color-base-00) !important;
+    --bg3: var(--color-base-00) !important;
+    --ui1: var(--color-base-25) !important;
+    --ui2: var(--color-base-25) !important;
+    --ui3: var(--color-base-25) !important;
+    --tx1: var(--color-base-100) !important;
+    --tx2: var(--color-base-100) !important;
+    --tx3: var(--color-base-100) !important;
+
+    --icon-color: var(--color-base-100) !important;
+
+    --background-modifier-hover: var(--color-base-10);
+    --background-modifier-active-hover: var(--color-base-25);
+    --background-modifier-border: var(--color-base-25);
+    --background-modifier-border-hover: var(--color-base-20) !important;
+    --background-modifier-border-focus: var(--color-base-70) !important;
+    --background-modifier-error-rgb: var(--mono-rgb-0) !important;
+    --background-modifier-error: var(--color-base-00) !important;
+    --background-modifier-error-hover: var(--color-base-00) !important;
+    --background-modifier-success-rgb: var(--mono-rgb-0) !important;
+    --background-modifier-success: var(--color-base-00) !important;
+    --background-modifier-message: var(--color-base-00) !important;
+    --background-modifier-form-field: var(--color-base-00) !important;
+
+    --color-interactive-background: var(--color-base-10) !important;
+    --color-interactive-backgound: var(--color-base-10) !important;
+    --color-interactive-hover-background: var(--color-base-10) !important;
+    --color-interactive-hover-backgound: var(--color-base-10) !important;
+
+    --accent-h: 0 !important;
+    --accent-s: 0 !important;
+    --accent-l: 75% !important;
+
+    --text-normal: var(--color-base-100) !important;
+    --text-muted: var(--color-base-70) !important;
+    --text-faint: var(--color-base-50) !important;
+    --color-muted: var(--color-base-70) !important;
+    --color-faint: var(--color-base-50) !important;
+    --text-on-accent: var(--color-base-00) !important;
+    --text-on-accent-inverted: var(--text-normal0) !important;
+    --text-success: var(--color-base-100) !important;
+    --text-warning: var(--color-base-100) !important;
+    --text-error: var(--color-base-100) !important;
+    --text-accent: var(--color-base-100) !important;
+    --text-accent-hover: var(--color-base-100) !important;
+    --callout-color: var(--color-base-100) !important;
+    --callout-title-color: var(--color-base-100) !important;
+
+    --text-highlight-bg: color-mix(in srgb, var(--color-base-100) 25%, var(--color-base-00)) !important;
+
+    --nav-item-color: var(--text-normal) !important;
+    --nav-item-color-hover: var(--text-normal) !important;
+    --nav-item-color-active: var(--text-normal) !important;
+    --nav-item-color-selected: var(--text-normal) !important;
+    --nav-item-color-highlighted: var(--text-accent-hover) !important;
+    --nav-item-background-hover: var(--color-base-10) !important;
+    --nav-item-background-active: var(--color-base-10) !important;
+    --nav-item-background-selected: hsla(var(--color-accent-hsl), 0.15) !important;
+    --nav-indentation-guide-width: var(--indentation-guide-width) !important;
+    --nav-indentation-guide-color: var(--indentation-guide-color) !important;
+    --nav-collapse-icon-color: var(--border-color) !important;
+    --nav-collapse-icon-color-collapsed: var(--border-color) !important;
+    --nav-heading-color: var(--text-normal) !important;
+    --nav-heading-color-hover: var(--text-normal) !important;
+    --nav-heading-color-collapsed: var(--text-normal) !important;
+    --nav-heading-color-collapsed-hover: var(--text-normal) !important;
+    --nav-heading-weight: var(--font-medium) !important;
+    --nav-heading-weight-hover: var(--font-medium) !important;
+
+    --collapse-icon-color: var(--text-normal) !important;
+    --collapse-icon-color-collapsed: var(--text-accent) !important;
+
+    --icon-color: var(--color-base-100) !important;
+    --icon-color-hover: var(--color-base-100) !important;
+    --icon-color-active: var(--color-base-100) !important;
+    --icon-color-focused: var(--color-base-100) !important;
+    --icon-opacity: 0.75 !important;
+    --icon-opacity-hover: 1 !important;
+    --icon-opacity-active: 1 !important;
+
+    --indentation-guide-color: var(--border-color) !important;
+
+    --interactive-accent: var(--color-base-100) !important;
+    --interactive-normal: var(--border-color) !important;
+    --interactive-hover: var(--color-base-100) !important;
+    --interactive-accent: var(--color-base-100) !important;
+    --interactive-accent-hsl: 0, 0, 50 !important;
+    --interactive-accent-hover: var(--color-base-70) !important;
+
+    --toggle-thumb-color: var(--color-base-00) !important;
+
+    --list-marker-color: var(--text-faint) !important;
+    --list-marker-color-hover: var(--text-muted) !important;
+    --list-marker-color-collapsed: var(--text-accent) !important;
+
+    --link-color: var(--text-normal) !important;
+    --link-color-hover: var(--text-normal) !important;
+    --link-decoration: underline;
+    --link-decoration-hover: underline;
+    --link-decoration-thickness: auto;
+    --link-external-color: var(--text-normal) !important;
+    --link-external-color-hover: var(--text-normal) !important;
+    --link-external-decoration: underline;
+    --link-external-decoration-hover: underline;
+    --link-external-filter: none;
+    --link-unresolved-color: var(--text-normal) !important;
+    --link-unresolved-opacity: 0.9;
+    --link-unresolved-filter: none;
+    --link-unresolved-decoration-style: solid;
+    --link-unresolved-decoration-color: var(--text-normal) !important;
+
+    --color-red: var(--color-base-100) !important;
+    --color-orange: var(--color-base-100) !important;
+    --color-yellow: var(--color-base-100) !important;
+    --color-green: var(--color-base-100) !important;
+    --color-cyan: var(--color-base-100) !important;
+    --color-blue: var(--color-base-100) !important;
+    --color-purple: var(--color-base-100) !important;
+    --color-pink: var(--color-base-100) !important;
+    --color-red-rgb: 0, 0, 0 !important;
+    --color-orange-rgb: 0, 0, 0 !important;
+    --color-yellow-rgb: 0, 0, 0 !important;
+    --color-green-rgb: 0, 0, 0 !important;
+    --color-cyan-rgb: 0, 0, 0 !important;
+    --color-blue-rgb: 0, 0, 0 !important;
+    --color-purple-rgb: 0, 0, 0 !important;
+    --color-pink-rgb: 0, 0, 0 !important;
+
+    --color-accent: var(--color-base-100) !important;
+    --code-normal: var(--color-base-100) !important;
+    --color-bold: var(--color-base-100) !important;
+    --color-italic: var(--color-base-100) !important;
+
+    --border-color: var(--color-base-10) !important;
+    --blockquote-color: var(--text-normal) !important;
+    --blockquote-border-color: var(--text-normal) !important;
+    --background-modifier-border: var(--border-color) !important;
+    --tab-outline-color: var(--border-color) !important;
+}
+body.stnd-eink-active .checkbox-container.is-enabled {
+    background-color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .workspace-leaf-resize-handle {
+    border-color: var(--border-color) !important;
+}
+body.stnd-eink-active.theme-dark {
+    --color-base-100: white !important;
+    --color-base-00: black !important;
+}
+body.stnd-eink-active .workspace-ribbon {
+    color: var(--text-normal) !important;
+}
+
+body.stnd-eink-active .tooltip {
+    color: var(--text-normal) !important;
+    font-weight: 400;
+}
+
+body.stnd-eink-active .callout,
+body.stnd-eink-active .markdown-preview-view pre {
+    background: var(--color-base-00);
+}
+
+body.stnd-eink-active h1,
+body.stnd-eink-active h2,
+body.stnd-eink-active h3,
+body.stnd-eink-active h4,
+body.stnd-eink-active h5,
+body.stnd-eink-active h6,
+body.stnd-eink-active .markdown-rendered h1,
+body.stnd-eink-active .markdown-rendered h2,
+body.stnd-eink-active .markdown-rendered h3,
+body.stnd-eink-active .markdown-rendered h4,
+body.stnd-eink-active .markdown-rendered h5,
+body.stnd-eink-active .markdown-rendered h6,
+body.stnd-eink-active .HyperMD-header-1,
+body.stnd-eink-active .HyperMD-header-2,
+body.stnd-eink-active .HyperMD-header-3,
+body.stnd-eink-active .HyperMD-header-4,
+body.stnd-eink-active .HyperMD-header-5,
+body.stnd-eink-active .HyperMD-header-6,
+body.stnd-eink-active .inline-title {
+    color: var(--text-normal) !important;
+}
+
+body.stnd-eink-active .workspace-leaf-content[data-mode="preview"] .view-header,
+body.stnd-eink-active.is-focused .workspace-leaf-content[data-mode="preview"] .view-header {
+    background: transparent;
+    border-color: transparent;
+    height: var(--header-height);
+    margin-bottom: calc(var(--header-height) * -1);
+}
+body.stnd-eink-active .workspace-leaf-content[data-mode="preview"] .view-header .view-header-title,
+body.stnd-eink-active .workspace-leaf-content[data-mode="preview"] .view-header-left,
+body.stnd-eink-active.is-focused .workspace-leaf-content[data-mode="preview"] .view-header .view-header-title,
+body.stnd-eink-active.is-focused .workspace-leaf-content[data-mode="preview"] .view-header-left {
+    display: none;
+}
+body.stnd-eink-active.is-mobile:not(.floating-button-off):not(.advanced-toolbar) .view-action:nth-last-of-type(2) {
+    color: var(--color-base-100);
+    background-color: transparent;
+    backdrop-filter: blur(1px);
+    opacity: 1;
+    top: calc(90vh - 110px);
+    display: flex;
+    padding: 5px;
+    position: fixed;
+    left: 86vw;
+    transform: translate(-40%, 5%);
+    justify-content: center;
+    align-items: center;
+    width: 53px;
+    height: 53px;
+    border-radius: 50% !important;
+}
+
+body.stnd-eink-active .modal-close-button:hover,
+body.stnd-eink-active .setting-item-control button,
+body.stnd-eink-active:not(.colorful-active) .horizontal-tab-nav-item.is-active,
+body.stnd-eink-active:not(.colorful-active) .horizontal-tab-nav-item:hover,
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item.is-active,
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item:hover {
+    color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .suggestion-item.mod-complex.is-selected {
+    color: var(--color-base-00);
+}
+body.stnd-eink-active .markdown-source-view .image-embed img {
+    mix-blend-mode: normal !important;
+    opacity: 1;
+    filter: none;
+}
+body.stnd-eink-active blockquote {
+    background-color: var(--color-base-00) !important;
+    border-color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .callout {
+    background-color: var(--color-base-00) !important;
+    border-color: var(--color-base-100) !important;
+}
+body.stnd-eink-active .callout-content {
+    background-color: var(--color-base-00) !important;
+    border-color: var(--color-base-100) !important;
+    box-shadow: none !important;
+}
+body.stnd-eink-active hr {
+    border-color: var(--color-base-100) !important;
+}
+
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item.is-active,
+body.stnd-eink-active:not(.colorful-active) .vertical-tab-nav-item:hover {
+    color: var(--color-base-100) !important;
+}

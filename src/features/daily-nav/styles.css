@@ -1,0 +1,90 @@
+/* --- Feature: daily-nav --- */
+
+.stnd-daily-nav-container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  pointer-events: none;
+  animation: stnd-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stnd-daily-nav-pill {
+  display: flex;
+  align-items: center;
+  background: var(--background-secondary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: auto;
+  overflow: hidden;
+  opacity: 0.94;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stnd-daily-nav-pill:hover {
+  opacity: 1;
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.stnd-daily-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.stnd-daily-nav-btn:hover {
+  color: var(--text-normal);
+  background: rgba(var(--mono-rgb-100), 0.04);
+}
+
+.stnd-daily-nav-btn:active {
+  background: rgba(var(--mono-rgb-100), 0.08);
+}
+
+.stnd-daily-nav-btn.stnd-create {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.stnd-daily-nav-btn.stnd-create:hover {
+  color: var(--text-muted);
+}
+
+.stnd-daily-nav-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--background-modifier-border);
+  align-self: center;
+}
+
+@keyframes stnd-slide-up {
+  from {
+    transform: translate(-50%, 15px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* Adjustments for mobile view */
+body.is-mobile .stnd-daily-nav-container {
+  bottom: 16px;
+}
