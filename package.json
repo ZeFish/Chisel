@@ -1,16 +1,15 @@
 {
-  "name": "chisel",
-  "version": "2.0.0",
-  "private": false,
+  "name": "obsidian-chisel",
+  "version": "2.0.1",
+  "private": true,
   "description": "Chisel artisan toolkit for Obsidian",
   "main": "main.js",
   "scripts": {
-    "build": "node build.js",
-    "dev": "node build.js --watch"
+    "build": "node build.js && (command -v obsidian >/dev/null && obsidian vault=Atelier plugin:reload id=chisel || true)",
+    "dev": "pnpm run build && (command -v obsidian >/dev/null && obsidian dev:console || true)"
   },
   "devDependencies": {
     "esbuild": "^0.28.1",
     "obsidian": "latest"
-  },
-  "license": "GPL-3.0"
+  }
 }
