@@ -1,25 +1,16 @@
 {
   "name": "chisel",
   "version": "2.0.0",
-  "description": "Artisan toolkit for Obsidian: theme snippets, media management, Zen interface, e-ink optimization, and layout navigation.",
+  "private": false,
+  "description": "Chisel artisan toolkit for Obsidian",
   "main": "main.js",
   "scripts": {
     "build": "node build.js",
     "dev": "node build.js --watch"
   },
-  "keywords": [
-    "obsidian",
-    "obsidian-plugin",
-    "styling",
-    "css",
-    "snippets",
-    "media-manager",
-    "e-ink"
-  ],
-  "author": "Francis Fontaine",
-  "license": "GPL-3.0",
   "devDependencies": {
     "esbuild": "^0.28.1",
     "obsidian": "latest"
-  }
+  },
+  "license": "GPL-3.0"
 }
