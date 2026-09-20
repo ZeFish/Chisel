@@ -4173,6 +4173,7 @@ var require_interface_manager = __commonJS({
 // src/features/base64-fold/index.js
 var require_base64_fold = __commonJS({
   "src/features/base64-fold/index.js"(exports2, module2) {
+    "use strict";
     var { Decoration, ViewPlugin, WidgetType } = require("@codemirror/view");
     var { PluginSettingTab: PluginSettingTab2, Setting } = require("obsidian");
     var { descWithLinks } = require_constants();
