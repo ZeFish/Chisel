@@ -1009,11 +1009,11 @@ var require_system_tray = __commonJS({
   "src/features/system-tray/index.js"(exports2, module2) {
     "use strict";
     var obsidian = require("obsidian");
-    var { PluginSettingTab: PluginSettingTab2, Setting, Platform } = obsidian;
+    var { PluginSettingTab: PluginSettingTab2, Setting, Platform: Platform2 } = obsidian;
     var { descWithLinks } = require_constants();
     var path = null;
     var remote = null;
-    if (Platform.isDesktop) {
+    if (Platform2.isDesktop) {
       try {
         path = require("path");
         remote = require("@electron/remote");
@@ -1027,7 +1027,7 @@ var require_system_tray = __commonJS({
       trayIconTooltip: "{{vault}} | Obsidian"
     };
     function getElectronWindow() {
-      if (!Platform.isDesktop || !remote) return null;
+      if (!Platform2.isDesktop || !remote) return null;
       try {
         return remote.getCurrentWindow();
       } catch {
@@ -1038,7 +1038,7 @@ var require_system_tray = __commonJS({
       constructor(app, plugin) {
         __publicField(this, "handleBeforeUnload", (event) => {
           if (this.isAppQuitting) return;
-          if (Platform.isDesktop && remote) {
+          if (Platform2.isDesktop && remote) {
             remote.getCurrentWindow().hide();
           }
           event.stopImmediatePropagation();
@@ -1050,11 +1050,15 @@ var require_system_tray = __commonJS({
         });
         this.app = app;
         this.plugin = plugin;
-        plugin.settings.systemTray = {
-          ...DEFAULT_SETTINGS,
-          ...plugin.settings.systemTray || {}
-        };
-        this.settings = plugin.settings.systemTray;
+        if (plugin && plugin.settings) {
+          plugin.settings.systemTray = {
+            ...DEFAULT_SETTINGS,
+            ...plugin.settings.systemTray || {}
+          };
+          this.settings = plugin.settings.systemTray;
+        } else {
+          this.settings = { ...DEFAULT_SETTINGS };
+        }
         this.vaultWindows = /* @__PURE__ */ new Set();
         this.maximizedWindows = /* @__PURE__ */ new Set();
         this.isAppQuitting = false;
@@ -1064,7 +1068,7 @@ var require_system_tray = __commonJS({
         return path.join(basePath, this.plugin.manifest.dir);
       }
       async load() {
-        if (!Platform.isDesktop || !remote) return;
+        if (!Platform2.isDesktop || !remote) return;
         this.observeWindows();
         if (this.settings.enabled !== false) {
           if (window._atelierTray && typeof window._atelierTray.destroy === "function") {
@@ -1102,7 +1106,7 @@ var require_system_tray = __commonJS({
         }
       }
       setupTrayManager() {
-        if (!Platform.isDesktop || !remote) return;
+        if (!Platform2.isDesktop || !remote) return;
         try {
           const { TrayManager } = require_tray_manager();
           this.trayManager = new TrayManager(
@@ -1133,7 +1137,7 @@ var require_system_tray = __commonJS({
         }
       }
       async unload() {
-        if (!Platform.isDesktop) return;
+        if (!Platform2.isDesktop) return;
         this.teardownBackgroundPersistence();
         if (this.trayManager) {
           this.trayManager.destroyTray();
@@ -1141,7 +1145,7 @@ var require_system_tray = __commonJS({
         window._atelierTray = null;
       }
       setupBackgroundPersistence() {
-        if (!Platform.isDesktop || !remote) return;
+        if (!Platform2.isDesktop || !remote) return;
         this.teardownBackgroundPersistence();
         const win = getElectronWindow();
         if (!win) return;
@@ -1178,7 +1182,7 @@ var require_system_tray = __commonJS({
         }
       }
       teardownBackgroundPersistence() {
-        if (Platform.isDesktop && remote) {
+        if (Platform2.isDesktop && remote) {
           if (this._beforeQuitHandler) {
             remote.app.removeListener("before-quit", this._beforeQuitHandler);
             this._beforeQuitHandler = null;
@@ -1202,7 +1206,7 @@ var require_system_tray = __commonJS({
         return [...this.vaultWindows];
       }
       observeWindows() {
-        if (!Platform.isDesktop || !remote) return;
+        if (!Platform2.isDesktop || !remote) return;
         const onWindowCreation = (win) => {
           this.vaultWindows.add(win);
           win.on("close", () => {
@@ -1245,7 +1249,7 @@ var require_system_tray = __commonJS({
         }
       }
       interceptWindowClose() {
-        if (!Platform.isDesktop || !remote) return;
+        if (!Platform2.isDesktop || !remote) return;
         window.addEventListener("beforeunload", this.handleBeforeUnload, true);
         const win = getElectronWindow();
         if (win) win.on("close", this.handleWindowClose);
@@ -1281,7 +1285,7 @@ var require_system_tray = __commonJS({
           text: "View System Tray Manual",
           href: "https://stnd.build/3-archives/obsidian-plugin#9-system-tray"
         });
-        if (!Platform.isDesktop) {
+        if (!Platform2.isDesktop) {
           containerEl.createEl("p", {
             text: "System tray features are only available on desktop (Windows, macOS, Linux).",
             cls: "mod-warning"
@@ -1376,7 +1380,7 @@ var require_folder_suggest = __commonJS({
 var require_media_manager = __commonJS({
   "src/features/media-manager/index.js"(exports2, module2) {
     "use strict";
-    var { TFile, PluginSettingTab: PluginSettingTab2, Setting, Notice, TextComponent, ButtonComponent, Platform } = require("obsidian");
+    var { TFile, PluginSettingTab: PluginSettingTab2, Setting, Notice, TextComponent, ButtonComponent, Platform: Platform2 } = require("obsidian");
     var { descWithLinks } = require_constants();
     var VaultAuditFeature = class {
       constructor(app, plugin) {
@@ -1428,7 +1432,7 @@ var require_media_manager = __commonJS({
       }
       async handleNewFile(file) {
         if (!this.settings.enableSmartRename) return;
-        if (Platform.isMobile && !this.settings.enableOnMobile) {
+        if (Platform2.isMobile && !this.settings.enableOnMobile) {
           return;
         }
         if (!this.isMediaFile(file)) return;
@@ -2603,7 +2607,7 @@ var require_scroll_map = __commonJS({
 var require_snippet_manager = __commonJS({
   "src/features/snippet-manager/index.js"(exports2, module2) {
     "use strict";
-    var { PluginSettingTab: PluginSettingTab2, Setting, Notice, Platform } = require("obsidian");
+    var { PluginSettingTab: PluginSettingTab2, Setting, Notice, Platform: Platform2 } = require("obsidian");
     var { descWithLinks } = require_constants();
     var DEFAULT_SETTINGS = {
       enabled: true,
@@ -2760,7 +2764,7 @@ var require_snippet_manager = __commonJS({
           this.settings.globalSignature = "";
           return;
         }
-        if (Platform.isMobile) {
+        if (Platform2.isMobile) {
           if (!this.lastGlobalCss) {
             await this.loadCacheFromFile();
           }
@@ -2812,7 +2816,7 @@ var require_snippet_manager = __commonJS({
         this.debouncedSave();
       }
       async offloadFonts(css) {
-        if (Platform.isMobile) {
+        if (Platform2.isMobile) {
           return css;
         }
         if (!css.includes("data:font/")) {
@@ -2918,7 +2922,7 @@ var require_snippet_manager = __commonJS({
         for (const name of names) {
           const file = files.find((f) => f.basename === name);
           if (file && !this.isFileExcluded(file)) {
-            if (Platform.isMobile && file.stat?.size && file.stat.size > 500 * 1024) {
+            if (Platform2.isMobile && file.stat?.size && file.stat.size > 500 * 1024) {
               console.warn(`[Standard] Snippet local ignor\xE9 sur mobile car trop volumineux : ${file.path}`);
               continue;
             }
@@ -4388,7 +4392,7 @@ var require_base64_fold = __commonJS({
 });
 
 // src/main.js
-var { Plugin, PluginSettingTab } = require("obsidian");
+var { Plugin, PluginSettingTab, Platform } = require("obsidian");
 var { LiveFeature, LiveSettingTab } = require_live();
 var { EchoFeature, EchoSettingTab } = require_echo();
 var {
@@ -4485,7 +4489,7 @@ var ChiselSettingTab = class extends PluginSettingTab {
       { id: "Echo", tab: new EchoSettingTab(this.app, this.plugin) },
       { id: "Hollow", tab: new HollowSettingTab(this.app, this.plugin) },
       { id: "Feed", tab: new BasesFeedSettingTab(this.app, this.plugin) },
-      { id: "Tray", tab: new SystemTrayFeature() ? new SystemTraySettingTab(this.app, this.plugin) : null },
+      { id: "Tray", tab: Platform.isDesktop ? new SystemTraySettingTab(this.app, this.plugin) : null },
       { id: "Media", tab: new MediaManagerSettingTab(this.app, this.plugin) },
       { id: "E-ink", tab: new EinkSettingTab(this.app, this.plugin) },
       { id: "Scroll Map", tab: new ScrollMapSettingTab(this.app, this.plugin) },

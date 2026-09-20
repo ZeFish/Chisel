@@ -38,11 +38,15 @@ class SystemTrayFeature {
   constructor(app, plugin) {
     this.app = app;
     this.plugin = plugin;
-    plugin.settings.systemTray = {
-      ...DEFAULT_SETTINGS,
-      ...(plugin.settings.systemTray || {}),
-    };
-    this.settings = plugin.settings.systemTray;
+    if (plugin && plugin.settings) {
+      plugin.settings.systemTray = {
+        ...DEFAULT_SETTINGS,
+        ...(plugin.settings.systemTray || {}),
+      };
+      this.settings = plugin.settings.systemTray;
+    } else {
+      this.settings = { ...DEFAULT_SETTINGS };
+    }
     this.vaultWindows = new Set();
     this.maximizedWindows = new Set();
     this.isAppQuitting = false;

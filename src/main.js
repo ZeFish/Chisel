@@ -1,6 +1,6 @@
 "use strict";
 
-const { Plugin, PluginSettingTab } = require("obsidian");
+const { Plugin, PluginSettingTab, Platform } = require("obsidian");
 
 const { LiveFeature, LiveSettingTab } = require("./features/live/index.js");
 const { EchoFeature, EchoSettingTab } = require("./features/echo/index.js");
@@ -109,7 +109,7 @@ class ChiselSettingTab extends PluginSettingTab {
       { id: "Echo", tab: new EchoSettingTab(this.app, this.plugin) },
       { id: "Hollow", tab: new HollowSettingTab(this.app, this.plugin) },
       { id: "Feed", tab: new BasesFeedSettingTab(this.app, this.plugin) },
-      { id: "Tray", tab: new SystemTrayFeature ? new SystemTraySettingTab(this.app, this.plugin) : null },
+      { id: "Tray", tab: Platform.isDesktop ? new SystemTraySettingTab(this.app, this.plugin) : null },
       { id: "Media", tab: new MediaManagerSettingTab(this.app, this.plugin) },
       { id: "E-ink", tab: new EinkSettingTab(this.app, this.plugin) },
       { id: "Scroll Map", tab: new ScrollMapSettingTab(this.app, this.plugin) },
