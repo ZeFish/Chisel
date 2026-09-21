@@ -99,7 +99,7 @@
 
 /* Adjustments for mobile view */
 body.is-mobile .stnd-daily-nav-container {
-  bottom: 16px;
+  bottom: 100px;
 }
 
 

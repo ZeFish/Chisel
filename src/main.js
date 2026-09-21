@@ -8,10 +8,7 @@ const {
   HollowFeature,
   HollowSettingTab,
 } = require("./features/hollow/index.js");
-const {
-  BasesFeedFeature,
-  BasesFeedSettingTab,
-} = require("./features/bases-feed/index.js");
+
 const {
   SystemTrayFeature,
   SystemTraySettingTab,
@@ -58,7 +55,6 @@ class ChiselPlugin extends Plugin {
       new LiveFeature(this.app, this),
       new EchoFeature(this.app, this),
       new HollowFeature(this.app, this),
-      new BasesFeedFeature(this.app, this),
       new SystemTrayFeature(this.app, this),
       new MediaManagerFeature(this.app, this),
       new EinkFeature(this.app, this),
@@ -108,7 +104,6 @@ class ChiselSettingTab extends PluginSettingTab {
       { id: "Live", tab: new LiveSettingTab(this.app, this.plugin) },
       { id: "Echo", tab: new EchoSettingTab(this.app, this.plugin) },
       { id: "Hollow", tab: new HollowSettingTab(this.app, this.plugin) },
-      { id: "Feed", tab: new BasesFeedSettingTab(this.app, this.plugin) },
       { id: "Tray", tab: Platform.isDesktop ? new SystemTraySettingTab(this.app, this.plugin) : null },
       { id: "Media", tab: new MediaManagerSettingTab(this.app, this.plugin) },
       { id: "E-ink", tab: new EinkSettingTab(this.app, this.plugin) },

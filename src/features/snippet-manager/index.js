@@ -172,6 +172,14 @@ class SnippetManagerFeature {
         this.settings.globalCache = css;
         this.debouncedSave();
       }
+
+      // Si le dossier fonts est vide (ex: premier lancement sur mobile), lancer la génération
+      try {
+        const listed = await adapter.list(fontDir);
+        if (!listed || !listed.files || listed.files.length === 0) {
+          this.scheduleGlobalRescan(500);
+        }
+      } catch (e) {}
     }
   }
 
@@ -212,15 +220,6 @@ class SnippetManagerFeature {
       return;
     }
 
-    // SUR MOBILE : Ne JAMAIS rescanner les dizaines de mégaoctets de polices en base64 pour éviter
-    // le crash mémoire (OOM Jetsam kill). Sur mobile, on se fie au cache généré par le desktop.
-    if (Platform.isMobile) {
-      if (!this.lastGlobalCss) {
-        await this.loadCacheFromFile();
-      }
-      return;
-    }
-
     const files = this.app.vault.getMarkdownFiles();
 
     const globalFiles = files
@@ -231,14 +230,19 @@ class SnippetManagerFeature {
       })
       .sort((a, b) => a.path.localeCompare(b.path));
 
-    // Skip the re-read when the snippet set is unchanged. The signature is built
-    // from each file's path + mtime — both available on the TFile without any
-    // I/O — so an unchanged vault costs zero file reads (the aggregated CSS was
-    // already injected asynchronously from cache in load()).
     const signature = globalFiles
       .map((f) => `${f.path}:${f.stat?.mtime ?? 0}`)
       .join("|");
-    if (signature === this.settings.globalSignature && this.lastGlobalCss) return;
+    if (signature === this.settings.globalSignature && this.lastGlobalCss) {
+      // Si la signature n'a pas changé ET que le dossier fonts contient des fichiers, rien à faire
+      const fontDir = `${this.getPluginDir()}/fonts`;
+      try {
+        const listed = await this.app.vault.adapter.list(fontDir);
+        if (listed && listed.files && listed.files.length > 0) return;
+      } catch (e) {
+        return;
+      }
+    }
 
     let allCss = "";
     for (const file of globalFiles) {
@@ -289,10 +293,6 @@ class SnippetManagerFeature {
   }
 
   async offloadFonts(css) {
-    if (Platform.isMobile) {
-      return css;
-    }
-
     // Vérification rapide : éviter d'exécuter un regex lourd si le snippet ne contient pas de police base64
     if (!css.includes("data:font/")) {
       return css;
