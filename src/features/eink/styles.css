@@ -58,7 +58,7 @@ body.stnd-eink-active * {
     font-feature-settings: "kern" !important;
     font-optical-sizing: auto;
 
-    --line-width: 40rem;
+    --prose-width: 40rem;
     --file-line-width: 40rem;
     --font-line-width: 40rem;
 
